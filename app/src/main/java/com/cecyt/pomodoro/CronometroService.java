@@ -18,7 +18,6 @@ public class CronometroService extends Service {
     public static final String ACCION_INICIAR = "com.cecyt.pomodoro.ACCION_INICIAR_SERVICIO";
     public static final String ACCION_DETENER = "com.cecyt.pomodoro.ACCION_DETENER_SERVICIO";
     public static final String ACCION_PAUSAR = "com.cecyt.pomodoro.ACCION_PAUSAR_SERVICIO";
-    public static final String ACCION_REANUDAR = "com.cecyt.pomodoro.ACCION_REANUDAR_SERVICIO";
     public static final String EXTRA_TIEMPO_RESTANTE = "extra_tiempo_restante";
     public static final String EXTRA_ES_DESCANSO = "extra_es_descanso";
 
@@ -26,8 +25,11 @@ public class CronometroService extends Service {
 
     private static final String ETIQUETA_DEPURACION = "DepuracionCronometro";
 
+    private static final long UMBRAL_AVISO_FIN_DESCANSO = 60000L;
+
     private final Handler manejador = new Handler(Looper.getMainLooper());
     private Runnable accionFinalizacion;
+    private Runnable accionAvisoFinDescanso;
     private long finEstimadoActual;
     private boolean esDescansoActual;
     private long tiempoRestantePausado = -1;
@@ -54,19 +56,17 @@ public class CronometroService extends Service {
             return START_NOT_STICKY;
         }
 
-        // Toda accion que llega aqui fue lanzada con startForegroundService(),
-        // asi que el contrato exige llamar a startForeground() de inmediato,
-        // sin importar si la accion luego decide detener el servicio.
-        startForeground(ID_NOTIFICACION_PROGRESO, construirNotificacionProgreso(finEstimadoActual, esDescansoActual));
-
         if (ACCION_PAUSAR.equals(accion)) {
+            if (accionFinalizacion == null) {
+                detenerServicio();
+                return START_NOT_STICKY;
+            }
+            startForeground(ID_NOTIFICACION_PROGRESO, construirNotificacionProgreso(finEstimadoActual, esDescansoActual));
             pausarSeguimiento();
             return START_STICKY;
         }
-        if (ACCION_REANUDAR.equals(accion)) {
-            reanudarSeguimiento();
-            return START_STICKY;
-        }
+
+        startForeground(ID_NOTIFICACION_PROGRESO, construirNotificacionProgreso(finEstimadoActual, esDescansoActual));
 
         long tiempoRestante = intent.getLongExtra(EXTRA_TIEMPO_RESTANTE, 0);
         boolean esDescanso = intent.getBooleanExtra(EXTRA_ES_DESCANSO, false);
@@ -79,6 +79,10 @@ public class CronometroService extends Service {
         if (accionFinalizacion != null) {
             manejador.removeCallbacks(accionFinalizacion);
         }
+        if (accionAvisoFinDescanso != null) {
+            manejador.removeCallbacks(accionAvisoFinDescanso);
+            accionAvisoFinDescanso = null;
+        }
 
         long finEstimado = System.currentTimeMillis() + tiempoRestante;
         finEstimadoActual = finEstimado;
@@ -89,10 +93,33 @@ public class CronometroService extends Service {
 
         accionFinalizacion = () -> {
             Log.d(ETIQUETA_DEPURACION, "Servicio: tiempo agotado, notificando finalizacion");
+            avanzarFaseEnSegundoPlano(esDescanso);
             notificarFinalizacion(esDescanso);
             detenerServicio();
         };
         manejador.postDelayed(accionFinalizacion, tiempoRestante);
+
+        if (esDescanso && tiempoRestante > UMBRAL_AVISO_FIN_DESCANSO) {
+            accionAvisoFinDescanso = () -> GestorAlertas.mostrarAvisoFinDescansoProximo(this);
+            manejador.postDelayed(accionAvisoFinDescanso, tiempoRestante - UMBRAL_AVISO_FIN_DESCANSO);
+        }
+    }
+
+    private void avanzarFaseEnSegundoPlano(boolean esDescanso) {
+        int cicloActual = GestorAlertas.getCicloActualActual(this);
+        GestorCiclos.Resultado resultado = GestorCiclos.procesarFinDeFase(this, esDescanso, cicloActual);
+
+        GestorAlertas.actualizarMetadatosCronometroActual(this,
+                resultado.esDescansoSiguiente, resultado.cicloSiguiente, resultado.tituloSiguiente);
+        GestorAlertas.setCronometroCorriendo(this, false);
+
+        GestorAlertas.guardarEstadoCronometro(this, resultado.tiempoSiguiente,
+                resultado.esDescansoSiguiente, resultado.cicloSiguiente, resultado.tituloSiguiente);
+
+        //HOLAAAA
+        if (esDescanso && !resultado.esDescansoSiguiente) {
+            GestorAlertas.marcarPeriodoGraciaPostDescanso(this);
+        }
     }
 
     private void pausarSeguimiento() {
@@ -101,6 +128,10 @@ public class CronometroService extends Service {
         }
         manejador.removeCallbacks(accionFinalizacion);
         accionFinalizacion = null;
+        if (accionAvisoFinDescanso != null) {
+            manejador.removeCallbacks(accionAvisoFinDescanso);
+            accionAvisoFinDescanso = null;
+        }
 
         tiempoRestantePausado = finEstimadoActual - System.currentTimeMillis();
         if (tiempoRestantePausado < 0) {
@@ -117,18 +148,6 @@ public class CronometroService extends Service {
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .build();
         NotificationManagerCompat.from(this).notify(ID_NOTIFICACION_PROGRESO, notificacionPausada);
-    }
-
-    private void reanudarSeguimiento() {
-        if (tiempoRestantePausado < 0) {
-            stopForeground(true);
-            stopSelf();
-            return;
-        }
-        long tiempoRestante = tiempoRestantePausado;
-        tiempoRestantePausado = -1;
-        Log.d(ETIQUETA_DEPURACION, "Servicio: reanudando con tiempoRestante=" + tiempoRestante);
-        iniciarSeguimiento(tiempoRestante, esDescansoActual);
     }
 
     private android.app.Notification construirNotificacionProgreso(long finEstimado, boolean esDescanso) {
@@ -183,6 +202,10 @@ public class CronometroService extends Service {
             manejador.removeCallbacks(accionFinalizacion);
             accionFinalizacion = null;
         }
+        if (accionAvisoFinDescanso != null) {
+            manejador.removeCallbacks(accionAvisoFinDescanso);
+            accionAvisoFinDescanso = null;
+        }
         stopForeground(true);
         stopSelf();
     }
@@ -191,6 +214,31 @@ public class CronometroService extends Service {
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
         Log.d(ETIQUETA_DEPURACION, "Servicio: onTaskRemoved");
+
+        if (accionFinalizacion == null && tiempoRestantePausado < 0) {
+            detenerServicio();
+            return;
+        }
+
+        long tiempoRestante = tiempoRestantePausado >= 0
+                ? tiempoRestantePausado
+                : finEstimadoActual - System.currentTimeMillis();
+        if (tiempoRestante < 0) tiempoRestante = 0;
+
+        if (accionFinalizacion != null && !esDescansoActual
+                && !GestorAlertas.estaEnPeriodoGraciaPostDescanso(this)
+                && new GestorConfiguracion(this).isAlertasDistraccionHabilitadas()
+                && !GestorAlertas.hayInfraccionPendiente(this)) {
+            GestorAlertas.marcarInfraccionPendiente(this);
+            GestorAlertas.marcarReanudarTrasInfraccion(this);
+            new GestorEstadisticas(this).registrarFallo();
+            GestorAlertas.congelarTiempoRestante(this, tiempoRestante);
+        }
+
+        GestorAlertas.guardarEstadoCronometro(this, tiempoRestante,
+                esDescansoActual, GestorAlertas.getCicloActualActual(this), GestorAlertas.getTituloActual(this));
+        GestorAlertas.setCronometroCorriendo(this, false);
+
         detenerServicio();
     }
 
@@ -200,6 +248,10 @@ public class CronometroService extends Service {
         if (accionFinalizacion != null) {
             manejador.removeCallbacks(accionFinalizacion);
             accionFinalizacion = null;
+        }
+        if (accionAvisoFinDescanso != null) {
+            manejador.removeCallbacks(accionAvisoFinDescanso);
+            accionAvisoFinDescanso = null;
         }
     }
 

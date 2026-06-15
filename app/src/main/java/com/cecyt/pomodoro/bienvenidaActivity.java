@@ -26,7 +26,7 @@ public class bienvenidaActivity extends AppCompatActivity {
         new GestorTemas(this).aplicarTema(this);
         super.onCreate(savedInstanceState);
 
-        preferencias = getSharedPreferences("PreferenciasCajaFacil", MODE_PRIVATE);
+        preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, MODE_PRIVATE);
         boolean primerInicio = preferencias.getBoolean("primerInicio", true);
 
         if (!primerInicio) {

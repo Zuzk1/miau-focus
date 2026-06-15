@@ -22,7 +22,7 @@ public class tareasActivity extends BaseActivity {
     private MaterialButton btnAnadirTarea;
 
     private SharedPreferences preferencias;
-    private static final String PREFS_NAME = "PreferenciasCajaFacil";
+    private static final String PREFS_NAME = GestorAlertas.PREFS_NOMBRE_COMPARTIDO;
 
     private ArrayList<String> listaTareas;
     private TareasAdapter adaptador;

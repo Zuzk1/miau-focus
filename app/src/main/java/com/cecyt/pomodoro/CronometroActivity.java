@@ -47,12 +47,6 @@ public class CronometroActivity extends BaseActivity {
     public static final long UMBRAL_SIN_PENALIZACION = 10000;
     public static final long UMBRAL_SANCION = 120000;
 
-    public static volatile boolean estaCorriendoGlobal = false;
-    public static volatile long tiempoFinEstimadoGlobal = 0;
-    public static volatile boolean esDescansoGlobal = false;
-    public static volatile int cicloActualGlobal = 1;
-    public static volatile String tituloGlobal = "SESIÓN DE ENFOQUE";
-
     private long tiempoRestante = TIEMPO_ENFOQUE;
     private boolean estaCorriendo = false;
     private boolean esDescanso = false;
@@ -94,12 +88,19 @@ public class CronometroActivity extends BaseActivity {
             long tiempoRestanteReal = tiempoFinEstimado - SystemClock.elapsedRealtime();
             if (tiempoRestanteReal < 0) tiempoRestanteReal = 0;
 
+            long finEstimadoWallClock = System.currentTimeMillis() + tiempoRestanteReal;
+            GestorAlertas.guardarEstadoCronometroActual(this, finEstimadoWallClock, esDescanso, cicloActual, tvTitulo.getText().toString());
+
             Intent intentServicio = new Intent(this, CronometroService.class);
             intentServicio.setAction(CronometroService.ACCION_INICIAR);
             intentServicio.putExtra(CronometroService.EXTRA_TIEMPO_RESTANTE, tiempoRestanteReal);
             intentServicio.putExtra(CronometroService.EXTRA_ES_DESCANSO, esDescanso);
             Log.d(ETIQUETA_DEPURACION, "onPause: iniciando servicio con tiempoRestanteReal=" + tiempoRestanteReal);
             ContextCompat.startForegroundService(this, intentServicio);
+
+            if (temporizador != null) {
+                temporizador.cancel();
+            }
         }
     }
 
@@ -121,11 +122,34 @@ public class CronometroActivity extends BaseActivity {
         TIEMPO_DESCANSO_CORTO = gestorConfiguracion.getMinutosDescansoCorto() * 60000L;
         TIEMPO_DESCANSO_LARGO = gestorConfiguracion.getMinutosDescansoLargo() * 60000L;
 
-        if (estaCorriendo || estaCorriendoGlobal) {
+        if (GestorAlertas.isCronometroCorriendo(this)) {
+            cicloActual = GestorAlertas.getCicloActualActual(this);
+            esDescanso = GestorAlertas.getEsDescansoActual(this);
+            tvTitulo.setText(GestorAlertas.getTituloActual(this));
+
+            tiempoRestante = GestorAlertas.getTiempoFinEstimadoActual(this) - System.currentTimeMillis();
+            if (tiempoRestante < 0) tiempoRestante = 0;
+
+            long duracionFaseActual = esDescanso
+                    ? (cicloActual == 1 ? TIEMPO_DESCANSO_LARGO : TIEMPO_DESCANSO_CORTO)
+                    : TIEMPO_ENFOQUE;
+            barraProgreso.setIndicatorColor(esDescanso
+                    ? getColor(R.color.color_verde_exito)
+                    : TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
+            barraProgreso.setMax((int) duracionFaseActual);
+            actualizarIndicadoresSegunEstado();
+            actualizarInterfaz();
+            iniciarCronometro();
             return;
         }
 
-        long tiempoGuardado = GestorAlertas.getTiempoRestanteGuardado(this);
+        boolean debeReanudarTrasInfraccion = GestorAlertas.consumirReanudarTrasInfraccion(this);
+
+        //HOLAAAA
+        long tiempoCongelado = GestorAlertas.obtenerYLimpiarTiempoCongelado(this);
+
+        long duracionFaseActual;
+        long tiempoGuardado = tiempoCongelado >= 0 ? tiempoCongelado : GestorAlertas.getTiempoRestanteGuardado(this);
         if (tiempoGuardado >= 0) {
             tiempoRestante = tiempoGuardado;
             esDescanso = GestorAlertas.getEsDescansoGuardado(this);
@@ -135,13 +159,38 @@ public class CronometroActivity extends BaseActivity {
                     ? getColor(R.color.color_verde_exito)
                     : TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
             GestorAlertas.limpiarEstadoCronometroGuardado(this);
+            duracionFaseActual = esDescanso
+                    ? (cicloActual == 1 ? TIEMPO_DESCANSO_LARGO : TIEMPO_DESCANSO_CORTO)
+                    : TIEMPO_ENFOQUE;
         } else if (esDescanso) {
             tiempoRestante = cicloActual == 1 ? TIEMPO_DESCANSO_LARGO : TIEMPO_DESCANSO_CORTO;
+            duracionFaseActual = tiempoRestante;
         } else {
             tiempoRestante = TIEMPO_ENFOQUE;
+            duracionFaseActual = tiempoRestante;
         }
-        barraProgreso.setMax((int) tiempoRestante);
+
+        actualizarIndicadoresSegunEstado();
+        barraProgreso.setMax((int) duracionFaseActual);
         actualizarInterfaz();
+
+        if (debeReanudarTrasInfraccion && tiempoGuardado >= 0) {
+            iniciarCronometro();
+        } else {
+            estaCorriendo = false;
+            actualizarEstadoIconosToolbar();
+            botonPausar.setImageResource(android.R.drawable.ic_media_play);
+        }
+    }
+
+    private void actualizarIndicadoresSegunEstado() {
+        restaurarIndicadoresGlobales();
+        for (int i = 1; i < cicloActual; i++) {
+            actualizarIndicadorVisual(i);
+        }
+        if (!esDescanso) {
+            configurarIndicadorActual(cicloActual);
+        }
     }
 
     private void iniciarFlujoSolicitudPermisos() {
@@ -155,7 +204,7 @@ public class CronometroActivity extends BaseActivity {
     }
 
     private void solicitarPermisoNotificacionesConTarjeta(Runnable alFinalizar) {
-        SharedPreferences preferencias = getSharedPreferences("PreferenciasCajaFacil", Context.MODE_PRIVATE);
+        SharedPreferences preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
         if (preferencias.getBoolean("permiso_notificaciones_solicitado", false)) {
             alFinalizar.run();
             return;
@@ -176,7 +225,7 @@ public class CronometroActivity extends BaseActivity {
             return;
         }
 
-        SharedPreferences preferencias = getSharedPreferences("PreferenciasCajaFacil", Context.MODE_PRIVATE);
+        SharedPreferences preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
         if (preferencias.getBoolean("permiso_pantalla_completa_solicitado", false)) {
             return;
         }
@@ -204,7 +253,7 @@ public class CronometroActivity extends BaseActivity {
     }
 
     private void actualizarTareaActiva() {
-        SharedPreferences preferencias = getSharedPreferences("PreferenciasCajaFacil", Context.MODE_PRIVATE);
+        SharedPreferences preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
         String tareaActiva = preferencias.getString("tarea_activa_actual", "Ninguna");
         if (tvSubtitulo != null) {
             tvSubtitulo.setText("Enfocado en: " + tareaActiva);
@@ -232,7 +281,7 @@ public class CronometroActivity extends BaseActivity {
         TIEMPO_ENFOQUE = gestorConfiguracion.getMinutosTrabajo() * 60000L;
         TIEMPO_DESCANSO_CORTO = gestorConfiguracion.getMinutosDescansoCorto() * 60000L;
         TIEMPO_DESCANSO_LARGO = gestorConfiguracion.getMinutosDescansoLargo() * 60000L;
-        if (!estaCorriendoGlobal) {
+        if (!GestorAlertas.isCronometroCorriendo(this)) {
             tiempoRestante = esDescanso ? TIEMPO_DESCANSO_CORTO : TIEMPO_ENFOQUE;
         }
 
@@ -466,10 +515,8 @@ public class CronometroActivity extends BaseActivity {
         habilitarNavegacion(false);
 
         tiempoFinEstimado = SystemClock.elapsedRealtime() + tiempoRestante;
-        tiempoFinEstimadoGlobal = tiempoFinEstimado;
-        esDescansoGlobal = esDescanso;
-        cicloActualGlobal = cicloActual;
-        tituloGlobal = tvTitulo.getText().toString();
+        long finEstimadoWallClock = System.currentTimeMillis() + tiempoRestante;
+        GestorAlertas.guardarEstadoCronometroActual(this, finEstimadoWallClock, esDescanso, cicloActual, tvTitulo.getText().toString());
 
         temporizador = new CountDownTimer(tiempoRestante, 1000) {
             @Override
@@ -485,7 +532,6 @@ public class CronometroActivity extends BaseActivity {
         }.start();
 
         estaCorriendo = true;
-        estaCorriendoGlobal = true;
         actualizarEstadoIconosToolbar();
         botonPausar.setImageResource(android.R.drawable.ic_media_pause);
         gatoAnimado.resumeAnimation();
@@ -511,7 +557,7 @@ public class CronometroActivity extends BaseActivity {
         if (tiempoRestante < 0) tiempoRestante = 0;
 
         estaCorriendo = false;
-        estaCorriendoGlobal = false;
+        GestorAlertas.setCronometroCorriendo(this, false);
         actualizarEstadoIconosToolbar();
         botonPausar.setImageResource(android.R.drawable.ic_media_play);
 
@@ -539,58 +585,56 @@ public class CronometroActivity extends BaseActivity {
         habilitarNavegacion(true);
 
         estaCorriendo = false;
-        estaCorriendoGlobal = false;
+        GestorAlertas.setCronometroCorriendo(this, false);
         actualizarEstadoIconosToolbar();
         botonPausar.setImageResource(android.R.drawable.ic_media_play);
         detenerYRestablecerAnimaciones();
         gatoAnimado.pauseAnimation();
 
-        if (!esDescanso) {
-            GestorEstadisticas gestor = new GestorEstadisticas(this);
-            boolean alertasHabilitadas = new GestorConfiguracion(this).isAlertasDistraccionHabilitadas();
-            float puntosPorCiclo = alertasHabilitadas ? 37.5f : 3.75f;
-            gestor.registrarPomodoroExitoso((int) (TIEMPO_ENFOQUE / 60000), puntosPorCiclo);
+        boolean eraDescanso = esDescanso;
+        boolean eraDescansoLargo = eraDescanso && tvTitulo.getText().toString().equals("DESCANSO LARGO");
+        GestorCiclos.Resultado resultado = GestorCiclos.procesarFinDeFase(this, esDescanso, cicloActual);
 
-            SharedPreferences preferencias = getSharedPreferences("PreferenciasCajaFacil", Context.MODE_PRIVATE);
-            String tareaActiva = preferencias.getString("tarea_activa_actual", "Ninguna");
-            gestor.registrarActividadCompletada(tareaActiva);
-
+        if (!eraDescanso) {
             actualizarIndicadorVisual(cicloActual);
-            cicloActual++;
+        }
 
-            if (cicloActual > 4) {
-                cicloActual = 1;
-                restaurarIndicadoresGlobales();
+        cicloActual = resultado.cicloSiguiente;
+        esDescanso = resultado.esDescansoSiguiente;
+        tiempoRestante = resultado.tiempoSiguiente;
+        tvTitulo.setText(resultado.tituloSiguiente);
 
-                if (new GestorConfiguracion(this).isDescansoLargoHabilitado()) {
-                    tiempoRestante = TIEMPO_DESCANSO_LARGO;
-                    tvTitulo.setText("DESCANSO LARGO");
-                    esDescanso = true;
-                    barraProgreso.setIndicatorColor(ContextCompat.getColor(this, R.color.color_verde_exito));
-                    barraProgreso.setMax((int) tiempoRestante);
-                    actualizarInterfaz();
-                    iniciarCronometro();
-                } else {
-                    tiempoRestante = TIEMPO_ENFOQUE;
-                    tvTitulo.setText("SESIÓN DE ENFOQUE");
-                    esDescanso = false;
-                    barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
-                    configurarIndicadorActual(cicloActual);
-                    barraProgreso.setMax((int) tiempoRestante);
-                    actualizarInterfaz();
-                    Toast.makeText(this, "¡Completaste tus 4 ciclos de enfoque! Inicia cuando quieras seguir.", Toast.LENGTH_LONG).show();
-                }
-                return;
+        if (resultado.completoLosCuatroCiclos) {
+            restaurarIndicadoresGlobales();
+
+            if (esDescanso) {
+                barraProgreso.setIndicatorColor(ContextCompat.getColor(this, R.color.color_verde_exito));
+                barraProgreso.setMax((int) tiempoRestante);
+                actualizarInterfaz();
+                iniciarCronometro();
+            } else {
+                barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
+                configurarIndicadorActual(cicloActual);
+                barraProgreso.setMax((int) tiempoRestante);
+                actualizarInterfaz();
+                Toast.makeText(this, "¡Completaste tus 4 ciclos de enfoque! Inicia cuando quieras seguir.", Toast.LENGTH_LONG).show();
             }
+            return;
+        }
 
-            tiempoRestante = TIEMPO_DESCANSO_CORTO;
-            tvTitulo.setText("DESCANSO CORTO");
-            esDescanso = true;
+        if (eraDescansoLargo) {
+            restaurarIndicadoresGlobales();
+            barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
+            configurarIndicadorActual(cicloActual);
+            barraProgreso.setMax((int) tiempoRestante);
+            actualizarInterfaz();
+            Toast.makeText(this, "¡Descanso largo terminado! Inicia cuando quieras tu nuevo ciclo.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!eraDescanso) {
             barraProgreso.setIndicatorColor(ContextCompat.getColor(this, R.color.color_verde_exito));
         } else {
-            tiempoRestante = TIEMPO_ENFOQUE;
-            tvTitulo.setText("SESIÓN DE ENFOQUE");
-            esDescanso = false;
             barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
             configurarIndicadorActual(cicloActual);
         }
@@ -662,7 +706,8 @@ public class CronometroActivity extends BaseActivity {
 
         tiempoRestante = TIEMPO_ENFOQUE;
         estaCorriendo = false;
-        estaCorriendoGlobal = false;
+        GestorAlertas.setCronometroCorriendo(this, false);
+        GestorAlertas.consumirReanudarTrasInfraccion(this);
         actualizarEstadoIconosToolbar();
         esDescanso = false;
         cicloActual = 1;

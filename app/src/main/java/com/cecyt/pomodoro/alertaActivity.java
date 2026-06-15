@@ -3,12 +3,16 @@ package com.cecyt.pomodoro;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
-import android.content.Intent;
+import android.media.AudioAttributes;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -19,13 +23,12 @@ import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 public class alertaActivity extends AppCompatActivity {
 
-    public static volatile boolean estaActiva = false;
-
     private CountDownTimer contador;
     private Button btnSilenciar;
     private View viewGlowTop;
     private CircularProgressIndicator pbProgresoSilenciar;
     private Ringtone ringtone;
+    private Vibrator vibrador;
     private boolean isBotonPresionado = false;
     private boolean esInfraccion = false;
 
@@ -36,7 +39,7 @@ public class alertaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         new GestorTemas(this).aplicarTema(this);
         super.onCreate(savedInstanceState);
-        estaActiva = true;
+        GestorAlertas.setAlertaActiva(this, true);
         this.setFinishOnTouchOutside(false);
         setContentView(R.layout.alerta_main);
 
@@ -48,17 +51,10 @@ public class alertaActivity extends AppCompatActivity {
         pbProgresoSilenciar.setVisibility(View.INVISIBLE);
 
         esInfraccion = getIntent().getBooleanExtra(GestorAlertas.EXTRA_ES_INFRACCION, false);
-        if (esInfraccion && CronometroActivity.estaCorriendoGlobal) {
-            Intent intentPausar = new Intent(this, CronometroService.class);
-            intentPausar.setAction(CronometroService.ACCION_PAUSAR);
-            ContextCompat.startForegroundService(this, intentPausar);
-        }
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
-                // No se permite regresar al cronómetro con el botón de retroceso:
-                // la única salida es mantener el botón de cancelar o cerrar la app.
             }
         });
 
@@ -97,13 +93,32 @@ public class alertaActivity extends AppCompatActivity {
         }
         ringtone = RingtoneManager.getRingtone(getApplicationContext(), alert);
         if (ringtone != null) {
+            ringtone.setAudioAttributes(new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build());
+            ringtone.setLooping(true);
             ringtone.play();
+        }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            VibratorManager gestorVibrador = (VibratorManager) getSystemService(VIBRATOR_MANAGER_SERVICE);
+            vibrador = gestorVibrador.getDefaultVibrator();
+        } else {
+            vibrador = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        }
+        if (vibrador != null && vibrador.hasVibrator()) {
+            long[] patron = {0, 800, 400, 800};
+            vibrador.vibrate(VibrationEffect.createWaveform(patron, 0));
         }
     }
 
     private void detenerAlarma() {
         if (ringtone != null && ringtone.isPlaying()) {
             ringtone.stop();
+        }
+        if (vibrador != null) {
+            vibrador.cancel();
         }
     }
 
@@ -224,17 +239,9 @@ public class alertaActivity extends AppCompatActivity {
             public void onFinish() {
                 pbProgresoSilenciar.setProgress(5000);
                 detenerAlarma();
-                // Se limpia aqui (y no solo en onDestroy) porque la siguiente Activity
-                // puede llamar a redirigirAAlertaSiCorresponde() antes de que
-                // onDestroy() de esta Activity se ejecute, provocando una segunda alerta.
-                estaActiva = false;
+                GestorAlertas.setAlertaActiva(alertaActivity.this, false);
                 if (esInfraccion) {
                     GestorAlertas.limpiarInfraccionPendiente(alertaActivity.this);
-                    if (CronometroActivity.estaCorriendoGlobal) {
-                        Intent intentReanudar = new Intent(alertaActivity.this, CronometroService.class);
-                        intentReanudar.setAction(CronometroService.ACCION_REANUDAR);
-                        ContextCompat.startForegroundService(alertaActivity.this, intentReanudar);
-                    }
                 }
                 finish();
             }
@@ -244,7 +251,7 @@ public class alertaActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        estaActiva = false;
+        GestorAlertas.setAlertaActiva(this, false);
         if (contador != null) {
             contador.cancel();
             contador = null;

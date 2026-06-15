@@ -123,4 +123,36 @@
     <color name="acento_lavanda_overlay_10">#1A7E57C2</color>
     <color name="acento_lavanda_overlay_20">#337E57C2</color>
 
+    <!-- ============ ACENTO ARENA ============ -->
+    <color name="acento_arena">#C3AA82</color>
+    <color name="acento_arena_claro">#DBC8AA</color>
+    <color name="acento_arena_contenedor_oscuro">#473D2C</color>
+    <color name="acento_arena_contenedor_claro">#F2EBDC</color>
+    <color name="acento_arena_overlay_10">#1AC3AA82</color>
+    <color name="acento_arena_overlay_20">#33C3AA82</color>
+
+    <!-- ============ ACENTO GRAFITO ============ -->
+    <color name="acento_grafito">#707070</color>
+    <color name="acento_grafito_claro">#A0A0A0</color>
+    <color name="acento_grafito_contenedor_oscuro">#3A3A3A</color>
+    <color name="acento_grafito_contenedor_claro">#E2E2E2</color>
+    <color name="acento_grafito_overlay_10">#1A707070</color>
+    <color name="acento_grafito_overlay_20">#33707070</color>
+
+    <!-- ============ ACENTO MEDIANOCHE ============ -->
+    <color name="acento_medianoche">#0A334F</color>
+    <color name="acento_medianoche_claro">#4D7A99</color>
+    <color name="acento_medianoche_contenedor_oscuro">#142A3A</color>
+    <color name="acento_medianoche_contenedor_claro">#D2E2EC</color>
+    <color name="acento_medianoche_overlay_10">#1A0A334F</color>
+    <color name="acento_medianoche_overlay_20">#330A334F</color>
+
+    <!-- ============ ACENTO SALVIA ============ -->
+    <color name="acento_salvia">#868C7F</color>
+    <color name="acento_salvia_claro">#AEB3A8</color>
+    <color name="acento_salvia_contenedor_oscuro">#3A3D36</color>
+    <color name="acento_salvia_contenedor_claro">#E6E8E2</color>
+    <color name="acento_salvia_overlay_10">#1A868C7F</color>
+    <color name="acento_salvia_overlay_20">#33868C7F</color>
+
 </resources>

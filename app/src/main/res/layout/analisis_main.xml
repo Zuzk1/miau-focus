@@ -62,180 +62,180 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
-        android:id="@+id/cardEstadisticas"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/carta_oscura"
-        android:orientation="vertical"
-        android:padding="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/appBar">
-
-        <TextView
-            android:id="@+id/tvTiempoTotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/themeTextoSecundario"
-            android:textSize="15sp"
-            tools:text="Tiempo de Enfoque Total: 18 hrs" />
-
-        <TextView
-            android:id="@+id/tvPomodorosCompletados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/themeTextoSecundario"
-            android:textSize="15sp"
-            tools:text="Pomodoros Completados: 36" />
-
-        <TextView
-            android:id="@+id/tvRachaActual"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/themeTextoSecundario"
-            android:textSize="15sp"
-            tools:text="Racha Actual: 7 Días" />
-
-        <TextView
-            android:id="@+id/tvTasaFallos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:textColor="?attr/themeTextoSecundario"
-            android:textSize="15sp"
-            tools:text="Tasa de Fallos: 12% · 3 bloques abandonados" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llPuntos"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/carta_oscura"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardEstadisticas">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="🐱"
-            android:textSize="28sp"
-            android:layout_marginEnd="12dp" />
-
-        <TextView
-            android:id="@+id/tvPuntos"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:fontFamily="@font/poppins_semibold"
-            android:textColor="?attr/themeTextoPrimario"
-            android:textSize="18sp"
-            tools:text="350 Puntos" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnTienda"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_semibold"
-            android:text="Tienda de Temas"
-            android:textColor="?attr/themeSobreAcento"
-            android:textSize="13sp"
-            app:backgroundTint="?attr/themeAcento"
-            app:cornerRadius="24dp"
-            app:rippleColor="?attr/themeRipple" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvTituloGrafica"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="24dp"
-        android:gravity="center"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Pomodoros Completados por Día"
-        android:textColor="?attr/themeTextoPrimario"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llPuntos" />
-
-    <LinearLayout
-        android:id="@+id/llGraficaContenedor"
-        android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/carta_oscura"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTituloGrafica">
-
-        <LinearLayout
-            android:id="@+id/llContenedorBarras"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:baselineAligned="false"
-            android:orientation="horizontal" />
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvTituloActividades"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="24dp"
-        android:gravity="center"
-        android:fontFamily="@font/poppins_semibold"
-        android:text="Actividades Recientes"
-        android:textColor="?attr/themeTextoPrimario"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/llGraficaContenedor" />
-
-    <LinearLayout
-        android:id="@+id/llActividadesRecientes"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollContenido"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/carta_oscura"
-        android:orientation="vertical"
-        android:padding="12dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvTituloActividades"
+        app:layout_constraintTop_toBottomOf="@id/appBar"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView">
 
-        <TextView
-            android:id="@+id/tvActividadesRecientes"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_regular"
-            android:textColor="?attr/themeTextoSecundario"
-            android:textSize="13sp"
-            android:text="Aún no hay actividades completadas" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/cardEstadisticas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/carta_oscura"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/tvTiempoTotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="?attr/themeTextoSecundario"
+                    android:textSize="15sp"
+                    tools:text="Tiempo de Enfoque Total: 18 hrs" />
+
+                <TextView
+                    android:id="@+id/tvPomodorosCompletados"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="?attr/themeTextoSecundario"
+                    android:textSize="15sp"
+                    tools:text="Pomodoros Completados: 36" />
+
+                <TextView
+                    android:id="@+id/tvRachaActual"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="?attr/themeTextoSecundario"
+                    android:textSize="15sp"
+                    tools:text="Racha Actual: 7 Días" />
+
+                <TextView
+                    android:id="@+id/tvTasaFallos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="?attr/themeTextoSecundario"
+                    android:textSize="15sp"
+                    tools:text="Tasa de Fallos: 12% · 3 bloques abandonados" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llPuntos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/carta_oscura"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🐱"
+                    android:textSize="28sp"
+                    android:layout_marginEnd="12dp" />
+
+                <TextView
+                    android:id="@+id/tvPuntos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="?attr/themeTextoPrimario"
+                    android:textSize="18sp"
+                    tools:text="350 Puntos" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTienda"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Tienda de Temas"
+                    android:textColor="?attr/themeSobreAcento"
+                    android:textSize="13sp"
+                    app:backgroundTint="?attr/themeAcento"
+                    app:cornerRadius="24dp"
+                    app:rippleColor="?attr/themeRipple" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTituloGrafica"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginHorizontal="24dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Pomodoros Completados por Día"
+                android:textColor="?attr/themeTextoPrimario"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/llGraficaContenedor"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/carta_oscura"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:id="@+id/llContenedorBarras"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTituloActividades"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="24dp"
+                android:gravity="center"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Actividades Recientes"
+                android:textColor="?attr/themeTextoPrimario"
+                android:textSize="15sp" />
+
+            <LinearLayout
+                android:id="@+id/llActividadesRecientes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/carta_oscura"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvActividadesRecientes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="?attr/themeTextoSecundario"
+                    android:textSize="13sp"
+                    android:text="Aún no hay actividades completadas" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"

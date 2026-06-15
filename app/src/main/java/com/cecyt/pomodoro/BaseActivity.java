@@ -114,13 +114,8 @@ public class BaseActivity extends AppCompatActivity {
         actualizarEstadoIconosToolbar();
     }
 
-    /**
-     * Punto unico de entrada para todas las pantallas: si hay una alerta de
-     * distraccion activa o pendiente, redirige a ella en vez de mostrar
-     * la pantalla normal. Evita que cada Activity duplique esta logica.
-     */
     protected boolean redirigirAAlertaSiCorresponde() {
-        if (alertaActivity.estaActiva) {
+        if (GestorAlertas.isAlertaActiva(this)) {
             Intent intentAlerta = new Intent(this, alertaActivity.class);
             intentAlerta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intentAlerta);
@@ -187,7 +182,7 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     protected void actualizarEstadoIconosToolbar() {
-        boolean cronometroCorriendo = CronometroActivity.estaCorriendoGlobal;
+        boolean cronometroCorriendo = GestorAlertas.isCronometroCorriendo(this);
         aplicarEstadoIconoToolbar(ivEscudoToolbar, cronometroCorriendo, ContextCompat.getColor(this, R.color.color_verde_exito));
         aplicarEstadoIconoToolbar(ivConfigToolbar, cronometroCorriendo, TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
     }

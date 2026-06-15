@@ -18,15 +18,19 @@ public class GestorEstadisticas {
                     .putBoolean("reseteo_puntos_v2", true)
                     .apply();
         }
+        if (!prefs.getBoolean("bono_7000_otorgado", false)) {
+            prefs.edit()
+                    .putFloat("puntos", getPuntos() + 7000f)
+                    .putBoolean("bono_7000_otorgado", true)
+                    .apply();
+        }
     }
 
-    public void registrarPomodoroExitoso(int minutosEnfoque, float puntosGanados) {
+    public void registrarSesionEnfoque(int minutosEnfoque, float puntosGanados) {
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putInt("minutos_totales", getMinutosTotales() + minutosEnfoque);
-        editor.putInt("pomodoros_completados", getPomodorosCompletados() + 1);
         editor.putFloat("puntos", getPuntos() + puntosGanados);
-        editor.putInt("racha_actual", getRachaActual() + 1);
 
         int diaSemana = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
         String keyDia = "pomodoros_dia_" + diaSemana;
@@ -35,11 +39,41 @@ public class GestorEstadisticas {
         editor.apply();
     }
 
+    public void registrarCicloCompleto() {
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("pomodoros_completados", getPomodorosCompletados() + 1);
+        actualizarRachaPorDia(editor);
+        editor.apply();
+    }
+
+    private void actualizarRachaPorDia(SharedPreferences.Editor editor) {
+        long hoy = obtenerDiaActual();
+        long ultimoDia = prefs.getLong("ultimo_dia_racha", -1);
+        int racha = getRachaActual();
+
+        if (ultimoDia == hoy) {
+            if (racha == 0) racha = 1;
+        } else if (ultimoDia == hoy - 1) {
+            racha = racha + 1;
+        } else {
+            racha = 1;
+        }
+
+        editor.putInt("racha_actual", racha);
+        editor.putLong("ultimo_dia_racha", hoy);
+    }
+
+    private long obtenerDiaActual() {
+        long ahora = System.currentTimeMillis();
+        int offset = java.util.TimeZone.getDefault().getOffset(ahora);
+        return (ahora + offset) / 86400000L;
+    }
+
     public void registrarFallo() {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("pomodoros_fallados", getPomodorosFallados() + 1);
         editor.putInt("racha_actual", 0);
-        editor.putFloat("puntos", Math.max(0f, getPuntos() - 75));
+        editor.putFloat("puntos", Math.max(0f, getPuntos() - 70f));
         editor.apply();
     }
 
