@@ -25,8 +25,10 @@ public class analisisActivity extends BaseActivity {
             cargarDatosReales();
             cargarActividadesRecientes();
 
-            int[] datosPomodorosSemana = gestor.getDatosSemana();
-            dibujarGraficaDeBarras(datosPomodorosSemana);
+            int diasAMostrar = 15;
+            int[] datosUltimosDias = gestor.getDatosUltimosDias(diasAMostrar);
+            String[] etiquetasUltimosDias = gestor.getEtiquetasUltimosDias(diasAMostrar);
+            dibujarGraficaDeBarras(datosUltimosDias, etiquetasUltimosDias);
 
             findViewById(R.id.btnTienda).setOnClickListener(v -> {
                 Intent intent = new Intent(analisisActivity.this, personalizacionActivity.class);
@@ -39,6 +41,16 @@ public class analisisActivity extends BaseActivity {
             e.printStackTrace();
             Toast.makeText(this, "Error al cargar la pantalla: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (redirigidoAAlerta || gestor == null) return;
+        int diasAMostrar = 15;
+        cargarDatosReales();
+        cargarActividadesRecientes();
+        dibujarGraficaDeBarras(gestor.getDatosUltimosDias(diasAMostrar), gestor.getEtiquetasUltimosDias(diasAMostrar));
     }
 
     private void cargarDatosReales() {
@@ -81,62 +93,79 @@ public class analisisActivity extends BaseActivity {
 
         StringBuilder textoActividades = new StringBuilder();
         for (String actividad : actividades) {
-            textoActividades.append("• ").append(actividad).append("\n");
+            String[] partes = actividad.split("\\|");
+            String nombre = partes[0];
+            String sufijo = partes.length > 1 ? " · " + partes[1] + " min" : "";
+            textoActividades.append("• ").append(nombre).append(sufijo).append("\n");
         }
         tvActividades.setText(textoActividades.toString().trim());
     }
 
-    private void dibujarGraficaDeBarras(int[] datos) {
+    private static final int COLUMNAS_VISIBLES = 7;
+
+    private void dibujarGraficaDeBarras(int[] datos, String[] etiquetas) {
         if (datos == null || datos.length == 0) {
-            datos = new int[]{0, 0, 0, 0, 0, 0, 0};
+            datos = new int[]{0};
+            etiquetas = new String[]{""};
         }
 
+        int[] datosFinal = datos;
+        String[] etiquetasFinal = etiquetas;
+
+        android.widget.HorizontalScrollView hsvGraficaBarras = findViewById(R.id.hsvGraficaBarras);
         LinearLayout llContenedorBarras = findViewById(R.id.llContenedorBarras);
-        llContenedorBarras.removeAllViews();
 
-        String[] dias = {"Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"};
+        hsvGraficaBarras.post(() -> {
+            int anchoDisponible = hsvGraficaBarras.getWidth()
+                    - hsvGraficaBarras.getPaddingLeft() - hsvGraficaBarras.getPaddingRight();
+            int anchoColumna = anchoDisponible / COLUMNAS_VISIBLES;
 
-        int MAX_VALOR_EJE_Y = 8;
-        for (int dato : datos) {
-            if (dato > MAX_VALOR_EJE_Y) MAX_VALOR_EJE_Y = dato + 2;
-        }
+            llContenedorBarras.removeAllViews();
 
-        for (int i = 0; i < datos.length && i < dias.length; i++) {
-            LinearLayout columna = new LinearLayout(this);
-            columna.setOrientation(LinearLayout.VERTICAL);
-            columna.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
-            columna.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT, 1f));
+            int MAX_VALOR_EJE_Y = 8;
+            for (int dato : datosFinal) {
+                if (dato > MAX_VALOR_EJE_Y) MAX_VALOR_EJE_Y = dato + 2;
+            }
 
-            LinearLayout areaBarra = new LinearLayout(this);
-            areaBarra.setOrientation(LinearLayout.VERTICAL);
-            areaBarra.setWeightSum(MAX_VALOR_EJE_Y);
-            LinearLayout.LayoutParams paramsAreaBarra = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f);
-            paramsAreaBarra.bottomMargin = 8;
-            areaBarra.setLayoutParams(paramsAreaBarra);
+            for (int i = 0; i < datosFinal.length && i < etiquetasFinal.length; i++) {
+                LinearLayout columna = new LinearLayout(this);
+                columna.setOrientation(LinearLayout.VERTICAL);
+                columna.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL);
+                columna.setLayoutParams(new LinearLayout.LayoutParams(anchoColumna, LinearLayout.LayoutParams.MATCH_PARENT));
 
-            float vacio = MAX_VALOR_EJE_Y - datos[i];
-            View espaciador = new View(this);
-            espaciador.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, vacio));
+                LinearLayout areaBarra = new LinearLayout(this);
+                areaBarra.setOrientation(LinearLayout.VERTICAL);
+                areaBarra.setWeightSum(MAX_VALOR_EJE_Y);
+                LinearLayout.LayoutParams paramsAreaBarra = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, 1f);
+                paramsAreaBarra.bottomMargin = 8;
+                areaBarra.setLayoutParams(paramsAreaBarra);
 
-            View barra = new View(this);
-            barra.setBackgroundResource(R.drawable.fondo_barra);
-            LinearLayout.LayoutParams paramsBarra = new LinearLayout.LayoutParams(
-                    (int) (24 * getResources().getDisplayMetrics().density), 0, datos[i]);
-            paramsBarra.gravity = Gravity.CENTER_HORIZONTAL;
-            barra.setLayoutParams(paramsBarra);
+                float vacio = MAX_VALOR_EJE_Y - datosFinal[i];
+                View espaciador = new View(this);
+                espaciador.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, 0, vacio));
 
-            areaBarra.addView(espaciador);
-            areaBarra.addView(barra);
+                View barra = new View(this);
+                barra.setBackgroundResource(R.drawable.fondo_barra);
+                LinearLayout.LayoutParams paramsBarra = new LinearLayout.LayoutParams(
+                        (int) (32 * getResources().getDisplayMetrics().density), 0, datosFinal[i]);
+                paramsBarra.gravity = Gravity.CENTER_HORIZONTAL;
+                barra.setLayoutParams(paramsBarra);
 
-            TextView tvDia = new TextView(this);
-            tvDia.setText(dias[i]);
-            tvDia.setTextColor(TemaUtils.resolverColor(this, R.attr.themeTextoSecundario));
-            tvDia.setTextSize(12f);
-            tvDia.setGravity(Gravity.CENTER);
+                areaBarra.addView(espaciador);
+                areaBarra.addView(barra);
 
-            columna.addView(areaBarra);
-            columna.addView(tvDia);
-            llContenedorBarras.addView(columna);
-        }
+                TextView tvDia = new TextView(this);
+                tvDia.setText(etiquetasFinal[i]);
+                tvDia.setTextColor(TemaUtils.resolverColor(this, R.attr.themeTextoSecundario));
+                tvDia.setTextSize(12f);
+                tvDia.setGravity(Gravity.CENTER);
+
+                columna.addView(areaBarra);
+                columna.addView(tvDia);
+                llContenedorBarras.addView(columna);
+            }
+
+            hsvGraficaBarras.fullScroll(View.FOCUS_RIGHT);
+        });
     }
 }

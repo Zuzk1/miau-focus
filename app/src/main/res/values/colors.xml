@@ -58,7 +58,7 @@
     <color name="color_gris_ciclo_inactivo">#444444</color>
 
     <!-- Verde de éxito (racha activa, sesión de enfoque completada) -->
-    <color name="color_verde_exito">#4CAF50</color>
+    <color name="color_verde_exito">#4FC64F</color>
 
     <!-- Rojo de peligro (botón renunciar, alertas) -->
     <color name="color_rojo_peligro">#E53935</color>

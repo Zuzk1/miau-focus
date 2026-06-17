@@ -1,7 +1,9 @@
 package com.cecyt.pomodoro;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.NumberPicker;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.graphics.Insets;
@@ -50,11 +52,14 @@ public class configuracionesAppActivity extends BaseActivity {
         npDescansoLargo.setValue(gestorConfiguracion.getMinutosDescansoLargo());
 
         switchDescansoLargo.setChecked(gestorConfiguracion.isDescansoLargoHabilitado());
-        switchDescansoLargo.setOnCheckedChangeListener((buttonView, isChecked) -> actualizarEstadoDescansoLargo());
+        switchDescansoLargo.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (!haySessionBloqueante()) actualizarEstadoDescansoLargo();
+        });
 
         switchOpcionesPredeterminadas.setChecked(gestorConfiguracion.isOpcionesPredeterminadasHabilitadas());
         aplicarEstadoOpcionesPredeterminadas(switchOpcionesPredeterminadas.isChecked());
         switchOpcionesPredeterminadas.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (haySessionBloqueante()) return;
             if (isChecked) {
                 npTrabajo.setValue(GestorConfiguracion.MINUTOS_TRABAJO_PREDETERMINADO);
                 npDescansoCorto.setValue(GestorConfiguracion.MINUTOS_DESCANSO_CORTO_PREDETERMINADO);
@@ -64,6 +69,10 @@ public class configuracionesAppActivity extends BaseActivity {
         });
 
         findViewById(R.id.btnGuardarConfig).setOnClickListener(v -> {
+            if (haySessionBloqueante()) {
+                Toast.makeText(this, "No puedes cambiar los tiempos mientras hay una sesión activa", Toast.LENGTH_SHORT).show();
+                return;
+            }
             gestorConfiguracion.setOpcionesPredeterminadasHabilitadas(switchOpcionesPredeterminadas.isChecked());
             gestorConfiguracion.setDescansoLargoHabilitado(switchDescansoLargo.isChecked());
             gestorConfiguracion.guardar(npTrabajo.getValue(), npDescansoCorto.getValue(), npDescansoLargo.getValue());
@@ -72,6 +81,58 @@ public class configuracionesAppActivity extends BaseActivity {
         });
 
         findViewById(R.id.ivAtras).setOnClickListener(v -> finish());
+        aplicarBloqueoSesionActiva();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (redirigidoAAlerta) return;
+        aplicarBloqueoSesionActiva();
+    }
+
+    private boolean haySessionBloqueante() {
+        GestorConfiguracion config = new GestorConfiguracion(this);
+        long tiempoEnfoque = config.getMinutosTrabajo() * 60000L;
+
+        if (GestorAlertas.isCronometroCorriendo(this)) {
+            int ciclo = GestorAlertas.getCicloActualActual(this);
+            boolean esDescansoActual = GestorAlertas.getEsDescansoActual(this);
+            if (esDescansoActual && ciclo == 1) return false;
+            if (ciclo > 1) return true;
+            long tiempoRestanteMs = GestorAlertas.getTiempoFinEstimadoActual(this) - System.currentTimeMillis();
+            if (tiempoRestanteMs < 0) tiempoRestanteMs = 0;
+            return (tiempoEnfoque - tiempoRestanteMs) > CronometroActivity.UMBRAL_SIN_PENALIZACION;
+        }
+
+        long tiempoGuardado = GestorAlertas.getTiempoRestanteGuardado(this);
+        if (tiempoGuardado >= 0) {
+            int ciclo = GestorAlertas.getCicloActualGuardado(this);
+            boolean esDescansoGuardado = GestorAlertas.getEsDescansoGuardado(this);
+            if (esDescansoGuardado && ciclo == 1) return false;
+            if (ciclo > 1) return true;
+            return (tiempoEnfoque - tiempoGuardado) > CronometroActivity.UMBRAL_SIN_PENALIZACION;
+        }
+
+        return false;
+    }
+
+    private void aplicarBloqueoSesionActiva() {
+        boolean bloqueada = haySessionBloqueante();
+        TextView aviso = findViewById(R.id.tvSesionActivaAviso);
+        if (aviso != null) aviso.setVisibility(bloqueada ? View.VISIBLE : View.GONE);
+
+        if (bloqueada) {
+            npTrabajo.setEnabled(false);
+            npDescansoCorto.setEnabled(false);
+            npDescansoLargo.setEnabled(false);
+            switchOpcionesPredeterminadas.setEnabled(false);
+            switchDescansoLargo.setEnabled(false);
+        } else {
+            switchOpcionesPredeterminadas.setEnabled(true);
+            switchDescansoLargo.setEnabled(true);
+            aplicarEstadoOpcionesPredeterminadas(switchOpcionesPredeterminadas.isChecked());
+        }
     }
 
     private void aplicarEstadoOpcionesPredeterminadas(boolean habilitadas) {

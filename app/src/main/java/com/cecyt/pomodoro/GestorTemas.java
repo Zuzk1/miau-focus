@@ -80,15 +80,35 @@ public class GestorTemas {
         LAVANDA_CLARO("lavanda_claro", "Lavanda Claro", R.style.Theme_Pomodoro_Light_Lavanda,
                 R.color.tema_claro_fondo_principal, R.color.acento_lavanda, 300, false),
 
+        PETROLEO_OSCURO("petroleo_oscuro", "Petróleo Oscuro", R.style.Theme_Pomodoro_Dark_Petroleo,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_petroleo, 310, false),
+        PETROLEO_CLARO("petroleo_claro", "Petróleo Claro", R.style.Theme_Pomodoro_Light_Petroleo,
+                R.color.tema_claro_fondo_principal, R.color.acento_petroleo, 310, false),
+
+        CARMESI_OSCURO("carmesi_oscuro", "Carmesí Oscuro", R.style.Theme_Pomodoro_Dark_Carmesi,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_carmesi, 340, false),
+        CARMESI_CLARO("carmesi_claro", "Carmesí Claro", R.style.Theme_Pomodoro_Light_Carmesi,
+                R.color.tema_claro_fondo_principal, R.color.acento_carmesi, 340, false),
+
         ARENA_OSCURO("arena_oscuro", "Arena Oscuro", R.style.Theme_Pomodoro_Dark_Arena,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_arena, 350, false),
         ARENA_CLARO("arena_claro", "Arena Claro", R.style.Theme_Pomodoro_Light_Arena,
                 R.color.tema_claro_fondo_principal, R.color.acento_arena, 350, false),
 
+        FANTASMA_OSCURO("fantasma_oscuro", "Fantasma Oscuro", R.style.Theme_Pomodoro_Dark_Fantasma,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_fantasma, 380, false),
+        FANTASMA_CLARO("fantasma_claro", "Fantasma Claro", R.style.Theme_Pomodoro_Light_Fantasma,
+                R.color.tema_claro_fondo_principal, R.color.acento_fantasma, 380, false),
+
         MEDIANOCHE_OSCURO("medianoche_oscuro", "Medianoche Oscuro", R.style.Theme_Pomodoro_Dark_Medianoche,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_medianoche, 420, false),
         MEDIANOCHE_CLARO("medianoche_claro", "Medianoche Claro", R.style.Theme_Pomodoro_Light_Medianoche,
-                R.color.tema_claro_fondo_principal, R.color.acento_medianoche, 420, false);
+                R.color.tema_claro_fondo_principal, R.color.acento_medianoche, 420, false),
+
+        LIMA_OSCURO("lima_oscuro", "Lima Oscuro", R.style.Theme_Pomodoro_Dark_Lima,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_lima, 600, false),
+        LIMA_CLARO("lima_claro", "Lima Claro", R.style.Theme_Pomodoro_Light_Lima,
+                R.color.tema_claro_fondo_principal, R.color.acento_lima, 600, false);
 
         public final String id;
         public final String nombre;

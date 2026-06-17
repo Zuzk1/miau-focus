@@ -80,13 +80,40 @@ public class CronometroActivity extends BaseActivity {
 
     private static final String ETIQUETA_DEPURACION = "DepuracionCronometro";
 
+    private enum ModoBotonEscudo { OCULTO, ESCUDO, SALTAR }
+    private FloatingActionButton botonEscudo;
+    private boolean sesionProtegida = false;
+    private boolean descansoLargoCache = false;
+    private ModoBotonEscudo modoBotonEscudo = ModoBotonEscudo.OCULTO;
+
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(ETIQUETA_DEPURACION, "onPause: estaCorriendo=" + estaCorriendo);
         if (estaCorriendo) {
             long tiempoRestanteReal = tiempoFinEstimado - SystemClock.elapsedRealtime();
             if (tiempoRestanteReal < 0) tiempoRestanteReal = 0;
+
+            if (!esDescanso && !GestorAlertas.estaEnPeriodoGraciaPostDescanso(this)
+                    && new GestorConfiguracion(this).isAlertasDistraccionHabilitadas()
+                    && !GestorAlertas.hayInfraccionPendiente(this)) {
+                
+                GestorAlertas.marcarInfraccionPendiente(this);
+                GestorAlertas.marcarReanudarTrasInfraccion(this);
+                new GestorEstadisticas(this).registrarFallo();
+                GestorAlertas.congelarTiempoRestante(this, tiempoRestanteReal);
+
+                detenerServicioCronometro();
+
+                Intent intentAlerta = new Intent(this, alertaActivity.class);
+                intentAlerta.putExtra(GestorAlertas.EXTRA_ES_INFRACCION, true);
+                intentAlerta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intentAlerta);
+
+                if (temporizador != null) {
+                    temporizador.cancel();
+                }
+                return;
+            }
 
             long finEstimadoWallClock = System.currentTimeMillis() + tiempoRestanteReal;
             GestorAlertas.guardarEstadoCronometroActual(this, finEstimadoWallClock, esDescanso, cicloActual, tvTitulo.getText().toString());
@@ -95,11 +122,17 @@ public class CronometroActivity extends BaseActivity {
             intentServicio.setAction(CronometroService.ACCION_INICIAR);
             intentServicio.putExtra(CronometroService.EXTRA_TIEMPO_RESTANTE, tiempoRestanteReal);
             intentServicio.putExtra(CronometroService.EXTRA_ES_DESCANSO, esDescanso);
-            Log.d(ETIQUETA_DEPURACION, "onPause: iniciando servicio con tiempoRestanteReal=" + tiempoRestanteReal);
             ContextCompat.startForegroundService(this, intentServicio);
 
             if (temporizador != null) {
                 temporizador.cancel();
+            }
+        } else {
+            boolean tieneProgreso = esDescanso || cicloActual > 1 || (tiempoRestante > 0 && tiempoRestante < TIEMPO_ENFOQUE);
+            if (tieneProgreso) {
+                GestorAlertas.guardarEstadoCronometro(this, tiempoRestante, esDescanso, cicloActual, tvTitulo.getText().toString());
+            } else {
+                GestorAlertas.limpiarEstadoCronometroGuardado(this);
             }
         }
     }
@@ -121,6 +154,7 @@ public class CronometroActivity extends BaseActivity {
         TIEMPO_ENFOQUE = gestorConfiguracion.getMinutosTrabajo() * 60000L;
         TIEMPO_DESCANSO_CORTO = gestorConfiguracion.getMinutosDescansoCorto() * 60000L;
         TIEMPO_DESCANSO_LARGO = gestorConfiguracion.getMinutosDescansoLargo() * 60000L;
+        descansoLargoCache = gestorConfiguracion.isDescansoLargoHabilitado();
 
         if (GestorAlertas.isCronometroCorriendo(this)) {
             cicloActual = GestorAlertas.getCicloActualActual(this);
@@ -144,12 +178,11 @@ public class CronometroActivity extends BaseActivity {
         }
 
         boolean debeReanudarTrasInfraccion = GestorAlertas.consumirReanudarTrasInfraccion(this);
-
-        //HOLAAAA
         long tiempoCongelado = GestorAlertas.obtenerYLimpiarTiempoCongelado(this);
 
         long duracionFaseActual;
         long tiempoGuardado = tiempoCongelado >= 0 ? tiempoCongelado : GestorAlertas.getTiempoRestanteGuardado(this);
+
         if (tiempoGuardado >= 0) {
             tiempoRestante = tiempoGuardado;
             esDescanso = GestorAlertas.getEsDescansoGuardado(this);
@@ -162,11 +195,12 @@ public class CronometroActivity extends BaseActivity {
             duracionFaseActual = esDescanso
                     ? (cicloActual == 1 ? TIEMPO_DESCANSO_LARGO : TIEMPO_DESCANSO_CORTO)
                     : TIEMPO_ENFOQUE;
-        } else if (esDescanso) {
-            tiempoRestante = cicloActual == 1 ? TIEMPO_DESCANSO_LARGO : TIEMPO_DESCANSO_CORTO;
-            duracionFaseActual = tiempoRestante;
         } else {
-            tiempoRestante = TIEMPO_ENFOQUE;
+            if (esDescanso) {
+                tiempoRestante = cicloActual == 1 ? TIEMPO_DESCANSO_LARGO : TIEMPO_DESCANSO_CORTO;
+            } else {
+                tiempoRestante = TIEMPO_ENFOQUE;
+            }
             duracionFaseActual = tiempoRestante;
         }
 
@@ -190,6 +224,13 @@ public class CronometroActivity extends BaseActivity {
         }
         if (!esDescanso) {
             configurarIndicadorActual(cicloActual);
+        } else {
+            String titulo = tvTitulo.getText().toString();
+            if ("DESCANSO LARGO".equals(titulo)) {
+                configurarIndicadorDescanso(4);
+            } else if (cicloActual > 1) {
+                configurarIndicadorDescanso(cicloActual - 1);
+            }
         }
     }
 
@@ -309,6 +350,7 @@ public class CronometroActivity extends BaseActivity {
         barraProgreso = findViewById(R.id.pbCronometro);
         botonPausar = findViewById(R.id.btnPausar);
         botonRenunciar = findViewById(R.id.btnRenunciar);
+        botonEscudo = findViewById(R.id.btnEscudo);
         gatoAnimado = findViewById(R.id.lottieGato);
         if (new GestorTemas(this).getTemaActual().esClaro()) {
             gatoAnimado.setAnimation(R.raw.gato_tema_claro);
@@ -342,6 +384,18 @@ public class CronometroActivity extends BaseActivity {
                 reiniciarCronometro();
             } else {
                 mostrarDialogoAdvertencia();
+            }
+        });
+
+        botonEscudo.setOnClickListener(v -> {
+            if (modoBotonEscudo == ModoBotonEscudo.SALTAR) {
+                procesarFinDeCiclo();
+            } else if (modoBotonEscudo == ModoBotonEscudo.ESCUDO) {
+                DialogoEscudo.mostrar(this, () -> {
+                    sesionProtegida = true;
+                    marcarEscudoUsado();
+                    reiniciarCronometro();
+                });
             }
         });
 
@@ -420,6 +474,7 @@ public class CronometroActivity extends BaseActivity {
         AnimatorSet set = new AnimatorSet();
         set.playTogether(scaleX, scaleY, alpha);
         set.setStartDelay(delay);
+        vista.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         set.start();
     }
 
@@ -487,6 +542,15 @@ public class CronometroActivity extends BaseActivity {
             AnimatorSet brinco = new AnimatorSet();
             brinco.playSequentially(subida, bajada);
             brinco.setStartDelay(delay);
+
+            final TextView cicloFinal = ciclo;
+            cicloFinal.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+            brinco.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    cicloFinal.setLayerType(View.LAYER_TYPE_NONE, null);
+                }
+            });
             brinco.start();
 
             delayBase += 200;
@@ -523,6 +587,7 @@ public class CronometroActivity extends BaseActivity {
             public void onTick(long milisegundos) {
                 tiempoRestante = milisegundos;
                 actualizarInterfaz();
+                verificarEstadoBotonEscudo(milisegundos);
             }
 
             @Override
@@ -582,7 +647,6 @@ public class CronometroActivity extends BaseActivity {
 
     private void procesarFinDeCiclo() {
         handlerCiclos.removeCallbacks(runnableCiclos);
-        habilitarNavegacion(true);
 
         estaCorriendo = false;
         GestorAlertas.setCronometroCorriendo(this, false);
@@ -595,39 +659,64 @@ public class CronometroActivity extends BaseActivity {
         boolean eraDescansoLargo = eraDescanso && tvTitulo.getText().toString().equals("DESCANSO LARGO");
         GestorCiclos.Resultado resultado = GestorCiclos.procesarFinDeFase(this, esDescanso, cicloActual);
 
-        if (!eraDescanso) {
-            actualizarIndicadorVisual(cicloActual);
+        if (eraDescanso && !resultado.esDescansoSiguiente) {
+            GestorAlertas.marcarPeriodoGraciaPostDescanso(this);
         }
 
         cicloActual = resultado.cicloSiguiente;
         esDescanso = resultado.esDescansoSiguiente;
         tiempoRestante = resultado.tiempoSiguiente;
-        tvTitulo.setText(resultado.tituloSiguiente);
+        String tituloParaMostrar = resultado.tituloSiguiente;
+
+        GestorAlertas.guardarEstadoCronometro(this, tiempoRestante, esDescanso, cicloActual, tituloParaMostrar);
+
+        modoBotonEscudo = ModoBotonEscudo.OCULTO;
+        sesionProtegida = false;
+        if (botonEscudo.getVisibility() == View.VISIBLE) {
+            botonEscudo.animate().cancel();
+            botonEscudo.animate().scaleX(0f).scaleY(0f).alpha(0f).setDuration(200).withEndAction(() -> {
+                botonEscudo.setVisibility(View.GONE);
+                botonEscudo.setAlpha(1f);
+                botonEscudo.setScaleX(1f);
+                botonEscudo.setScaleY(1f);
+            }).start();
+        }
+        tvTitulo.animate().alpha(0f).setDuration(200).start();
+        textoTiempo.animate().alpha(0f).setDuration(200).start();
+        barraProgreso.animate().alpha(0f).setDuration(200).withEndAction(() ->
+                finalizarTransicionFase(resultado, eraDescanso, eraDescansoLargo, tituloParaMostrar)
+        ).start();
+    }
+
+    private void finalizarTransicionFase(GestorCiclos.Resultado resultado, boolean eraDescanso, boolean eraDescansoLargo, String titulo) {
+        tvTitulo.setText(titulo);
 
         if (resultado.completoLosCuatroCiclos) {
-            restaurarIndicadoresGlobales();
-
+            actualizarIndicadoresSegunEstado();
             if (esDescanso) {
                 barraProgreso.setIndicatorColor(ContextCompat.getColor(this, R.color.color_verde_exito));
                 barraProgreso.setMax((int) tiempoRestante);
                 actualizarInterfaz();
+                fadeInFase();
                 iniciarCronometro();
             } else {
+                habilitarNavegacion(true);
                 barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
-                configurarIndicadorActual(cicloActual);
                 barraProgreso.setMax((int) tiempoRestante);
                 actualizarInterfaz();
+                fadeInFase();
                 Toast.makeText(this, "¡Completaste tus 4 ciclos de enfoque! Inicia cuando quieras seguir.", Toast.LENGTH_LONG).show();
             }
             return;
         }
 
         if (eraDescansoLargo) {
-            restaurarIndicadoresGlobales();
+            habilitarNavegacion(true);
+            actualizarIndicadoresSegunEstado();
             barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
-            configurarIndicadorActual(cicloActual);
             barraProgreso.setMax((int) tiempoRestante);
             actualizarInterfaz();
+            fadeInFase();
             Toast.makeText(this, "¡Descanso largo terminado! Inicia cuando quieras tu nuevo ciclo.", Toast.LENGTH_LONG).show();
             return;
         }
@@ -636,12 +725,19 @@ public class CronometroActivity extends BaseActivity {
             barraProgreso.setIndicatorColor(ContextCompat.getColor(this, R.color.color_verde_exito));
         } else {
             barraProgreso.setIndicatorColor(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
-            configurarIndicadorActual(cicloActual);
         }
 
+        actualizarIndicadoresSegunEstado();
         barraProgreso.setMax((int) tiempoRestante);
         actualizarInterfaz();
+        fadeInFase();
         iniciarCronometro();
+    }
+
+    private void fadeInFase() {
+        tvTitulo.animate().alpha(1f).setDuration(220).start();
+        textoTiempo.animate().alpha(1f).setDuration(220).start();
+        barraProgreso.animate().alpha(1f).setDuration(220).start();
     }
 
     private void actualizarIndicadorVisual(int ciclo) {
@@ -656,6 +752,14 @@ public class CronometroActivity extends BaseActivity {
         TextView tvObjetivo = obtenerTextViewPorCiclo(ciclo);
         if (tvObjetivo != null) {
             tvObjetivo.setBackgroundTintList(ColorStateList.valueOf(TemaUtils.resolverColor(this, R.attr.themeTextoPrimario)));
+            tvObjetivo.setTextColor(TemaUtils.resolverColor(this, R.attr.themeFondoPrincipal));
+        }
+    }
+
+    private void configurarIndicadorDescanso(int ciclo) {
+        TextView tvObjetivo = obtenerTextViewPorCiclo(ciclo);
+        if (tvObjetivo != null) {
+            tvObjetivo.setBackgroundTintList(ColorStateList.valueOf(TemaUtils.resolverColor(this, R.attr.themeAcento)));
             tvObjetivo.setTextColor(TemaUtils.resolverColor(this, R.attr.themeFondoPrincipal));
         }
     }
@@ -688,6 +792,7 @@ public class CronometroActivity extends BaseActivity {
     }
 
     private void reiniciarCronometro() {
+        ocultarBotonEscudoInstante();
         handlerCiclos.removeCallbacks(runnableCiclos);
         habilitarNavegacion(true);
 
@@ -699,10 +804,11 @@ public class CronometroActivity extends BaseActivity {
             long transcurrido = TIEMPO_ENFOQUE - tiempoRestante;
             boolean etapaYaCompletada = cicloActual > 1;
             boolean menosDeDosMinutos = transcurrido < UMBRAL_SANCION;
-            if (!etapaYaCompletada && !menosDeDosMinutos) {
+            if (!etapaYaCompletada && !menosDeDosMinutos && !sesionProtegida) {
                 new GestorEstadisticas(this).registrarFallo();
             }
         }
+        sesionProtegida = false;
 
         tiempoRestante = TIEMPO_ENFOQUE;
         estaCorriendo = false;
@@ -738,5 +844,99 @@ public class CronometroActivity extends BaseActivity {
         animacionTexto.cancel();
         barraProgreso.setTranslationY(0f);
         textoTiempo.setTranslationY(0f);
+    }
+
+    private boolean puedeUsarEscudoHoy() {
+        return getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE)
+                .getLong("escudo_dia_usado", -1L) != diaActual();
+    }
+
+    private void marcarEscudoUsado() {
+        getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE)
+                .edit().putLong("escudo_dia_usado", diaActual()).apply();
+    }
+
+    private long diaActual() {
+        long ahora = System.currentTimeMillis();
+        return (ahora + java.util.TimeZone.getDefault().getOffset(ahora)) / 86400000L;
+    }
+
+    private void verificarEstadoBotonEscudo(long milisegundos) {
+        long elapsed = (long) barraProgreso.getMax() - milisegundos;
+
+        if (modoBotonEscudo == ModoBotonEscudo.OCULTO && !esDescanso
+                && elapsed >= UMBRAL_SIN_PENALIZACION && puedeUsarEscudoHoy()) {
+            mostrarBotonComoEscudo();
+        }
+
+        if (!esDescanso && cicloActual == 4 && milisegundos <= 30000
+                && modoBotonEscudo != ModoBotonEscudo.SALTAR
+                && !new GestorConfiguracion(this).isDescansoLargoHabilitado()) {
+            mostrarBotonComoSaltar();
+        }
+    }
+
+    private void mostrarBotonComoEscudo() {
+        modoBotonEscudo = ModoBotonEscudo.ESCUDO;
+        botonEscudo.setImageResource(R.drawable.ic_finalizarseguro);
+        botonEscudo.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
+        botonEscudo.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_verde_exito)));
+        botonEscudo.setVisibility(View.VISIBLE);
+        botonEscudo.setScaleX(0f);
+        botonEscudo.setScaleY(0f);
+        botonEscudo.setAlpha(0f);
+        botonEscudo.animate()
+                .scaleX(1f).scaleY(1f).alpha(1f)
+                .setDuration(400)
+                .setInterpolator(new OvershootInterpolator(2f))
+                .start();
+    }
+
+    private void mostrarBotonComoSaltar() {
+        boolean eraVisible = botonEscudo.getVisibility() == View.VISIBLE;
+        modoBotonEscudo = ModoBotonEscudo.SALTAR;
+
+        if (eraVisible) {
+            botonEscudo.animate().cancel();
+            botonEscudo.animate().alpha(0f).setDuration(150).withEndAction(() -> {
+                botonEscudo.setImageResource(android.R.drawable.ic_media_next);
+                botonEscudo.animate().alpha(1f).setDuration(150).start();
+            }).start();
+        } else {
+            configurarVisualBotonSaltar();
+            botonEscudo.setVisibility(View.VISIBLE);
+            botonEscudo.setAlpha(0f);
+            botonEscudo.setScaleX(0f);
+            botonEscudo.setScaleY(0f);
+            botonEscudo.animate().scaleX(1f).scaleY(1f).alpha(1f)
+                    .setDuration(450).setInterpolator(new OvershootInterpolator(2.5f)).start();
+        }
+    }
+
+    private void configurarVisualBotonSaltar() {
+        botonEscudo.setImageResource(android.R.drawable.ic_media_next);
+        botonEscudo.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.color_verde_exito)));
+        botonEscudo.setImageTintList(ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white)));
+    }
+
+    private void ocultarBotonEscudo() {
+        modoBotonEscudo = ModoBotonEscudo.OCULTO;
+        botonEscudo.animate().cancel();
+        botonEscudo.animate().scaleX(0f).scaleY(0f).alpha(0f).setDuration(300)
+                .withEndAction(() -> {
+                    botonEscudo.setVisibility(View.GONE);
+                    botonEscudo.setAlpha(1f);
+                    botonEscudo.setScaleX(1f);
+                    botonEscudo.setScaleY(1f);
+                }).start();
+    }
+
+    private void ocultarBotonEscudoInstante() {
+        modoBotonEscudo = ModoBotonEscudo.OCULTO;
+        botonEscudo.animate().cancel();
+        botonEscudo.setVisibility(View.GONE);
+        botonEscudo.setAlpha(1f);
+        botonEscudo.setScaleX(1f);
+        botonEscudo.setScaleY(1f);
     }
 }

@@ -35,15 +35,17 @@ public class GestorCiclos {
         GestorEstadisticas gestor = new GestorEstadisticas(contexto);
         boolean alertasHabilitadas = configuracion.isAlertasDistraccionHabilitadas();
         float puntosPorCiclo = alertasHabilitadas ? 37.5f : 3.75f;
-        gestor.registrarSesionEnfoque((int) (tiempoEnfoque / 60000), puntosPorCiclo);
 
         SharedPreferences preferencias = contexto.getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
         String tareaActiva = preferencias.getString("tarea_activa_actual", "Ninguna");
-        gestor.registrarActividadCompletada(tareaActiva);
 
         int siguienteCiclo = cicloActual + 1;
-        if (siguienteCiclo > 4) {
-            gestor.registrarCicloCompleto();
+        boolean esCicloCompleto = siguienteCiclo > 4;
+
+        // UNIFICADO: Guardar todo de una vez para evitar pérdida de datos
+        gestor.registrarFinDeFase((int) (tiempoEnfoque / 60000), puntosPorCiclo, tareaActiva, esCicloCompleto);
+
+        if (esCicloCompleto) {
             if (configuracion.isDescansoLargoHabilitado()) {
                 return new Resultado(tiempoDescansoLargo, true, 1, "DESCANSO LARGO", true);
             }

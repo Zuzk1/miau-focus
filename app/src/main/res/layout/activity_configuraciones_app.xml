@@ -60,6 +60,21 @@
             android:orientation="vertical"
             android:paddingBottom="24dp">
 
+            <!-- Visible only when an active session is blocking config changes -->
+            <TextView
+                android:id="@+id/tvSesionActivaAviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/carta_oscura"
+                android:fontFamily="@font/poppins_regular"
+                android:padding="14dp"
+                android:text="Hay una sesión activa. Termina o cancela la sesión para poder modificar los tiempos."
+                android:textColor="?attr/themeTextoSecundario"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
             <LinearLayout
                 android:id="@+id/llOpcionesPredeterminadas"
                 android:layout_width="match_parent"

@@ -22,6 +22,7 @@ public class CronometroService extends Service {
     public static final String EXTRA_ES_DESCANSO = "extra_es_descanso";
 
     private static final int ID_NOTIFICACION_PROGRESO = 1001;
+    private static final int ID_NOTIFICACION_INFRACCION = 1005;
 
     private static final String ETIQUETA_DEPURACION = "DepuracionCronometro";
 
@@ -91,6 +92,10 @@ public class CronometroService extends Service {
         Log.d(ETIQUETA_DEPURACION, "Servicio: llamando startForeground");
         startForeground(ID_NOTIFICACION_PROGRESO, construirNotificacionProgreso(finEstimado, esDescanso));
 
+        if (!esDescanso) {
+            GestorAlertas.marcarPeriodoGraciaPostDescanso(this);
+        }
+
         accionFinalizacion = () -> {
             Log.d(ETIQUETA_DEPURACION, "Servicio: tiempo agotado, notificando finalizacion");
             avanzarFaseEnSegundoPlano(esDescanso);
@@ -113,10 +118,12 @@ public class CronometroService extends Service {
                 resultado.esDescansoSiguiente, resultado.cicloSiguiente, resultado.tituloSiguiente);
         GestorAlertas.setCronometroCorriendo(this, false);
 
+        GestorAlertas.consumirReanudarTrasInfraccion(this);
+        GestorAlertas.obtenerYLimpiarTiempoCongelado(this);
+
         GestorAlertas.guardarEstadoCronometro(this, resultado.tiempoSiguiente,
                 resultado.esDescansoSiguiente, resultado.cicloSiguiente, resultado.tituloSiguiente);
 
-        //HOLAAAA
         if (esDescanso && !resultado.esDescansoSiguiente) {
             GestorAlertas.marcarPeriodoGraciaPostDescanso(this);
         }
@@ -166,6 +173,7 @@ public class CronometroService extends Service {
                 .setChronometerCountDown(true)
                 .setWhen(finEstimado)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
+                .setCategory(NotificationCompat.CATEGORY_STOPWATCH)
                 .setContentIntent(intentoPendienteAbrirApp)
                 .build();
     }
@@ -193,6 +201,31 @@ public class CronometroService extends Service {
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
                 == PackageManager.PERMISSION_GRANTED) {
             NotificationManagerCompat.from(this).notify(GestorAlertas.ID_NOTIFICACION_ALARMA, notificacionAlarma);
+        }
+    }
+
+    private void mostrarAlertaInfraccion() {
+        Intent intentAlerta = new Intent(this, alertaActivity.class);
+        intentAlerta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intentAlerta.putExtra(GestorAlertas.EXTRA_ES_INFRACCION, true);
+        PendingIntent pi = PendingIntent.getActivity(this, 10, intentAlerta,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        android.app.Notification notif = new NotificationCompat.Builder(this, GestorAlertas.CANAL_ALARMA_ID)
+                .setSmallIcon(R.drawable.ic_gato_notificacion)
+                .setContentTitle("¡Te has distraído!")
+                .setContentText("Vuelve a tu sesión de enfoque para continuar")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_ALARM)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setFullScreenIntent(pi, true)
+                .setContentIntent(pi)
+                .setAutoCancel(true)
+                .build();
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED) {
+            NotificationManagerCompat.from(this).notify(ID_NOTIFICACION_INFRACCION, notif);
         }
     }
 
@@ -233,6 +266,7 @@ public class CronometroService extends Service {
             GestorAlertas.marcarReanudarTrasInfraccion(this);
             new GestorEstadisticas(this).registrarFallo();
             GestorAlertas.congelarTiempoRestante(this, tiempoRestante);
+            mostrarAlertaInfraccion();
         }
 
         GestorAlertas.guardarEstadoCronometro(this, tiempoRestante,

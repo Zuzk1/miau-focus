@@ -227,7 +227,6 @@ public class GestorAlertas {
         return debeReanudar;
     }
 
-    //HOLAAAA
     public static void congelarTiempoRestante(Context contexto, long tiempoRestanteCongelado) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
                 .edit().putLong(CLAVE_TIEMPO_RESTANTE_CONGELADO, tiempoRestanteCongelado).apply();
@@ -242,7 +241,6 @@ public class GestorAlertas {
         return tiempoCongelado;
     }
 
-    //HOLAAAA
     public static void marcarPeriodoGraciaPostDescanso(Context contexto) {
         long graciaHasta = System.currentTimeMillis() + DURACION_GRACIA_POST_DESCANSO;
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)

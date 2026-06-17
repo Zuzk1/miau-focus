@@ -178,28 +178,27 @@
                 android:layout_marginHorizontal="24dp"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Pomodoros Completados por Día"
+                android:text="Pomodoros Completados (Esta semana)"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="15sp" />
 
-            <LinearLayout
-                android:id="@+id/llGraficaContenedor"
+            <HorizontalScrollView
+                android:id="@+id/hsvGraficaBarras"
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
+                android:layout_height="200dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/carta_oscura"
-                android:orientation="horizontal"
-                android:padding="12dp">
+                android:padding="12dp"
+                android:scrollbars="none">
 
                 <LinearLayout
                     android:id="@+id/llContenedorBarras"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:baselineAligned="false"
                     android:orientation="horizontal" />
-            </LinearLayout>
+            </HorizontalScrollView>
 
             <TextView
                 android:id="@+id/tvTituloActividades"

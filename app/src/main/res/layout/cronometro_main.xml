@@ -207,6 +207,7 @@
         android:layout_marginTop="24dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:animateLayoutChanges="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/llIndicadores">
@@ -215,10 +216,23 @@
             android:id="@+id/btnRenunciar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:contentDescription="Renunciar"
             app:backgroundTint="@color/color_rojo_peligro"
+            app:tint="@color/white"
+            app:elevation="4dp"
+            app:fabSize="normal" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnEscudo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_finalizarseguro"
+            android:contentDescription="Escudo"
+            android:visibility="gone"
+            app:backgroundTint="@color/color_verde_exito"
             app:tint="@color/white"
             app:elevation="4dp"
             app:fabSize="normal" />

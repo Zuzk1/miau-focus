@@ -12,6 +12,10 @@ public class GestorConfiguracion {
     private static final String CLAVE_ALERTAS_DISTRACCION_HABILITADAS = "alertas_distraccion_habilitadas";
     private static final String CLAVE_DESCANSO_LARGO_HABILITADO = "descanso_largo_habilitado";
     private static final String CLAVE_OPCIONES_PREDETERMINADAS = "opciones_predeterminadas_habilitadas";
+    private static final String CLAVE_VIBRACION_HABILITADA = "vibracion_habilitada";
+    private static final String CLAVE_MODO_SILENCIOSO_HABILITADO = "modo_silencioso_habilitado";
+    private static final String CLAVE_HORA_INICIO_SILENCIO = "hora_inicio_silencio";
+    private static final String CLAVE_HORA_FIN_SILENCIO = "hora_fin_silencio";
 
     public static final int MINUTOS_TRABAJO_PREDETERMINADO = 25;
     public static final int MINUTOS_DESCANSO_CORTO_PREDETERMINADO = 5;
@@ -68,5 +72,51 @@ public class GestorConfiguracion {
 
     public void setOpcionesPredeterminadasHabilitadas(boolean habilitadas) {
         prefs.edit().putBoolean(CLAVE_OPCIONES_PREDETERMINADAS, habilitadas).apply();
+    }
+
+    public boolean isVibracionHabilitada() {
+        return prefs.getBoolean(CLAVE_VIBRACION_HABILITADA, true);
+    }
+
+    public void setVibracionHabilitada(boolean habilitada) {
+        prefs.edit().putBoolean(CLAVE_VIBRACION_HABILITADA, habilitada).apply();
+    }
+
+    public boolean isModoSilenciosoHabilitado() {
+        return prefs.getBoolean(CLAVE_MODO_SILENCIOSO_HABILITADO, false);
+    }
+
+    public void setModoSilenciosoHabilitado(boolean habilitado) {
+        prefs.edit().putBoolean(CLAVE_MODO_SILENCIOSO_HABILITADO, habilitado).apply();
+    }
+
+    public int getHoraInicioSilencio() {
+        return prefs.getInt(CLAVE_HORA_INICIO_SILENCIO, 22);
+    }
+
+    public void setHoraInicioSilencio(int hora) {
+        prefs.edit().putInt(CLAVE_HORA_INICIO_SILENCIO, hora).apply();
+    }
+
+    public int getHoraFinSilencio() {
+        return prefs.getInt(CLAVE_HORA_FIN_SILENCIO, 7);
+    }
+
+    public void setHoraFinSilencio(int hora) {
+        prefs.edit().putInt(CLAVE_HORA_FIN_SILENCIO, hora).apply();
+    }
+
+    public boolean estaEnHorarioSilencioso() {
+        if (!isModoSilenciosoHabilitado()) return false;
+
+        int horaActual = java.util.Calendar.getInstance().get(java.util.Calendar.HOUR_OF_DAY);
+        int inicio = getHoraInicioSilencio();
+        int fin = getHoraFinSilencio();
+
+        if (inicio == fin) return false;
+        if (inicio < fin) {
+            return horaActual >= inicio && horaActual < fin;
+        }
+        return horaActual >= inicio || horaActual < fin;
     }
 }

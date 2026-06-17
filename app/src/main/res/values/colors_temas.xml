@@ -60,12 +60,12 @@
     <color name="acento_rojo_overlay_20">#33E53935</color>
 
     <!-- ============ ACENTO AZUL MARINO ============ -->
-    <color name="acento_marino">#2E5AAC</color>
-    <color name="acento_marino_claro">#6E94D4</color>
-    <color name="acento_marino_contenedor_oscuro">#16264A</color>
-    <color name="acento_marino_contenedor_claro">#D7E0F4</color>
-    <color name="acento_marino_overlay_10">#1A2E5AAC</color>
-    <color name="acento_marino_overlay_20">#332E5AAC</color>
+    <color name="acento_marino">#044FA3</color>
+    <color name="acento_marino_claro">#5B8DD4</color>
+    <color name="acento_marino_contenedor_oscuro">#021E40</color>
+    <color name="acento_marino_contenedor_claro">#D0E3F6</color>
+    <color name="acento_marino_overlay_10">#1A044FA3</color>
+    <color name="acento_marino_overlay_20">#33044FA3</color>
 
     <!-- ============ ACENTO MORADO ============ -->
     <color name="acento_morado">#9C27B0</color>
@@ -84,12 +84,12 @@
     <color name="acento_verde_overlay_20">#3343A047</color>
 
     <!-- ============ ACENTO ROSA ============ -->
-    <color name="acento_rosa">#E91E63</color>
-    <color name="acento_rosa_claro">#F48FB1</color>
-    <color name="acento_rosa_contenedor_oscuro">#4A1530</color>
-    <color name="acento_rosa_contenedor_claro">#FCDDE9</color>
-    <color name="acento_rosa_overlay_10">#1AE91E63</color>
-    <color name="acento_rosa_overlay_20">#33E91E63</color>
+    <color name="acento_rosa">#ED298B</color>
+    <color name="acento_rosa_claro">#F575BE</color>
+    <color name="acento_rosa_contenedor_oscuro">#4A1030</color>
+    <color name="acento_rosa_contenedor_claro">#FCE0F3</color>
+    <color name="acento_rosa_overlay_10">#1AED298B</color>
+    <color name="acento_rosa_overlay_20">#33ED298B</color>
 
     <!-- ============ ACENTO MOSTAZA ============ -->
     <color name="acento_mostaza">#F5A800</color>
@@ -154,5 +154,37 @@
     <color name="acento_salvia_contenedor_claro">#E6E8E2</color>
     <color name="acento_salvia_overlay_10">#1A868C7F</color>
     <color name="acento_salvia_overlay_20">#33868C7F</color>
+
+    <!-- ============ ACENTO LIMA — Charli XCX ============ -->
+    <color name="acento_lima">#8ACD00</color>
+    <color name="acento_lima_claro">#B5E040</color>
+    <color name="acento_lima_contenedor_oscuro">#2B4000</color>
+    <color name="acento_lima_contenedor_claro">#EDFAB0</color>
+    <color name="acento_lima_overlay_10">#1A8ACD00</color>
+    <color name="acento_lima_overlay_20">#338ACD00</color>
+
+    <!-- ============ ACENTO FANTASMA — Abby ============ -->
+    <color name="acento_fantasma">#57329C</color>
+    <color name="acento_fantasma_claro">#9B78D4</color>
+    <color name="acento_fantasma_contenedor_oscuro">#201042</color>
+    <color name="acento_fantasma_contenedor_claro">#E2D8F8</color>
+    <color name="acento_fantasma_overlay_10">#1A57329C</color>
+    <color name="acento_fantasma_overlay_20">#3357329C</color>
+
+    <!-- ============ ACENTO CARMESÍ — Ari Abdul ============ -->
+    <color name="acento_carmesi">#910005</color>
+    <color name="acento_carmesi_claro">#D4474C</color>
+    <color name="acento_carmesi_contenedor_oscuro">#380002</color>
+    <color name="acento_carmesi_contenedor_claro">#F5C8CA</color>
+    <color name="acento_carmesi_overlay_10">#1A910005</color>
+    <color name="acento_carmesi_overlay_20">#33910005</color>
+
+    <!-- ============ ACENTO PETRÓLEO ============ -->
+    <color name="acento_petroleo">#02505A</color>
+    <color name="acento_petroleo_claro">#3A8A96</color>
+    <color name="acento_petroleo_contenedor_oscuro">#012028</color>
+    <color name="acento_petroleo_contenedor_claro">#C0E8EC</color>
+    <color name="acento_petroleo_overlay_10">#1A02505A</color>
+    <color name="acento_petroleo_overlay_20">#3302505A</color>
 
 </resources>

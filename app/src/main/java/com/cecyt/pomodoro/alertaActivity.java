@@ -3,6 +3,7 @@ package com.cecyt.pomodoro;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
@@ -39,6 +40,18 @@ public class alertaActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         new GestorTemas(this).aplicarTema(this);
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O_MR1) {
+            setShowWhenLocked(true);
+            setTurnScreenOn(true);
+        } else {
+            getWindow().addFlags(
+                    android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED |
+                    android.view.WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+            );
+        }
+        getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         GestorAlertas.setAlertaActiva(this, true);
         this.setFinishOnTouchOutside(false);
         setContentView(R.layout.alerta_main);
@@ -84,21 +97,26 @@ public class alertaActivity extends AppCompatActivity {
     }
 
     private void reproducirAlarma() {
-        Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
-        if (alert == null) {
-            alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+        GestorConfiguracion gestorConfiguracion = new GestorConfiguracion(this);
+        boolean modoSilencioso = gestorConfiguracion.estaEnHorarioSilencioso();
+
+        if (!modoSilencioso) {
+            Uri alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM);
             if (alert == null) {
-                alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
+                if (alert == null) {
+                    alert = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+                }
             }
-        }
-        ringtone = RingtoneManager.getRingtone(getApplicationContext(), alert);
-        if (ringtone != null) {
-            ringtone.setAudioAttributes(new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
-                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
-                    .build());
-            ringtone.setLooping(true);
-            ringtone.play();
+            ringtone = RingtoneManager.getRingtone(getApplicationContext(), alert);
+            if (ringtone != null) {
+                ringtone.setAudioAttributes(new AudioAttributes.Builder()
+                        .setUsage(AudioAttributes.USAGE_ALARM)
+                        .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                        .build());
+                ringtone.setLooping(true);
+                ringtone.play();
+            }
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
@@ -107,7 +125,8 @@ public class alertaActivity extends AppCompatActivity {
         } else {
             vibrador = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         }
-        if (vibrador != null && vibrador.hasVibrator()) {
+        if (!modoSilencioso && gestorConfiguracion.isVibracionHabilitada()
+                && vibrador != null && vibrador.hasVibrator()) {
             long[] patron = {0, 800, 400, 800};
             vibrador.vibrate(VibrationEffect.createWaveform(patron, 0));
         }
@@ -242,6 +261,9 @@ public class alertaActivity extends AppCompatActivity {
                 GestorAlertas.setAlertaActiva(alertaActivity.this, false);
                 if (esInfraccion) {
                     GestorAlertas.limpiarInfraccionPendiente(alertaActivity.this);
+                    Intent intentCronometro = new Intent(alertaActivity.this, CronometroActivity.class);
+                    intentCronometro.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intentCronometro);
                 }
                 finish();
             }

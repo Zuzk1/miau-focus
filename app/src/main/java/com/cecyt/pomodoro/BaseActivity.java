@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -77,8 +78,9 @@ public class BaseActivity extends AppCompatActivity {
 
                 bottomNavigationView.postDelayed(() -> {
                     intentDestino.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                    startActivity(intentDestino);
-                    overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
+                    ActivityOptionsCompat opciones = ActivityOptionsCompat.makeCustomAnimation(
+                            this, R.anim.fade_in, R.anim.fade_out);
+                    startActivity(intentDestino, opciones.toBundle());
                 }, 180);
             }
 
@@ -156,11 +158,19 @@ public class BaseActivity extends AppCompatActivity {
         ivConfigToolbar = findViewById(R.id.ivConfigTiempo);
         if (ivEscudoToolbar != null) {
             iniciarPulsoToolbar(ivEscudoToolbar, 3800, 0);
-            ivEscudoToolbar.setOnClickListener(v -> startActivity(new Intent(this, ajustesGeneralesActivity.class)));
+            ivEscudoToolbar.setOnClickListener(v -> {
+                ActivityOptionsCompat opciones = ActivityOptionsCompat.makeCustomAnimation(
+                        this, R.anim.activity_enter, R.anim.activity_exit);
+                startActivity(new Intent(this, ajustesGeneralesActivity.class), opciones.toBundle());
+            });
         }
         if (ivConfigToolbar != null) {
             iniciarPulsoToolbar(ivConfigToolbar, 3800, 700);
-            ivConfigToolbar.setOnClickListener(v -> startActivity(new Intent(this, configuracionesAppActivity.class)));
+            ivConfigToolbar.setOnClickListener(v -> {
+                ActivityOptionsCompat opciones = ActivityOptionsCompat.makeCustomAnimation(
+                        this, R.anim.activity_enter, R.anim.activity_exit);
+                startActivity(new Intent(this, configuracionesAppActivity.class), opciones.toBundle());
+            });
         }
         actualizarEstadoIconosToolbar();
     }
@@ -178,6 +188,7 @@ public class BaseActivity extends AppCompatActivity {
         AnimatorSet set = new AnimatorSet();
         set.playTogether(scaleX, scaleY);
         set.setStartDelay(delay);
+        vista.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         set.start();
     }
 

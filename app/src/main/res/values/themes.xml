@@ -25,6 +25,14 @@
         <item name="colorOnSurface">?attr/themeTextoPrimario</item>
         <item name="colorOnPrimary">?attr/themeSobreAcento</item>
         <item name="colorOnSecondaryContainer">?attr/themeTextoPrimario</item>
+        <item name="colorSurfaceVariant">?attr/themeAcentoContenedor</item>
+        <item name="colorOnSurfaceVariant">?attr/themeTextoPrimario</item>
+
+        <item name="colorFondoChipActivo">?attr/themeAcentoContenedor</item>
+        <item name="colorFondoChipInactivo">?attr/themeFondoTarjeta</item>
+
+        <item name="android:windowAnimationStyle">@style/Animation.MiauFocus.Activity</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MiauFocus.MaterialAlertDialog</item>
     </style>
 
     <!-- ============ BASE CLARA (compartida por todos los temas claros) ============ -->
@@ -52,6 +60,14 @@
         <item name="colorOnSurface">?attr/themeTextoPrimario</item>
         <item name="colorOnPrimary">?attr/themeSobreAcento</item>
         <item name="colorOnSecondaryContainer">?attr/themeTextoPrimario</item>
+        <item name="colorSurfaceVariant">?attr/themeAcentoContenedor</item>
+        <item name="colorOnSurfaceVariant">?attr/themeTextoPrimario</item>
+
+        <item name="colorFondoChipActivo">?attr/themeAcentoContenedor</item>
+        <item name="colorFondoChipInactivo">?attr/themeFondoTarjeta</item>
+
+        <item name="android:windowAnimationStyle">@style/Animation.MiauFocus.Activity</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.MiauFocus.MaterialAlertDialog</item>
     </style>
 
     <!-- ============ TEMAS OSCUROS (uno por color de acento) ============ -->
@@ -396,8 +412,136 @@
         <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
     </style>
 
+    <!-- ============ TEMA LIMA OSCURO — Charli XCX ============ -->
+    <style name="Theme.Pomodoro.Dark.Lima" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_lima</item>
+        <item name="themeAcentoClaro">@color/acento_lima_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_lima_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_lima_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_lima_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA LIMA CLARO — Charli XCX ============ -->
+    <style name="Theme.Pomodoro.Light.Lima" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_lima</item>
+        <item name="themeAcentoClaro">@color/acento_lima_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_lima_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_lima_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_lima_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA FANTASMA OSCURO — Abby ============ -->
+    <style name="Theme.Pomodoro.Dark.Fantasma" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_fantasma</item>
+        <item name="themeAcentoClaro">@color/acento_fantasma_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_fantasma_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_fantasma_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_fantasma_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA FANTASMA CLARO — Abby ============ -->
+    <style name="Theme.Pomodoro.Light.Fantasma" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_fantasma</item>
+        <item name="themeAcentoClaro">@color/acento_fantasma_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_fantasma_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_fantasma_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_fantasma_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA CARMESÍ OSCURO — Ari Abdul ============ -->
+    <style name="Theme.Pomodoro.Dark.Carmesi" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_carmesi</item>
+        <item name="themeAcentoClaro">@color/acento_carmesi_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_carmesi_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_carmesi_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_carmesi_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA CARMESÍ CLARO — Ari Abdul ============ -->
+    <style name="Theme.Pomodoro.Light.Carmesi" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_carmesi</item>
+        <item name="themeAcentoClaro">@color/acento_carmesi_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_carmesi_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_carmesi_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_carmesi_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA PETRÓLEO OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Petroleo" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_petroleo</item>
+        <item name="themeAcentoClaro">@color/acento_petroleo_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_petroleo_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_petroleo_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_petroleo_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA PETRÓLEO CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Petroleo" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_petroleo</item>
+        <item name="themeAcentoClaro">@color/acento_petroleo_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_petroleo_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_petroleo_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_petroleo_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
     <!-- Tema por defecto de la aplicación (se sobreescribe en runtime según la preferencia guardada) -->
     <style name="Theme.Pomodoro" parent="Theme.Pomodoro.Dark.Azul" />
+
+    <!-- Chip de hora/minuto SELECCIONADO (state_selected=true): fondo = colorPrimaryContainer,
+         enlazado a colorFondoChipActivo (varía según el acento de cada tema). -->
+    <!-- Chip NO seleccionado: fondo = colorSurfaceVariant, enlazado a colorFondoChipInactivo
+         (igual a la superficie del diálogo, se funde con el fondo). -->
+    <style name="ThemeOverlay.MiauFocus.TimePicker" parent="ThemeOverlay.Material3.MaterialTimePicker">
+        <item name="colorPrimaryContainer">?attr/colorFondoChipActivo</item>
+        <item name="colorOnPrimaryContainer">?attr/themeTextoPrimario</item>
+        <item name="colorSurfaceVariant">?attr/colorFondoChipInactivo</item>
+        <item name="colorOnSurfaceVariant">?attr/themeTextoPrimario</item>
+    </style>
+
+    <!-- Animaciones de transición entre Activities -->
+    <style name="Animation.MiauFocus.Activity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/activity_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/activity_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/activity_enter</item>
+        <item name="android:activityCloseExitAnimation">@anim/activity_exit</item>
+    </style>
+
+    <!-- Animación de aparición/cierre de los diálogos -->
+    <style name="Animation.MiauFocus.Dialog" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/dialog_exit</item>
+    </style>
+
+    <!-- MaterialAlertDialog con la animación de aparición/cierre de MiauFocus -->
+    <style name="ThemeOverlay.MiauFocus.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="android:windowAnimationStyle">@style/Animation.MiauFocus.Dialog</item>
+    </style>
 
     <style name="EstiloTextoNavegador">
         <item name="android:textSize">14sp</item>

@@ -41,7 +41,7 @@
         <activity
             android:name=".alertaActivity"
             android:exported="false"
-            android:showOnLockScreen="true"
+            android:showWhenLocked="true"
             android:turnScreenOn="true"
             android:windowSoftInputMode="adjustResize" />
 

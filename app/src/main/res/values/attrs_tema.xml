@@ -25,4 +25,8 @@
     <attr name="themeAcentoOverlay10" format="color" />
     <attr name="themeAcentoOverlay20" format="color" />
     <attr name="themeSobreAcento" format="color" />
+
+    <!-- Fondo de los chips de hora/minuto del MaterialTimePicker -->
+    <attr name="colorFondoChipActivo" format="color" />
+    <attr name="colorFondoChipInactivo" format="color" />
 </resources>

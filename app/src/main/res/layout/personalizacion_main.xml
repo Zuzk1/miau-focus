@@ -74,6 +74,16 @@
             android:textColor="?attr/themeTextoPrimario"
             android:textSize="18sp"
             tools:text="350 Puntos" />
+
+        <TextView
+            android:id="@+id/tvDeduccion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:textColor="#FF4444"
+            android:textSize="15sp"
+            android:visibility="gone" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

@@ -1,13 +1,16 @@
 package com.cecyt.pomodoro;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
@@ -16,6 +19,7 @@ public class TemasAdapter extends RecyclerView.Adapter<TemasAdapter.TemaViewHold
 
     public interface OnTemaSeleccionadoListener {
         void onTemaCambiado();
+        void onTemaComprado(int precio);
     }
 
     private final Context context;
@@ -69,11 +73,41 @@ public class TemasAdapter extends RecyclerView.Adapter<TemasAdapter.TemaViewHold
             } else if (gestorEstadisticas.gastarPuntos(tema.precio)) {
                 gestorTemas.desbloquear(tema);
                 gestorTemas.establecerTemaActual(tema);
-                listener.onTemaCambiado();
+                animarCompra(holder.cardTema, () -> listener.onTemaComprado(tema.precio));
             } else {
-                Toast.makeText(context, "No tienes suficientes puntos 🐱", Toast.LENGTH_SHORT).show();
+                animarFondosInsuficientes(holder.cardTema);
             }
         });
+    }
+
+    private void animarCompra(MaterialCardView card, Runnable alTerminar) {
+        int colorVerde = ContextCompat.getColor(context, R.color.color_verde_exito);
+        card.setStrokeColor(colorVerde);
+        card.animate().scaleX(1.09f).scaleY(1.09f).setDuration(130).withEndAction(() ->
+                card.animate().scaleX(1f).scaleY(1f).setDuration(220)
+                        .withEndAction(alTerminar::run).start()
+        ).start();
+    }
+
+    private void animarFondosInsuficientes(MaterialCardView card) {
+        int colorRojo = ContextCompat.getColor(context, R.color.color_rojo_peligro);
+        card.setStrokeColor(colorRojo);
+        card.animate().translationX(14f).setDuration(60).withEndAction(() ->
+            card.animate().translationX(-14f).setDuration(60).withEndAction(() ->
+                card.animate().translationX(10f).setDuration(60).withEndAction(() ->
+                    card.animate().translationX(-10f).setDuration(60).withEndAction(() ->
+                        card.animate().translationX(0f).setDuration(60).withEndAction(() -> {
+                            ValueAnimator fade = new ValueAnimator();
+                            fade.setIntValues(colorRojo, Color.TRANSPARENT);
+                            fade.setEvaluator(new ArgbEvaluator());
+                            fade.setDuration(500);
+                            fade.addUpdateListener(a -> card.setStrokeColor((int) a.getAnimatedValue()));
+                            fade.start();
+                        }).start()
+                    ).start()
+                ).start()
+            ).start()
+        ).start();
     }
 
     @Override

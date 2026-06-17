@@ -26,23 +26,27 @@ public class GestorEstadisticas {
         }
     }
 
-    public void registrarSesionEnfoque(int minutosEnfoque, float puntosGanados) {
+    public void registrarFinDeFase(int minutosEnfoque, float puntosGanados, String tareaActiva, boolean esCicloCompleto) {
         SharedPreferences.Editor editor = prefs.edit();
 
         editor.putInt("minutos_totales", getMinutosTotales() + minutosEnfoque);
         editor.putFloat("puntos", getPuntos() + puntosGanados);
 
-        int diaSemana = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-        String keyDia = "pomodoros_dia_" + diaSemana;
-        editor.putInt(keyDia, prefs.getInt(keyDia, 0) + 1);
+        if (esCicloCompleto) {
+            String nombre = (tareaActiva == null || tareaActiva.isEmpty() || tareaActiva.equals("Ninguna"))
+                    ? "Sin nombre" : tareaActiva;
+            int total = prefs.getInt("actividades_total", 0);
+            editor.putString("actividad_" + total, nombre + "|" + (minutosEnfoque * 4));
+            editor.putInt("actividades_total", total + 1);
 
-        editor.apply();
-    }
+            editor.putInt("pomodoros_completados", getPomodorosCompletados() + 1);
+            
+            String keyDia = "pomodoros_fecha_" + obtenerDiaActual();
+            editor.putInt(keyDia, prefs.getInt(keyDia, 0) + 1);
+            
+            actualizarRachaPorDia(editor);
+        }
 
-    public void registrarCicloCompleto() {
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("pomodoros_completados", getPomodorosCompletados() + 1);
-        actualizarRachaPorDia(editor);
         editor.apply();
     }
 
@@ -97,14 +101,6 @@ public class GestorEstadisticas {
         return true;
     }
 
-    public void registrarActividadCompletada(String nombreTarea) {
-        SharedPreferences.Editor editor = prefs.edit();
-        int total = prefs.getInt("actividades_total", 0);
-        editor.putString("actividad_" + total, nombreTarea);
-        editor.putInt("actividades_total", total + 1);
-        editor.apply();
-    }
-
     public ArrayList<String> getActividadesRecientes(int maxCantidad) {
         ArrayList<String> actividades = new ArrayList<>();
         int total = prefs.getInt("actividades_total", 0);
@@ -120,15 +116,45 @@ public class GestorEstadisticas {
         return actividades;
     }
 
-    public int[] getDatosSemana() {
-        return new int[]{
-                prefs.getInt("pomodoros_dia_" + Calendar.MONDAY, 0),
-                prefs.getInt("pomodoros_dia_" + Calendar.TUESDAY, 0),
-                prefs.getInt("pomodoros_dia_" + Calendar.WEDNESDAY, 0),
-                prefs.getInt("pomodoros_dia_" + Calendar.THURSDAY, 0),
-                prefs.getInt("pomodoros_dia_" + Calendar.FRIDAY, 0),
-                prefs.getInt("pomodoros_dia_" + Calendar.SATURDAY, 0),
-                prefs.getInt("pomodoros_dia_" + Calendar.SUNDAY, 0)
-        };
+    public int[] getDatosUltimosDias(int cantidadDias) {
+        long hoy = obtenerDiaActual();
+        int[] datos = new int[cantidadDias];
+        for (int i = 0; i < cantidadDias; i++) {
+            long dia = hoy - (cantidadDias - 1 - i);
+            datos[i] = prefs.getInt("pomodoros_fecha_" + dia, 0);
+        }
+        return datos;
+    }
+
+    public void reiniciarEstadisticas() {
+        SharedPreferences.Editor editor = prefs.edit();
+
+        for (String clave : prefs.getAll().keySet()) {
+            if (clave.startsWith("pomodoros_fecha_") || clave.startsWith("actividad_")) {
+                editor.remove(clave);
+            }
+        }
+
+        editor.putInt("minutos_totales", 0);
+        editor.putInt("pomodoros_completados", 0);
+        editor.putInt("pomodoros_fallados", 0);
+        editor.putInt("racha_actual", 0);
+        editor.putInt("actividades_total", 0);
+        editor.putFloat("puntos", 0f);
+        editor.remove("ultimo_dia_racha");
+
+        editor.apply();
+    }
+
+    public String[] getEtiquetasUltimosDias(int cantidadDias) {
+        String[] etiquetas = new String[cantidadDias];
+        Calendar calendario = Calendar.getInstance();
+        calendario.add(Calendar.DAY_OF_YEAR, -(cantidadDias - 1));
+        java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat("dd/MM", java.util.Locale.getDefault());
+        for (int i = 0; i < cantidadDias; i++) {
+            etiquetas[i] = formato.format(calendario.getTime());
+            calendario.add(Calendar.DAY_OF_YEAR, 1);
+        }
+        return etiquetas;
     }
 }
