@@ -164,8 +164,7 @@
             android:gravity="center"
             android:text="1"
             android:textColor="?attr/themeFondoPrincipal"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tvCiclo2"

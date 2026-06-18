@@ -47,6 +47,8 @@ public class CronometroActivity extends BaseActivity {
     public static final long UMBRAL_SIN_PENALIZACION = 10000;
     public static final long UMBRAL_SANCION = 120000;
 
+    public static final String EXTRA_OMITIR_SPLASH = "extra_omitir_splash";
+
     private long tiempoRestante = TIEMPO_ENFOQUE;
     private boolean estaCorriendo = false;
     private boolean esDescanso = false;
@@ -97,10 +99,12 @@ public class CronometroActivity extends BaseActivity {
                     && new GestorConfiguracion(this).isAlertasDistraccionHabilitadas()
                     && !GestorAlertas.hayInfraccionPendiente(this)) {
                 
+                Log.d(ETIQUETA_DEPURACION, "Activity: registrarFallo desde onPause");
                 GestorAlertas.marcarInfraccionPendiente(this);
                 GestorAlertas.marcarReanudarTrasInfraccion(this);
                 new GestorEstadisticas(this).registrarFallo();
                 GestorAlertas.congelarTiempoRestante(this, tiempoRestanteReal);
+                GestorAlertas.setCronometroCorriendo(this, false);
 
                 detenerServicioCronometro();
 
@@ -160,6 +164,8 @@ public class CronometroActivity extends BaseActivity {
             cicloActual = GestorAlertas.getCicloActualActual(this);
             esDescanso = GestorAlertas.getEsDescansoActual(this);
             tvTitulo.setText(GestorAlertas.getTituloActual(this));
+            Log.d(ETIQUETA_DEPURACION, "restaurar(corriendo): ciclo=" + cicloActual
+                    + " descanso=" + esDescanso + " titulo=" + GestorAlertas.getTituloActual(this));
 
             tiempoRestante = GestorAlertas.getTiempoFinEstimadoActual(this) - System.currentTimeMillis();
             if (tiempoRestante < 0) tiempoRestante = 0;
@@ -188,6 +194,8 @@ public class CronometroActivity extends BaseActivity {
             esDescanso = GestorAlertas.getEsDescansoGuardado(this);
             cicloActual = GestorAlertas.getCicloActualGuardado(this);
             tvTitulo.setText(GestorAlertas.getTituloGuardado(this));
+            Log.d(ETIQUETA_DEPURACION, "restaurar(guardado): ciclo=" + cicloActual
+                    + " descanso=" + esDescanso + " titulo=" + GestorAlertas.getTituloGuardado(this));
             barraProgreso.setIndicatorColor(esDescanso
                     ? getColor(R.color.color_verde_exito)
                     : TemaUtils.resolverColor(this, R.attr.themeTextoPrimario));
@@ -223,13 +231,18 @@ public class CronometroActivity extends BaseActivity {
             actualizarIndicadorVisual(i);
         }
         if (!esDescanso) {
+            Log.d(ETIQUETA_DEPURACION, "indicadores: enfoque slotActivo=" + cicloActual);
             configurarIndicadorActual(cicloActual);
         } else {
             String titulo = tvTitulo.getText().toString();
             if ("DESCANSO LARGO".equals(titulo)) {
+                Log.d(ETIQUETA_DEPURACION, "indicadores: descanso largo slot=4");
                 configurarIndicadorDescanso(4);
             } else if (cicloActual > 1) {
+                Log.d(ETIQUETA_DEPURACION, "indicadores: descanso corto ciclo=" + cicloActual + " slot=" + (cicloActual - 1));
                 configurarIndicadorDescanso(cicloActual - 1);
+            } else {
+                Log.d(ETIQUETA_DEPURACION, "indicadores: descanso pero ciclo=" + cicloActual + " -> ningun slot");
             }
         }
     }
@@ -330,7 +343,8 @@ public class CronometroActivity extends BaseActivity {
                 new ActivityResultContracts.RequestPermission(), concedido -> { });
 
         View splashOverlay = findViewById(R.id.splashOverlay);
-        if (savedInstanceState == null) {
+        boolean omitirSplash = getIntent().getBooleanExtra(EXTRA_OMITIR_SPLASH, false);
+        if (savedInstanceState == null && !omitirSplash) {
             iniciarFlujoSolicitudPermisos();
 
             new Handler(Looper.getMainLooper()).postDelayed(() -> {
@@ -663,6 +677,9 @@ public class CronometroActivity extends BaseActivity {
             GestorAlertas.marcarPeriodoGraciaPostDescanso(this);
         }
 
+        Log.d(ETIQUETA_DEPURACION, "finDeFase: de(descanso=" + eraDescanso + ",ciclo=" + cicloActual
+                + ") -> (descanso=" + resultado.esDescansoSiguiente + ",ciclo=" + resultado.cicloSiguiente
+                + ",titulo=" + resultado.tituloSiguiente + ")");
         cicloActual = resultado.cicloSiguiente;
         esDescanso = resultado.esDescansoSiguiente;
         tiempoRestante = resultado.tiempoSiguiente;
@@ -760,7 +777,7 @@ public class CronometroActivity extends BaseActivity {
         TextView tvObjetivo = obtenerTextViewPorCiclo(ciclo);
         if (tvObjetivo != null) {
             tvObjetivo.setBackgroundTintList(ColorStateList.valueOf(TemaUtils.resolverColor(this, R.attr.themeAcento)));
-            tvObjetivo.setTextColor(TemaUtils.resolverColor(this, R.attr.themeFondoPrincipal));
+            tvObjetivo.setTextColor(TemaUtils.resolverColor(this, R.attr.themeSobreAcento));
         }
     }
 
@@ -805,6 +822,7 @@ public class CronometroActivity extends BaseActivity {
             boolean etapaYaCompletada = cicloActual > 1;
             boolean menosDeDosMinutos = transcurrido < UMBRAL_SANCION;
             if (!etapaYaCompletada && !menosDeDosMinutos && !sesionProtegida) {
+                Log.d(ETIQUETA_DEPURACION, "Activity: registrarFallo desde reiniciarCronometro");
                 new GestorEstadisticas(this).registrarFallo();
             }
         }

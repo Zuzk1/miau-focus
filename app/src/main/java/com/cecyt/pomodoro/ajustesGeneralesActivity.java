@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.core.app.NotificationManagerCompat;
@@ -22,6 +23,8 @@ import java.util.Locale;
 import java.util.function.IntConsumer;
 
 public class ajustesGeneralesActivity extends BaseActivity {
+
+    private MaterialSwitch switchAlertaDistraccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,17 +49,13 @@ public class ajustesGeneralesActivity extends BaseActivity {
             startActivity(intentAjustes);
         });
 
-        MaterialSwitch switchAlertaDistraccion = findViewById(R.id.switchAlertaDistraccion);
+        switchAlertaDistraccion = findViewById(R.id.switchAlertaDistraccion);
         GestorConfiguracion gestorConfiguracion = new GestorConfiguracion(this);
-        
-        if (GestorAlertas.isCronometroCorriendo(this)) {
-            switchAlertaDistraccion.setEnabled(false);
-            switchAlertaDistraccion.setAlpha(0.6f);
-        }
 
         switchAlertaDistraccion.setChecked(gestorConfiguracion.isAlertasDistraccionHabilitadas());
         switchAlertaDistraccion.setOnCheckedChangeListener((buttonView, isChecked) ->
                 gestorConfiguracion.setAlertasDistraccionHabilitadas(isChecked));
+        aplicarBloqueoAlertaDistraccion();
 
         MaterialSwitch switchVibracion = findViewById(R.id.switchVibracion);
         switchVibracion.setChecked(gestorConfiguracion.isVibracionHabilitada());
@@ -123,6 +122,16 @@ public class ajustesGeneralesActivity extends BaseActivity {
             return;
         }
         actualizarEstadoNotificaciones();
+        aplicarBloqueoAlertaDistraccion();
+    }
+
+    private void aplicarBloqueoAlertaDistraccion() {
+        boolean bloqueada = GestorAlertas.haySesionBloqueante(this);
+        switchAlertaDistraccion.setEnabled(!bloqueada);
+        switchAlertaDistraccion.setAlpha(bloqueada ? 0.6f : 1f);
+
+        android.widget.TextView aviso = findViewById(R.id.tvSesionActivaAviso);
+        if (aviso != null) aviso.setVisibility(bloqueada ? View.VISIBLE : View.GONE);
     }
 
     private void actualizarEstadoNotificaciones() {

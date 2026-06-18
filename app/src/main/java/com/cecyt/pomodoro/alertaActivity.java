@@ -64,6 +64,7 @@ public class alertaActivity extends AppCompatActivity {
         pbProgresoSilenciar.setVisibility(View.INVISIBLE);
 
         esInfraccion = getIntent().getBooleanExtra(GestorAlertas.EXTRA_ES_INFRACCION, false);
+        android.util.Log.d("DepuracionCronometro", "alerta onCreate esInfraccion=" + esInfraccion);
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
@@ -259,10 +260,12 @@ public class alertaActivity extends AppCompatActivity {
                 pbProgresoSilenciar.setProgress(5000);
                 detenerAlarma();
                 GestorAlertas.setAlertaActiva(alertaActivity.this, false);
+                android.util.Log.d("DepuracionCronometro", "alerta cancelada esInfraccion=" + esInfraccion);
                 if (esInfraccion) {
                     GestorAlertas.limpiarInfraccionPendiente(alertaActivity.this);
                     Intent intentCronometro = new Intent(alertaActivity.this, CronometroActivity.class);
                     intentCronometro.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intentCronometro.putExtra(CronometroActivity.EXTRA_OMITIR_SPLASH, true);
                     startActivity(intentCronometro);
                 }
                 finish();

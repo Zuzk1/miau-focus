@@ -15,7 +15,7 @@ import androidx.lifecycle.ProcessLifecycleOwner;
 
 import java.util.Map;
 
-public class AplicacionMiauFocus extends Application implements DefaultLifecycleObserver {
+public class VigilanteSesionApp extends Application implements DefaultLifecycleObserver {
 
     private static final String CLAVE_MIGRACION_HECHA = "migracion_prefs_caja_facil_hecha";
 
@@ -77,7 +77,9 @@ public class AplicacionMiauFocus extends Application implements DefaultLifecycle
 
         if (cronometroCorriendo && !esDescanso && pantallaEncendidaAhora
                 && !GestorAlertas.estaEnPeriodoGraciaPostDescanso(this)
-                && new GestorConfiguracion(this).isAlertasDistraccionHabilitadas()) {
+                && new GestorConfiguracion(this).isAlertasDistraccionHabilitadas()
+                && !GestorAlertas.hayInfraccionPendiente(this)) {
+            android.util.Log.d("DepuracionCronometro", "VigilanteSesionApp: registrarFallo desde onStop");
             GestorAlertas.marcarInfraccionPendiente(this);
             GestorAlertas.marcarReanudarTrasInfraccion(this);
             new GestorEstadisticas(this).registrarFallo();

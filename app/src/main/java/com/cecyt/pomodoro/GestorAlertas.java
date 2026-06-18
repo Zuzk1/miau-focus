@@ -26,6 +26,7 @@ public class GestorAlertas {
     public static final String EXTRA_ES_INFRACCION = "extra_es_infraccion";
     public static final String PREFS_NOMBRE_COMPARTIDO = "PreferenciasMiauFocus";
     public static final int ID_NOTIFICACION_AVISO_DESCANSO = 1004;
+    public static final int ID_NOTIFICACION_AVISO_SANCION = 1006;
     private static final String PREFS_NOMBRE = "PrefsAlertas";
     private static final String CLAVE_INFRACCION_PENDIENTE = "infraccion_pendiente";
     private static final String CLAVE_TIEMPO_RESTANTE_GUARDADO = "tiempo_restante_guardado";
@@ -163,6 +164,31 @@ public class GestorAlertas {
                 .getBoolean(CLAVE_CRONOMETRO_CORRIENDO, false);
     }
 
+    public static boolean haySesionBloqueante(Context contexto) {
+        long tiempoEnfoque = new GestorConfiguracion(contexto).getMinutosTrabajo() * 60000L;
+
+        if (isCronometroCorriendo(contexto)) {
+            int ciclo = getCicloActualActual(contexto);
+            boolean esDescansoActual = getEsDescansoActual(contexto);
+            if (esDescansoActual && ciclo == 1) return false;
+            if (ciclo > 1) return true;
+            long tiempoRestanteMs = getTiempoFinEstimadoActual(contexto) - System.currentTimeMillis();
+            if (tiempoRestanteMs < 0) tiempoRestanteMs = 0;
+            return (tiempoEnfoque - tiempoRestanteMs) > CronometroActivity.UMBRAL_SIN_PENALIZACION;
+        }
+
+        long tiempoGuardado = getTiempoRestanteGuardado(contexto);
+        if (tiempoGuardado >= 0) {
+            int ciclo = getCicloActualGuardado(contexto);
+            boolean esDescansoGuardado = getEsDescansoGuardado(contexto);
+            if (esDescansoGuardado && ciclo == 1) return false;
+            if (ciclo > 1) return true;
+            return (tiempoEnfoque - tiempoGuardado) > CronometroActivity.UMBRAL_SIN_PENALIZACION;
+        }
+
+        return false;
+    }
+
     public static void guardarEstadoCronometroActual(Context contexto, long tiempoFinEstimado,
             boolean esDescanso, int cicloActual, String titulo) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE).edit()
@@ -296,6 +322,29 @@ public class GestorAlertas {
         if (ContextCompat.checkSelfPermission(contexto, android.Manifest.permission.POST_NOTIFICATIONS)
                 == PackageManager.PERMISSION_GRANTED) {
             NotificationManagerCompat.from(contexto).notify(ID_NOTIFICACION_AVISO_DESCANSO, notificacionAviso);
+        }
+    }
+
+    public static void mostrarAvisoSancionInminente(Context contexto) {
+        Intent intentAbrirApp = new Intent(contexto, CronometroActivity.class);
+        intentAbrirApp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        PendingIntent intentoPendienteAbrirApp = PendingIntent.getActivity(
+                contexto, 4, intentAbrirApp, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+
+        android.app.Notification notificacionAviso = new NotificationCompat.Builder(contexto, CANAL_ALARMA_ID)
+                .setSmallIcon(R.drawable.ic_gato_notificacion)
+                .setContentTitle("¡Tu descanso casi termina!")
+                .setContentText("Vuelve a Miau Focus en 15 segundos para no ser sancionado")
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setCategory(NotificationCompat.CATEGORY_REMINDER)
+                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                .setContentIntent(intentoPendienteAbrirApp)
+                .setAutoCancel(true)
+                .build();
+
+        if (ContextCompat.checkSelfPermission(contexto, android.Manifest.permission.POST_NOTIFICATIONS)
+                == PackageManager.PERMISSION_GRANTED) {
+            NotificationManagerCompat.from(contexto).notify(ID_NOTIFICACION_AVISO_SANCION, notificacionAviso);
         }
     }
 }

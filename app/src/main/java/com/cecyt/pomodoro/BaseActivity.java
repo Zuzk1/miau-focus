@@ -118,6 +118,7 @@ public class BaseActivity extends AppCompatActivity {
 
     protected boolean redirigirAAlertaSiCorresponde() {
         if (GestorAlertas.isAlertaActiva(this)) {
+            android.util.Log.d("DepuracionCronometro", "redirigir: alertaActiva -> abrir alerta (" + getClass().getSimpleName() + ")");
             Intent intentAlerta = new Intent(this, alertaActivity.class);
             intentAlerta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
             startActivity(intentAlerta);
@@ -125,6 +126,7 @@ public class BaseActivity extends AppCompatActivity {
         }
 
         if (GestorAlertas.hayInfraccionPendiente(this)) {
+            android.util.Log.d("DepuracionCronometro", "redirigir: infraccionPendiente -> abrir alerta (" + getClass().getSimpleName() + ")");
             Intent intentAlerta = new Intent(this, alertaActivity.class);
             intentAlerta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intentAlerta.putExtra(GestorAlertas.EXTRA_ES_INFRACCION, true);

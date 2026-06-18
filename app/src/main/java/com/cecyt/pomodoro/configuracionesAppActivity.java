@@ -92,35 +92,17 @@ public class configuracionesAppActivity extends BaseActivity {
     }
 
     private boolean haySessionBloqueante() {
-        GestorConfiguracion config = new GestorConfiguracion(this);
-        long tiempoEnfoque = config.getMinutosTrabajo() * 60000L;
-
-        if (GestorAlertas.isCronometroCorriendo(this)) {
-            int ciclo = GestorAlertas.getCicloActualActual(this);
-            boolean esDescansoActual = GestorAlertas.getEsDescansoActual(this);
-            if (esDescansoActual && ciclo == 1) return false;
-            if (ciclo > 1) return true;
-            long tiempoRestanteMs = GestorAlertas.getTiempoFinEstimadoActual(this) - System.currentTimeMillis();
-            if (tiempoRestanteMs < 0) tiempoRestanteMs = 0;
-            return (tiempoEnfoque - tiempoRestanteMs) > CronometroActivity.UMBRAL_SIN_PENALIZACION;
-        }
-
-        long tiempoGuardado = GestorAlertas.getTiempoRestanteGuardado(this);
-        if (tiempoGuardado >= 0) {
-            int ciclo = GestorAlertas.getCicloActualGuardado(this);
-            boolean esDescansoGuardado = GestorAlertas.getEsDescansoGuardado(this);
-            if (esDescansoGuardado && ciclo == 1) return false;
-            if (ciclo > 1) return true;
-            return (tiempoEnfoque - tiempoGuardado) > CronometroActivity.UMBRAL_SIN_PENALIZACION;
-        }
-
-        return false;
+        return GestorAlertas.haySesionBloqueante(this);
     }
 
     private void aplicarBloqueoSesionActiva() {
         boolean bloqueada = haySessionBloqueante();
         TextView aviso = findViewById(R.id.tvSesionActivaAviso);
         if (aviso != null) aviso.setVisibility(bloqueada ? View.VISIBLE : View.GONE);
+
+        View botonGuardar = findViewById(R.id.btnGuardarConfig);
+        botonGuardar.setEnabled(!bloqueada);
+        botonGuardar.setAlpha(bloqueada ? 0.5f : 1f);
 
         if (bloqueada) {
             npTrabajo.setEnabled(false);
