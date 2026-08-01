@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.cecyt.pomodoro"
+    namespace = "com.peggos.pomodoro"
     compileSdk {
         version = release(36) {
             minorApiLevel = 1
@@ -12,7 +12,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.cecyt.pomodoro"
+        applicationId = "com.peggos.pomodoro"
         minSdk = 29
         targetSdk = 36
         versionCode = 1
