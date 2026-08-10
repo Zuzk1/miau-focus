@@ -7,7 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?attr/themeFondoPrincipal"
-    android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".analisisActivity">
 
@@ -79,62 +78,11 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/cardEstadisticas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/carta_oscura"
-                android:orientation="vertical"
-                android:padding="20dp">
-
-                <TextView
-                    android:id="@+id/tvTiempoTotal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="?attr/themeTextoSecundario"
-                    android:textSize="15sp"
-                    tools:text="Tiempo de Enfoque Total: 18 hrs" />
-
-                <TextView
-                    android:id="@+id/tvPomodorosCompletados"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="?attr/themeTextoSecundario"
-                    android:textSize="15sp"
-                    tools:text="Pomodoros Completados: 36" />
-
-                <TextView
-                    android:id="@+id/tvRachaActual"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="?attr/themeTextoSecundario"
-                    android:textSize="15sp"
-                    tools:text="Racha Actual: 7 Días" />
-
-                <TextView
-                    android:id="@+id/tvTasaFallos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_medium"
-                    android:textColor="?attr/themeTextoSecundario"
-                    android:textSize="15sp"
-                    tools:text="Tasa de Fallos: 12% · 3 bloques abandonados" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/llPuntos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/carta_oscura"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
@@ -170,6 +118,182 @@
                     app:rippleColor="?attr/themeRipple" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/cardEstadisticas"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/carta_oscura"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <LinearLayout
+                    android:id="@+id/llFranjaSemanal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/fondo_franja_semanal"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="6dp"
+                    android:paddingVertical="12dp" />
+
+                <ImageView
+                    android:id="@+id/ivLlamaRacha"
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="22dp"
+                    android:src="@drawable/ic_llama"
+                    app:tint="?attr/themeAcento" />
+
+                <TextView
+                    android:id="@+id/tvRachaActual"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:textColor="?attr/themeTextoPrimario"
+                    android:textSize="40sp"
+                    tools:text="7" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="Racha actual"
+                    android:textColor="?attr/themeTextoTerciario"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/tvMensajeRacha"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center"
+                    android:textColor="?attr/themeTextoSecundario"
+                    android:textSize="12sp"
+                    tools:text="Ya enfocaste hoy, bien hecho" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvTiempoTotal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:textColor="?attr/themeTextoPrimario"
+                            android:textSize="19sp"
+                            tools:text="18h 40m" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="Enfoque total"
+                            android:textColor="?attr/themeTextoTerciario"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="?attr/themeAcentoOverlay20" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvPomodorosCompletados"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:textColor="?attr/themeTextoPrimario"
+                            android:textSize="19sp"
+                            tools:text="36" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="Pomodoros\ncompletados"
+                            android:textColor="?attr/themeTextoTerciario"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="?attr/themeAcentoOverlay20" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvTasaFallos"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:gravity="center"
+                            android:textColor="?attr/themeTextoPrimario"
+                            android:textSize="19sp"
+                            tools:text="12%" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:text="Tasa de fallos"
+                            android:textColor="?attr/themeTextoTerciario"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tvBloquesAbandonados"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_regular"
+                            android:gravity="center"
+                            android:textColor="?attr/themeTextoTerciario"
+                            android:textSize="11sp"
+                            tools:text="3 abandonados" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/tvTituloGrafica"
                 android:layout_width="match_parent"
@@ -185,11 +309,13 @@
             <HorizontalScrollView
                 android:id="@+id/hsvGraficaBarras"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="248dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/carta_oscura"
-                android:padding="12dp"
+                android:paddingHorizontal="18dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="14dp"
                 android:scrollbars="none">
 
                 <LinearLayout
@@ -221,16 +347,51 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/carta_oscura"
                 android:orientation="vertical"
-                android:padding="12dp">
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="6dp">
 
-                <TextView
-                    android:id="@+id/tvActividadesRecientes"
+                <LinearLayout
+                    android:id="@+id/llFilasActividades"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_regular"
-                    android:textColor="?attr/themeTextoSecundario"
+                    android:orientation="vertical" />
+
+                <LinearLayout
+                    android:id="@+id/estadoVacioActividades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="28dp">
+
+                    <ImageView
+                        android:layout_width="52dp"
+                        android:layout_height="52dp"
+                        android:alpha="0.18"
+                        android:src="@drawable/ic_huella_gato"
+                        app:tint="?attr/themeAcento" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="Aún no hay actividades completadas"
+                        android:textColor="?attr/themeTextoTerciario"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvVerTodoActividades"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:paddingVertical="12dp"
+                    android:text="Ver todo"
+                    android:textColor="?attr/themeAcentoTexto"
                     android:textSize="13sp"
-                    android:text="Aún no hay actividades completadas" />
+                    android:visibility="gone" />
             </LinearLayout>
 
         </LinearLayout>

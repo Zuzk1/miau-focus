@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/contenedorTarea"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/carta_oscura"
+    android:baselineAligned="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="14dp"
+    android:paddingVertical="12dp">
+
+    <FrameLayout
+        android:id="@+id/contenedorCirculo"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginEnd="14dp">
+
+        <ImageView
+            android:id="@+id/ivCirculoTarea"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/fondo_circulo_pendiente" />
+
+        <ImageView
+            android:id="@+id/ivPalomita"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_palomita"
+            android:visibility="gone"
+            app:tint="?attr/themeSobreAcento" />
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tvNombreTarea"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:fontFamily="@font/poppins_medium"
+        android:maxLines="2"
+        android:textColor="?attr/themeTextoPrimario"
+        android:textSize="15sp"
+        tools:text="Estudiar Cálculo" />
+
+    <ImageView
+        android:id="@+id/ivOpcionesTarea"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_tres_puntos"
+        app:tint="?attr/themeTextoTerciario" />
+
+</LinearLayout>

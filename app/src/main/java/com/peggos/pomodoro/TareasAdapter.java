@@ -1,8 +1,10 @@
 package com.peggos.pomodoro;
 
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -10,42 +12,69 @@ import java.util.ArrayList;
 
 public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewHolder> {
 
-    private ArrayList<String> listaTareas;
+    private ArrayList<Tarea> listaTareas;
     private OnTareaClickListener clickListener;
+    private OnTareaToggleListener toggleListener;
 
 
     public interface OnTareaClickListener {
         void onTareaClick(int posicion);
     }
 
+    public interface OnTareaToggleListener {
+        void onTareaToggle(int posicion);
+    }
 
-    public TareasAdapter(ArrayList<String> listaTareas, OnTareaClickListener clickListener) {
+
+    public TareasAdapter(ArrayList<Tarea> listaTareas, OnTareaClickListener clickListener,
+                         OnTareaToggleListener toggleListener) {
         this.listaTareas = listaTareas;
         this.clickListener = clickListener;
+        this.toggleListener = toggleListener;
     }
 
     @NonNull
     @Override
     public TareaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(android.R.layout.simple_list_item_1, parent, false);
+                .inflate(R.layout.item_tarea, parent, false);
         return new TareaViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TareaViewHolder holder, int posicion) {
-        String tarea = listaTareas.get(posicion);
-        holder.tvTextoTarea.setText(tarea);
+        Tarea tarea = listaTareas.get(posicion);
+        holder.tvNombreTarea.setText(tarea.nombre);
 
+        if (tarea.completada) {
+            holder.ivCirculoTarea.setBackgroundResource(R.drawable.fondo_circulo_completado);
+            holder.ivPalomita.setVisibility(View.VISIBLE);
+            holder.tvNombreTarea.setPaintFlags(
+                    holder.tvNombreTarea.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.contenedorTarea.setAlpha(0.45f);
+        } else {
+            holder.ivCirculoTarea.setBackgroundResource(R.drawable.fondo_circulo_pendiente);
+            holder.ivPalomita.setVisibility(View.GONE);
+            holder.tvNombreTarea.setPaintFlags(
+                    holder.tvNombreTarea.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+            holder.contenedorTarea.setAlpha(1f);
+        }
 
-        holder.tvTextoTarea.setTextColor(TemaUtils.resolverColor(holder.itemView.getContext(), R.attr.themeTextoPrimario));
-        holder.tvTextoTarea.setPadding(40, 45, 40, 45);
+        holder.contenedorCirculo.setOnClickListener(v -> {
+            if (toggleListener != null) {
+                toggleListener.onTareaToggle(holder.getAdapterPosition());
+            }
+        });
 
+        holder.ivOpcionesTarea.setOnClickListener(v -> {
+            if (clickListener != null) {
+                clickListener.onTareaClick(holder.getAdapterPosition());
+            }
+        });
 
         holder.itemView.setOnClickListener(v -> {
             if (clickListener != null) {
-                clickListener.onTareaClick(posicion);
+                clickListener.onTareaClick(holder.getAdapterPosition());
             }
         });
     }
@@ -57,11 +86,21 @@ public class TareasAdapter extends RecyclerView.Adapter<TareasAdapter.TareaViewH
 
 
     static class TareaViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTextoTarea;
+        View contenedorTarea;
+        View contenedorCirculo;
+        ImageView ivCirculoTarea;
+        ImageView ivPalomita;
+        TextView tvNombreTarea;
+        ImageView ivOpcionesTarea;
 
         public TareaViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvTextoTarea = itemView.findViewById(android.R.id.text1);
+            contenedorTarea = itemView.findViewById(R.id.contenedorTarea);
+            contenedorCirculo = itemView.findViewById(R.id.contenedorCirculo);
+            ivCirculoTarea = itemView.findViewById(R.id.ivCirculoTarea);
+            ivPalomita = itemView.findViewById(R.id.ivPalomita);
+            tvNombreTarea = itemView.findViewById(R.id.tvNombreTarea);
+            ivOpcionesTarea = itemView.findViewById(R.id.ivOpcionesTarea);
         }
     }
 }

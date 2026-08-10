@@ -18,6 +18,7 @@
         <item name="themeAlertaTextoSecundario">@color/tema_oscuro_alerta_texto_secundario</item>
         <item name="themeAlertaTextoTerciario">@color/tema_oscuro_alerta_texto_terciario</item>
         <item name="themeSobreAcento">@color/white</item>
+        <item name="themeAcentoTexto">?attr/themeAcentoClaro</item>
 
         <item name="android:colorBackground">?attr/themeFondoPrincipal</item>
         <item name="colorSurface">?attr/themeFondoTarjeta</item>
@@ -53,6 +54,7 @@
         <item name="themeAlertaTextoSecundario">@color/tema_claro_alerta_texto_secundario</item>
         <item name="themeAlertaTextoTerciario">@color/tema_claro_alerta_texto_terciario</item>
         <item name="themeSobreAcento">@color/white</item>
+        <item name="themeAcentoTexto">?attr/themeAcento</item>
 
         <item name="android:colorBackground">?attr/themeFondoPrincipal</item>
         <item name="colorSurface">?attr/themeFondoTarjeta</item>
@@ -505,6 +507,204 @@
         <item name="themeAcentoContenedor">@color/acento_petroleo_contenedor_claro</item>
         <item name="themeAcentoOverlay10">@color/acento_petroleo_overlay_10</item>
         <item name="themeAcentoOverlay20">@color/acento_petroleo_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA CACAO OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Cacao" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_cacao</item>
+        <item name="themeAcentoClaro">@color/acento_cacao_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_cacao_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_cacao_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_cacao_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA CACAO CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Cacao" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_cacao</item>
+        <item name="themeAcentoClaro">@color/acento_cacao_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_cacao_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_cacao_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_cacao_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA EUCALIPTO OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Eucalipto" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_eucalipto</item>
+        <item name="themeAcentoClaro">@color/acento_eucalipto_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_eucalipto_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_eucalipto_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_eucalipto_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA EUCALIPTO CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Eucalipto" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_eucalipto</item>
+        <item name="themeAcentoClaro">@color/acento_eucalipto_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_eucalipto_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_eucalipto_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_eucalipto_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA VAINILLA OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Vainilla" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_vainilla</item>
+        <item name="themeAcentoClaro">@color/acento_vainilla_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_vainilla_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_vainilla_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_vainilla_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA VAINILLA CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Vainilla" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_vainilla</item>
+        <item name="themeAcentoClaro">@color/acento_vainilla_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_vainilla_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_vainilla_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_vainilla_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA AGUAMARINA OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Aguamarina" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_aguamarina</item>
+        <item name="themeAcentoClaro">@color/acento_aguamarina_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_aguamarina_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_aguamarina_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_aguamarina_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA AGUAMARINA CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Aguamarina" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_aguamarina</item>
+        <item name="themeAcentoClaro">@color/acento_aguamarina_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_aguamarina_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_aguamarina_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_aguamarina_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA DENIM OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Denim" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_denim</item>
+        <item name="themeAcentoClaro">@color/acento_denim_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_denim_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_denim_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_denim_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA DENIM CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Denim" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_denim</item>
+        <item name="themeAcentoClaro">@color/acento_denim_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_denim_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_denim_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_denim_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA BERENJENA OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Berenjena" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_berenjena</item>
+        <item name="themeAcentoClaro">@color/acento_berenjena_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_berenjena_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_berenjena_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_berenjena_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA BERENJENA CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Berenjena" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_berenjena</item>
+        <item name="themeAcentoClaro">@color/acento_berenjena_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_berenjena_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_berenjena_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_berenjena_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA NEÓN OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Neon" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_neon</item>
+        <item name="themeAcentoClaro">@color/acento_neon_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_neon_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_neon_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_neon_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA NEÓN CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Neon" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_neon</item>
+        <item name="themeAcentoClaro">@color/acento_neon_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_neon_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_neon_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_neon_overlay_20</item>
+        <item name="themeSobreAcento">#1C1C21</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA ULTRAMAR OSCURO ============ -->
+    <style name="Theme.Pomodoro.Dark.Ultramar" parent="Theme.Pomodoro.Base.Oscuro">
+        <item name="themeAcento">@color/acento_ultramar</item>
+        <item name="themeAcentoClaro">@color/acento_ultramar_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_ultramar_contenedor_oscuro</item>
+        <item name="themeAcentoOverlay10">@color/acento_ultramar_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_ultramar_overlay_20</item>
+        <item name="colorPrimary">?attr/themeAcento</item>
+        <item name="colorSecondary">?attr/themeAcento</item>
+        <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>
+    </style>
+
+    <!-- ============ TEMA ULTRAMAR CLARO ============ -->
+    <style name="Theme.Pomodoro.Light.Ultramar" parent="Theme.Pomodoro.Base.Claro">
+        <item name="themeAcento">@color/acento_ultramar</item>
+        <item name="themeAcentoClaro">@color/acento_ultramar_claro</item>
+        <item name="themeAcentoContenedor">@color/acento_ultramar_contenedor_claro</item>
+        <item name="themeAcentoOverlay10">@color/acento_ultramar_overlay_10</item>
+        <item name="themeAcentoOverlay20">@color/acento_ultramar_overlay_20</item>
         <item name="colorPrimary">?attr/themeAcento</item>
         <item name="colorSecondary">?attr/themeAcento</item>
         <item name="colorSecondaryContainer">?attr/themeAcentoContenedor</item>

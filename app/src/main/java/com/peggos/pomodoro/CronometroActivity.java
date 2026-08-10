@@ -45,7 +45,7 @@ public class CronometroActivity extends BaseActivity {
     private long TIEMPO_DESCANSO_LARGO = 900000;
 
     public static final long UMBRAL_SIN_PENALIZACION = 10000;
-    public static final long UMBRAL_SANCION = 120000;
+    public static final long UMBRAL_SANCION = 60000;
 
     public static final String EXTRA_OMITIR_SPLASH = "extra_omitir_splash";
 
@@ -819,9 +819,8 @@ public class CronometroActivity extends BaseActivity {
 
         if (!esDescanso) {
             long transcurrido = TIEMPO_ENFOQUE - tiempoRestante;
-            boolean etapaYaCompletada = cicloActual > 1;
-            boolean menosDeDosMinutos = transcurrido < UMBRAL_SANCION;
-            if (!etapaYaCompletada && !menosDeDosMinutos && !sesionProtegida) {
+            boolean menosDelUmbral = transcurrido < UMBRAL_SANCION;
+            if (!menosDelUmbral && !sesionProtegida) {
                 Log.d(ETIQUETA_DEPURACION, "Activity: registrarFallo desde reiniciarCronometro");
                 new GestorEstadisticas(this).registrarFallo();
             }

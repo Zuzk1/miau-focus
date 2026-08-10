@@ -46,6 +46,8 @@ public class GestorCiclos {
         gestor.registrarFinDeFase((int) (tiempoEnfoque / 60000), puntosPorCiclo, tareaActiva, esCicloCompleto);
 
         if (esCicloCompleto) {
+            marcarTareaActivaComoCompletada(preferencias, tareaActiva);
+
             if (configuracion.isDescansoLargoHabilitado()) {
                 return new Resultado(tiempoDescansoLargo, true, 1, "DESCANSO LARGO", true);
             }
@@ -53,5 +55,38 @@ public class GestorCiclos {
         }
 
         return new Resultado(tiempoDescansoCorto, true, siguienteCiclo, "DESCANSO CORTO", false);
+    }
+
+    private static void marcarTareaActivaComoCompletada(SharedPreferences preferencias, String tareaActiva) {
+        if (tareaActiva == null || tareaActiva.isEmpty() || tareaActiva.equals("Ninguna")) return;
+
+        int cantidad = preferencias.getInt("cantidad_tareas", 0);
+        int indiceCompletada = -1;
+
+        for (int i = 0; i < cantidad; i++) {
+            if (tareaActiva.equals(preferencias.getString("tarea_" + i, null))
+                    && !preferencias.getBoolean("completada_" + i, false)) {
+                indiceCompletada = i;
+                break;
+            }
+        }
+
+        if (indiceCompletada == -1) return;
+
+        String siguienteActiva = "Ninguna";
+        for (int i = 0; i < cantidad; i++) {
+            if (i == indiceCompletada || preferencias.getBoolean("completada_" + i, false)) continue;
+            String nombre = preferencias.getString("tarea_" + i, null);
+            if (nombre != null) {
+                siguienteActiva = nombre;
+                break;
+            }
+        }
+
+        preferencias.edit()
+                .putBoolean("completada_" + indiceCompletada, true)
+                .putLong("completada_fecha_" + indiceCompletada, GestorEstadisticas.obtenerDiaActual())
+                .putString("tarea_activa_actual", siguienteActiva)
+                .apply();
     }
 }

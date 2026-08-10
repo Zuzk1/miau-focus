@@ -57,115 +57,225 @@
         </com.google.android.material.appbar.MaterialToolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:id="@+id/containerTareaActiva"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="?attr/themeFondoTarjetaSecundaria"
-        android:padding="14dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/carta_oscura"
+        android:orientation="vertical"
+        android:padding="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/appBar">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/tvEtiquetaActiva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Tarea activa"
+            android:textColor="?attr/themeTextoTerciario"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvTareaActiva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="2"
+            android:text="Sin tarea activa"
+            android:textColor="?attr/themeTextoPrimario"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tvSubtituloActiva"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Selecciona una tarea para empezar a enfocarte"
+            android:textColor="?attr/themeTextoSecundario"
+            android:textSize="12sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnIrAEnfoque"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Ir a Enfoque"
+            android:textColor="?attr/themeSobreAcento"
+            android:textSize="13sp"
+            android:visibility="gone"
+            app:backgroundTint="?attr/themeAcento"
+            app:cornerRadius="24dp"
+            app:rippleColor="?attr/themeRipple" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvEtiquetaActiva"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tarea activa: "
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="?attr/themeTextoSecundario"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvTareaActiva"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:ellipsize="end"
-                android:maxWidth="200dp"
-                android:singleLine="true"
-                android:text="Ninguna"
-                android:fontFamily="@font/poppins_regular"
-                android:textColor="?attr/themeTextoPrimario"
-                android:textSize="14sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.card.MaterialCardView
+    <LinearLayout
         android:id="@+id/cardStats"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="24dp"
-        app:cardBackgroundColor="?attr/themeFondoTarjeta"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="2dp"
-        app:strokeWidth="0dp"
-        app:layout_constraintTop_toBottomOf="@id/containerTareaActiva"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/carta_oscura"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/containerTareaActiva">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tvPendientes"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tareas Registradas"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="?attr/themeTextoPrimario"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="?attr/themeTextoSecundario"
-                android:textSize="14sp"/>
+                android:gravity="center"
+                android:text="Pendientes"
+                android:textColor="?attr/themeTextoTerciario"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/themeAcentoOverlay20" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCompletadasHoy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="?attr/themeTextoPrimario"
+                android:textSize="19sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center"
+                android:text="Completadas\nhoy"
+                android:textColor="?attr/themeTextoTerciario"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="38dp"
+            android:layout_gravity="center_vertical"
+            android:background="?attr/themeAcentoOverlay20" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvTotalTareas"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
                 android:text="0"
-                android:textColor="?attr/themeAcento"
-                android:fontFamily="@font/poppins_regular"
-                android:textSize="34sp"
-                android:textStyle="bold"
-                android:layout_marginVertical="4dp"/>
+                android:textColor="?attr/themeTextoPrimario"
+                android:textSize="19sp" />
 
             <TextView
-                android:id="@+id/tvResumen"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="0 tareas registradas"
+                android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins_regular"
-                android:textColor="?attr/themeTextoPrimario"
-                android:textSize="14sp"/>
+                android:gravity="center"
+                android:text="Total"
+                android:textColor="?attr/themeTextoTerciario"
+                android:textSize="11sp" />
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/estadoVacioTareas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btnAnadirTarea"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cardStats">
+
+        <ImageView
+            android:id="@+id/ivHuellaVacio"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:alpha="0.18"
+            android:src="@drawable/ic_huella_gato"
+            app:tint="?attr/themeAcento" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:text="Aún no tienes tareas"
+            android:textColor="?attr/themeTextoSecundario"
+            android:textSize="15sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Añade tu primera tarea para empezar a enfocarte"
+            android:textColor="?attr/themeTextoTerciario"
+            android:textSize="12sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerTareas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="14dp"
         android:clipToPadding="false"
-        android:paddingBottom="8dp"
+        android:paddingBottom="12dp"
         android:scrollbars="vertical"
-        android:fontFamily="@font/poppins_regular"
         app:layout_constraintTop_toBottomOf="@id/cardStats"
         app:layout_constraintBottom_toTopOf="@id/btnAnadirTarea"
         app:layout_constraintStart_toStartOf="parent"
@@ -176,7 +286,7 @@
         android:layout_width="0dp"
         android:layout_height="55dp"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="20dp"
         android:text="+ Añadir tarea"
         android:textColor="?attr/themeSobreAcento"
         android:textSize="16sp"

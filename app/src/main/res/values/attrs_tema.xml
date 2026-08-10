@@ -26,6 +26,9 @@
     <attr name="themeAcentoOverlay20" format="color" />
     <attr name="themeSobreAcento" format="color" />
 
+    <!-- Acento legible como texto sobre el fondo de tarjeta del tema -->
+    <attr name="themeAcentoTexto" format="color" />
+
     <!-- Fondo de los chips de hora/minuto del MaterialTimePicker -->
     <attr name="colorFondoChipActivo" format="color" />
     <attr name="colorFondoChipInactivo" format="color" />

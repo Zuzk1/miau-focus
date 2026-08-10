@@ -187,4 +187,68 @@
     <color name="acento_petroleo_overlay_10">#1A02505A</color>
     <color name="acento_petroleo_overlay_20">#3302505A</color>
 
+    <!-- ============ ACENTO CACAO ============ -->
+    <color name="acento_cacao">#735D59</color>
+    <color name="acento_cacao_claro">#A08B87</color>
+    <color name="acento_cacao_contenedor_oscuro">#382C2A</color>
+    <color name="acento_cacao_contenedor_claro">#EDE2E0</color>
+    <color name="acento_cacao_overlay_10">#1A735D59</color>
+    <color name="acento_cacao_overlay_20">#33735D59</color>
+
+    <!-- ============ ACENTO EUCALIPTO ============ -->
+    <color name="acento_eucalipto">#789088</color>
+    <color name="acento_eucalipto_claro">#A3B7AF</color>
+    <color name="acento_eucalipto_contenedor_oscuro">#2F3A36</color>
+    <color name="acento_eucalipto_contenedor_claro">#E0E9E5</color>
+    <color name="acento_eucalipto_overlay_10">#1A789088</color>
+    <color name="acento_eucalipto_overlay_20">#33789088</color>
+
+    <!-- ============ ACENTO VAINILLA ============ -->
+    <color name="acento_vainilla">#E9D983</color>
+    <color name="acento_vainilla_claro">#F4EBB8</color>
+    <color name="acento_vainilla_contenedor_oscuro">#4A431E</color>
+    <color name="acento_vainilla_contenedor_claro">#FAF5DC</color>
+    <color name="acento_vainilla_overlay_10">#1AE9D983</color>
+    <color name="acento_vainilla_overlay_20">#33E9D983</color>
+
+    <!-- ============ ACENTO AGUAMARINA ============ -->
+    <color name="acento_aguamarina">#84AEB2</color>
+    <color name="acento_aguamarina_claro">#B0CED1</color>
+    <color name="acento_aguamarina_contenedor_oscuro">#2C3E40</color>
+    <color name="acento_aguamarina_contenedor_claro">#E1EEEF</color>
+    <color name="acento_aguamarina_overlay_10">#1A84AEB2</color>
+    <color name="acento_aguamarina_overlay_20">#3384AEB2</color>
+
+    <!-- ============ ACENTO DENIM ============ -->
+    <color name="acento_denim">#607BB3</color>
+    <color name="acento_denim_claro">#93A8D2</color>
+    <color name="acento_denim_contenedor_oscuro">#232D42</color>
+    <color name="acento_denim_contenedor_claro">#DCE4F3</color>
+    <color name="acento_denim_overlay_10">#1A607BB3</color>
+    <color name="acento_denim_overlay_20">#33607BB3</color>
+
+    <!-- ============ ACENTO BERENJENA ============ -->
+    <color name="acento_berenjena">#58096A</color>
+    <color name="acento_berenjena_claro">#9B4FAF</color>
+    <color name="acento_berenjena_contenedor_oscuro">#24042C</color>
+    <color name="acento_berenjena_contenedor_claro">#EBD4F0</color>
+    <color name="acento_berenjena_overlay_10">#1A58096A</color>
+    <color name="acento_berenjena_overlay_20">#3358096A</color>
+
+    <!-- ============ ACENTO NEÓN ============ -->
+    <color name="acento_neon">#F7F328</color>
+    <color name="acento_neon_claro">#FBF87A</color>
+    <color name="acento_neon_contenedor_oscuro">#4A4808</color>
+    <color name="acento_neon_contenedor_claro">#FDFCC4</color>
+    <color name="acento_neon_overlay_10">#1AF7F328</color>
+    <color name="acento_neon_overlay_20">#33F7F328</color>
+
+    <!-- ============ ACENTO ULTRAMAR ============ -->
+    <color name="acento_ultramar">#270CD3</color>
+    <color name="acento_ultramar_claro">#6B57E8</color>
+    <color name="acento_ultramar_contenedor_oscuro">#120538</color>
+    <color name="acento_ultramar_contenedor_claro">#D8D2F9</color>
+    <color name="acento_ultramar_overlay_10">#1A270CD3</color>
+    <color name="acento_ultramar_overlay_20">#33270CD3</color>
+
 </resources>

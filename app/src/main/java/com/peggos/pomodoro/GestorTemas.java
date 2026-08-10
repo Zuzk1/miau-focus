@@ -25,6 +25,11 @@ public class GestorTemas {
         VERDE_CLARO("verde_claro", "Verde Claro", R.style.Theme_Pomodoro_Light_Verde,
                 R.color.tema_claro_fondo_principal, R.color.acento_verde, 100, false),
 
+        CACAO_OSCURO("cacao_oscuro", "Cacao Oscuro", R.style.Theme_Pomodoro_Dark_Cacao,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_cacao, 110, false),
+        CACAO_CLARO("cacao_claro", "Cacao Claro", R.style.Theme_Pomodoro_Light_Cacao,
+                R.color.tema_claro_fondo_principal, R.color.acento_cacao, 110, false),
+
         NARANJA_OSCURO("naranja_oscuro", "Naranja Oscuro", R.style.Theme_Pomodoro_Dark_Naranja,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_naranja, 120, false),
         NARANJA_CLARO("naranja_claro", "Naranja Claro", R.style.Theme_Pomodoro_Light_Naranja,
@@ -34,6 +39,11 @@ public class GestorTemas {
                 R.color.tema_oscuro_fondo_principal, R.color.acento_rojo, 140, false),
         ROJO_CLARO("rojo_claro", "Rojo Claro", R.style.Theme_Pomodoro_Light_Rojo,
                 R.color.tema_claro_fondo_principal, R.color.acento_rojo, 140, false),
+
+        EUCALIPTO_OSCURO("eucalipto_oscuro", "Eucalipto Oscuro", R.style.Theme_Pomodoro_Dark_Eucalipto,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_eucalipto, 150, false),
+        EUCALIPTO_CLARO("eucalipto_claro", "Eucalipto Claro", R.style.Theme_Pomodoro_Light_Eucalipto,
+                R.color.tema_claro_fondo_principal, R.color.acento_eucalipto, 150, false),
 
         MORADO_OSCURO("morado_oscuro", "Morado Oscuro", R.style.Theme_Pomodoro_Dark_Morado,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_morado, 160, false),
@@ -55,10 +65,20 @@ public class GestorTemas {
         MOSTAZA_CLARO("mostaza_claro", "Mostaza Claro", R.style.Theme_Pomodoro_Light_Mostaza,
                 R.color.tema_claro_fondo_principal, R.color.acento_mostaza, 220, false),
 
+        VAINILLA_OSCURO("vainilla_oscuro", "Vainilla Oscuro", R.style.Theme_Pomodoro_Dark_Vainilla,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_vainilla, 230, false),
+        VAINILLA_CLARO("vainilla_claro", "Vainilla Claro", R.style.Theme_Pomodoro_Light_Vainilla,
+                R.color.tema_claro_fondo_principal, R.color.acento_vainilla, 230, false),
+
         TURQUESA_OSCURO("turquesa_oscuro", "Turquesa Oscuro", R.style.Theme_Pomodoro_Dark_Turquesa,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_turquesa, 240, false),
         TURQUESA_CLARO("turquesa_claro", "Turquesa Claro", R.style.Theme_Pomodoro_Light_Turquesa,
                 R.color.tema_claro_fondo_principal, R.color.acento_turquesa, 240, false),
+
+        AGUAMARINA_OSCURO("aguamarina_oscuro", "Aguamarina Oscuro", R.style.Theme_Pomodoro_Dark_Aguamarina,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_aguamarina, 250, false),
+        AGUAMARINA_CLARO("aguamarina_claro", "Aguamarina Claro", R.style.Theme_Pomodoro_Light_Aguamarina,
+                R.color.tema_claro_fondo_principal, R.color.acento_aguamarina, 250, false),
 
         GRAFITO_OSCURO("grafito_oscuro", "Grafito Oscuro", R.style.Theme_Pomodoro_Dark_Grafito,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_grafito, 260, false),
@@ -75,6 +95,11 @@ public class GestorTemas {
         CORAL_CLARO("coral_claro", "Coral Claro", R.style.Theme_Pomodoro_Light_Coral,
                 R.color.tema_claro_fondo_principal, R.color.acento_coral, 280, false),
 
+        DENIM_OSCURO("denim_oscuro", "Denim Oscuro", R.style.Theme_Pomodoro_Dark_Denim,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_denim, 290, false),
+        DENIM_CLARO("denim_claro", "Denim Claro", R.style.Theme_Pomodoro_Light_Denim,
+                R.color.tema_claro_fondo_principal, R.color.acento_denim, 290, false),
+
         LAVANDA_OSCURO("lavanda_oscuro", "Lavanda Oscuro", R.style.Theme_Pomodoro_Dark_Lavanda,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_lavanda, 300, false),
         LAVANDA_CLARO("lavanda_claro", "Lavanda Claro", R.style.Theme_Pomodoro_Light_Lavanda,
@@ -84,6 +109,11 @@ public class GestorTemas {
                 R.color.tema_oscuro_fondo_principal, R.color.acento_petroleo, 310, false),
         PETROLEO_CLARO("petroleo_claro", "Petróleo Claro", R.style.Theme_Pomodoro_Light_Petroleo,
                 R.color.tema_claro_fondo_principal, R.color.acento_petroleo, 310, false),
+
+        BERENJENA_OSCURO("berenjena_oscuro", "Berenjena Oscuro", R.style.Theme_Pomodoro_Dark_Berenjena,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_berenjena, 330, false),
+        BERENJENA_CLARO("berenjena_claro", "Berenjena Claro", R.style.Theme_Pomodoro_Light_Berenjena,
+                R.color.tema_claro_fondo_principal, R.color.acento_berenjena, 330, false),
 
         CARMESI_OSCURO("carmesi_oscuro", "Carmesí Oscuro", R.style.Theme_Pomodoro_Dark_Carmesi,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_carmesi, 340, false),
@@ -95,15 +125,25 @@ public class GestorTemas {
         ARENA_CLARO("arena_claro", "Arena Claro", R.style.Theme_Pomodoro_Light_Arena,
                 R.color.tema_claro_fondo_principal, R.color.acento_arena, 350, false),
 
-        FANTASMA_OSCURO("fantasma_oscuro", "Fantasma Oscuro", R.style.Theme_Pomodoro_Dark_Fantasma,
+        FANTASMA_OSCURO("fantasma_oscuro", "Violeta Oscuro", R.style.Theme_Pomodoro_Dark_Fantasma,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_fantasma, 380, false),
-        FANTASMA_CLARO("fantasma_claro", "Fantasma Claro", R.style.Theme_Pomodoro_Light_Fantasma,
+        FANTASMA_CLARO("fantasma_claro", "Violeta Claro", R.style.Theme_Pomodoro_Light_Fantasma,
                 R.color.tema_claro_fondo_principal, R.color.acento_fantasma, 380, false),
 
         MEDIANOCHE_OSCURO("medianoche_oscuro", "Medianoche Oscuro", R.style.Theme_Pomodoro_Dark_Medianoche,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_medianoche, 420, false),
         MEDIANOCHE_CLARO("medianoche_claro", "Medianoche Claro", R.style.Theme_Pomodoro_Light_Medianoche,
                 R.color.tema_claro_fondo_principal, R.color.acento_medianoche, 420, false),
+
+        NEON_OSCURO("neon_oscuro", "Neón Oscuro", R.style.Theme_Pomodoro_Dark_Neon,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_neon, 460, false),
+        NEON_CLARO("neon_claro", "Neón Claro", R.style.Theme_Pomodoro_Light_Neon,
+                R.color.tema_claro_fondo_principal, R.color.acento_neon, 460, false),
+
+        ULTRAMAR_OSCURO("ultramar_oscuro", "Ultramar Oscuro", R.style.Theme_Pomodoro_Dark_Ultramar,
+                R.color.tema_oscuro_fondo_principal, R.color.acento_ultramar, 520, false),
+        ULTRAMAR_CLARO("ultramar_claro", "Ultramar Claro", R.style.Theme_Pomodoro_Light_Ultramar,
+                R.color.tema_claro_fondo_principal, R.color.acento_ultramar, 520, false),
 
         LIMA_OSCURO("lima_oscuro", "Lima Oscuro", R.style.Theme_Pomodoro_Dark_Lima,
                 R.color.tema_oscuro_fondo_principal, R.color.acento_lima, 600, false),

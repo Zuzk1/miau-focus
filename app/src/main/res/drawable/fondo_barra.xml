@@ -2,8 +2,8 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="?attr/themeAcento"/>
     <corners
-        android:topLeftRadius="4dp"
-        android:topRightRadius="4dp"
+        android:topLeftRadius="6dp"
+        android:topRightRadius="6dp"
         android:bottomLeftRadius="0dp"
         android:bottomRightRadius="0dp"/>
 </shape>

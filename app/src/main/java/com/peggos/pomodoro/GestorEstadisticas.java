@@ -61,7 +61,7 @@ public class GestorEstadisticas {
         editor.putLong("ultimo_dia_racha", hoy);
     }
 
-    private long obtenerDiaActual() {
+    public static long obtenerDiaActual() {
         long ahora = System.currentTimeMillis();
         int offset = java.util.TimeZone.getDefault().getOffset(ahora);
         return (ahora + offset) / 86400000L;
