@@ -21,23 +21,28 @@ public class IslaDinamica {
 
     private static final String EXTRA_ENFOQUE = "miui.focus.notification";
     private static final String EXTRA_PARAM = "miui.focus.param";
-    private static final String EXTRA_PARAM_V2 = "miui.focus.param.v2";
     private static final String EXTRA_IMAGENES = "miui.focus.pics";
+    private static final String EXTRA_SIN_REFLOTAR = "miui.island.updateNoFloat";
     private static final String CLAVE_IMAGEN = "miui.focus.pic_ticker";
+    private static final String EXTRA_PROMOVER = "android.requestPromotedOngoing";
 
     private static final int PROTOCOLO = 1;
     private static final int TIMER_DESCENDENTE = 2;
     private static final int TIPO_TEXTO = 1;
     private static final int SDK_ACTIVIDADES_EN_VIVO = 36;
 
+
     public static void aplicar(Context contexto, Notification.Builder constructor, String titulo,
-            String detalle, long tiempoRestante, long duracionTotal) {
+            String detalle, long tiempoRestante, long duracionTotal, boolean primeraVez) {
         int acento = colorAcento(contexto);
         long restante = Math.max(0L, tiempoRestante);
         long total = Math.max(restante, duracionTotal);
 
-        aplicarActividadEnVivo(contexto, constructor, restante, total, acento);
-        aplicarEnfoqueXiaomi(contexto, constructor, titulo, detalle, restante, total, acento);
+        if (Build.VERSION.SDK_INT >= SDK_ACTIVIDADES_EN_VIVO) {
+            aplicarActividadEnVivo(contexto, constructor, restante, total, acento);
+            return;
+        }
+        aplicarEnfoqueXiaomi(contexto, constructor, titulo, detalle, restante, total, acento, primeraVez);
     }
 
     public static String formatearRestante(long tiempoRestante) {
@@ -52,90 +57,103 @@ public class IslaDinamica {
         int total = (int) Math.max(1L, duracionTotal);
         int transcurrido = (int) Math.min(total, Math.max(0L, duracionTotal - tiempoRestante));
 
-        Notification.ProgressStyle estilo = new Notification.ProgressStyle()
-                .setProgress(transcurrido)
-                .setStyledByProgress(true)
-                .setProgressSegments(Collections.singletonList(
-                        new Notification.ProgressStyle.Segment(total).setColor(acento)))
-                .setProgressTrackerIcon(Icon.createWithResource(contexto, R.drawable.ic_gato_notificacion));
+        try {
+            Notification.ProgressStyle estilo = new Notification.ProgressStyle()
+                    .setProgress(transcurrido)
+                    .setStyledByProgress(true)
+                    .setProgressSegments(Collections.singletonList(
+                            new Notification.ProgressStyle.Segment(total).setColor(acento)))
+                    .setProgressTrackerIcon(Icon.createWithResource(contexto, R.drawable.ic_gato_notificacion));
 
-        constructor.setStyle(estilo)
-                .setShortCriticalText(formatearRestante(tiempoRestante))
-                .setColor(acento)
-                .setRequestPromotedOngoing(true);
+            Bundle promocion = new Bundle();
+            promocion.putBoolean(EXTRA_PROMOVER, true);
+
+            constructor.setStyle(estilo)
+                    .setShortCriticalText(formatearRestante(tiempoRestante))
+                    .setColor(acento)
+                    .addExtras(promocion);
+        } catch (Throwable error) {
+            constructor.setColor(acento);
+        }
     }
 
     private static void aplicarEnfoqueXiaomi(Context contexto, Notification.Builder constructor,
-            String titulo, String detalle, long tiempoRestante, long duracionTotal, int acento) {
-        String param = construirParametro(titulo, detalle, tiempoRestante, duracionTotal, acento);
-        String paramHeredado = construirParametroHeredado(titulo, detalle, tiempoRestante);
-        if (param == null || paramHeredado == null) return;
+            String titulo, String detalle, long tiempoRestante, long duracionTotal, int acento,
+            boolean primeraVez) {
+        String param = construirParametro(titulo, detalle, tiempoRestante, duracionTotal, acento, primeraVez);
+        if (param == null) return;
 
         Bundle imagenes = new Bundle();
         imagenes.putParcelable(CLAVE_IMAGEN, Icon.createWithResource(contexto, R.drawable.ic_gato_notificacion));
 
         Bundle extras = new Bundle();
         extras.putBoolean(EXTRA_ENFOQUE, true);
-        extras.putString(EXTRA_PARAM, paramHeredado);
-        extras.putString(EXTRA_PARAM_V2, param);
+        extras.putString(EXTRA_PARAM, param);
         extras.putBundle(EXTRA_IMAGENES, imagenes);
+        extras.putBoolean(EXTRA_SIN_REFLOTAR, !primeraVez);
 
         constructor.addExtras(extras);
     }
 
     private static String construirParametro(String titulo, String detalle, long tiempoRestante,
-            long duracionTotal, int acento) {
+            long duracionTotal, int acento, boolean primeraVez) {
         try {
-            JSONObject informacionBase = new JSONObject()
-                    .put("type", TIPO_TEXTO)
-                    .put("title", titulo)
-                    .put("content", detalle)
-                    .put("picFunction", CLAVE_IMAGEN);
+            String ticker = titulo + " · " + formatearRestante(tiempoRestante);
+            String colorAcento = enHexadecimal(acento);
 
             JSONObject informacionCronometro = new JSONObject()
-                    .put("type", TIMER_DESCENDENTE)
+                    .put("timerType", TIMER_DESCENDENTE)
                     .put("timerWhen", tiempoRestante)
                     .put("timerTotal", duracionTotal)
                     .put("timerSystemCurrent", SystemClock.elapsedRealtime());
 
+            JSONObject informacionBase = new JSONObject()
+                    .put("type", TIPO_TEXTO)
+                    .put("title", titulo)
+                    .put("content", detalle)
+                    .put("colorTitle", colorAcento)
+                    .put("picFunction", CLAVE_IMAGEN);
+
+            JSONObject informacionDestacada = new JSONObject()
+                    .put("type", TIPO_TEXTO)
+                    .put("title", titulo)
+                    .put("colorTitle", colorAcento)
+                    .put("picFunction", CLAVE_IMAGEN)
+                    .put("timerInfo", informacionCronometro);
+
             JSONObject informacionProgreso = new JSONObject()
                     .put("progress", (int) ((duracionTotal - tiempoRestante) * 100L / Math.max(1L, duracionTotal)))
-                    .put("colorProgress", enHexadecimal(acento))
-                    .put("colorProgressEnd", enHexadecimal(acento));
+                    .put("colorProgress", colorAcento)
+                    .put("colorProgressEnd", colorAcento);
 
             JSONObject informacionImagen = new JSONObject()
                     .put("type", TIPO_TEXTO)
                     .put("pic", CLAVE_IMAGEN);
 
-            return new JSONObject()
+            JSONObject plantilla = new JSONObject()
                     .put("protocol", PROTOCOLO)
                     .put("enableFloat", true)
                     .put("updatable", true)
+                    .put("islandFirstFloat", primeraVez)
                     .put("aodTitle", titulo)
-                    .put("ticker", titulo + " · " + formatearRestante(tiempoRestante))
+                    .put("ticker", ticker)
                     .put("tickerPic", CLAVE_IMAGEN)
                     .put("baseInfo", informacionBase)
-                    .put("timerInfo", informacionCronometro)
+                    .put("highlightInfo", informacionDestacada)
                     .put("progressInfo", informacionProgreso)
-                    .put("picInfo", informacionImagen)
-                    .toString();
-        } catch (JSONException error) {
-            return null;
-        }
-    }
+                    .put("picInfo", informacionImagen);
 
-    private static String construirParametroHeredado(String titulo, String detalle, long tiempoRestante) {
-        try {
             return new JSONObject()
                     .put("protocol", PROTOCOLO)
                     .put("enableFloat", true)
                     .put("updatable", true)
-                    .put("ticker", titulo + " · " + formatearRestante(tiempoRestante))
+                    .put("ticker", ticker)
                     .put("tickerPic", CLAVE_IMAGEN)
                     .put("title", titulo)
                     .put("content", detalle)
                     .put("timerType", TIMER_DESCENDENTE)
                     .put("timerWhen", tiempoRestante)
+                    .put("param_v2", plantilla)
                     .toString();
         } catch (JSONException error) {
             return null;

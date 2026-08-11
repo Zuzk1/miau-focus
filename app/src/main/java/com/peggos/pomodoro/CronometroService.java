@@ -177,6 +177,11 @@ public class CronometroService extends Service {
     }
 
     private android.app.Notification construirNotificacionProgreso(long finEstimado, boolean esDescanso) {
+        return construirNotificacionProgreso(finEstimado, esDescanso, true);
+    }
+
+    private android.app.Notification construirNotificacionProgreso(long finEstimado, boolean esDescanso,
+            boolean primeraVez) {
         Intent intentAbrirApp = new Intent(this, CronometroActivity.class);
         intentAbrirApp.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         PendingIntent intentoPendienteAbrirApp = PendingIntent.getActivity(
@@ -201,7 +206,7 @@ public class CronometroService extends Service {
                         .setContentIntent(intentoPendienteAbrirApp);
 
         IslaDinamica.aplicar(this, constructor, esDescanso ? "Descanso" : "Enfoque",
-                obtenerTareaActiva(), tiempoRestante, duracionFaseActual(esDescanso));
+                obtenerTareaActiva(), tiempoRestante, duracionFaseActual(esDescanso), primeraVez);
 
         return constructor.build();
     }
@@ -251,7 +256,7 @@ public class CronometroService extends Service {
             return;
         }
         NotificationManagerCompat.from(this).notify(ID_NOTIFICACION_PROGRESO,
-                construirNotificacionProgreso(finEstimadoActual, esDescansoActual));
+                construirNotificacionProgreso(finEstimadoActual, esDescansoActual, false));
     }
 
     private void notificarFinalizacion(boolean esDescanso) {
