@@ -49,6 +49,8 @@ public class CronometroActivity extends BaseActivity {
 
     public static final String EXTRA_OMITIR_SPLASH = "extra_omitir_splash";
 
+    private static final String CLAVE_PERMISO_NOTIFICACIONES_BLOQUEADO = "permiso_notificaciones_bloqueado";
+
     private long tiempoRestante = TIEMPO_ENFOQUE;
     private boolean estaCorriendo = false;
     private boolean esDescanso = false;
@@ -259,19 +261,23 @@ public class CronometroActivity extends BaseActivity {
 
     private void solicitarPermisoNotificacionesConTarjeta(Runnable alFinalizar) {
         SharedPreferences preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
-        if (preferencias.getBoolean("permiso_notificaciones_solicitado", false)) {
+        if (preferencias.getBoolean(CLAVE_PERMISO_NOTIFICACIONES_BLOQUEADO, false)) {
             alFinalizar.run();
             return;
         }
 
-        preferencias.edit().putBoolean("permiso_notificaciones_solicitado", true).apply();
-
+        final boolean[] pidioElPermiso = {false};
         DialogoPermiso.mostrar(this,
                 "¡No te pierdas el aviso!",
                 "Activa las notificaciones para que Miau Focus te avise apenas termine tu sesión de enfoque o descanso.",
                 "Activar notificaciones",
-                () -> solicitarPermisoNotificaciones.launch(Manifest.permission.POST_NOTIFICATIONS),
-                alFinalizar);
+                () -> {
+                    pidioElPermiso[0] = true;
+                    solicitarPermisoNotificaciones.launch(Manifest.permission.POST_NOTIFICATIONS);
+                },
+                () -> {
+                    if (!pidioElPermiso[0]) alFinalizar.run();
+                });
     }
 
     private void solicitarPermisoPantallaCompleta() {
@@ -286,8 +292,6 @@ public class CronometroActivity extends BaseActivity {
 
         NotificationManager gestorNotificaciones = getSystemService(NotificationManager.class);
         if (gestorNotificaciones != null && !gestorNotificaciones.canUseFullScreenIntent()) {
-            preferencias.edit().putBoolean("permiso_pantalla_completa_solicitado", true).apply();
-
             DialogoPermiso.mostrar(this,
                     "¡No te pierdas la alerta!",
                     "Para que la alerta de fin de sesión se muestre en pantalla completa aunque estés usando otra app, activa el permiso de pantalla completa para Miau Focus.",
@@ -296,7 +300,8 @@ public class CronometroActivity extends BaseActivity {
                         Intent intentConfiguracion = new Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT);
                         intentConfiguracion.setData(Uri.parse("package:" + getPackageName()));
                         startActivity(intentConfiguracion);
-                    });
+                    },
+                    () -> preferencias.edit().putBoolean("permiso_pantalla_completa_solicitado", true).apply());
         }
     }
 
@@ -340,7 +345,14 @@ public class CronometroActivity extends BaseActivity {
         }
 
         solicitarPermisoNotificaciones = registerForActivityResult(
-                new ActivityResultContracts.RequestPermission(), concedido -> { });
+                new ActivityResultContracts.RequestPermission(), concedido -> {
+                    if (!concedido && Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
+                            && !shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS)) {
+                        getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE)
+                                .edit().putBoolean(CLAVE_PERMISO_NOTIFICACIONES_BLOQUEADO, true).apply();
+                    }
+                    solicitarPermisoPantallaCompleta();
+                });
 
         View splashOverlay = findViewById(R.id.splashOverlay);
         boolean omitirSplash = getIntent().getBooleanExtra(EXTRA_OMITIR_SPLASH, false);
