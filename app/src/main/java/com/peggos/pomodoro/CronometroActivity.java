@@ -110,6 +110,10 @@ public class CronometroActivity extends BaseActivity {
 
                 detenerServicioCronometro();
 
+                GestorAlertas.mostrarAlertaPomodoro(this,
+                        "¡Te estás distrayendo!",
+                        "Tu cronómetro está en pausa. Vuelve a Miau Focus para continuar");
+
                 Intent intentAlerta = new Intent(this, alertaActivity.class);
                 intentAlerta.putExtra(GestorAlertas.EXTRA_ES_INFRACCION, true);
                 intentAlerta.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -168,6 +168,7 @@ public class CronometroService extends Service {
                 .setContentText("Atiende la alerta para continuar")
                 .setOngoing(true)
                 .setOnlyAlertOnce(true)
+                .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
                 .setPriority(NotificationCompat.PRIORITY_LOW)
                 .build();
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
@@ -203,6 +204,7 @@ public class CronometroService extends Service {
                         .setWhen(finEstimado)
                         .setShowWhen(true)
                         .setCategory(android.app.Notification.CATEGORY_STOPWATCH)
+                        .setForegroundServiceBehavior(android.app.Notification.FOREGROUND_SERVICE_IMMEDIATE)
                         .setContentIntent(intentoPendienteAbrirApp);
 
         IslaDinamica.aplicar(this, constructor, esDescanso ? "Descanso" : "Enfoque",
