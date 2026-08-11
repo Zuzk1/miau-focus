@@ -33,6 +33,7 @@ public class CronometroService extends Service {
     private Runnable accionFinalizacion;
     private Runnable accionAvisoFinDescanso;
     private Runnable accionAvisoSancionDescanso;
+    private Runnable accionRefrescoIsla;
     private long finEstimadoActual;
     private boolean esDescansoActual;
     private long tiempoRestantePausado = -1;
@@ -69,8 +70,6 @@ public class CronometroService extends Service {
             return START_STICKY;
         }
 
-        startForeground(ID_NOTIFICACION_PROGRESO, construirNotificacionProgreso(finEstimadoActual, esDescansoActual));
-
         long tiempoRestante = intent.getLongExtra(EXTRA_TIEMPO_RESTANTE, 0);
         boolean esDescanso = intent.getBooleanExtra(EXTRA_ES_DESCANSO, false);
         Log.d(ETIQUETA_DEPURACION, "Servicio: iniciando seguimiento, tiempoRestante=" + tiempoRestante + " esDescanso=" + esDescanso);
@@ -97,6 +96,8 @@ public class CronometroService extends Service {
 
         Log.d(ETIQUETA_DEPURACION, "Servicio: llamando startForeground");
         startForeground(ID_NOTIFICACION_PROGRESO, construirNotificacionProgreso(finEstimado, esDescanso));
+
+        programarRefrescoIsla();
 
         accionFinalizacion = () -> {
             Log.d(ETIQUETA_DEPURACION, "Servicio: tiempo agotado, notificando finalizacion");
@@ -145,6 +146,7 @@ public class CronometroService extends Service {
         }
         manejador.removeCallbacks(accionFinalizacion);
         accionFinalizacion = null;
+        detenerRefrescoIsla();
         if (accionAvisoFinDescanso != null) {
             manejador.removeCallbacks(accionAvisoFinDescanso);
             accionAvisoFinDescanso = null;
@@ -180,19 +182,76 @@ public class CronometroService extends Service {
         PendingIntent intentoPendienteAbrirApp = PendingIntent.getActivity(
                 this, 0, intentAbrirApp, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        return new NotificationCompat.Builder(this, GestorAlertas.CANAL_PROGRESO_ID)
-                .setSmallIcon(R.drawable.ic_gato_notificacion)
-                .setContentTitle(esDescanso ? "Descanso en curso" : "Sesión de enfoque en curso")
-                .setContentText("Toca para volver a Miau Focus")
-                .setOngoing(true)
-                .setOnlyAlertOnce(true)
-                .setUsesChronometer(true)
-                .setChronometerCountDown(true)
-                .setWhen(finEstimado)
-                .setPriority(NotificationCompat.PRIORITY_LOW)
-                .setCategory(NotificationCompat.CATEGORY_STOPWATCH)
-                .setContentIntent(intentoPendienteAbrirApp)
-                .build();
+        String titulo = esDescanso ? "Descanso en curso" : "Sesión de enfoque en curso";
+        long tiempoRestante = finEstimado - System.currentTimeMillis();
+        if (tiempoRestante < 0) tiempoRestante = 0;
+
+        android.app.Notification.Builder constructor =
+                new android.app.Notification.Builder(this, GestorAlertas.CANAL_PROGRESO_ID)
+                        .setSmallIcon(R.drawable.ic_gato_notificacion)
+                        .setContentTitle(titulo)
+                        .setContentText("Toca para volver a Miau Focus")
+                        .setOngoing(true)
+                        .setOnlyAlertOnce(true)
+                        .setUsesChronometer(true)
+                        .setChronometerCountDown(true)
+                        .setWhen(finEstimado)
+                        .setShowWhen(true)
+                        .setCategory(android.app.Notification.CATEGORY_STOPWATCH)
+                        .setContentIntent(intentoPendienteAbrirApp);
+
+        IslaDinamica.aplicar(this, constructor, esDescanso ? "Descanso" : "Enfoque",
+                obtenerTareaActiva(), tiempoRestante, duracionFaseActual(esDescanso));
+
+        return constructor.build();
+    }
+
+    private long duracionFaseActual(boolean esDescanso) {
+        GestorConfiguracion configuracion = new GestorConfiguracion(this);
+        if (!esDescanso) {
+            return configuracion.getMinutosTrabajo() * 60000L;
+        }
+        return GestorAlertas.getCicloActualActual(this) == 1
+                ? configuracion.getMinutosDescansoLargo() * 60000L
+                : configuracion.getMinutosDescansoCorto() * 60000L;
+    }
+
+    private String obtenerTareaActiva() {
+        String tareaActiva = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, MODE_PRIVATE)
+                .getString("tarea_activa_actual", "Ninguna");
+        if (tareaActiva == null || tareaActiva.isEmpty() || tareaActiva.equals("Ninguna")) {
+            return "Miau Focus";
+        }
+        return tareaActiva;
+    }
+
+    private void programarRefrescoIsla() {
+        detenerRefrescoIsla();
+        accionRefrescoIsla = new Runnable() {
+            @Override
+            public void run() {
+                if (accionFinalizacion == null) return;
+                refrescarNotificacionProgreso();
+                manejador.postDelayed(this, IslaDinamica.INTERVALO_REFRESCO);
+            }
+        };
+        manejador.postDelayed(accionRefrescoIsla, IslaDinamica.INTERVALO_REFRESCO);
+    }
+
+    private void detenerRefrescoIsla() {
+        if (accionRefrescoIsla != null) {
+            manejador.removeCallbacks(accionRefrescoIsla);
+            accionRefrescoIsla = null;
+        }
+    }
+
+    private void refrescarNotificacionProgreso() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        NotificationManagerCompat.from(this).notify(ID_NOTIFICACION_PROGRESO,
+                construirNotificacionProgreso(finEstimadoActual, esDescansoActual));
     }
 
     private void notificarFinalizacion(boolean esDescanso) {
@@ -248,6 +307,7 @@ public class CronometroService extends Service {
 
     private void detenerServicio() {
         Log.d(ETIQUETA_DEPURACION, "Servicio: detenerServicio");
+        detenerRefrescoIsla();
         if (accionFinalizacion != null) {
             manejador.removeCallbacks(accionFinalizacion);
             accionFinalizacion = null;
@@ -301,6 +361,7 @@ public class CronometroService extends Service {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        detenerRefrescoIsla();
         if (accionFinalizacion != null) {
             manejador.removeCallbacks(accionFinalizacion);
             accionFinalizacion = null;
