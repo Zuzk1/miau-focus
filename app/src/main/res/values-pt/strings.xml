@@ -197,6 +197,20 @@
     <string name="config_activar_descanso_largo_texto">Ao completares os 4 ciclos fazes uma pausa mais longa. Se vais continuar a estudar depois, é recomendável ativá-la; se vais terminar, podes desativá-la e o cronómetro para ao completar o quarto ciclo.</string>
     <string name="config_duracion_descanso_largo">DURAÇÃO DA PAUSA LONGA</string>
     <string name="config_guardar">GUARDAR CONFIGURAÇÃO</string>
+    <string name="config_modo_bloques">Por blocos</string>
+    <string name="config_modo_horario">Por horário</string>
+    <string name="config_modo_bloqueado">Há uma sessão ativa. Termine ou cancele a sessão para alterar o modo de configuração.</string>
+    <string name="config_horario_titulo">HORÁRIO DE ESTUDO</string>
+    <string name="config_horario_texto">Selecione a hora de início e a hora de fim. Os blocos de foco e as pausas são distribuídos automaticamente.</string>
+    <string name="config_horario_inicio">Início</string>
+    <string name="config_horario_fin">Fim</string>
+    <string name="config_horario_resumen_titulo">RESUMO DA SESSÃO</string>
+    <string name="config_horario_bloques">4 blocos de foco de %1$d min</string>
+    <string name="config_horario_descansos">3 pausas curtas de %1$d min</string>
+    <string name="config_horario_termino">Hora de fim: %1$s</string>
+    <string name="config_horario_sin_largo">Sem pausa longa: o cronómetro para ao terminar o quarto bloco.</string>
+    <string name="config_horario_muy_corto">A sessão deve durar pelo menos 30 minutos. Para sessões mais curtas, utilize o modo Por blocos.</string>
+    <string name="config_horario_muy_largo">A sessão não pode ultrapassar 3 h 50 min. Para mais tempo, divida-a em duas sessões.</string>
     <string name="toast_config_guardada">Configuração guardada</string>
     <string name="toast_no_cambiar_tiempos">Não podes alterar os tempos enquanto houver uma sessão ativa</string>
 

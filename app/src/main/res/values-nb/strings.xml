@@ -197,6 +197,20 @@
     <string name="config_activar_descanso_largo_texto">Når du har fullført de 4 syklusene, tar du en lengre pause. Skal du fortsette å studere etterpå, anbefales det å ha den på. Skal du avslutte, kan du slå den av, og tidtakeren stopper når fjerde syklus er ferdig.</string>
     <string name="config_duracion_descanso_largo">LENGDE PÅ LANG PAUSE</string>
     <string name="config_guardar">LAGRE INNSTILLINGER</string>
+    <string name="config_modo_bloques">Etter blokker</string>
+    <string name="config_modo_horario">Etter klokkeslett</string>
+    <string name="config_modo_bloqueado">En økt er aktiv. Fullfør eller avbryt økten for å endre innstillingsmodus.</string>
+    <string name="config_horario_titulo">STUDIETID</string>
+    <string name="config_horario_texto">Velg starttid og sluttid. Fokusblokkene og pausene fordeles automatisk.</string>
+    <string name="config_horario_inicio">Start</string>
+    <string name="config_horario_fin">Slutt</string>
+    <string name="config_horario_resumen_titulo">OPPSUMMERING AV ØKTEN</string>
+    <string name="config_horario_bloques">4 fokusblokker på %1$d min</string>
+    <string name="config_horario_descansos">3 korte pauser på %1$d min</string>
+    <string name="config_horario_termino">Sluttid: %1$s</string>
+    <string name="config_horario_sin_largo">Ingen lang pause: tidtakeren stopper etter den fjerde blokken.</string>
+    <string name="config_horario_muy_corto">Økten må vare minst 30 minutter. For kortere økter, bruk modusen Etter blokker.</string>
+    <string name="config_horario_muy_largo">Økten kan ikke vare lenger enn 3 t 50 min. For mer tid, del den i to økter.</string>
     <string name="toast_config_guardada">Innstillingene er lagret</string>
     <string name="toast_no_cambiar_tiempos">Du kan ikke endre tidene mens en økt er aktiv</string>
 

@@ -200,6 +200,20 @@
     <string name="config_activar_descanso_largo_texto">Al completar los 4 ciclos se toma un descanso más largo. Si vas a seguir estudiando después, se recomienda activarlo; si vas a terminar, puedes desactivarlo y el cronómetro se detendrá al completar el cuarto ciclo.</string>
     <string name="config_duracion_descanso_largo">DURACIÓN DEL DESCANSO LARGO</string>
     <string name="config_guardar">GUARDAR CONFIGURACIÓN</string>
+    <string name="config_modo_bloques">Por bloques</string>
+    <string name="config_modo_horario">Por horario</string>
+    <string name="config_modo_bloqueado">Hay una sesión activa. Termina o cancela la sesión para poder cambiar el modo de configuración.</string>
+    <string name="config_horario_titulo">HORARIO DE ESTUDIO</string>
+    <string name="config_horario_texto">Selecciona la hora de inicio y la hora de término. Los bloques de enfoque y los descansos se distribuyen automáticamente.</string>
+    <string name="config_horario_inicio">Inicio</string>
+    <string name="config_horario_fin">Fin</string>
+    <string name="config_horario_resumen_titulo">RESUMEN DE LA SESIÓN</string>
+    <string name="config_horario_bloques">4 bloques de enfoque de %1$d min</string>
+    <string name="config_horario_descansos">3 descansos cortos de %1$d min</string>
+    <string name="config_horario_termino">Hora de término: %1$s</string>
+    <string name="config_horario_sin_largo">Sin descanso largo: el cronómetro se detiene al finalizar el cuarto bloque.</string>
+    <string name="config_horario_muy_corto">La sesión debe durar al menos 30 minutos. Para sesiones más cortas, utiliza el modo Por bloques.</string>
+    <string name="config_horario_muy_largo">La sesión no puede superar 3 h 50 min. Para más tiempo, divídela en dos sesiones.</string>
     <string name="toast_config_guardada">Configuración guardada</string>
     <string name="toast_no_cambiar_tiempos">No puedes cambiar los tiempos mientras hay una sesión activa</string>
 

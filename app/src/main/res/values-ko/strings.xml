@@ -194,6 +194,20 @@
     <string name="config_activar_descanso_largo_texto">4사이클을 마치면 더 긴 휴식을 갖습니다. 뒤에도 계속 공부할 거라면 켜 두기를 권합니다. 여기서 끝낼 거라면 꺼도 되며, 네 번째 사이클에서 타이머가 멈춥니다.</string>
     <string name="config_duracion_descanso_largo">긴 휴식의 길이</string>
     <string name="config_guardar">설정 저장</string>
+    <string name="config_modo_bloques">블록으로 설정</string>
+    <string name="config_modo_horario">시간대로 설정</string>
+    <string name="config_modo_bloqueado">진행 중인 세션이 있습니다. 설정 모드를 바꾸려면 세션을 끝내거나 취소하세요.</string>
+    <string name="config_horario_titulo">공부 시간대</string>
+    <string name="config_horario_texto">시작 시간과 종료 시간을 선택하세요. 집중 블록과 휴식은 자동으로 배분됩니다.</string>
+    <string name="config_horario_inicio">시작</string>
+    <string name="config_horario_fin">종료</string>
+    <string name="config_horario_resumen_titulo">세션 요약</string>
+    <string name="config_horario_bloques">%1$d분 집중 블록 4개</string>
+    <string name="config_horario_descansos">%1$d분 짧은 휴식 3번</string>
+    <string name="config_horario_termino">종료 시간: %1$s</string>
+    <string name="config_horario_sin_largo">긴 휴식 없음: 네 번째 블록이 끝나면 타이머가 멈춥니다.</string>
+    <string name="config_horario_muy_corto">세션은 최소 30분이어야 합니다. 더 짧은 세션은 블록으로 설정 모드를 사용하세요.</string>
+    <string name="config_horario_muy_largo">세션은 3시간 50분을 넘을 수 없습니다. 더 오래 하려면 두 번으로 나누세요.</string>
     <string name="toast_config_guardada">설정을 저장했습니다</string>
     <string name="toast_no_cambiar_tiempos">세션이 진행 중일 때는 시간을 바꿀 수 없습니다</string>
 

@@ -203,6 +203,20 @@
     <string name="config_activar_descanso_largo_texto">Po ukończeniu 4 cykli bierzesz dłuższą przerwę. Jeśli zamierzasz uczyć się dalej, warto ją włączyć; jeśli kończysz, możesz ją wyłączyć, a licznik zatrzyma się po czwartym cyklu.</string>
     <string name="config_duracion_descanso_largo">DŁUGOŚĆ DŁUGIEJ PRZERWY</string>
     <string name="config_guardar">ZAPISZ USTAWIENIA</string>
+    <string name="config_modo_bloques">Według bloków</string>
+    <string name="config_modo_horario">Według godzin</string>
+    <string name="config_modo_bloqueado">Trwa aktywna sesja. Zakończ lub anuluj sesję, aby zmienić tryb ustawień.</string>
+    <string name="config_horario_titulo">GODZINY NAUKI</string>
+    <string name="config_horario_texto">Wybierz godzinę rozpoczęcia i zakończenia. Bloki skupienia i przerwy zostaną rozłożone automatycznie.</string>
+    <string name="config_horario_inicio">Początek</string>
+    <string name="config_horario_fin">Koniec</string>
+    <string name="config_horario_resumen_titulo">PODSUMOWANIE SESJI</string>
+    <string name="config_horario_bloques">4 bloki skupienia po %1$d min</string>
+    <string name="config_horario_descansos">3 krótkie przerwy po %1$d min</string>
+    <string name="config_horario_termino">Godzina zakończenia: %1$s</string>
+    <string name="config_horario_sin_largo">Bez długiej przerwy: minutnik zatrzyma się po czwartym bloku.</string>
+    <string name="config_horario_muy_corto">Sesja musi trwać co najmniej 30 minut. Do krótszych sesji użyj trybu Według bloków.</string>
+    <string name="config_horario_muy_largo">Sesja nie może przekraczać 3 h 50 min. Jeśli potrzebujesz więcej czasu, podziel ją na dwie sesje.</string>
     <string name="toast_config_guardada">Ustawienia zapisane</string>
     <string name="toast_no_cambiar_tiempos">Nie możesz zmieniać czasów, gdy trwa sesja</string>
 

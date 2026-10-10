@@ -16,10 +16,45 @@ public class GestorConfiguracion {
     private static final String CLAVE_MODO_SILENCIOSO_HABILITADO = "modo_silencioso_habilitado";
     private static final String CLAVE_HORA_INICIO_SILENCIO = "hora_inicio_silencio";
     private static final String CLAVE_HORA_FIN_SILENCIO = "hora_fin_silencio";
+    private static final String CLAVE_MODO_HORARIO = "modo_horario_habilitado";
+    private static final String CLAVE_INICIO_HORARIO = "inicio_horario_minutos";
+    private static final String CLAVE_FIN_HORARIO = "fin_horario_minutos";
 
     public static final int MINUTOS_TRABAJO_PREDETERMINADO = 25;
     public static final int MINUTOS_DESCANSO_CORTO_PREDETERMINADO = 5;
     public static final int MINUTOS_DESCANSO_LARGO_PREDETERMINADO = 15;
+
+    public static final int DURACION_MINIMA_HORARIO = 30;
+    public static final int DURACION_MAXIMA_HORARIO = 230;
+    public static final int INICIO_HORARIO_PREDETERMINADO = 16 * 60;
+    public static final int FIN_HORARIO_PREDETERMINADO = 18 * 60;
+    private static final int MINUTOS_POR_DIA = 24 * 60;
+
+    public static class Reparto {
+        public final int minutosEnfoque;
+        public final int minutosDescanso;
+
+        Reparto(int minutosEnfoque, int minutosDescanso) {
+            this.minutosEnfoque = minutosEnfoque;
+            this.minutosDescanso = minutosDescanso;
+        }
+
+        public int duracionTotal() {
+            return minutosEnfoque * 4 + minutosDescanso * 3;
+        }
+    }
+
+    public static int duracionHorario(int inicio, int fin) {
+        int duracion = fin - inicio;
+        return duracion <= 0 ? duracion + MINUTOS_POR_DIA : duracion;
+    }
+
+    public static Reparto calcularReparto(int duracion) {
+        if (duracion < DURACION_MINIMA_HORARIO || duracion > DURACION_MAXIMA_HORARIO) return null;
+        int descanso = Math.max(1, Math.round(duracion / 23f));
+        int enfoque = (duracion - descanso * 3) / 4;
+        return new Reparto(enfoque, descanso);
+    }
 
     private final SharedPreferences prefs;
 
@@ -28,13 +63,50 @@ public class GestorConfiguracion {
     }
 
     public int getMinutosTrabajo() {
+        Reparto reparto = getRepartoHorarioActivo();
+        if (reparto != null) return reparto.minutosEnfoque;
+        return getMinutosTrabajoPorBloques();
+    }
+
+    public int getMinutosDescansoCorto() {
+        Reparto reparto = getRepartoHorarioActivo();
+        if (reparto != null) return reparto.minutosDescanso;
+        return getMinutosDescansoCortoPorBloques();
+    }
+
+    public int getMinutosTrabajoPorBloques() {
         if (isOpcionesPredeterminadasHabilitadas()) return MINUTOS_TRABAJO_PREDETERMINADO;
         return prefs.getInt(CLAVE_MINUTOS_TRABAJO, MINUTOS_TRABAJO_PREDETERMINADO);
     }
 
-    public int getMinutosDescansoCorto() {
+    public int getMinutosDescansoCortoPorBloques() {
         if (isOpcionesPredeterminadasHabilitadas()) return MINUTOS_DESCANSO_CORTO_PREDETERMINADO;
         return prefs.getInt(CLAVE_MINUTOS_DESCANSO_CORTO, MINUTOS_DESCANSO_CORTO_PREDETERMINADO);
+    }
+
+    private Reparto getRepartoHorarioActivo() {
+        if (!isModoHorarioHabilitado()) return null;
+        return calcularReparto(duracionHorario(getInicioHorario(), getFinHorario()));
+    }
+
+    public boolean isModoHorarioHabilitado() {
+        return prefs.getBoolean(CLAVE_MODO_HORARIO, false);
+    }
+
+    public int getInicioHorario() {
+        return prefs.getInt(CLAVE_INICIO_HORARIO, INICIO_HORARIO_PREDETERMINADO);
+    }
+
+    public int getFinHorario() {
+        return prefs.getInt(CLAVE_FIN_HORARIO, FIN_HORARIO_PREDETERMINADO);
+    }
+
+    public void guardarHorario(boolean habilitado, int inicio, int fin) {
+        prefs.edit()
+                .putBoolean(CLAVE_MODO_HORARIO, habilitado)
+                .putInt(CLAVE_INICIO_HORARIO, inicio)
+                .putInt(CLAVE_FIN_HORARIO, fin)
+                .apply();
     }
 
     public int getMinutosDescansoLargo() {
@@ -59,6 +131,11 @@ public class GestorConfiguracion {
     }
 
     public boolean isDescansoLargoHabilitado() {
+        if (getRepartoHorarioActivo() != null) return false;
+        return isDescansoLargoHabilitadoPorBloques();
+    }
+
+    public boolean isDescansoLargoHabilitadoPorBloques() {
         return prefs.getBoolean(CLAVE_DESCANSO_LARGO_HABILITADO, true);
     }
 

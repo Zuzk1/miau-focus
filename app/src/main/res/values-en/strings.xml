@@ -197,6 +197,20 @@
     <string name="config_activar_descanso_largo_texto">After completing the 4 cycles you take a longer break. If you plan to keep studying afterwards, turning it on is recommended; if you plan to stop, you can turn it off and the timer will stop once the fourth cycle is done.</string>
     <string name="config_duracion_descanso_largo">LONG BREAK LENGTH</string>
     <string name="config_guardar">SAVE SETTINGS</string>
+    <string name="config_modo_bloques">By blocks</string>
+    <string name="config_modo_horario">By schedule</string>
+    <string name="config_modo_bloqueado">A session is active. Finish or cancel the session to change the configuration mode.</string>
+    <string name="config_horario_titulo">STUDY SCHEDULE</string>
+    <string name="config_horario_texto">Select the start time and the end time. Focus blocks and breaks are distributed automatically.</string>
+    <string name="config_horario_inicio">Start</string>
+    <string name="config_horario_fin">End</string>
+    <string name="config_horario_resumen_titulo">SESSION SUMMARY</string>
+    <string name="config_horario_bloques">4 focus blocks of %1$d min</string>
+    <string name="config_horario_descansos">3 short breaks of %1$d min</string>
+    <string name="config_horario_termino">Finish time: %1$s</string>
+    <string name="config_horario_sin_largo">No long break: the timer stops after the fourth block.</string>
+    <string name="config_horario_muy_corto">The session must last at least 30 minutes. For shorter sessions, use By blocks mode.</string>
+    <string name="config_horario_muy_largo">The session cannot exceed 3 h 50 min. For longer, split it into two sessions.</string>
     <string name="toast_config_guardada">Settings saved</string>
     <string name="toast_no_cambiar_tiempos">You cannot change the times while a session is active</string>
 

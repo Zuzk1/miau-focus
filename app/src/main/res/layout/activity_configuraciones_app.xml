@@ -76,153 +76,77 @@
                 android:textSize="13sp"
                 android:visibility="gone" />
 
-            <LinearLayout
-                android:id="@+id/llOpcionesPredeterminadas"
+            <TextView
+                android:id="@+id/tvModoBloqueadoAviso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/carta_oscura"
+                android:fontFamily="@font/poppins_regular"
+                android:justificationMode="inter_word"
+                android:padding="14dp"
+                android:text="@string/config_modo_bloqueado"
+                android:textColor="?attr/themeTextoSecundario"
+                android:textSize="13sp"
+                android:visibility="gone" />
+
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/tgModoTiempos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/carta_oscura"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                app:selectionRequired="true"
+                app:singleSelection="true">
 
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnModoBloques"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:fontFamily="@font/poppins_semibold"
+                    android:paddingVertical="12dp"
+                    android:text="@string/config_modo_bloques"
+                    android:textColor="@color/segmento_texto"
+                    app:backgroundTint="@color/segmento_fondo"
+                    app:cornerRadius="24dp"
+                    app:rippleColor="?attr/themeRipple"
+                    app:strokeColor="@color/borde_control" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/config_opciones_predeterminadas"
-                        android:textColor="?attr/themeTextoPrimario"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:justificationMode="inter_word"
-                        android:text="@string/config_opciones_predeterminadas_texto"
-                        android:textColor="?attr/themeTextoSecundario"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/switchOpcionesPredeterminadas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llTrabajo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/carta_oscura"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
-
-                <LinearLayout
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnModoHorario"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/config_tiempo_enfoque"
-                        android:textColor="?attr/themeTextoPrimario"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:justificationMode="inter_word"
-                        android:text="@string/config_tiempo_enfoque_texto"
-                        android:textColor="?attr/themeTextoSecundario"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <NumberPicker
-                    android:id="@+id/npTrabajo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
+                    android:fontFamily="@font/poppins_semibold"
+                    android:paddingVertical="12dp"
+                    android:text="@string/config_modo_horario"
+                    android:textColor="@color/segmento_texto"
+                    app:backgroundTint="@color/segmento_fondo"
+                    app:cornerRadius="24dp"
+                    app:rippleColor="?attr/themeRipple"
+                    app:strokeColor="@color/borde_control" />
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
             <LinearLayout
-                android:id="@+id/llDescansoCorto"
+                android:id="@+id/llModoBloques"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/carta_oscura"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="16dp">
+                android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/config_descanso_corto"
-                        android:textColor="?attr/themeTextoPrimario"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:justificationMode="inter_word"
-                        android:text="@string/config_descanso_corto_texto"
-                        android:textColor="?attr/themeTextoSecundario"
-                        android:textSize="13sp" />
-                </LinearLayout>
-
-                <NumberPicker
-                    android:id="@+id/npDescansoCorto"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="16dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/llDescansoLargo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:layout_marginTop="12dp"
-                android:background="@drawable/carta_oscura"
-                android:gravity="center_vertical"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <LinearLayout
+                    android:id="@+id/llOpcionesPredeterminadas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/carta_oscura"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -234,7 +158,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="@string/config_activar_descanso_largo"
+                            android:text="@string/config_opciones_predeterminadas"
                             android:textColor="?attr/themeTextoPrimario"
                             android:textSize="15sp" />
 
@@ -244,40 +168,333 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/poppins_regular"
                             android:justificationMode="inter_word"
-                            android:text="@string/config_activar_descanso_largo_texto"
+                            android:text="@string/config_opciones_predeterminadas_texto"
                             android:textColor="?attr/themeTextoSecundario"
                             android:textSize="13sp" />
                     </LinearLayout>
 
                     <com.google.android.material.materialswitch.MaterialSwitch
-                        android:id="@+id/switchDescansoLargo"
+                        android:id="@+id/switchOpcionesPredeterminadas"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/llTrabajo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="12dp"
+                    android:background="@drawable/carta_oscura"
                     android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="16dp">
 
-                    <TextView
+                    <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/config_duracion_descanso_largo"
-                        android:textColor="?attr/themeTextoPrimario"
-                        android:textSize="15sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/config_tiempo_enfoque"
+                            android:textColor="?attr/themeTextoPrimario"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:justificationMode="inter_word"
+                            android:text="@string/config_tiempo_enfoque_texto"
+                            android:textColor="?attr/themeTextoSecundario"
+                            android:textSize="13sp" />
+                    </LinearLayout>
 
                     <NumberPicker
-                        android:id="@+id/npDescansoLargo"
+                        android:id="@+id/npTrabajo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDescansoCorto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/carta_oscura"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/config_descanso_corto"
+                            android:textColor="?attr/themeTextoPrimario"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/poppins_regular"
+                            android:justificationMode="inter_word"
+                            android:text="@string/config_descanso_corto_texto"
+                            android:textColor="?attr/themeTextoSecundario"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <NumberPicker
+                        android:id="@+id/npDescansoCorto"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="16dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDescansoLargo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/carta_oscura"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:text="@string/config_activar_descanso_largo"
+                                android:textColor="?attr/themeTextoPrimario"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="@font/poppins_regular"
+                                android:justificationMode="inter_word"
+                                android:text="@string/config_activar_descanso_largo_texto"
+                                android:textColor="?attr/themeTextoSecundario"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.materialswitch.MaterialSwitch
+                            android:id="@+id/switchDescansoLargo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/config_duracion_descanso_largo"
+                            android:textColor="?attr/themeTextoPrimario"
+                            android:textSize="15sp" />
+
+                        <NumberPicker
+                            android:id="@+id/npDescansoLargo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="16dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llModoHorario"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/carta_oscura"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/config_horario_titulo"
+                        android:textColor="?attr/themeTextoPrimario"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:justificationMode="inter_word"
+                        android:text="@string/config_horario_texto"
+                        android:textColor="?attr/themeTextoSecundario"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/config_horario_inicio"
+                                android:textColor="?attr/themeTextoSecundario"
+                                android:textSize="13sp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnInicioHorario"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:minWidth="112dp"
+                                android:textColor="@color/texto_hora"
+                                android:textSize="16sp"
+                                app:cornerRadius="20dp"
+                                app:strokeColor="@color/borde_control" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/poppins_regular"
+                                android:text="@string/config_horario_fin"
+                                android:textColor="?attr/themeTextoSecundario"
+                                android:textSize="13sp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnFinHorario"
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="@font/poppins_semibold"
+                                android:minWidth="112dp"
+                                android:textColor="@color/texto_hora"
+                                android:textSize="16sp"
+                                app:cornerRadius="20dp"
+                                app:strokeColor="@color/borde_control" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/carta_oscura"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/config_horario_resumen_titulo"
+                        android:textColor="?attr/themeTextoPrimario"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvResumenBloques"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="?attr/themeTextoPrimario"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvResumenDescansos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="?attr/themeTextoPrimario"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvResumenTermino"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="?attr/themeAcentoTexto"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/tvResumenNota"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:textColor="?attr/themeTextoSecundario"
+                        android:textSize="13sp" />
                 </LinearLayout>
             </LinearLayout>
 

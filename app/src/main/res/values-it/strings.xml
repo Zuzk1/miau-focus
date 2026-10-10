@@ -197,6 +197,20 @@
     <string name="config_activar_descanso_largo_texto">Completati i 4 cicli si fa una pausa più lunga. Se hai intenzione di continuare a studiare dopo, conviene attivarla; se hai intenzione di smettere, puoi disattivarla e il timer si fermerà al quarto ciclo.</string>
     <string name="config_duracion_descanso_largo">DURATA DELLA PAUSA LUNGA</string>
     <string name="config_guardar">SALVA LA CONFIGURAZIONE</string>
+    <string name="config_modo_bloques">Per blocchi</string>
+    <string name="config_modo_horario">Per orario</string>
+    <string name="config_modo_bloqueado">C\'è una sessione attiva. Termina o annulla la sessione per cambiare la modalità di configurazione.</string>
+    <string name="config_horario_titulo">ORARIO DI STUDIO</string>
+    <string name="config_horario_texto">Seleziona l\'ora di inizio e l\'ora di fine. I blocchi di concentrazione e le pause vengono distribuiti automaticamente.</string>
+    <string name="config_horario_inicio">Inizio</string>
+    <string name="config_horario_fin">Fine</string>
+    <string name="config_horario_resumen_titulo">RIEPILOGO DELLA SESSIONE</string>
+    <string name="config_horario_bloques">4 blocchi di concentrazione da %1$d min</string>
+    <string name="config_horario_descansos">3 pause brevi da %1$d min</string>
+    <string name="config_horario_termino">Ora di fine: %1$s</string>
+    <string name="config_horario_sin_largo">Senza pausa lunga: il timer si ferma alla fine del quarto blocco.</string>
+    <string name="config_horario_muy_corto">La sessione deve durare almeno 30 minuti. Per sessioni più brevi, usa la modalità Per blocchi.</string>
+    <string name="config_horario_muy_largo">La sessione non può superare 3 h 50 min. Per più tempo, dividila in due sessioni.</string>
     <string name="toast_config_guardada">Configurazione salvata</string>
     <string name="toast_no_cambiar_tiempos">Non puoi cambiare i tempi mentre c\'è una sessione attiva</string>
 

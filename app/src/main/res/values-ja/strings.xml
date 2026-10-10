@@ -194,6 +194,20 @@
     <string name="config_activar_descanso_largo_texto">4サイクルを終えると長めの休憩に入ります。そのあとも勉強を続けるならオンをおすすめします。そこで終えるならオフにでき、4サイクル目でタイマーが止まります。</string>
     <string name="config_duracion_descanso_largo">長い休憩の長さ</string>
     <string name="config_guardar">設定を保存</string>
+    <string name="config_modo_bloques">ブロックで設定</string>
+    <string name="config_modo_horario">時間帯で設定</string>
+    <string name="config_modo_bloqueado">セッションが進行中です。設定モードを変更するには、セッションを終了またはキャンセルしてください。</string>
+    <string name="config_horario_titulo">勉強の時間帯</string>
+    <string name="config_horario_texto">開始時刻と終了時刻を選択してください。集中ブロックと休憩は自動的に配分されます。</string>
+    <string name="config_horario_inicio">開始</string>
+    <string name="config_horario_fin">終了</string>
+    <string name="config_horario_resumen_titulo">セッションの概要</string>
+    <string name="config_horario_bloques">%1$d分の集中ブロック × 4</string>
+    <string name="config_horario_descansos">%1$d分の短い休憩 × 3</string>
+    <string name="config_horario_termino">終了時刻: %1$s</string>
+    <string name="config_horario_sin_largo">長い休憩なし: 4つ目のブロックが終わるとタイマーが止まります。</string>
+    <string name="config_horario_muy_corto">セッションは30分以上にしてください。短いセッションには「ブロックで設定」を使用してください。</string>
+    <string name="config_horario_muy_largo">セッションは3時間50分を超えられません。それ以上は2回に分けてください。</string>
     <string name="toast_config_guardada">設定を保存しました</string>
     <string name="toast_no_cambiar_tiempos">セッション中は時間を変更できません</string>
 

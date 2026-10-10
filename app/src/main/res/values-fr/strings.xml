@@ -197,6 +197,20 @@
     <string name="config_activar_descanso_largo_texto">Une fois les 4 cycles terminés, tu prends une pause plus longue. Si tu comptes continuer à étudier ensuite, il vaut mieux l\'activer ; si tu comptes t\'arrêter, tu peux la désactiver et le chrono s\'arrêtera au quatrième cycle.</string>
     <string name="config_duracion_descanso_largo">DURÉE DE LA PAUSE LONGUE</string>
     <string name="config_guardar">ENREGISTRER LA CONFIGURATION</string>
+    <string name="config_modo_bloques">Par blocs</string>
+    <string name="config_modo_horario">Par horaire</string>
+    <string name="config_modo_bloqueado">Une session est active. Terminez ou annulez la session pour changer le mode de configuration.</string>
+    <string name="config_horario_titulo">HORAIRE D\'ÉTUDE</string>
+    <string name="config_horario_texto">Sélectionnez l\'heure de début et l\'heure de fin. Les blocs de concentration et les pauses sont répartis automatiquement.</string>
+    <string name="config_horario_inicio">Début</string>
+    <string name="config_horario_fin">Fin</string>
+    <string name="config_horario_resumen_titulo">RÉSUMÉ DE LA SESSION</string>
+    <string name="config_horario_bloques">4 blocs de concentration de %1$d min</string>
+    <string name="config_horario_descansos">3 pauses courtes de %1$d min</string>
+    <string name="config_horario_termino">Heure de fin : %1$s</string>
+    <string name="config_horario_sin_largo">Sans pause longue : le minuteur s\'arrête après le quatrième bloc.</string>
+    <string name="config_horario_muy_corto">La session doit durer au moins 30 minutes. Pour des sessions plus courtes, utilisez le mode Par blocs.</string>
+    <string name="config_horario_muy_largo">La session ne peut pas dépasser 3 h 50 min. Pour plus de temps, divisez-la en deux sessions.</string>
     <string name="toast_config_guardada">Configuration enregistrée</string>
     <string name="toast_no_cambiar_tiempos">Tu ne peux pas modifier les durées pendant une session active</string>
 

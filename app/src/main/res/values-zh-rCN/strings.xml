@@ -194,6 +194,20 @@
     <string name="config_activar_descanso_largo_texto">完成 4 个周期后会有一次更长的休息。如果之后还要继续学习，建议开启；如果打算就此结束，可以关闭，计时会在第四个周期完成后停止。</string>
     <string name="config_duracion_descanso_largo">长休息时长</string>
     <string name="config_guardar">保存设置</string>
+    <string name="config_modo_bloques">按时段块</string>
+    <string name="config_modo_horario">按时间表</string>
+    <string name="config_modo_bloqueado">当前有进行中的学习。请先完成或取消，才能更改设置模式。</string>
+    <string name="config_horario_titulo">学习时间</string>
+    <string name="config_horario_texto">请选择开始时间和结束时间。专注时段和休息将自动分配。</string>
+    <string name="config_horario_inicio">开始</string>
+    <string name="config_horario_fin">结束</string>
+    <string name="config_horario_resumen_titulo">学习概要</string>
+    <string name="config_horario_bloques">4 个 %1$d 分钟的专注时段</string>
+    <string name="config_horario_descansos">3 次 %1$d 分钟的短休息</string>
+    <string name="config_horario_termino">结束时间：%1$s</string>
+    <string name="config_horario_sin_largo">没有长休息：第四个专注时段结束后计时器会停止。</string>
+    <string name="config_horario_muy_corto">学习时长至少为 30 分钟。更短的学习请使用“按时段块”模式。</string>
+    <string name="config_horario_muy_largo">学习时长不能超过 3 小时 50 分钟。时间更长请分成两次。</string>
     <string name="toast_config_guardada">设置已保存</string>
     <string name="toast_no_cambiar_tiempos">时段进行中无法修改时长</string>
 

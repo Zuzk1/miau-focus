@@ -728,6 +728,8 @@
         <item name="colorOnPrimaryContainer">?attr/themeTextoPrimario</item>
         <item name="colorSurfaceVariant">?attr/colorFondoChipInactivo</item>
         <item name="colorOnSurfaceVariant">?attr/themeTextoPrimario</item>
+        <item name="fontFamily">@font/poppins_regular</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <!-- Animaciones de transición entre Activities -->
