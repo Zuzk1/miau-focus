@@ -109,6 +109,7 @@ public class CronometroActivity extends BaseActivity {
                 GestorAlertas.marcarReanudarTrasInfraccion(this);
                 new GestorEstadisticas(this).registrarFallo();
                 GestorAlertas.congelarTiempoRestante(this, tiempoRestanteReal);
+                GestorAlertas.guardarEstadoCronometro(this, tiempoRestanteReal, esDescanso, cicloActual);
                 GestorAlertas.setCronometroCorriendo(this, false);
 
                 detenerServicioCronometro();
