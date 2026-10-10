@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">Don\'t miss the alert</string>
     <string name="permiso_notif_texto">Turn on notifications so Miau Focus can tell you the moment your focus session or break ends.</string>
     <string name="permiso_notif_boton">Turn on notifications</string>
-    <string name="permiso_pantalla_titulo">Don\'t miss the warning</string>
-    <string name="permiso_pantalla_texto">So the distraction alert shows full screen even while you are using another app, turn on the full screen permission for Miau Focus.</string>
-    <string name="permiso_pantalla_boton">Set up</string>
 
     <string name="tareas_titulo">Tasks</string>
     <string name="tareas_tarea_activa">Active task</string>

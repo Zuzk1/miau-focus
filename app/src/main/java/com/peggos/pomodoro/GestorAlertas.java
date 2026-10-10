@@ -264,7 +264,7 @@ public class GestorAlertas {
         if (esDescanso) return false;
         if (hayInfraccionPendiente(contexto)) return false;
         if (estaEnPeriodoGraciaPostDescanso(contexto)) return false;
-        if (VigilanteSesionApp.laPantallaSeApagoConLaAppAlFrente(contexto)) return false;
+        if (VigilanteSesionApp.seBloqueoConLaAppAlFrente(contexto)) return false;
 
         GestorConfiguracion configuracion = new GestorConfiguracion(contexto);
         if (!configuracion.isAlertasDistraccionHabilitadas()) return false;

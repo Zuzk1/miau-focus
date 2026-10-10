@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">Non perderti l\'avviso</string>
     <string name="permiso_notif_texto">Attiva le notifiche così Miau Focus ti avvisa appena finisce la tua sessione di focus o la pausa.</string>
     <string name="permiso_notif_boton">Attiva le notifiche</string>
-    <string name="permiso_pantalla_titulo">Non perderti l\'avviso</string>
-    <string name="permiso_pantalla_texto">Perché l\'avviso di distrazione compaia a schermo intero anche mentre usi un\'altra app, attiva il permesso schermo intero per Miau Focus.</string>
-    <string name="permiso_pantalla_boton">Configura</string>
 
     <string name="tareas_titulo">Attività</string>
     <string name="tareas_tarea_activa">Attività attiva</string>

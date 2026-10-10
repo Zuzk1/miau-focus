@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">お知らせを見逃さないために</string>
     <string name="permiso_notif_texto">集中セッションや休憩が終わったらすぐ Miau Focus が知らせられるよう、通知をオンにしてください。</string>
     <string name="permiso_notif_boton">通知をオンにする</string>
-    <string name="permiso_pantalla_titulo">警告を見逃さないために</string>
-    <string name="permiso_pantalla_texto">他のアプリを使っていても注意の警告を全画面で表示するため、Miau Focus に全画面表示の権限を許可してください。</string>
-    <string name="permiso_pantalla_boton">設定する</string>
 
     <string name="tareas_titulo">タスク</string>
     <string name="tareas_tarea_activa">進行中のタスク</string>

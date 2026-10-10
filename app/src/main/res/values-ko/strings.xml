@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">알림을 놓치지 마세요</string>
     <string name="permiso_notif_texto">집중 세션이나 휴식이 끝나는 순간 Miau Focus가 알려줄 수 있도록 알림을 켜 주세요.</string>
     <string name="permiso_notif_boton">알림 켜기</string>
-    <string name="permiso_pantalla_titulo">경고를 놓치지 마세요</string>
-    <string name="permiso_pantalla_texto">다른 앱을 쓰는 중에도 주의 경고가 전체 화면으로 뜨도록, Miau Focus에 전체 화면 권한을 허용해 주세요.</string>
-    <string name="permiso_pantalla_boton">설정하기</string>
 
     <string name="tareas_titulo">할 일</string>
     <string name="tareas_tarea_activa">진행 중인 할 일</string>

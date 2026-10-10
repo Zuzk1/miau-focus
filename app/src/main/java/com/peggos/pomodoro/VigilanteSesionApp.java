@@ -22,19 +22,17 @@ public class VigilanteSesionApp extends Application implements DefaultLifecycleO
 
     private static boolean enPrimerPlano = false;
     private static long instanteSalidaPrimerPlano = 0L;
-    private static long instantePantallaApagada = 0L;
+    private static long instanteBloqueo = 0L;
 
     public static boolean estaEnPrimerPlano() {
         return enPrimerPlano;
     }
 
-    public static boolean laPantallaSeApagoConLaAppAlFrente(Context contexto) {
-        android.os.PowerManager gestorEnergia =
-                (android.os.PowerManager) contexto.getSystemService(Context.POWER_SERVICE);
-        if (gestorEnergia == null || gestorEnergia.isInteractive()) return false;
+    public static boolean seBloqueoConLaAppAlFrente(Context contexto) {
+        if (!elTelefonoEstaBloqueado(contexto)) return false;
 
-        long instanteApagado = instantePantallaApagada > 0
-                ? instantePantallaApagada
+        long instanteApagado = instanteBloqueo > 0
+                ? instanteBloqueo
                 : System.currentTimeMillis();
         long instanteAlFrente = enPrimerPlano
                 ? System.currentTimeMillis()
@@ -43,9 +41,20 @@ public class VigilanteSesionApp extends Application implements DefaultLifecycleO
         return instanteApagado - instanteAlFrente <= TOLERANCIA_APAGADO_CON_APP_AL_FRENTE;
     }
 
+    private static boolean elTelefonoEstaBloqueado(Context contexto) {
+        android.os.PowerManager gestorEnergia =
+                (android.os.PowerManager) contexto.getSystemService(Context.POWER_SERVICE);
+        if (gestorEnergia != null && !gestorEnergia.isInteractive()) return true;
+
+        android.app.KeyguardManager gestorBloqueo =
+                (android.app.KeyguardManager) contexto.getSystemService(Context.KEYGUARD_SERVICE);
+        return gestorBloqueo != null && gestorBloqueo.isKeyguardLocked();
+    }
+
     @Override
     public void onStart(@NonNull LifecycleOwner propietario) {
         enPrimerPlano = true;
+        instanteBloqueo = 0L;
     }
 
     @Override
@@ -58,11 +67,21 @@ public class VigilanteSesionApp extends Application implements DefaultLifecycleO
         IntentFilter filtroPantalla = new IntentFilter();
         filtroPantalla.addAction(Intent.ACTION_SCREEN_OFF);
         filtroPantalla.addAction(Intent.ACTION_SCREEN_ON);
+        filtroPantalla.addAction(Intent.ACTION_USER_PRESENT);
         registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                boolean pantallaEncendida = Intent.ACTION_SCREEN_ON.equals(intent.getAction());
-                instantePantallaApagada = pantallaEncendida ? 0L : System.currentTimeMillis();
+                String accion = intent.getAction();
+                if (Intent.ACTION_USER_PRESENT.equals(accion)) {
+                    instanteBloqueo = 0L;
+                    return;
+                }
+                boolean pantallaEncendida = Intent.ACTION_SCREEN_ON.equals(accion);
+                if (pantallaEncendida && !elTelefonoEstaBloqueado(context)) {
+                    instanteBloqueo = 0L;
+                } else if (!pantallaEncendida && instanteBloqueo == 0L) {
+                    instanteBloqueo = System.currentTimeMillis();
+                }
                 if (GestorAlertas.isCronometroCorriendo(context)) {
                     if (pantallaEncendida) {
                         GestorAlertas.cancelarNotificacionBloqueo(context);

@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">Nie przegap powiadomienia</string>
     <string name="permiso_notif_texto">Włącz powiadomienia, żeby Miau Focus dał znać, gdy tylko skończy się sesja skupienia albo przerwa.</string>
     <string name="permiso_notif_boton">Włącz powiadomienia</string>
-    <string name="permiso_pantalla_titulo">Nie przegap ostrzeżenia</string>
-    <string name="permiso_pantalla_texto">Żeby ostrzeżenie o rozproszeniu pokazywało się na pełnym ekranie nawet podczas korzystania z innej aplikacji, przyznaj Miau Focus uprawnienie do pełnego ekranu.</string>
-    <string name="permiso_pantalla_boton">Skonfiguruj</string>
 
     <string name="tareas_titulo">Zadania</string>
     <string name="tareas_tarea_activa">Aktywne zadanie</string>

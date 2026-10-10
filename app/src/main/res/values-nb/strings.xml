@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">Ikke gå glipp av varselet</string>
     <string name="permiso_notif_texto">Slå på varsler så Miau Focus kan si fra i det fokusøkta eller pausen er ferdig.</string>
     <string name="permiso_notif_boton">Slå på varsler</string>
-    <string name="permiso_pantalla_titulo">Ikke gå glipp av advarselen</string>
-    <string name="permiso_pantalla_texto">For at forstyrrelsesvarselet skal vises i fullskjerm selv når du bruker en annen app, må du gi Miau Focus tillatelse til fullskjerm.</string>
-    <string name="permiso_pantalla_boton">Sett opp</string>
 
     <string name="tareas_titulo">Oppgaver</string>
     <string name="tareas_tarea_activa">Aktiv oppgave</string>

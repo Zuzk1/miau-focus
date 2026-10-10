@@ -7,20 +7,17 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -264,56 +261,21 @@ public class CronometroActivity extends BaseActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
                 && ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
                         != PackageManager.PERMISSION_GRANTED) {
-            solicitarPermisoNotificacionesConTarjeta(this::solicitarPermisoPantallaCompleta);
-        } else {
-            solicitarPermisoPantallaCompleta();
+            solicitarPermisoNotificacionesConTarjeta();
         }
     }
 
-    private void solicitarPermisoNotificacionesConTarjeta(Runnable alFinalizar) {
+    private void solicitarPermisoNotificacionesConTarjeta() {
         SharedPreferences preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
         if (preferencias.getBoolean(CLAVE_PERMISO_NOTIFICACIONES_BLOQUEADO, false)) {
-            alFinalizar.run();
             return;
         }
 
-        final boolean[] pidioElPermiso = {false};
         DialogoPermiso.mostrar(this,
                 getString(R.string.permiso_notif_titulo),
                 getString(R.string.permiso_notif_texto),
                 getString(R.string.permiso_notif_boton),
-                () -> {
-                    pidioElPermiso[0] = true;
-                    solicitarPermisoNotificaciones.launch(Manifest.permission.POST_NOTIFICATIONS);
-                },
-                () -> {
-                    if (!pidioElPermiso[0]) alFinalizar.run();
-                });
-    }
-
-    private void solicitarPermisoPantallaCompleta() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
-            return;
-        }
-
-        SharedPreferences preferencias = getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE);
-        if (preferencias.getBoolean("permiso_pantalla_completa_solicitado", false)) {
-            return;
-        }
-
-        NotificationManager gestorNotificaciones = getSystemService(NotificationManager.class);
-        if (gestorNotificaciones != null && !gestorNotificaciones.canUseFullScreenIntent()) {
-            DialogoPermiso.mostrar(this,
-                    getString(R.string.permiso_pantalla_titulo),
-                    getString(R.string.permiso_pantalla_texto),
-                    getString(R.string.permiso_pantalla_boton),
-                    () -> {
-                        Intent intentConfiguracion = new Intent(Settings.ACTION_MANAGE_APP_USE_FULL_SCREEN_INTENT);
-                        intentConfiguracion.setData(Uri.parse("package:" + getPackageName()));
-                        startActivity(intentConfiguracion);
-                    },
-                    () -> preferencias.edit().putBoolean("permiso_pantalla_completa_solicitado", true).apply());
-        }
+                () -> solicitarPermisoNotificaciones.launch(Manifest.permission.POST_NOTIFICATIONS));
     }
 
     private void detenerServicioCronometro() {
@@ -364,7 +326,6 @@ public class CronometroActivity extends BaseActivity {
                         getSharedPreferences(GestorAlertas.PREFS_NOMBRE_COMPARTIDO, Context.MODE_PRIVATE)
                                 .edit().putBoolean(CLAVE_PERMISO_NOTIFICACIONES_BLOQUEADO, true).apply();
                     }
-                    solicitarPermisoPantallaCompleta();
                 });
 
         View splashOverlay = findViewById(R.id.splashOverlay);

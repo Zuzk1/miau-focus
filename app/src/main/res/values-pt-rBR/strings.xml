@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">Não perca o aviso</string>
     <string name="permiso_notif_texto">Ative as notificações para o Miau Focus avisar assim que sua sessão de foco ou pausa terminar.</string>
     <string name="permiso_notif_boton">Ativar notificações</string>
-    <string name="permiso_pantalla_titulo">Não perca o alerta</string>
-    <string name="permiso_pantalla_texto">Para o alerta de distração aparecer em tela cheia mesmo enquanto você usa outro app, ative a permissão de tela cheia para o Miau Focus.</string>
-    <string name="permiso_pantalla_boton">Configurar</string>
 
     <string name="tareas_titulo">Tarefas</string>
     <string name="tareas_tarea_activa">Tarefa ativa</string>

@@ -431,7 +431,6 @@ public class CronometroService extends Service {
                         .setOnlyAlertOnce(true)
                         .setCategory(android.app.Notification.CATEGORY_ALARM)
                         .setVisibility(android.app.Notification.VISIBILITY_PUBLIC)
-                        .setFullScreenIntent(pi, true)
                         .setContentIntent(pi);
 
         IslaDinamica.aplicarAlerta(this, constructor, getString(R.string.chip_vuelve));

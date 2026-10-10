@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">Ne rate pas l\'alerte</string>
     <string name="permiso_notif_texto">Active les notifications pour que Miau Focus te prévienne dès que ta session de concentration ou ta pause se termine.</string>
     <string name="permiso_notif_boton">Activer les notifications</string>
-    <string name="permiso_pantalla_titulo">Ne rate pas l\'alerte</string>
-    <string name="permiso_pantalla_texto">Pour que l\'alerte de distraction s\'affiche en plein écran même quand tu utilises une autre appli, active l\'autorisation plein écran pour Miau Focus.</string>
-    <string name="permiso_pantalla_boton">Configurer</string>
 
     <string name="tareas_titulo">Tâches</string>
     <string name="tareas_tarea_activa">Tâche active</string>

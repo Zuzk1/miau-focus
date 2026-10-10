@@ -46,9 +46,6 @@
     <string name="permiso_notif_titulo">别错过提醒</string>
     <string name="permiso_notif_texto">开启通知，专注时段或休息一结束，Miau Focus 就能马上提醒你。</string>
     <string name="permiso_notif_boton">开启通知</string>
-    <string name="permiso_pantalla_titulo">别错过警告</string>
-    <string name="permiso_pantalla_texto">为了让分心警告在你使用其他应用时也能全屏显示，请为 Miau Focus 开启全屏权限。</string>
-    <string name="permiso_pantalla_boton">去设置</string>
 
     <string name="tareas_titulo">任务</string>
     <string name="tareas_tarea_activa">进行中的任务</string>
