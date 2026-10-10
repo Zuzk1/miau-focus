@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
-                android:text="Tareas"
+                android:text="@string/tareas_titulo"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="22sp"
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/poppins_regular"
-            android:text="Tarea activa"
+            android:text="@string/tareas_tarea_activa"
             android:textColor="?attr/themeTextoTerciario"
             android:textSize="11sp" />
 
@@ -87,7 +87,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/poppins_semibold"
             android:maxLines="2"
-            android:text="Sin tarea activa"
+            android:text="@string/tareas_sin_tarea_activa"
             android:textColor="?attr/themeTextoPrimario"
             android:textSize="20sp" />
 
@@ -97,7 +97,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Selecciona una tarea para empezar a enfocarte"
+            android:text="@string/tareas_selecciona"
             android:textColor="?attr/themeTextoSecundario"
             android:textSize="12sp" />
 
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Ir a Enfoque"
+            android:text="@string/tareas_ir_a_enfoque"
             android:textColor="?attr/themeSobreAcento"
             android:textSize="13sp"
             android:visibility="gone"
@@ -154,7 +154,7 @@
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="Pendientes"
+                android:text="@string/tareas_pendientes"
                 android:textColor="?attr/themeTextoTerciario"
                 android:textSize="11sp" />
         </LinearLayout>
@@ -188,7 +188,7 @@
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="Completadas\nhoy"
+                android:text="@string/tareas_completadas_hoy"
                 android:textColor="?attr/themeTextoTerciario"
                 android:textSize="11sp" />
         </LinearLayout>
@@ -222,7 +222,7 @@
                 android:layout_marginTop="2dp"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center"
-                android:text="Total"
+                android:text="@string/tareas_total"
                 android:textColor="?attr/themeTextoTerciario"
                 android:textSize="11sp" />
         </LinearLayout>
@@ -253,7 +253,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:fontFamily="@font/poppins_semibold"
-            android:text="Aún no tienes tareas"
+            android:text="@string/tareas_vacio_titulo"
             android:textColor="?attr/themeTextoSecundario"
             android:textSize="15sp" />
 
@@ -262,7 +262,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="Añade tu primera tarea para empezar a enfocarte"
+            android:text="@string/tareas_vacio_texto"
             android:textColor="?attr/themeTextoTerciario"
             android:textSize="12sp" />
     </LinearLayout>
@@ -287,7 +287,7 @@
         android:layout_height="55dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginBottom="20dp"
-        android:text="+ Añadir tarea"
+        android:text="@string/tareas_anadir"
         android:textColor="?attr/themeSobreAcento"
         android:textSize="16sp"
         android:textStyle="bold"

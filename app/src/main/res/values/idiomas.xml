@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="idiomas_codigos" translatable="false">
+        <item>es</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>it</item>
+        <item>nb</item>
+        <item>pl</item>
+        <item>pt-BR</item>
+        <item>pt</item>
+        <item>ja</item>
+        <item>ko</item>
+        <item>zh-CN</item>
+    </string-array>
+
+    <string name="idioma_sistema_sigla" translatable="false">AUTO</string>
+
+    <string-array name="idiomas_siglas" translatable="false">
+        <item>ES</item>
+        <item>EN</item>
+        <item>FR</item>
+        <item>IT</item>
+        <item>NB</item>
+        <item>PL</item>
+        <item>BR</item>
+        <item>PT</item>
+        <item>JA</item>
+        <item>KO</item>
+        <item>ZH</item>
+    </string-array>
+
+    <string-array name="idiomas_nombres" translatable="false">
+        <item>Español</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Italiano</item>
+        <item>Norsk bokmål</item>
+        <item>Polski</item>
+        <item>Português (BR)</item>
+        <item>Português (PT)</item>
+        <item>日本語</item>
+        <item>한국어</item>
+        <item>简体中文</item>
+    </string-array>
+</resources>

@@ -2,6 +2,7 @@ package com.peggos.pomodoro;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.media.AudioAttributes;
@@ -16,10 +17,14 @@ import android.os.Vibrator;
 import android.os.VibratorManager;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AccelerateInterpolator;
 import android.widget.Button;
+import android.widget.TextView;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 
 public class alertaActivity extends AppCompatActivity {
@@ -32,6 +37,9 @@ public class alertaActivity extends AppCompatActivity {
     private Vibrator vibrador;
     private boolean isBotonPresionado = false;
     private boolean esInfraccion = false;
+
+    private AnimatorSet animacionLagrima;
+    private Runnable cicloLagrima;
 
     private ObjectAnimator animacionProgresoFadeIn;
     private ObjectAnimator animacionProgresoFadeOut;
@@ -56,6 +64,9 @@ public class alertaActivity extends AppCompatActivity {
         this.setFinishOnTouchOutside(false);
         setContentView(R.layout.alerta_main);
 
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+                .setAppearanceLightStatusBars(new GestorTemas(this).getTemaActual().esClaro());
+
         btnSilenciar = findViewById(R.id.btnSilenciar);
         viewGlowTop = findViewById(R.id.viewGlowTop);
         pbProgresoSilenciar = findViewById(R.id.pbProgresoSilenciar);
@@ -63,7 +74,7 @@ public class alertaActivity extends AppCompatActivity {
         pbProgresoSilenciar.setAlpha(0f);
         pbProgresoSilenciar.setVisibility(View.INVISIBLE);
 
-        esInfraccion = getIntent().getBooleanExtra(GestorAlertas.EXTRA_ES_INFRACCION, false);
+        esInfraccion = getIntent().getBooleanExtra(GestorAlertas.EXTRA_ES_INFRACCION, true);
         android.util.Log.d("DepuracionCronometro", "alerta onCreate esInfraccion=" + esInfraccion);
 
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
@@ -72,6 +83,9 @@ public class alertaActivity extends AppCompatActivity {
             }
         });
 
+        mostrarDatosInfraccion();
+        animarLagrima();
+        animarCirculosDecorativos();
         animarAura();
         reproducirAlarma();
 
@@ -79,7 +93,7 @@ public class alertaActivity extends AppCompatActivity {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 isBotonPresionado = true;
                 mostrarProgresoGradual();
-                transicionTexto("CANCELANDO...\n5s", () -> {
+                transicionTexto(getString(R.string.alerta_cancelando_inicial), () -> {
                     if (isBotonPresionado) {
                         iniciarContador();
                     }
@@ -91,10 +105,109 @@ public class alertaActivity extends AppCompatActivity {
                     contador = null;
                 }
                 ocultarProgresoGradual();
-                transicionTexto("MANTÉN 5s", null);
+                transicionTexto(getString(R.string.alerta_manten_5s), null);
             }
             return true;
         });
+    }
+
+    private void mostrarDatosInfraccion() {
+        TextView tvInfoPuntos = findViewById(R.id.tvInfoPuntos);
+        TextView tvInfoDetalle = findViewById(R.id.tvInfoDetalle);
+
+        float castigo = new GestorEstadisticas(this).getUltimoCastigo();
+        if (castigo <= 0f) {
+            tvInfoPuntos.setText(R.string.alerta_sin_puntos);
+        } else {
+            tvInfoPuntos.setText(getResources().getQuantityString(R.plurals.alerta_puntos_perdidos,
+                    (int) castigo, GestorEstadisticas.formatearPuntos(castigo)));
+        }
+
+        int ciclo = GestorAlertas.getCicloActualActual(this);
+        long tiempoCongelado = GestorAlertas.getTiempoCongelado(this);
+
+        if (tiempoCongelado >= 0) {
+            tvInfoDetalle.setText(getString(R.string.alerta_ciclo_de_4_tiempo, ciclo,
+                    IslaDinamica.formatearRestante(tiempoCongelado)));
+        } else {
+            tvInfoDetalle.setText(getString(R.string.alerta_ciclo_de_4, ciclo));
+        }
+    }
+
+    private void animarLagrima() {
+        View lagrima = findViewById(R.id.ivGatoLagrima);
+        if (lagrima == null) return;
+
+        float recorrido = 46f * getResources().getDisplayMetrics().density;
+        lagrima.setAlpha(0f);
+
+        cicloLagrima = new Runnable() {
+            @Override
+            public void run() {
+                if (isFinishing() || isDestroyed()) return;
+
+                lagrima.setTranslationY(0f);
+                lagrima.setAlpha(0f);
+
+                ObjectAnimator brotar = ObjectAnimator.ofFloat(lagrima, "alpha", 0f, 1f);
+                brotar.setDuration(650);
+
+                ObjectAnimator caer = ObjectAnimator.ofFloat(lagrima, "translationY", 0f, recorrido);
+                caer.setDuration(780);
+                caer.setInterpolator(new AccelerateInterpolator(1.7f));
+
+                ObjectAnimator desvanecer = ObjectAnimator.ofFloat(lagrima, "alpha", 1f, 0f);
+                desvanecer.setStartDelay(300);
+                desvanecer.setDuration(400);
+
+                AnimatorSet caida = new AnimatorSet();
+                caida.playTogether(caer, desvanecer);
+
+                animacionLagrima = new AnimatorSet();
+                animacionLagrima.playSequentially(brotar, caida);
+                animacionLagrima.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        lagrima.postDelayed(cicloLagrima, 550);
+                    }
+                });
+                animacionLagrima.start();
+            }
+        };
+
+        lagrima.postDelayed(cicloLagrima, 350);
+    }
+
+    private void animarCirculosDecorativos() {
+        iniciarPulso(findViewById(R.id.circleTopLeft), 4500, 0);
+        iniciarPulso(findViewById(R.id.circleBottomRight), 5500, 1500);
+    }
+
+    private void iniciarPulso(View vista, long duracion, long retraso) {
+        if (vista == null) return;
+
+        ObjectAnimator escalaX = ObjectAnimator.ofFloat(vista, "scaleX", 1f, 1.2f, 1f);
+        ObjectAnimator escalaY = ObjectAnimator.ofFloat(vista, "scaleY", 1f, 1.2f, 1f);
+        ObjectAnimator alfa = ObjectAnimator.ofFloat(vista, "alpha", 0.13f, 0.28f, 0.13f);
+
+        escalaX.setDuration(duracion);
+        escalaY.setDuration(duracion);
+        alfa.setDuration(duracion);
+
+        escalaX.setRepeatCount(ObjectAnimator.INFINITE);
+        escalaY.setRepeatCount(ObjectAnimator.INFINITE);
+        alfa.setRepeatCount(ObjectAnimator.INFINITE);
+
+        AccelerateDecelerateInterpolator interpolador = new AccelerateDecelerateInterpolator();
+        escalaX.setInterpolator(interpolador);
+        escalaY.setInterpolator(interpolador);
+        alfa.setInterpolator(interpolador);
+
+        AnimatorSet conjunto = new AnimatorSet();
+        conjunto.playTogether(escalaX, escalaY, alfa);
+        conjunto.setStartDelay(retraso);
+        vista.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        conjunto.start();
     }
 
     private void reproducirAlarma() {
@@ -252,7 +365,7 @@ public class alertaActivity extends AppCompatActivity {
                     ciclosPuntos++;
                 }
 
-                btnSilenciar.setText("CANCELANDO" + puntos + "\n" + segundosRestantes + "s");
+                btnSilenciar.setText(getString(R.string.alerta_cancelando_cuenta, puntos, segundosRestantes));
             }
 
             @Override
@@ -277,6 +390,14 @@ public class alertaActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         GestorAlertas.setAlertaActiva(this, false);
+        View lagrima = findViewById(R.id.ivGatoLagrima);
+        if (lagrima != null && cicloLagrima != null) {
+            lagrima.removeCallbacks(cicloLagrima);
+        }
+        if (animacionLagrima != null) {
+            animacionLagrima.cancel();
+            animacionLagrima = null;
+        }
         if (contador != null) {
             contador.cancel();
             contador = null;

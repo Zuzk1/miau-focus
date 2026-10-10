@@ -51,9 +51,9 @@ public class bienvenidaActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 actualizarDots(position);
                 if (position == TOTAL_PAGINAS - 1) {
-                    btnComenzar.setText("COMENZAR");
+                    btnComenzar.setText(R.string.accion_comenzar);
                 } else {
-                    btnComenzar.setText("SIGUIENTE");
+                    btnComenzar.setText(R.string.accion_siguiente);
                 }
             }
         });

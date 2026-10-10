@@ -46,7 +46,7 @@ public class analisisActivity extends BaseActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Toast.makeText(this, "Error al cargar la pantalla: " + e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.analisis_error_cargar, e.getMessage()), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -83,7 +83,7 @@ public class analisisActivity extends BaseActivity {
         ((TextView) findViewById(R.id.tvTiempoTotal)).setText(textoTiempo);
 
         ((TextView) findViewById(R.id.tvPomodorosCompletados)).setText(String.valueOf(completados));
-        ((TextView) findViewById(R.id.tvPuntos)).setText(GestorEstadisticas.formatearPuntos(puntos) + " Puntos");
+        ((TextView) findViewById(R.id.tvPuntos)).setText(getString(R.string.analisis_puntos, GestorEstadisticas.formatearPuntos(puntos)));
 
         TextView tvRacha = findViewById(R.id.tvRachaActual);
         tvRacha.setText(String.valueOf(racha));
@@ -97,10 +97,10 @@ public class analisisActivity extends BaseActivity {
         TextView tvFallos = findViewById(R.id.tvTasaFallos);
         String stringPorcentaje = String.format("%.0f%%", porcentajeFallo);
         tvFallos.setText(stringPorcentaje);
-        ((TextView) findViewById(R.id.tvBloquesAbandonados)).setText(fallos + " abandonados");
+        ((TextView) findViewById(R.id.tvBloquesAbandonados)).setText(getResources().getQuantityString(R.plurals.analisis_abandonados, fallos, fallos));
     }
 
-    private static final String[] INICIALES_SEMANA = {"D", "L", "M", "M", "J", "V", "S"};
+    
 
     private void dibujarFranjaSemanal() {
         LinearLayout franja = findViewById(R.id.llFranjaSemanal);
@@ -116,14 +116,15 @@ public class analisisActivity extends BaseActivity {
         int ladoCirculo = (int) (26 * densidad);
         int ladoLlama = (int) (18 * densidad);
 
-        for (int i = 0; i < INICIALES_SEMANA.length; i++) {
+        String[] inicialesSemana = getResources().getStringArray(R.array.iniciales_semana);
+        for (int i = 0; i < inicialesSemana.length; i++) {
             LinearLayout columna = new LinearLayout(this);
             columna.setOrientation(LinearLayout.VERTICAL);
             columna.setGravity(Gravity.CENTER_HORIZONTAL);
             columna.setLayoutParams(new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
 
             TextView tvInicial = new TextView(this);
-            tvInicial.setText(INICIALES_SEMANA[i]);
+            tvInicial.setText(inicialesSemana[i]);
             tvInicial.setTextSize(11f);
             tvInicial.setGravity(Gravity.CENTER);
             tvInicial.setLayoutParams(new LinearLayout.LayoutParams(ladoCirculo, ladoCirculo));
@@ -155,11 +156,11 @@ public class analisisActivity extends BaseActivity {
 
         TextView tvMensaje = findViewById(R.id.tvMensajeRacha);
         if (racha == 0) {
-            tvMensaje.setText("Empieza tu primera racha");
+            tvMensaje.setText(R.string.racha_empieza);
         } else if (enfocoHoy) {
-            tvMensaje.setText("Ya te enfocaste hoy, bien hecho");
+            tvMensaje.setText(R.string.racha_ya_hoy);
         } else {
-            tvMensaje.setText("Empieza un pomodoro para mantener tu racha");
+            tvMensaje.setText(R.string.racha_manten);
         }
 
         ImageView ivLlamaRacha = findViewById(R.id.ivLlamaRacha);

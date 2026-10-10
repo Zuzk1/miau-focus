@@ -1,0 +1,259 @@
+<resources>
+    <string name="an_lisis_de_enfoque">Fokusanalyse</string>
+
+    <string name="accion_cancelar">Avbryt</string>
+    <string name="accion_guardar">Lagre</string>
+    <string name="accion_ver">Se</string>
+    <string name="accion_atras">Tilbake</string>
+    <string name="accion_renunciar">Gi opp</string>
+    <string name="accion_comenzar">START</string>
+    <string name="accion_siguiente">NESTE</string>
+
+    <string name="fase_enfoque">FOKUSØKT</string>
+    <string name="fase_descanso_corto">KORT PAUSE</string>
+    <string name="fase_descanso_largo">LANG PAUSE</string>
+    <string name="fase_corta_enfoque">Fokus</string>
+    <string name="fase_corta_descanso">Pause</string>
+
+    <string name="nav_enfoque">Fokus</string>
+    <string name="nav_tareas">Oppgaver</string>
+    <string name="nav_estadisticas">Statistikk</string>
+
+    <string name="bienvenida_pomodoro">POMODORO</string>
+    <string name="onboarding_titulo_1">Velkommen til\nMiau Focus</string>
+    <string name="onboarding_titulo_2">Ingen forstyrrelser,\ningen unnskyldninger</string>
+    <string name="onboarding_titulo_3">Katten din følger med,\nikke svikt</string>
+    <string name="onboarding_texto_1">Kattekompisen din hjelper deg å holde fokus med pomodoroteknikken. Sveip for å se hvordan.</string>
+    <string name="onboarding_texto_2">Hvis du forlater appen under en økt, pauses tidtakeren, og bruker du for lang tid på å komme tilbake, mister du poeng. Stå i det.</string>
+    <string name="onboarding_texto_3">Fullfør sykluser, tjen poeng og lås opp temaer. Hver fullførte økt bygger rekken din.</string>
+
+    <string name="cronometro_enfocado_en">Fokuserer på: %1$s</string>
+    <string name="cd_renunciar">Gi opp</string>
+    <string name="cd_escudo">Skjold</string>
+    <string name="cd_pausar">Pause</string>
+    <string name="cd_puntos">Poeng</string>
+    <string name="toast_completaste_4_ciclos">Du fullførte de 4 fokussyklusene. Start igjen når du vil.</string>
+    <string name="toast_descanso_largo_terminado">Lang pause ferdig. Start en ny syklus når du vil.</string>
+
+    <string name="dialogo_advertencia_titulo">Advarsel</string>
+    <string name="dialogo_advertencia_texto">Er du sikker på at du vil gi opp denne fokusøkta? Du mister poeng og rekken din nullstilles.</string>
+
+    <string name="dialogo_escudo_titulo">Aktiver skjoldet</string>
+    <string name="dialogo_escudo_texto">Økta blir beskyttet. Avbryter du den, mister du verken poeng eller rekken. Du kan bare bruke det én gang om dagen.</string>
+    <string name="dialogo_escudo_activar">Aktiver skjold</string>
+
+    <string name="dialogo_permiso_ahora_no">Ikke nå</string>
+    <string name="permiso_notif_titulo">Ikke gå glipp av varselet</string>
+    <string name="permiso_notif_texto">Slå på varsler så Miau Focus kan si fra i det fokusøkta eller pausen er ferdig.</string>
+    <string name="permiso_notif_boton">Slå på varsler</string>
+    <string name="permiso_pantalla_titulo">Ikke gå glipp av advarselen</string>
+    <string name="permiso_pantalla_texto">For at forstyrrelsesvarselet skal vises i fullskjerm selv når du bruker en annen app, må du gi Miau Focus tillatelse til fullskjerm.</string>
+    <string name="permiso_pantalla_boton">Sett opp</string>
+
+    <string name="tareas_titulo">Oppgaver</string>
+    <string name="tareas_tarea_activa">Aktiv oppgave</string>
+    <string name="tareas_sin_tarea_activa">Ingen aktiv oppgave</string>
+    <string name="tareas_selecciona">Velg en oppgave for å begynne å fokusere</string>
+    <string name="tareas_toca_ir_enfoque">Trykk Gå til fokus for å jobbe med den</string>
+    <string name="tareas_ir_a_enfoque">Gå til fokus</string>
+    <string name="tareas_pendientes">Gjenstår</string>
+    <string name="tareas_completadas_hoy">Fullført\ni dag</string>
+    <string name="tareas_total">Totalt</string>
+    <string name="tareas_vacio_titulo">Du har ingen oppgaver ennå</string>
+    <string name="tareas_vacio_texto">Legg til den første oppgaven for å begynne å fokusere</string>
+    <string name="tareas_anadir">+ Legg til oppgave</string>
+    <string name="dialogo_tarea_nueva">Ny oppgave</string>
+    <string name="dialogo_tarea_editar">Rediger oppgave</string>
+    <string name="dialogo_tarea_hint">F.eks. Gjøre historieleksa</string>
+    <string name="dialogo_opciones_titulo">Hva vil du gjøre med denne oppgaven?</string>
+    <string name="opcion_fijar_activa">Sett som aktiv oppgave</string>
+    <string name="opcion_editar">Rediger tekst</string>
+    <string name="opcion_eliminar">Slett oppgave</string>
+    <string name="toast_tarea_agregada">Oppgave lagt til</string>
+    <string name="toast_tarea_fijada">Oppgave festet øverst</string>
+    <string name="toast_tarea_actualizada">Oppgave oppdatert</string>
+    <string name="toast_tarea_eliminada">Oppgave slettet</string>
+    <string name="toast_escribe_tarea">Skriv en oppgave</string>
+
+    <string name="cd_alerta_distraccion">Forstyrrelsesvarsel</string>
+    <string name="cd_gato_triste">Trist katt</string>
+    <string name="alerta_infraccion">FOKUSET\nBLE BRUTT</string>
+    <string name="alerta_instruccion">Gå tilbake til appen og hold inne knappen for å slå av alarmen.</string>
+    <string name="alerta_manten_5s">HOLD 5 s</string>
+    <string name="alerta_manten_cancelar">Hold inne for å avbryte økta</string>
+    <string name="alerta_cancelando_inicial">AVBRYTER...\n5s</string>
+    <string name="alerta_cancelando_cuenta">AVBRYTER%1$s\n%2$ds</string>
+    <string name="alerta_sin_puntos">Ingen poeng å miste</string>
+    <plurals name="alerta_puntos_perdidos">
+        <item quantity="one">−%1$s poeng</item>
+        <item quantity="other">−%1$s poeng</item>
+    </plurals>
+    <string name="alerta_ciclo_de_4">Syklus %1$d av 4</string>
+    <string name="alerta_ciclo_de_4_tiempo">Syklus %1$d av 4 · Tid %2$s</string>
+
+    <string name="analisis_titulo">Statistikk</string>
+    <string name="analisis_tienda_temas">Temabutikk</string>
+    <string name="analisis_racha">Nåværende rekke</string>
+    <string name="analisis_enfoque_total">Totalt fokus</string>
+    <string name="analisis_pomodoros_completados">Fullførte\npomodoroer</string>
+    <string name="analisis_tasa_fallos">Andel mislykkede</string>
+    <string name="analisis_grafico_titulo">Fullførte pomodoroer (denne uka)</string>
+    <string name="analisis_actividades_recientes">Nylig aktivitet</string>
+    <string name="analisis_sin_actividades">Ingen fullført aktivitet ennå</string>
+    <string name="analisis_ver_todo">Se alt</string>
+    <string name="analisis_puntos">%1$s poeng</string>
+    <string name="analisis_error_cargar">Feil ved lasting av skjermen: %1$s</string>
+    <string name="notif_estado_activadas">Varsler er på</string>
+    <string name="notif_estado_desactivadas">Varsler er av, slå dem på hvis du vil få beskjed</string>
+    <string name="tarea_ninguna">Ingen</string>
+    <string name="tarea_sin_nombre">Uten navn</string>
+    <string name="racha_empieza">Start din første rekke</string>
+    <string name="racha_ya_hoy">Du har allerede fokusert i dag, bra jobba</string>
+    <string name="racha_manten">Start en pomodoro for å beholde rekken</string>
+    <plurals name="analisis_abandonados">
+        <item quantity="one">%1$d avbrutt</item>
+        <item quantity="other">%1$d avbrutte</item>
+    </plurals>
+    <string-array name="iniciales_semana">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>O</item>
+        <item>T</item>
+        <item>F</item>
+        <item>L</item>
+    </string-array>
+
+    <string name="temas_titulo">Temabutikk</string>
+    <string name="tema_variante_oscuro">%1$s mørk</string>
+    <string name="tema_variante_claro">%1$s lys</string>
+    <string name="tema_color_azul">Blå</string>
+    <string name="tema_color_verde">Grønn</string>
+    <string name="tema_color_cacao">Kakao</string>
+    <string name="tema_color_naranja">Oransje</string>
+    <string name="tema_color_rojo">Rød</string>
+    <string name="tema_color_eucalipto">Eukalyptus</string>
+    <string name="tema_color_morado">Lilla</string>
+    <string name="tema_color_rosa">Rosa</string>
+    <string name="tema_color_marino">Marineblå</string>
+    <string name="tema_color_mostaza">Sennep</string>
+    <string name="tema_color_vainilla">Vanilje</string>
+    <string name="tema_color_turquesa">Turkis</string>
+    <string name="tema_color_aguamarina">Akvamarin</string>
+    <string name="tema_color_grafito">Grafitt</string>
+    <string name="tema_color_salvia">Salvie</string>
+    <string name="tema_color_coral">Korall</string>
+    <string name="tema_color_denim">Denim</string>
+    <string name="tema_color_lavanda">Lavendel</string>
+    <string name="tema_color_petroleo">Petroleum</string>
+    <string name="tema_color_berenjena">Aubergine</string>
+    <string name="tema_color_carmesi">Karmosin</string>
+    <string name="tema_color_arena">Sand</string>
+    <string name="tema_color_violeta">Fiolett</string>
+    <string name="tema_color_medianoche">Midnatt</string>
+    <string name="tema_color_neon">Neon</string>
+    <string name="tema_color_ultramar">Ultramarin</string>
+    <string name="tema_color_lima">Lime</string>
+    <string name="tema_seleccionado">Valgt</string>
+    <string name="tema_tocar_aplicar">Trykk for å bruke</string>
+    <string name="tema_deduccion">-%1$d p</string>
+    <plurals name="tema_precio">
+        <item quantity="one">%1$d poeng</item>
+        <item quantity="other">%1$d poeng</item>
+    </plurals>
+
+    <string name="ajustes_titulo">Generelle innstillinger</string>
+    <string name="ajustes_sesion_activa_alerta">Det er en aktiv økt. Avslutt eller avbryt økta for å endre forstyrrelsesvarselet.</string>
+    <string name="ajustes_notificaciones">VARSLER</string>
+    <string name="ajustes_notificaciones_texto">Slå på varsler fra Miau Focus når som helst</string>
+    <string name="ajustes_ajustes">Innstillinger</string>
+    <string name="ajustes_alerta_distraccion">FORSTYRRELSESVARSEL</string>
+    <string name="ajustes_alerta_distraccion_texto">Hvis du forlater appen under en fokusøkt, pauses tidtakeren, og når du kommer tilbake vises et varsel du må lukke for å fortsette. Slår du det av, får du ingen straff for å bli forstyrret, men du tjener færre poeng per fullførte syklus</string>
+    <string name="ajustes_vibracion">VIBRASJON</string>
+    <string name="ajustes_vibracion_texto">Vibrerer sammen med alarmene for slutt på økt og pause</string>
+    <string name="ajustes_modo_silencioso">STILLEMODUS</string>
+    <string name="ajustes_modo_silencioso_texto">I dette tidsrommet verken ringer eller vibrerer alarmene fra Miau Focus</string>
+    <string name="ajustes_desde">Fra</string>
+    <string name="ajustes_hasta">Til</string>
+    <string name="ajustes_reiniciar_estadisticas">NULLSTILL STATISTIKK</string>
+    <string name="ajustes_reiniciar_texto">Sletter rekken din, poengene og pomodorohistorikken. Dette kan ikke angres</string>
+    <string name="ajustes_reiniciar_boton">Nullstill</string>
+    <string name="ajustes_acerca_de">OM</string>
+    <string name="ajustes_acerca_de_texto">Om Miau Focus og hvordan du kan støtte prosjektet</string>
+    <string name="ajustes_idioma">SPRÅK</string>
+    <string name="ajustes_idioma_texto">Velg språket i appen uavhengig av systemet</string>
+    <string name="idioma_dialogo_titulo">Appspråk</string>
+    <string name="idioma_sistema">Systemstandard</string>
+    <string name="dialogo_reiniciar_titulo">Nullstill statistikk</string>
+    <string name="dialogo_reiniciar_texto">Rekken din, poengene og pomodorohistorikken blir slettet. Dette kan ikke angres.</string>
+    <string name="toast_estadisticas_reiniciadas">Statistikken er nullstilt</string>
+
+    <string name="config_titulo">Still inn tider</string>
+    <string name="config_sesion_activa">Det er en aktiv økt. Avslutt eller avbryt økta for å endre tidene.</string>
+    <string name="config_opciones_predeterminadas">STANDARDVALG</string>
+    <string name="config_opciones_predeterminadas_texto">25 min fokus, 5 min kort pause og 15 min lang pause. Slår du dette på, kan du ikke endre tidene under.</string>
+    <string name="config_tiempo_enfoque">FOKUSTID</string>
+    <string name="config_tiempo_enfoque_texto">Lengden på arbeidsbolkene</string>
+    <string name="config_descanso_corto">KORT PAUSE</string>
+    <string name="config_descanso_corto_texto">Lengden på pausen mellom syklusene</string>
+    <string name="config_activar_descanso_largo">SLÅ PÅ LANG PAUSE</string>
+    <string name="config_activar_descanso_largo_texto">Når du har fullført de 4 syklusene, tar du en lengre pause. Skal du fortsette å studere etterpå, anbefales det å ha den på. Skal du avslutte, kan du slå den av, og tidtakeren stopper når fjerde syklus er ferdig.</string>
+    <string name="config_duracion_descanso_largo">LENGDE PÅ LANG PAUSE</string>
+    <string name="config_guardar">LAGRE INNSTILLINGER</string>
+    <string name="toast_config_guardada">Innstillingene er lagret</string>
+    <string name="toast_no_cambiar_tiempos">Du kan ikke endre tidene mens en økt er aktiv</string>
+
+    <string name="acerca_titulo">Om</string>
+    <string name="acerca_version">Versjon %1$s</string>
+    <string name="acerca_la_app">APPEN</string>
+    <string name="acerca_la_app_texto">Miau Focus er en konsentrasjonsapp med pomodoroteknikken, så du kan studere uten å bli forstyrret, med en kattunge som selskap. Laget med omtanke av et lite uavhengig team.</string>
+    <string name="acerca_como_hecha">SLIK ER DEN LAGET</string>
+    <string name="acerca_como_hecha_texto">En native Android-app skrevet i Java. Den ber ikke om internettilgang, viser ingen reklame og krever ingen konto. All informasjonen din lagres bare på enheten din.</string>
+    <string name="acerca_quienes_somos">HVEM VI ER</string>
+    <string name="acerca_bruno_rol">Utvikling og design</string>
+    <string name="acerca_dulce_rol">Opprinnelig design og de første ideene</string>
+    <string name="acerca_publicado_por">Utgitt av Peggos Developers</string>
+    <string name="acerca_contacto_privacidad">KONTAKT OG PERSONVERN</string>
+    <string name="acerca_politica_privacidad">Personvernerklæring</string>
+    <string name="acerca_licencias">Tredjepartslisenser</string>
+    <string name="acerca_ayudanos">HJELP OSS Å BLI BEDRE</string>
+    <string name="acerca_ayudanos_texto">Miau Focus er gratis og uten irriterende reklame. Hvis den er til nytte og du vil gi oss en dytt til å fortsette å lage og forbedre, betyr all støtte mye.</string>
+    <string name="acerca_cafe">Spander en kaffe ☕</string>
+    <string name="cd_correo">E-post</string>
+    <string name="cd_privacidad">Personvern</string>
+    <string name="cd_licencias">Lisenser</string>
+    <string name="licencias_texto">Animasjoner laget med Lottie av Airbnb, distribuert under Apache 2.0-lisensen.</string>
+    <string name="toast_no_abrir_enlace">Kunne ikke åpne lenken</string>
+    <string name="toast_sin_app_correo">Fant ingen e-postapp</string>
+
+    <string name="canal_progreso_nombre">Økt pågår</string>
+    <string name="canal_progreso_desc">Viser hvor langt du er kommet i fokusøkta eller pausen</string>
+    <string name="canal_avisos_nombre">Øktvarsler</string>
+    <string name="canal_avisos_desc">Sier fra når pausen eller fokusøkta er ferdig</string>
+    <string name="canal_alarma_nombre">Forstyrrelsesvarsel</string>
+    <string name="canal_alarma_desc">Ringer som en alarm når du blir forstyrret under en fokusøkt</string>
+    <string name="canal_bloqueo_nombre">Tidtaker med låst skjerm</string>
+    <string name="canal_bloqueo_desc">Minner deg på at tidtakeren går videre mens skjermen er låst</string>
+
+    <string name="chip_vuelve">Kom tilbake</string>
+    <string name="notif_bloqueo_titulo">Tidtaker går</string>
+    <string name="notif_bloqueo_texto">Kom tilbake til Miau Focus</string>
+    <string name="notif_aviso_fin_descanso_titulo">Pausen din er snart over</string>
+    <string name="notif_aviso_fin_descanso_texto">Kom tilbake til Miau Focus om under 1 minutt</string>
+    <string name="notif_aviso_sancion_titulo">Pausen er nesten ferdig</string>
+    <string name="notif_aviso_sancion_texto">Kom tilbake til Miau Focus om 15 sekunder for å ta opp fokuset</string>
+    <string name="notif_distraccion_titulo">Du blir forstyrret</string>
+    <string name="notif_distraccion_texto">Tidtakeren er pauset. Kom tilbake til Miau Focus for å fortsette</string>
+    <string name="notif_descanso_pausa">Pausen er satt på vent</string>
+    <string name="notif_enfoque_pausa">Fokusøkta er satt på vent</string>
+    <string name="notif_pausa_texto">Ta deg av varselet for å fortsette</string>
+    <string name="notif_descanso_curso">Pause pågår</string>
+    <string name="notif_enfoque_curso">Fokusøkt pågår</string>
+    <string name="notif_progreso_texto">Trykk for å gå tilbake til Miau Focus</string>
+    <string name="notif_descanso_largo_terminado">Lang pause ferdig</string>
+    <string name="notif_completaste_sesion">Du fullførte økta</string>
+    <string name="notif_terminaste_4_ciclos">Du fullførte de 4 syklusene</string>
+    <string name="notif_descanso_termino">Pausen er over</string>
+    <string name="notif_enfoque_ya_comenzo">Fokusøkta har alt startet, kom tilbake til Miau Focus</string>
+    <string name="notif_toca_continuar">Trykk for å fortsette</string>
+</resources>

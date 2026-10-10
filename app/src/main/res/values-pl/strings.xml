@@ -1,0 +1,265 @@
+<resources>
+    <string name="an_lisis_de_enfoque">Analiza skupienia</string>
+
+    <string name="accion_cancelar">Anuluj</string>
+    <string name="accion_guardar">Zapisz</string>
+    <string name="accion_ver">Zobacz</string>
+    <string name="accion_atras">Wstecz</string>
+    <string name="accion_renunciar">Poddaj się</string>
+    <string name="accion_comenzar">ZACZNIJ</string>
+    <string name="accion_siguiente">DALEJ</string>
+
+    <string name="fase_enfoque">SESJA SKUPIENIA</string>
+    <string name="fase_descanso_corto">KRÓTKA PRZERWA</string>
+    <string name="fase_descanso_largo">DŁUGA PRZERWA</string>
+    <string name="fase_corta_enfoque">Skupienie</string>
+    <string name="fase_corta_descanso">Przerwa</string>
+
+    <string name="nav_enfoque">Skupienie</string>
+    <string name="nav_tareas">Zadania</string>
+    <string name="nav_estadisticas">Statystyki</string>
+
+    <string name="bienvenida_pomodoro">POMODORO</string>
+    <string name="onboarding_titulo_1">Witaj w\nMiau Focus</string>
+    <string name="onboarding_titulo_2">Bez rozpraszaczy,\nbez wymówek</string>
+    <string name="onboarding_titulo_3">Kot cię obserwuje,\nnie odpuszczaj</string>
+    <string name="onboarding_texto_1">Twój koci towarzysz pomoże ci utrzymać skupienie techniką pomodoro. Przesuń, żeby zobaczyć jak.</string>
+    <string name="onboarding_texto_2">Jeśli wyjdziesz z aplikacji w trakcie sesji, licznik się zatrzyma, a gdy będziesz wracać zbyt długo, stracisz punkty. Trzymaj się.</string>
+    <string name="onboarding_texto_3">Kończ cykle, zdobywaj punkty i odblokowuj motywy. Każda ukończona sesja wzmacnia twoją serię.</string>
+
+    <string name="cronometro_enfocado_en">Skupienie na: %1$s</string>
+    <string name="cd_renunciar">Poddaj się</string>
+    <string name="cd_escudo">Tarcza</string>
+    <string name="cd_pausar">Pauza</string>
+    <string name="cd_puntos">Punkty</string>
+    <string name="toast_completaste_4_ciclos">Ukończyłeś 4 cykle skupienia. Zacznij od nowa, kiedy chcesz.</string>
+    <string name="toast_descanso_largo_terminado">Długa przerwa skończona. Zacznij nowy cykl, kiedy chcesz.</string>
+
+    <string name="dialogo_advertencia_titulo">Uwaga</string>
+    <string name="dialogo_advertencia_texto">Na pewno chcesz przerwać tę sesję skupienia? Stracisz punkty, a twoja seria zacznie się od nowa.</string>
+
+    <string name="dialogo_escudo_titulo">Włącz tarczę</string>
+    <string name="dialogo_escudo_texto">Sesja będzie chroniona. Jeśli ją anulujesz, nie stracisz ani punktów, ani serii. Możesz jej użyć tylko raz dziennie.</string>
+    <string name="dialogo_escudo_activar">Włącz tarczę</string>
+
+    <string name="dialogo_permiso_ahora_no">Nie teraz</string>
+    <string name="permiso_notif_titulo">Nie przegap powiadomienia</string>
+    <string name="permiso_notif_texto">Włącz powiadomienia, żeby Miau Focus dał znać, gdy tylko skończy się sesja skupienia albo przerwa.</string>
+    <string name="permiso_notif_boton">Włącz powiadomienia</string>
+    <string name="permiso_pantalla_titulo">Nie przegap ostrzeżenia</string>
+    <string name="permiso_pantalla_texto">Żeby ostrzeżenie o rozproszeniu pokazywało się na pełnym ekranie nawet podczas korzystania z innej aplikacji, przyznaj Miau Focus uprawnienie do pełnego ekranu.</string>
+    <string name="permiso_pantalla_boton">Skonfiguruj</string>
+
+    <string name="tareas_titulo">Zadania</string>
+    <string name="tareas_tarea_activa">Aktywne zadanie</string>
+    <string name="tareas_sin_tarea_activa">Brak aktywnego zadania</string>
+    <string name="tareas_selecciona">Wybierz zadanie, żeby zacząć się skupiać</string>
+    <string name="tareas_toca_ir_enfoque">Dotknij Przejdź do skupienia, żeby się nim zająć</string>
+    <string name="tareas_ir_a_enfoque">Przejdź do skupienia</string>
+    <string name="tareas_pendientes">Do zrobienia</string>
+    <string name="tareas_completadas_hoy">Zrobione\ndziś</string>
+    <string name="tareas_total">Razem</string>
+    <string name="tareas_vacio_titulo">Nie masz jeszcze zadań</string>
+    <string name="tareas_vacio_texto">Dodaj pierwsze zadanie, żeby zacząć się skupiać</string>
+    <string name="tareas_anadir">+ Dodaj zadanie</string>
+    <string name="dialogo_tarea_nueva">Nowe zadanie</string>
+    <string name="dialogo_tarea_editar">Edytuj zadanie</string>
+    <string name="dialogo_tarea_hint">Np. Odrobić zadanie z historii</string>
+    <string name="dialogo_opciones_titulo">Co chcesz zrobić z tym zadaniem?</string>
+    <string name="opcion_fijar_activa">Ustaw jako aktywne zadanie</string>
+    <string name="opcion_editar">Edytuj tekst</string>
+    <string name="opcion_eliminar">Usuń zadanie</string>
+    <string name="toast_tarea_agregada">Zadanie dodane</string>
+    <string name="toast_tarea_fijada">Zadanie przypięte na górze</string>
+    <string name="toast_tarea_actualizada">Zadanie zaktualizowane</string>
+    <string name="toast_tarea_eliminada">Zadanie usunięte</string>
+    <string name="toast_escribe_tarea">Wpisz zadanie</string>
+
+    <string name="cd_alerta_distraccion">Ostrzeżenie o rozproszeniu</string>
+    <string name="cd_gato_triste">Smutny kot</string>
+    <string name="alerta_infraccion">SKUPIENIE\nPRZERWANE</string>
+    <string name="alerta_instruccion">Wróć do aplikacji i przytrzymaj przycisk, żeby wyciszyć alarm.</string>
+    <string name="alerta_manten_5s">TRZYMAJ 5 s</string>
+    <string name="alerta_manten_cancelar">Przytrzymaj, żeby anulować sesję</string>
+    <string name="alerta_cancelando_inicial">ANULOWANIE...\n5s</string>
+    <string name="alerta_cancelando_cuenta">ANULOWANIE%1$s\n%2$ds</string>
+    <string name="alerta_sin_puntos">Nie masz punktów do stracenia</string>
+    <plurals name="alerta_puntos_perdidos">
+        <item quantity="one">−%1$s punkt</item>
+        <item quantity="few">−%1$s punkty</item>
+        <item quantity="many">−%1$s punktów</item>
+        <item quantity="other">−%1$s punktu</item>
+    </plurals>
+    <string name="alerta_ciclo_de_4">Cykl %1$d z 4</string>
+    <string name="alerta_ciclo_de_4_tiempo">Cykl %1$d z 4 · Czas %2$s</string>
+
+    <string name="analisis_titulo">Statystyki</string>
+    <string name="analisis_tienda_temas">Sklep z motywami</string>
+    <string name="analisis_racha">Obecna seria</string>
+    <string name="analisis_enfoque_total">Łączne skupienie</string>
+    <string name="analisis_pomodoros_completados">Ukończone\npomodoro</string>
+    <string name="analisis_tasa_fallos">Odsetek nieudanych</string>
+    <string name="analisis_grafico_titulo">Ukończone pomodoro (w tym tygodniu)</string>
+    <string name="analisis_actividades_recientes">Ostatnia aktywność</string>
+    <string name="analisis_sin_actividades">Nie ma jeszcze ukończonej aktywności</string>
+    <string name="analisis_ver_todo">Zobacz wszystko</string>
+    <string name="analisis_puntos">%1$s pkt</string>
+    <string name="analisis_error_cargar">Błąd wczytywania ekranu: %1$s</string>
+    <string name="notif_estado_activadas">Powiadomienia są włączone</string>
+    <string name="notif_estado_desactivadas">Powiadomienia są wyłączone, włącz je, jeśli chcesz dostawać alerty</string>
+    <string name="tarea_ninguna">Brak</string>
+    <string name="tarea_sin_nombre">Bez nazwy</string>
+    <string name="racha_empieza">Zacznij swoją pierwszą serię</string>
+    <string name="racha_ya_hoy">Dziś już się skupiałeś, dobra robota</string>
+    <string name="racha_manten">Zacznij pomodoro, żeby utrzymać serię</string>
+    <plurals name="analisis_abandonados">
+        <item quantity="one">%1$d porzucone</item>
+        <item quantity="few">%1$d porzucone</item>
+        <item quantity="many">%1$d porzuconych</item>
+        <item quantity="other">%1$d porzuconego</item>
+    </plurals>
+    <string-array name="iniciales_semana">
+        <item>N</item>
+        <item>P</item>
+        <item>W</item>
+        <item>Ś</item>
+        <item>C</item>
+        <item>P</item>
+        <item>S</item>
+    </string-array>
+
+    <string name="temas_titulo">Sklep z motywami</string>
+    <string name="tema_variante_oscuro">%1$s ciemny</string>
+    <string name="tema_variante_claro">%1$s jasny</string>
+    <string name="tema_color_azul">Niebieski</string>
+    <string name="tema_color_verde">Zielony</string>
+    <string name="tema_color_cacao">Kakaowy</string>
+    <string name="tema_color_naranja">Pomarańczowy</string>
+    <string name="tema_color_rojo">Czerwony</string>
+    <string name="tema_color_eucalipto">Eukaliptusowy</string>
+    <string name="tema_color_morado">Fioletowy</string>
+    <string name="tema_color_rosa">Różowy</string>
+    <string name="tema_color_marino">Granatowy</string>
+    <string name="tema_color_mostaza">Musztardowy</string>
+    <string name="tema_color_vainilla">Waniliowy</string>
+    <string name="tema_color_turquesa">Turkusowy</string>
+    <string name="tema_color_aguamarina">Akwamarynowy</string>
+    <string name="tema_color_grafito">Grafitowy</string>
+    <string name="tema_color_salvia">Szałwiowy</string>
+    <string name="tema_color_coral">Koralowy</string>
+    <string name="tema_color_denim">Dżinsowy</string>
+    <string name="tema_color_lavanda">Lawendowy</string>
+    <string name="tema_color_petroleo">Petrolowy</string>
+    <string name="tema_color_berenjena">Bakłażanowy</string>
+    <string name="tema_color_carmesi">Karmazynowy</string>
+    <string name="tema_color_arena">Piaskowy</string>
+    <string name="tema_color_violeta">Fiołkowy</string>
+    <string name="tema_color_medianoche">Północny</string>
+    <string name="tema_color_neon">Neonowy</string>
+    <string name="tema_color_ultramar">Ultramarynowy</string>
+    <string name="tema_color_lima">Limonkowy</string>
+    <string name="tema_seleccionado">Wybrany</string>
+    <string name="tema_tocar_aplicar">Dotknij, żeby zastosować</string>
+    <string name="tema_deduccion">-%1$d pkt</string>
+    <plurals name="tema_precio">
+        <item quantity="one">%1$d punkt</item>
+        <item quantity="few">%1$d punkty</item>
+        <item quantity="many">%1$d punktów</item>
+        <item quantity="other">%1$d punktu</item>
+    </plurals>
+
+    <string name="ajustes_titulo">Ustawienia ogólne</string>
+    <string name="ajustes_sesion_activa_alerta">Trwa sesja. Zakończ ją lub anuluj, żeby zmienić ostrzeżenie o rozproszeniu.</string>
+    <string name="ajustes_notificaciones">POWIADOMIENIA</string>
+    <string name="ajustes_notificaciones_texto">Włącz alerty Miau Focus w dowolnym momencie</string>
+    <string name="ajustes_ajustes">Ustawienia</string>
+    <string name="ajustes_alerta_distraccion">OSTRZEŻENIE O ROZPROSZENIU</string>
+    <string name="ajustes_alerta_distraccion_texto">Jeśli wyjdziesz z aplikacji w trakcie sesji skupienia, licznik się zatrzyma, a po powrocie pojawi się ostrzeżenie, które trzeba zamknąć, żeby kontynuować. Po wyłączeniu nie ma kar za rozproszenie, ale za każdy ukończony cykl dostajesz mniej punktów</string>
+    <string name="ajustes_vibracion">WIBRACJE</string>
+    <string name="ajustes_vibracion_texto">Wibruje razem z alarmami końca sesji i przerwy</string>
+    <string name="ajustes_modo_silencioso">TRYB CICHY</string>
+    <string name="ajustes_modo_silencioso_texto">W tych godzinach alarmy Miau Focus nie dzwonią ani nie wibrują</string>
+    <string name="ajustes_desde">Od</string>
+    <string name="ajustes_hasta">Do</string>
+    <string name="ajustes_reiniciar_estadisticas">RESETUJ STATYSTYKI</string>
+    <string name="ajustes_reiniciar_texto">Usuwa twoją serię, punkty i historię pomodoro. Tego nie da się cofnąć</string>
+    <string name="ajustes_reiniciar_boton">Resetuj</string>
+    <string name="ajustes_acerca_de">O APLIKACJI</string>
+    <string name="ajustes_acerca_de_texto">Informacje o Miau Focus i jak możesz wesprzeć projekt</string>
+    <string name="ajustes_idioma">JĘZYK</string>
+    <string name="ajustes_idioma_texto">Wybierz język aplikacji niezależnie od systemu</string>
+    <string name="idioma_dialogo_titulo">Język aplikacji</string>
+    <string name="idioma_sistema">Domyślny systemu</string>
+    <string name="dialogo_reiniciar_titulo">Resetuj statystyki</string>
+    <string name="dialogo_reiniciar_texto">Twoja seria, punkty i historia pomodoro zostaną usunięte. Tego nie da się cofnąć.</string>
+    <string name="toast_estadisticas_reiniciadas">Statystyki zresetowane</string>
+
+    <string name="config_titulo">Ustaw czasy</string>
+    <string name="config_sesion_activa">Trwa sesja. Zakończ ją lub anuluj, żeby zmienić czasy.</string>
+    <string name="config_opciones_predeterminadas">OPCJE DOMYŚLNE</string>
+    <string name="config_opciones_predeterminadas_texto">25 min skupienia, 5 min krótkiej przerwy i 15 min długiej przerwy. Po włączeniu nie będzie można zmienić czasów poniżej.</string>
+    <string name="config_tiempo_enfoque">CZAS SKUPIENIA</string>
+    <string name="config_tiempo_enfoque_texto">Długość bloków pracy</string>
+    <string name="config_descanso_corto">KRÓTKA PRZERWA</string>
+    <string name="config_descanso_corto_texto">Długość przerwy między cyklami</string>
+    <string name="config_activar_descanso_largo">WŁĄCZ DŁUGĄ PRZERWĘ</string>
+    <string name="config_activar_descanso_largo_texto">Po ukończeniu 4 cykli bierzesz dłuższą przerwę. Jeśli zamierzasz uczyć się dalej, warto ją włączyć; jeśli kończysz, możesz ją wyłączyć, a licznik zatrzyma się po czwartym cyklu.</string>
+    <string name="config_duracion_descanso_largo">DŁUGOŚĆ DŁUGIEJ PRZERWY</string>
+    <string name="config_guardar">ZAPISZ USTAWIENIA</string>
+    <string name="toast_config_guardada">Ustawienia zapisane</string>
+    <string name="toast_no_cambiar_tiempos">Nie możesz zmieniać czasów, gdy trwa sesja</string>
+
+    <string name="acerca_titulo">O aplikacji</string>
+    <string name="acerca_version">Wersja %1$s</string>
+    <string name="acerca_la_app">APLIKACJA</string>
+    <string name="acerca_la_app_texto">Miau Focus to aplikacja do koncentracji oparta na technice pomodoro, żebyś uczył się bez rozpraszania, w towarzystwie kotka. Zrobiona z sercem przez mały niezależny zespół.</string>
+    <string name="acerca_como_hecha">JAK POWSTAŁA</string>
+    <string name="acerca_como_hecha_texto">Natywna aplikacja na Androida, napisana w Javie. Nie prosi o dostęp do internetu, nie wyświetla reklam i nie wymaga zakładania konta. Wszystkie twoje dane są zapisywane wyłącznie na twoim urządzeniu.</string>
+    <string name="acerca_quienes_somos">KIM JESTEŚMY</string>
+    <string name="acerca_bruno_rol">Programowanie i design</string>
+    <string name="acerca_dulce_rol">Pierwotny projekt i początkowe pomysły</string>
+    <string name="acerca_publicado_por">Wydane przez Peggos Developers</string>
+    <string name="acerca_contacto_privacidad">KONTAKT I PRYWATNOŚĆ</string>
+    <string name="acerca_politica_privacidad">Polityka prywatności</string>
+    <string name="acerca_licencias">Licencje innych firm</string>
+    <string name="acerca_ayudanos">POMÓŻ NAM SIĘ ROZWIJAĆ</string>
+    <string name="acerca_ayudanos_texto">Miau Focus jest darmowy i bez uciążliwych reklam. Jeśli ci się przydaje i chcesz nas podbudować, żebyśmy dalej tworzyli i ulepszali, każde wsparcie sprawia nam radość.</string>
+    <string name="acerca_cafe">Postaw nam kawę ☕</string>
+    <string name="cd_correo">E-mail</string>
+    <string name="cd_privacidad">Prywatność</string>
+    <string name="cd_licencias">Licencje</string>
+    <string name="licencias_texto">Animacje stworzone przy użyciu Lottie od Airbnb, rozpowszechniane na licencji Apache 2.0.</string>
+    <string name="toast_no_abrir_enlace">Nie udało się otworzyć linku</string>
+    <string name="toast_sin_app_correo">Nie znaleziono aplikacji pocztowej</string>
+
+    <string name="canal_progreso_nombre">Trwająca sesja</string>
+    <string name="canal_progreso_desc">Pokazuje postęp sesji skupienia albo przerwy</string>
+    <string name="canal_avisos_nombre">Alerty sesji</string>
+    <string name="canal_avisos_desc">Daje znać, gdy kończy się przerwa albo sesja skupienia</string>
+    <string name="canal_alarma_nombre">Ostrzeżenie o rozproszeniu</string>
+    <string name="canal_alarma_desc">Dzwoni jak alarm, gdy rozpraszasz się w trakcie sesji skupienia</string>
+    <string name="canal_bloqueo_nombre">Licznik przy zablokowanym ekranie</string>
+    <string name="canal_bloqueo_desc">Przypomina, że licznik idzie dalej, gdy ekran jest zablokowany</string>
+
+    <string name="chip_vuelve">Wróć</string>
+    <string name="notif_bloqueo_titulo">Licznik działa</string>
+    <string name="notif_bloqueo_texto">Wróć do Miau Focus</string>
+    <string name="notif_aviso_fin_descanso_titulo">Twoja przerwa zaraz się skończy</string>
+    <string name="notif_aviso_fin_descanso_texto">Wróć do Miau Focus w niecałą minutę</string>
+    <string name="notif_aviso_sancion_titulo">Przerwa prawie się skończyła</string>
+    <string name="notif_aviso_sancion_texto">Wróć do Miau Focus za 15 sekund, żeby wrócić do skupienia</string>
+    <string name="notif_distraccion_titulo">Rozpraszasz się</string>
+    <string name="notif_distraccion_texto">Licznik jest zatrzymany. Wróć do Miau Focus, żeby kontynuować</string>
+    <string name="notif_descanso_pausa">Przerwa wstrzymana</string>
+    <string name="notif_enfoque_pausa">Sesja skupienia wstrzymana</string>
+    <string name="notif_pausa_texto">Zajmij się ostrzeżeniem, żeby kontynuować</string>
+    <string name="notif_descanso_curso">Trwa przerwa</string>
+    <string name="notif_enfoque_curso">Trwa sesja skupienia</string>
+    <string name="notif_progreso_texto">Dotknij, żeby wrócić do Miau Focus</string>
+    <string name="notif_descanso_largo_terminado">Długa przerwa skończona</string>
+    <string name="notif_completaste_sesion">Ukończyłeś swoją sesję</string>
+    <string name="notif_terminaste_4_ciclos">Skończyłeś swoje 4 cykle</string>
+    <string name="notif_descanso_termino">Przerwa się skończyła</string>
+    <string name="notif_enfoque_ya_comenzo">Sesja skupienia już się zaczęła, wróć do Miau Focus</string>
+    <string name="notif_toca_continuar">Dotknij, żeby kontynuować</string>
+</resources>

@@ -4,15 +4,15 @@
         android:id="@+id/nav_enfoque"
         android:icon="@drawable/ic_reloj"
         android:fontFamily="@font/poppins_semibold"
-        android:title="Enfoque" />
+        android:title="@string/nav_enfoque" />
     <item
         android:id="@+id/nav_tareas"
         android:icon="@drawable/ic_tareas"
         android:fontFamily="@font/poppins_semibold"
-        android:title="Tareas" />
+        android:title="@string/tareas_titulo" />
     <item
         android:id="@+id/nav_estadisticas"
         android:icon="@drawable/ic_grafica"
         android:fontFamily="@font/poppins_semibold"
-        android:title="Estadísticas" />
+        android:title="@string/nav_estadisticas" />
 </menu>

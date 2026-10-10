@@ -45,7 +45,7 @@ public class acercaDeActivity extends BaseActivity {
     private String obtenerVersion() {
         try {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
-            return "Versión " + info.versionName;
+            return getString(R.string.acerca_version, info.versionName);
         } catch (Exception e) {
             return "";
         }
@@ -55,7 +55,7 @@ public class acercaDeActivity extends BaseActivity {
         try {
             startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(url)));
         } catch (Exception e) {
-            Toast.makeText(this, "No se pudo abrir el enlace", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_no_abrir_enlace, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -64,14 +64,14 @@ public class acercaDeActivity extends BaseActivity {
             Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + CORREO_CONTACTO));
             startActivity(intent);
         } catch (Exception e) {
-            Toast.makeText(this, "No se encontró una app de correo", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_sin_app_correo, Toast.LENGTH_SHORT).show();
         }
     }
 
     private void mostrarLicencias() {
         new MaterialAlertDialogBuilder(this)
-                .setTitle("Licencias de terceros")
-                .setMessage("Animaciones creadas con Lottie por Airbnb, distribuido bajo la licencia Apache 2.0.")
+                .setTitle(R.string.acerca_licencias)
+                .setMessage(R.string.licencias_texto)
                 .setPositiveButton("Cerrar", null)
                 .show();
     }

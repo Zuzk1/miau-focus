@@ -7,6 +7,28 @@
     android:background="?attr/themeFondoAlerta">
 
     <View
+        android:id="@+id/circleTopLeft"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginStart="-55dp"
+        android:layout_marginTop="180dp"
+        android:alpha="0.13"
+        android:background="@drawable/circulos_decorativos_alerta"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/circleBottomRight"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginEnd="-70dp"
+        android:layout_marginBottom="150dp"
+        android:alpha="0.13"
+        android:background="@drawable/circulos_decorativos_alerta"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
         android:id="@+id/viewGlowTop"
         android:layout_width="376dp"
         android:layout_height="365dp"
@@ -21,29 +43,27 @@
         android:id="@+id/ivIconoAlerta"
         android:layout_width="90dp"
         android:layout_height="78dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/cd_alerta_distraccion"
         android:src="@drawable/ic_alerta_escudo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="@color/color_rojo_peligro" />
 
     <TextView
-
-
         android:id="@+id/tvAlerta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/poppins_bold"
         android:gravity="center"
-        android:text="¡INFRACCIÓN\nDE ENFOQUE!"
-        android:textColor="@color/color_rojo_brillante"
-        android:textSize="32sp"
-        android:textStyle="bold"
         android:letterSpacing="0.05"
         android:lineSpacingMultiplier="1.1"
+        android:text="@string/alerta_infraccion"
+        android:textColor="@color/color_rojo_brillante"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivIconoAlerta" />
@@ -52,49 +72,101 @@
         android:id="@+id/viewDivider"
         android:layout_width="48dp"
         android:layout_height="2dp"
-        android:layout_marginTop="16dp"
-        android:background="@color/color_rojo_peligro"
+        android:layout_marginTop="14dp"
         android:alpha="0.6"
+        android:background="@color/color_rojo_peligro"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvAlerta" />
+
+    <FrameLayout
+        android:id="@+id/contenedorGato"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_constraintBottom_toTopOf="@+id/tvInstruccion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDivider"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/cd_gato_triste"
+            android:src="@drawable/ic_gato_cabeza_alerta" />
+
+        <ImageView
+            android:id="@+id/ivGatoLagrima"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_gato_solo_lagrima" />
+
+    </FrameLayout>
 
     <TextView
         android:id="@+id/tvInstruccion"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="48dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginHorizontal="44dp"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/poppins_regular"
         android:gravity="center"
-        android:lineSpacingMultiplier="1.4"
-        android:text="Regresa a la app y mantén el botón para silenciar la alarma."
+        android:lineSpacingMultiplier="1.35"
+        android:text="@string/alerta_instruccion"
         android:textColor="?attr/themeAlertaTextoSecundario"
-        android:textSize="15sp"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/cardInfoInfraccion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDivider" />
+        app:layout_constraintTop_toBottomOf="@+id/contenedorGato" />
 
-    <TextView
-        android:id="@+id/tvPenalizacion"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/cardInfoInfraccion"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:paddingHorizontal="14dp"
-        android:paddingVertical="6dp"
-        android:background="@drawable/bg_penalizacion"
-        android:text="Penalización activa — pérdida de puntos"
-        android:textColor="?attr/themeAlertaTextoTerciario"
-        android:textSize="11sp"
-        android:textStyle="italic"
+        android:layout_marginHorizontal="44dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_tarjeta_infraccion"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingHorizontal="18dp"
+        android:paddingVertical="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/contenedorBoton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvInstruccion" />
+        app:layout_constraintTop_toBottomOf="@+id/tvInstruccion">
+
+        <TextView
+            android:id="@+id/tvInfoPuntos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="−70 puntos"
+            android:textColor="@color/color_rojo_brillante"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvInfoDetalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="Tu sesión quedó en 00:00"
+            android:textColor="?attr/themeAlertaTextoTerciario"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/contenedorBoton"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="76dp"
         android:clipChildren="false"
         android:clipToPadding="false"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -107,11 +179,11 @@
             android:layout_height="match_parent"
             android:theme="@style/Theme.MaterialComponents"
             android:backgroundTint="@color/color_rojo_oscuro"
-            android:text="MANTÉN 5s"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing="0.08"
+            android:text="@string/alerta_manten_5s"
             android:textColor="@color/white"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:letterSpacing="0.08"
             app:cornerRadius="100dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
@@ -136,8 +208,9 @@
         android:id="@+id/tvBtnHint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
-        android:text="Mantén presionado para cancelar la sesión"
+        android:layout_marginBottom="44dp"
+        android:fontFamily="@font/poppins_regular"
+        android:text="@string/alerta_manten_cancelar"
         android:textColor="@color/color_rojo_oscuro"
         android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"

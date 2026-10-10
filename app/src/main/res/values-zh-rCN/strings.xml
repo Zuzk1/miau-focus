@@ -1,0 +1,256 @@
+<resources>
+    <string name="an_lisis_de_enfoque">专注分析</string>
+
+    <string name="accion_cancelar">取消</string>
+    <string name="accion_guardar">保存</string>
+    <string name="accion_ver">查看</string>
+    <string name="accion_atras">返回</string>
+    <string name="accion_renunciar">放弃</string>
+    <string name="accion_comenzar">开始</string>
+    <string name="accion_siguiente">下一步</string>
+
+    <string name="fase_enfoque">专注时段</string>
+    <string name="fase_descanso_corto">短休息</string>
+    <string name="fase_descanso_largo">长休息</string>
+    <string name="fase_corta_enfoque">专注</string>
+    <string name="fase_corta_descanso">休息</string>
+
+    <string name="nav_enfoque">专注</string>
+    <string name="nav_tareas">任务</string>
+    <string name="nav_estadisticas">统计</string>
+
+    <string name="bienvenida_pomodoro">番茄钟</string>
+    <string name="onboarding_titulo_1">欢迎使用\nMiau Focus</string>
+    <string name="onboarding_titulo_2">没有干扰，\n也没有借口</string>
+    <string name="onboarding_titulo_3">猫咪在看着你，\n别掉链子</string>
+    <string name="onboarding_texto_1">你的猫咪伙伴会用番茄工作法帮你保持专注。滑动看看怎么用。</string>
+    <string name="onboarding_texto_2">在专注期间离开应用，计时会暂停；如果太久不回来，就会扣分。请稳住。</string>
+    <string name="onboarding_texto_3">完成周期、赚取积分并解锁主题。每完成一次时段，连续记录就会增长。</string>
+
+    <string name="cronometro_enfocado_en">正在专注：%1$s</string>
+    <string name="cd_renunciar">放弃</string>
+    <string name="cd_escudo">护盾</string>
+    <string name="cd_pausar">暂停</string>
+    <string name="cd_puntos">积分</string>
+    <string name="toast_completaste_4_ciclos">你已完成 4 个专注周期。随时可以重新开始。</string>
+    <string name="toast_descanso_largo_terminado">长休息结束。随时可以开始新的周期。</string>
+
+    <string name="dialogo_advertencia_titulo">警告</string>
+    <string name="dialogo_advertencia_texto">确定要放弃这次专注时段吗。你会失去积分，连续记录也会清零。</string>
+
+    <string name="dialogo_escudo_titulo">启用护盾</string>
+    <string name="dialogo_escudo_texto">这次时段会受到保护。即使取消，也不会失去积分和连续记录。每天只能用一次。</string>
+    <string name="dialogo_escudo_activar">启用护盾</string>
+
+    <string name="dialogo_permiso_ahora_no">暂不</string>
+    <string name="permiso_notif_titulo">别错过提醒</string>
+    <string name="permiso_notif_texto">开启通知，专注时段或休息一结束，Miau Focus 就能马上提醒你。</string>
+    <string name="permiso_notif_boton">开启通知</string>
+    <string name="permiso_pantalla_titulo">别错过警告</string>
+    <string name="permiso_pantalla_texto">为了让分心警告在你使用其他应用时也能全屏显示，请为 Miau Focus 开启全屏权限。</string>
+    <string name="permiso_pantalla_boton">去设置</string>
+
+    <string name="tareas_titulo">任务</string>
+    <string name="tareas_tarea_activa">进行中的任务</string>
+    <string name="tareas_sin_tarea_activa">没有进行中的任务</string>
+    <string name="tareas_selecciona">选一个任务，开始专注</string>
+    <string name="tareas_toca_ir_enfoque">点击「去专注」开始处理</string>
+    <string name="tareas_ir_a_enfoque">去专注</string>
+    <string name="tareas_pendientes">待办</string>
+    <string name="tareas_completadas_hoy">今日\n完成</string>
+    <string name="tareas_total">合计</string>
+    <string name="tareas_vacio_titulo">还没有任务</string>
+    <string name="tareas_vacio_texto">添加第一个任务，开始专注</string>
+    <string name="tareas_anadir">+ 添加任务</string>
+    <string name="dialogo_tarea_nueva">新建任务</string>
+    <string name="dialogo_tarea_editar">编辑任务</string>
+    <string name="dialogo_tarea_hint">例如：写历史作业</string>
+    <string name="dialogo_opciones_titulo">要对这个任务做什么</string>
+    <string name="opcion_fijar_activa">设为进行中的任务</string>
+    <string name="opcion_editar">编辑文字</string>
+    <string name="opcion_eliminar">删除任务</string>
+    <string name="toast_tarea_agregada">任务已添加</string>
+    <string name="toast_tarea_fijada">任务已置顶</string>
+    <string name="toast_tarea_actualizada">任务已更新</string>
+    <string name="toast_tarea_eliminada">任务已删除</string>
+    <string name="toast_escribe_tarea">请输入任务</string>
+
+    <string name="cd_alerta_distraccion">分心警告</string>
+    <string name="cd_gato_triste">难过的猫</string>
+    <string name="alerta_infraccion">专注\n被打断</string>
+    <string name="alerta_instruccion">回到应用并长按按钮以关闭闹铃。</string>
+    <string name="alerta_manten_5s">长按 5 秒</string>
+    <string name="alerta_manten_cancelar">长按可取消本次时段</string>
+    <string name="alerta_cancelando_inicial">正在取消…\n5秒</string>
+    <string name="alerta_cancelando_cuenta">正在取消%1$s\n%2$d秒</string>
+    <string name="alerta_sin_puntos">没有可失去的积分</string>
+    <plurals name="alerta_puntos_perdidos">
+        <item quantity="other">−%1$s 分</item>
+    </plurals>
+    <string name="alerta_ciclo_de_4">第 %1$d 个周期，共 4 个</string>
+    <string name="alerta_ciclo_de_4_tiempo">第 %1$d 个周期，共 4 个 · 剩余 %2$s</string>
+
+    <string name="analisis_titulo">统计</string>
+    <string name="analisis_tienda_temas">主题商店</string>
+    <string name="analisis_racha">当前连续记录</string>
+    <string name="analisis_enfoque_total">累计专注</string>
+    <string name="analisis_pomodoros_completados">已完成的\n番茄钟</string>
+    <string name="analisis_tasa_fallos">失败率</string>
+    <string name="analisis_grafico_titulo">已完成的番茄钟（本周）</string>
+    <string name="analisis_actividades_recientes">最近的记录</string>
+    <string name="analisis_sin_actividades">还没有完成的记录</string>
+    <string name="analisis_ver_todo">查看全部</string>
+    <string name="analisis_puntos">%1$s 积分</string>
+    <string name="analisis_error_cargar">加载页面出错：%1$s</string>
+    <string name="notif_estado_activadas">通知已开启</string>
+    <string name="notif_estado_desactivadas">通知已关闭，想收到提醒请开启</string>
+    <string name="tarea_ninguna">无</string>
+    <string name="tarea_sin_nombre">未命名</string>
+    <string name="racha_empieza">开始你的第一段连续记录</string>
+    <string name="racha_ya_hoy">今天已经专注过了，不错</string>
+    <string name="racha_manten">开始一个番茄钟，保住连续记录</string>
+    <plurals name="analisis_abandonados">
+        <item quantity="other">中断 %1$d 次</item>
+    </plurals>
+    <string-array name="iniciales_semana">
+        <item>日</item>
+        <item>一</item>
+        <item>二</item>
+        <item>三</item>
+        <item>四</item>
+        <item>五</item>
+        <item>六</item>
+    </string-array>
+
+    <string name="temas_titulo">主题商店</string>
+    <string name="tema_variante_oscuro">%1$s 深色</string>
+    <string name="tema_variante_claro">%1$s 浅色</string>
+    <string name="tema_color_azul">蓝色</string>
+    <string name="tema_color_verde">绿色</string>
+    <string name="tema_color_cacao">可可</string>
+    <string name="tema_color_naranja">橙色</string>
+    <string name="tema_color_rojo">红色</string>
+    <string name="tema_color_eucalipto">桉叶绿</string>
+    <string name="tema_color_morado">紫色</string>
+    <string name="tema_color_rosa">粉色</string>
+    <string name="tema_color_marino">藏青</string>
+    <string name="tema_color_mostaza">芥末黄</string>
+    <string name="tema_color_vainilla">香草</string>
+    <string name="tema_color_turquesa">松石绿</string>
+    <string name="tema_color_aguamarina">海蓝</string>
+    <string name="tema_color_grafito">石墨灰</string>
+    <string name="tema_color_salvia">鼠尾草绿</string>
+    <string name="tema_color_coral">珊瑚色</string>
+    <string name="tema_color_denim">牛仔蓝</string>
+    <string name="tema_color_lavanda">薰衣草</string>
+    <string name="tema_color_petroleo">墨绿</string>
+    <string name="tema_color_berenjena">茄紫</string>
+    <string name="tema_color_carmesi">绯红</string>
+    <string name="tema_color_arena">沙色</string>
+    <string name="tema_color_violeta">紫罗兰</string>
+    <string name="tema_color_medianoche">午夜蓝</string>
+    <string name="tema_color_neon">霓虹</string>
+    <string name="tema_color_ultramar">群青</string>
+    <string name="tema_color_lima">青柠</string>
+    <string name="tema_seleccionado">已选择</string>
+    <string name="tema_tocar_aplicar">点击应用</string>
+    <string name="tema_deduccion">-%1$d 分</string>
+    <plurals name="tema_precio">
+        <item quantity="other">%1$d 积分</item>
+    </plurals>
+
+    <string name="ajustes_titulo">通用设置</string>
+    <string name="ajustes_sesion_activa_alerta">有一个进行中的时段。请先结束或取消，才能修改分心警告。</string>
+    <string name="ajustes_notificaciones">通知</string>
+    <string name="ajustes_notificaciones_texto">随时可以开启 Miau Focus 的提醒</string>
+    <string name="ajustes_ajustes">设置</string>
+    <string name="ajustes_alerta_distraccion">分心警告</string>
+    <string name="ajustes_alerta_distraccion_texto">在专注时段离开应用，计时会暂停；回来时会出现一个警告，必须关掉才能继续。如果关闭此项，分心不会有处罚，但每完成一个周期获得的积分会变少</string>
+    <string name="ajustes_vibracion">振动</string>
+    <string name="ajustes_vibracion_texto">时段结束和休息结束的闹铃会同时振动</string>
+    <string name="ajustes_modo_silencioso">静音模式</string>
+    <string name="ajustes_modo_silencioso_texto">在这段时间内，Miau Focus 的闹铃不会响也不会振动</string>
+    <string name="ajustes_desde">从</string>
+    <string name="ajustes_hasta">到</string>
+    <string name="ajustes_reiniciar_estadisticas">重置统计</string>
+    <string name="ajustes_reiniciar_texto">清除连续记录、积分和番茄钟历史。此操作无法撤销</string>
+    <string name="ajustes_reiniciar_boton">重置</string>
+    <string name="ajustes_acerca_de">关于</string>
+    <string name="ajustes_acerca_de_texto">Miau Focus 的信息，以及如何支持这个项目</string>
+    <string name="ajustes_idioma">语言</string>
+    <string name="ajustes_idioma_texto">不依赖系统，直接选择应用语言</string>
+    <string name="idioma_dialogo_titulo">应用语言</string>
+    <string name="idioma_sistema">跟随系统</string>
+    <string name="dialogo_reiniciar_titulo">重置统计</string>
+    <string name="dialogo_reiniciar_texto">连续记录、积分和番茄钟历史都会被清除。此操作无法撤销。</string>
+    <string name="toast_estadisticas_reiniciadas">统计已重置</string>
+
+    <string name="config_titulo">设置时长</string>
+    <string name="config_sesion_activa">有一个进行中的时段。请先结束或取消，才能修改时长。</string>
+    <string name="config_opciones_predeterminadas">默认选项</string>
+    <string name="config_opciones_predeterminadas_texto">专注 25 分钟、短休息 5 分钟、长休息 15 分钟。开启后将无法修改下面的时长。</string>
+    <string name="config_tiempo_enfoque">专注时长</string>
+    <string name="config_tiempo_enfoque_texto">每个工作块的长度</string>
+    <string name="config_descanso_corto">短休息</string>
+    <string name="config_descanso_corto_texto">周期之间休息的长度</string>
+    <string name="config_activar_descanso_largo">启用长休息</string>
+    <string name="config_activar_descanso_largo_texto">完成 4 个周期后会有一次更长的休息。如果之后还要继续学习，建议开启；如果打算就此结束，可以关闭，计时会在第四个周期完成后停止。</string>
+    <string name="config_duracion_descanso_largo">长休息时长</string>
+    <string name="config_guardar">保存设置</string>
+    <string name="toast_config_guardada">设置已保存</string>
+    <string name="toast_no_cambiar_tiempos">时段进行中无法修改时长</string>
+
+    <string name="acerca_titulo">关于</string>
+    <string name="acerca_version">版本 %1$s</string>
+    <string name="acerca_la_app">关于应用</string>
+    <string name="acerca_la_app_texto">Miau Focus 是一款用番茄工作法的专注应用，让你在小猫的陪伴下不分心地学习。由一个独立小团队用心打造。</string>
+    <string name="acerca_como_hecha">如何打造</string>
+    <string name="acerca_como_hecha_texto">用 Java 编写的 Android 原生应用。不申请网络权限，不显示广告，也不需要注册账号。你的所有信息都只保存在本机。</string>
+    <string name="acerca_quienes_somos">我们是谁</string>
+    <string name="acerca_bruno_rol">开发与设计</string>
+    <string name="acerca_dulce_rol">原始设计与最初的想法</string>
+    <string name="acerca_publicado_por">由 Peggos Developers 发布</string>
+    <string name="acerca_contacto_privacidad">联系与隐私</string>
+    <string name="acerca_politica_privacidad">隐私政策</string>
+    <string name="acerca_licencias">第三方许可</string>
+    <string name="acerca_ayudanos">帮我们做得更好</string>
+    <string name="acerca_ayudanos_texto">Miau Focus 免费，也没有烦人的广告。如果它帮到了你，想推我们一把继续创作和改进，任何支持都让我们开心。</string>
+    <string name="acerca_cafe">请我们喝杯咖啡 ☕</string>
+    <string name="cd_correo">邮箱</string>
+    <string name="cd_privacidad">隐私</string>
+    <string name="cd_licencias">许可</string>
+    <string name="licencias_texto">动画使用 Airbnb 的 Lottie 制作，依据 Apache 2.0 许可分发。</string>
+    <string name="toast_no_abrir_enlace">无法打开链接</string>
+    <string name="toast_sin_app_correo">找不到邮件应用</string>
+
+    <string name="canal_progreso_nombre">进行中的时段</string>
+    <string name="canal_progreso_desc">显示专注时段或休息的进度</string>
+    <string name="canal_avisos_nombre">时段提醒</string>
+    <string name="canal_avisos_desc">在休息或专注时段结束时提醒你</string>
+    <string name="canal_alarma_nombre">分心警告</string>
+    <string name="canal_alarma_desc">在专注时段分心时会像闹铃一样响起</string>
+    <string name="canal_bloqueo_nombre">锁屏时的计时</string>
+    <string name="canal_bloqueo_desc">提醒你屏幕锁定时计时仍在继续</string>
+
+    <string name="chip_vuelve">快回来</string>
+    <string name="notif_bloqueo_titulo">计时进行中</string>
+    <string name="notif_bloqueo_texto">回到 Miau Focus</string>
+    <string name="notif_aviso_fin_descanso_titulo">休息就要结束了</string>
+    <string name="notif_aviso_fin_descanso_texto">请在 1 分钟内回到 Miau Focus</string>
+    <string name="notif_aviso_sancion_titulo">休息即将结束</string>
+    <string name="notif_aviso_sancion_texto">请在 15 秒内回到 Miau Focus 继续专注</string>
+    <string name="notif_distraccion_titulo">你分心了</string>
+    <string name="notif_distraccion_texto">计时已暂停。回到 Miau Focus 才能继续</string>
+    <string name="notif_descanso_pausa">休息已暂停</string>
+    <string name="notif_enfoque_pausa">专注时段已暂停</string>
+    <string name="notif_pausa_texto">处理警告后才能继续</string>
+    <string name="notif_descanso_curso">休息进行中</string>
+    <string name="notif_enfoque_curso">专注时段进行中</string>
+    <string name="notif_progreso_texto">点击返回 Miau Focus</string>
+    <string name="notif_descanso_largo_terminado">长休息结束</string>
+    <string name="notif_completaste_sesion">你完成了这次时段</string>
+    <string name="notif_terminaste_4_ciclos">你完成了 4 个周期</string>
+    <string name="notif_descanso_termino">休息结束了</string>
+    <string name="notif_enfoque_ya_comenzo">专注时段已经开始，回到 Miau Focus</string>
+    <string name="notif_toca_continuar">点击继续</string>
+</resources>

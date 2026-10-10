@@ -6,10 +6,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class GestorEstadisticas {
+    public static final float PUNTOS_POR_FALLO = 70f;
+
     private static final String PREF_NAME = "PomodoroStats";
     private SharedPreferences prefs;
+    private final Context contexto;
 
     public GestorEstadisticas(Context context) {
+        contexto = context.getApplicationContext();
         prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
         if (!prefs.getBoolean("reseteo_puntos_v2", false)) {
             prefs.edit()
@@ -28,7 +32,7 @@ public class GestorEstadisticas {
 
         if (esCicloCompleto) {
             String nombre = (tareaActiva == null || tareaActiva.isEmpty() || tareaActiva.equals("Ninguna"))
-                    ? "Sin nombre" : tareaActiva;
+                    ? contexto.getString(R.string.tarea_sin_nombre) : tareaActiva;
             int total = prefs.getInt("actividades_total", 0);
             editor.putString("actividad_" + total, nombre + "|" + (minutosEnfoque * 4));
             editor.putInt("actividades_total", total + 1);
@@ -68,11 +72,18 @@ public class GestorEstadisticas {
     }
 
     public void registrarFallo() {
+        float castigo = Math.min(PUNTOS_POR_FALLO, getPuntos());
+
         SharedPreferences.Editor editor = prefs.edit();
         editor.putInt("pomodoros_fallados", getPomodorosFallados() + 1);
         editor.putInt("racha_actual", 0);
-        editor.putFloat("puntos", Math.max(0f, getPuntos() - 70f));
+        editor.putFloat("puntos", getPuntos() - castigo);
+        editor.putFloat("ultimo_castigo", castigo);
         editor.apply();
+    }
+
+    public float getUltimoCastigo() {
+        return prefs.getFloat("ultimo_castigo", PUNTOS_POR_FALLO);
     }
 
     public int getMinutosTotales() { return prefs.getInt("minutos_totales", 0); }

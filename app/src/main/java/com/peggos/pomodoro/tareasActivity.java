@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -64,13 +65,18 @@ public class tareasActivity extends BaseActivity {
         cargarDatos();
 
         btnAnadirTarea.setOnClickListener(v ->
-                DialogoRedactarTarea.mostrar(this, "Nueva Tarea", "", tarea -> {
+                DialogoRedactarTarea.mostrar(this, getString(R.string.dialogo_tarea_nueva), "", tarea -> {
                     agregarTarea(tarea);
-                    Toast.makeText(this, "Tarea agregada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toast_tarea_agregada, Toast.LENGTH_SHORT).show();
                 }));
 
-        btnIrAEnfoque.setOnClickListener(v ->
-                startActivity(new Intent(this, CronometroActivity.class)));
+        btnIrAEnfoque.setOnClickListener(v -> {
+            Intent intentEnfoque = new Intent(this, CronometroActivity.class);
+            intentEnfoque.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+            ActivityOptionsCompat opciones = ActivityOptionsCompat.makeCustomAnimation(
+                    this, R.anim.fade_in, R.anim.fade_out);
+            startActivity(intentEnfoque, opciones.toBundle());
+        });
 
         configurarNavegacion(R.id.nav_tareas);
     }
@@ -82,15 +88,15 @@ public class tareasActivity extends BaseActivity {
         DialogoOpcionesTarea.mostrar(this,
                 () -> {
                     guardarTareaActiva(tareaSeleccionada);
-                    Toast.makeText(this, "Tarea fijada arriba", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toast_tarea_fijada, Toast.LENGTH_SHORT).show();
                 },
-                () -> DialogoRedactarTarea.mostrar(this, "Editar Tarea", tareaSeleccionada, tarea -> {
+                () -> DialogoRedactarTarea.mostrar(this, getString(R.string.dialogo_tarea_editar), tareaSeleccionada, tarea -> {
                     editarTarea(posicion, tarea);
-                    Toast.makeText(this, "Tarea actualizada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toast_tarea_actualizada, Toast.LENGTH_SHORT).show();
                 }),
                 () -> {
                     eliminarTarea(posicion);
-                    Toast.makeText(this, "Tarea eliminada", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toast_tarea_eliminada, Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -205,12 +211,12 @@ public class tareasActivity extends BaseActivity {
         boolean hayActiva = tarea != null && !tarea.isEmpty() && !tarea.equals("Ninguna");
 
         if (tvTareaActiva != null) {
-            tvTareaActiva.setText(hayActiva ? tarea : "Sin tarea activa");
+            tvTareaActiva.setText(hayActiva ? tarea : getString(R.string.tareas_sin_tarea_activa));
         }
         if (tvSubtituloActiva != null) {
             tvSubtituloActiva.setText(hayActiva
-                    ? "Toca Ir a Enfoque para trabajar en ella"
-                    : "Selecciona una tarea para empezar a enfocarte");
+                    ? R.string.tareas_toca_ir_enfoque
+                    : R.string.tareas_selecciona);
         }
         if (btnIrAEnfoque != null) {
             btnIrAEnfoque.setVisibility(hayActiva ? View.VISIBLE : View.GONE);

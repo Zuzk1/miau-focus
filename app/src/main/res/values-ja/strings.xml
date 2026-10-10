@@ -1,0 +1,256 @@
+<resources>
+    <string name="an_lisis_de_enfoque">集中の分析</string>
+
+    <string name="accion_cancelar">キャンセル</string>
+    <string name="accion_guardar">保存</string>
+    <string name="accion_ver">見る</string>
+    <string name="accion_atras">戻る</string>
+    <string name="accion_renunciar">中断する</string>
+    <string name="accion_comenzar">はじめる</string>
+    <string name="accion_siguiente">つぎへ</string>
+
+    <string name="fase_enfoque">集中セッション</string>
+    <string name="fase_descanso_corto">短い休憩</string>
+    <string name="fase_descanso_largo">長い休憩</string>
+    <string name="fase_corta_enfoque">集中</string>
+    <string name="fase_corta_descanso">休憩</string>
+
+    <string name="nav_enfoque">集中</string>
+    <string name="nav_tareas">タスク</string>
+    <string name="nav_estadisticas">統計</string>
+
+    <string name="bienvenida_pomodoro">ポモドーロ</string>
+    <string name="onboarding_titulo_1">Miau Focus へ\nようこそ</string>
+    <string name="onboarding_titulo_2">気を散らすものも、\n言い訳もなし</string>
+    <string name="onboarding_titulo_3">ネコが見ています。\nしくじらないで</string>
+    <string name="onboarding_texto_1">ネコの相棒が、ポモドーロ・テクニックで集中を保つ手助けをします。スワイプして使い方を見てみましょう。</string>
+    <string name="onboarding_texto_2">セッション中にアプリを離れるとタイマーが一時停止し、戻るのが遅いとポイントが減ります。気を抜かないでください。</string>
+    <string name="onboarding_texto_3">サイクルをこなしてポイントを貯め、テーマを解放しましょう。セッションを終えるたびに連続記録が伸びます。</string>
+
+    <string name="cronometro_enfocado_en">集中中: %1$s</string>
+    <string name="cd_renunciar">中断する</string>
+    <string name="cd_escudo">シールド</string>
+    <string name="cd_pausar">一時停止</string>
+    <string name="cd_puntos">ポイント</string>
+    <string name="toast_completaste_4_ciclos">4サイクルの集中を完了しました。いつでも次を始められます。</string>
+    <string name="toast_descanso_largo_terminado">長い休憩が終わりました。いつでも新しいサイクルを始められます。</string>
+
+    <string name="dialogo_advertencia_titulo">確認</string>
+    <string name="dialogo_advertencia_texto">この集中セッションを中断しますか。ポイントを失い、連続記録がリセットされます。</string>
+
+    <string name="dialogo_escudo_titulo">シールドを使う</string>
+    <string name="dialogo_escudo_texto">セッションが保護されます。中断してもポイントと連続記録は減りません。1日1回だけ使えます。</string>
+    <string name="dialogo_escudo_activar">シールドを使う</string>
+
+    <string name="dialogo_permiso_ahora_no">あとで</string>
+    <string name="permiso_notif_titulo">お知らせを見逃さないために</string>
+    <string name="permiso_notif_texto">集中セッションや休憩が終わったらすぐ Miau Focus が知らせられるよう、通知をオンにしてください。</string>
+    <string name="permiso_notif_boton">通知をオンにする</string>
+    <string name="permiso_pantalla_titulo">警告を見逃さないために</string>
+    <string name="permiso_pantalla_texto">他のアプリを使っていても注意の警告を全画面で表示するため、Miau Focus に全画面表示の権限を許可してください。</string>
+    <string name="permiso_pantalla_boton">設定する</string>
+
+    <string name="tareas_titulo">タスク</string>
+    <string name="tareas_tarea_activa">進行中のタスク</string>
+    <string name="tareas_sin_tarea_activa">進行中のタスクなし</string>
+    <string name="tareas_selecciona">タスクを選んで集中を始めましょう</string>
+    <string name="tareas_toca_ir_enfoque">「集中へ」を押して取りかかりましょう</string>
+    <string name="tareas_ir_a_enfoque">集中へ</string>
+    <string name="tareas_pendientes">未完了</string>
+    <string name="tareas_completadas_hoy">今日の\n完了</string>
+    <string name="tareas_total">合計</string>
+    <string name="tareas_vacio_titulo">まだタスクがありません</string>
+    <string name="tareas_vacio_texto">最初のタスクを追加して集中を始めましょう</string>
+    <string name="tareas_anadir">＋ タスクを追加</string>
+    <string name="dialogo_tarea_nueva">新しいタスク</string>
+    <string name="dialogo_tarea_editar">タスクを編集</string>
+    <string name="dialogo_tarea_hint">例: 歴史の宿題をする</string>
+    <string name="dialogo_opciones_titulo">このタスクをどうしますか</string>
+    <string name="opcion_fijar_activa">進行中のタスクにする</string>
+    <string name="opcion_editar">テキストを編集</string>
+    <string name="opcion_eliminar">タスクを削除</string>
+    <string name="toast_tarea_agregada">タスクを追加しました</string>
+    <string name="toast_tarea_fijada">タスクを上に固定しました</string>
+    <string name="toast_tarea_actualizada">タスクを更新しました</string>
+    <string name="toast_tarea_eliminada">タスクを削除しました</string>
+    <string name="toast_escribe_tarea">タスクを入力してください</string>
+
+    <string name="cd_alerta_distraccion">注意の警告</string>
+    <string name="cd_gato_triste">悲しむネコ</string>
+    <string name="alerta_infraccion">集中が\n途切れました</string>
+    <string name="alerta_instruccion">アプリに戻り、ボタンを長押ししてアラームを止めてください。</string>
+    <string name="alerta_manten_5s">5秒長押し</string>
+    <string name="alerta_manten_cancelar">長押しでセッションを中断</string>
+    <string name="alerta_cancelando_inicial">中断します…\n5秒</string>
+    <string name="alerta_cancelando_cuenta">中断します%1$s\n%2$d秒</string>
+    <string name="alerta_sin_puntos">失うポイントはありません</string>
+    <plurals name="alerta_puntos_perdidos">
+        <item quantity="other">−%1$s ポイント</item>
+    </plurals>
+    <string name="alerta_ciclo_de_4">4サイクル中 %1$d 回目</string>
+    <string name="alerta_ciclo_de_4_tiempo">4サイクル中 %1$d 回目 · 残り %2$s</string>
+
+    <string name="analisis_titulo">統計</string>
+    <string name="analisis_tienda_temas">テーマショップ</string>
+    <string name="analisis_racha">現在の連続記録</string>
+    <string name="analisis_enfoque_total">合計の集中時間</string>
+    <string name="analisis_pomodoros_completados">完了した\nポモドーロ</string>
+    <string name="analisis_tasa_fallos">失敗率</string>
+    <string name="analisis_grafico_titulo">完了したポモドーロ（今週）</string>
+    <string name="analisis_actividades_recientes">最近の記録</string>
+    <string name="analisis_sin_actividades">完了した記録はまだありません</string>
+    <string name="analisis_ver_todo">すべて見る</string>
+    <string name="analisis_puntos">%1$s ポイント</string>
+    <string name="analisis_error_cargar">画面の読み込みに失敗しました: %1$s</string>
+    <string name="notif_estado_activadas">通知はオンです</string>
+    <string name="notif_estado_desactivadas">通知はオフです。お知らせを受け取りたい場合はオンにしてください</string>
+    <string name="tarea_ninguna">なし</string>
+    <string name="tarea_sin_nombre">名前なし</string>
+    <string name="racha_empieza">最初の連続記録を始めましょう</string>
+    <string name="racha_ya_hoy">今日はもう集中できています</string>
+    <string name="racha_manten">ポモドーロを始めて連続記録を守りましょう</string>
+    <plurals name="analisis_abandonados">
+        <item quantity="other">%1$d 回中断</item>
+    </plurals>
+    <string-array name="iniciales_semana">
+        <item>日</item>
+        <item>月</item>
+        <item>火</item>
+        <item>水</item>
+        <item>木</item>
+        <item>金</item>
+        <item>土</item>
+    </string-array>
+
+    <string name="temas_titulo">テーマショップ</string>
+    <string name="tema_variante_oscuro">%1$s ダーク</string>
+    <string name="tema_variante_claro">%1$s ライト</string>
+    <string name="tema_color_azul">ブルー</string>
+    <string name="tema_color_verde">グリーン</string>
+    <string name="tema_color_cacao">カカオ</string>
+    <string name="tema_color_naranja">オレンジ</string>
+    <string name="tema_color_rojo">レッド</string>
+    <string name="tema_color_eucalipto">ユーカリ</string>
+    <string name="tema_color_morado">パープル</string>
+    <string name="tema_color_rosa">ピンク</string>
+    <string name="tema_color_marino">ネイビー</string>
+    <string name="tema_color_mostaza">マスタード</string>
+    <string name="tema_color_vainilla">バニラ</string>
+    <string name="tema_color_turquesa">ターコイズ</string>
+    <string name="tema_color_aguamarina">アクアマリン</string>
+    <string name="tema_color_grafito">グラファイト</string>
+    <string name="tema_color_salvia">セージ</string>
+    <string name="tema_color_coral">コーラル</string>
+    <string name="tema_color_denim">デニム</string>
+    <string name="tema_color_lavanda">ラベンダー</string>
+    <string name="tema_color_petroleo">ペトロール</string>
+    <string name="tema_color_berenjena">ナス</string>
+    <string name="tema_color_carmesi">クリムゾン</string>
+    <string name="tema_color_arena">サンド</string>
+    <string name="tema_color_violeta">バイオレット</string>
+    <string name="tema_color_medianoche">ミッドナイト</string>
+    <string name="tema_color_neon">ネオン</string>
+    <string name="tema_color_ultramar">ウルトラマリン</string>
+    <string name="tema_color_lima">ライム</string>
+    <string name="tema_seleccionado">選択中</string>
+    <string name="tema_tocar_aplicar">タップで適用</string>
+    <string name="tema_deduccion">-%1$d pt</string>
+    <plurals name="tema_precio">
+        <item quantity="other">%1$d ポイント</item>
+    </plurals>
+
+    <string name="ajustes_titulo">一般設定</string>
+    <string name="ajustes_sesion_activa_alerta">進行中のセッションがあります。注意の警告を変更するには、セッションを終えるか中断してください。</string>
+    <string name="ajustes_notificaciones">通知</string>
+    <string name="ajustes_notificaciones_texto">Miau Focus のお知らせはいつでもオンにできます</string>
+    <string name="ajustes_ajustes">設定</string>
+    <string name="ajustes_alerta_distraccion">注意の警告</string>
+    <string name="ajustes_alerta_distraccion_texto">集中セッション中にアプリを離れるとタイマーが一時停止し、戻ると警告が表示されます。続けるにはこれを閉じる必要があります。オフにすると気が散っても罰則はありませんが、1サイクルごとに得られるポイントは少なくなります</string>
+    <string name="ajustes_vibracion">バイブレーション</string>
+    <string name="ajustes_vibracion_texto">セッション終了と休憩終了のアラームに合わせて振動します</string>
+    <string name="ajustes_modo_silencioso">サイレントモード</string>
+    <string name="ajustes_modo_silencioso_texto">この時間帯は Miau Focus のアラームは鳴らず、振動もしません</string>
+    <string name="ajustes_desde">開始</string>
+    <string name="ajustes_hasta">終了</string>
+    <string name="ajustes_reiniciar_estadisticas">統計をリセット</string>
+    <string name="ajustes_reiniciar_texto">連続記録、ポイント、ポモドーロの履歴を消します。元には戻せません</string>
+    <string name="ajustes_reiniciar_boton">リセット</string>
+    <string name="ajustes_acerca_de">このアプリについて</string>
+    <string name="ajustes_acerca_de_texto">Miau Focus の情報と、応援のしかた</string>
+    <string name="ajustes_idioma">言語</string>
+    <string name="ajustes_idioma_texto">システムに関係なくアプリの言語を選ぶ</string>
+    <string name="idioma_dialogo_titulo">アプリの言語</string>
+    <string name="idioma_sistema">システムの既定</string>
+    <string name="dialogo_reiniciar_titulo">統計をリセット</string>
+    <string name="dialogo_reiniciar_texto">連続記録、ポイント、ポモドーロの履歴が消えます。元には戻せません。</string>
+    <string name="toast_estadisticas_reiniciadas">統計をリセットしました</string>
+
+    <string name="config_titulo">時間の設定</string>
+    <string name="config_sesion_activa">進行中のセッションがあります。時間を変更するには、セッションを終えるか中断してください。</string>
+    <string name="config_opciones_predeterminadas">既定の設定</string>
+    <string name="config_opciones_predeterminadas_texto">集中25分、短い休憩5分、長い休憩15分。オンにすると下の時間は変更できません。</string>
+    <string name="config_tiempo_enfoque">集中時間</string>
+    <string name="config_tiempo_enfoque_texto">作業ブロックの長さ</string>
+    <string name="config_descanso_corto">短い休憩</string>
+    <string name="config_descanso_corto_texto">サイクル間の休憩の長さ</string>
+    <string name="config_activar_descanso_largo">長い休憩を使う</string>
+    <string name="config_activar_descanso_largo_texto">4サイクルを終えると長めの休憩に入ります。そのあとも勉強を続けるならオンをおすすめします。そこで終えるならオフにでき、4サイクル目でタイマーが止まります。</string>
+    <string name="config_duracion_descanso_largo">長い休憩の長さ</string>
+    <string name="config_guardar">設定を保存</string>
+    <string name="toast_config_guardada">設定を保存しました</string>
+    <string name="toast_no_cambiar_tiempos">セッション中は時間を変更できません</string>
+
+    <string name="acerca_titulo">このアプリについて</string>
+    <string name="acerca_version">バージョン %1$s</string>
+    <string name="acerca_la_app">アプリについて</string>
+    <string name="acerca_la_app_texto">Miau Focus は、子ネコと一緒に気を散らさず勉強するための、ポモドーロ・テクニックを使った集中アプリです。小さな独立チームが心をこめて作りました。</string>
+    <string name="acerca_como_hecha">作り方</string>
+    <string name="acerca_como_hecha_texto">Java で書かれた Android ネイティブアプリです。インターネットの権限を求めず、広告も表示せず、アカウント登録も不要です。あなたの情報はすべて端末の中だけに保存されます。</string>
+    <string name="acerca_quienes_somos">わたしたちについて</string>
+    <string name="acerca_bruno_rol">開発とデザイン</string>
+    <string name="acerca_dulce_rol">オリジナルデザインと最初のアイデア</string>
+    <string name="acerca_publicado_por">提供: Peggos Developers</string>
+    <string name="acerca_contacto_privacidad">連絡先とプライバシー</string>
+    <string name="acerca_politica_privacidad">プライバシーポリシー</string>
+    <string name="acerca_licencias">サードパーティのライセンス</string>
+    <string name="acerca_ayudanos">応援してください</string>
+    <string name="acerca_ayudanos_texto">Miau Focus は無料で、わずらわしい広告もありません。役に立っていて、これからも作り続ける後押しをしてもいいと思ってもらえたら、どんな応援でもうれしいです。</string>
+    <string name="acerca_cafe">コーヒーをおごる ☕</string>
+    <string name="cd_correo">メール</string>
+    <string name="cd_privacidad">プライバシー</string>
+    <string name="cd_licencias">ライセンス</string>
+    <string name="licencias_texto">アニメーションは Airbnb の Lottie で作成し、Apache 2.0 ライセンスで配布されています。</string>
+    <string name="toast_no_abrir_enlace">リンクを開けませんでした</string>
+    <string name="toast_sin_app_correo">メールアプリが見つかりませんでした</string>
+
+    <string name="canal_progreso_nombre">進行中のセッション</string>
+    <string name="canal_progreso_desc">集中セッションや休憩の進み具合を表示します</string>
+    <string name="canal_avisos_nombre">セッションのお知らせ</string>
+    <string name="canal_avisos_desc">休憩や集中セッションが終わったときに知らせます</string>
+    <string name="canal_alarma_nombre">注意の警告</string>
+    <string name="canal_alarma_desc">集中セッション中に気が散るとアラームのように鳴ります</string>
+    <string name="canal_bloqueo_nombre">画面ロック中のタイマー</string>
+    <string name="canal_bloqueo_desc">画面がロックされている間もタイマーが動いていることを知らせます</string>
+
+    <string name="chip_vuelve">戻って</string>
+    <string name="notif_bloqueo_titulo">タイマー実行中</string>
+    <string name="notif_bloqueo_texto">Miau Focus に戻ってください</string>
+    <string name="notif_aviso_fin_descanso_titulo">まもなく休憩が終わります</string>
+    <string name="notif_aviso_fin_descanso_texto">1分以内に Miau Focus に戻ってください</string>
+    <string name="notif_aviso_sancion_titulo">休憩がもうすぐ終わります</string>
+    <string name="notif_aviso_sancion_texto">15秒以内に Miau Focus に戻って集中を再開してください</string>
+    <string name="notif_distraccion_titulo">気が散っています</string>
+    <string name="notif_distraccion_texto">タイマーは一時停止中です。続けるには Miau Focus に戻ってください</string>
+    <string name="notif_descanso_pausa">休憩を一時停止中</string>
+    <string name="notif_enfoque_pausa">集中セッションを一時停止中</string>
+    <string name="notif_pausa_texto">続けるには警告に対応してください</string>
+    <string name="notif_descanso_curso">休憩中</string>
+    <string name="notif_enfoque_curso">集中セッション中</string>
+    <string name="notif_progreso_texto">タップして Miau Focus に戻る</string>
+    <string name="notif_descanso_largo_terminado">長い休憩が終わりました</string>
+    <string name="notif_completaste_sesion">セッションを完了しました</string>
+    <string name="notif_terminaste_4_ciclos">4サイクルを終えました</string>
+    <string name="notif_descanso_termino">休憩が終わりました</string>
+    <string name="notif_enfoque_ya_comenzo">集中セッションはもう始まっています。Miau Focus に戻ってください</string>
+    <string name="notif_toca_continuar">タップして続ける</string>
+</resources>

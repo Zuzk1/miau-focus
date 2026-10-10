@@ -70,13 +70,13 @@ public class configuracionesAppActivity extends BaseActivity {
 
         findViewById(R.id.btnGuardarConfig).setOnClickListener(v -> {
             if (haySessionBloqueante()) {
-                Toast.makeText(this, "No puedes cambiar los tiempos mientras hay una sesión activa", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.toast_no_cambiar_tiempos, Toast.LENGTH_SHORT).show();
                 return;
             }
             gestorConfiguracion.setOpcionesPredeterminadasHabilitadas(switchOpcionesPredeterminadas.isChecked());
             gestorConfiguracion.setDescansoLargoHabilitado(switchDescansoLargo.isChecked());
             gestorConfiguracion.guardar(npTrabajo.getValue(), npDescansoCorto.getValue(), npDescansoLargo.getValue());
-            Toast.makeText(this, "Configuración guardada", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_config_guardada, Toast.LENGTH_SHORT).show();
             finish();
         });
 

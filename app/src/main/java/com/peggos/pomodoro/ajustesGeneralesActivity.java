@@ -8,8 +8,10 @@ import android.provider.Settings;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.graphics.Insets;
+import androidx.core.os.LocaleListCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
@@ -86,6 +88,12 @@ public class ajustesGeneralesActivity extends BaseActivity {
 
         findViewById(R.id.btnReiniciarEstadisticas).setOnClickListener(v -> confirmarReinicioEstadisticas());
 
+        MaterialButton btnIdioma = findViewById(R.id.btnIdioma);
+        btnIdioma.setText(nombreIdiomaActual());
+        View.OnClickListener abrirSelectorIdioma = v -> mostrarSelectorIdioma();
+        btnIdioma.setOnClickListener(abrirSelectorIdioma);
+        findViewById(R.id.llIdioma).setOnClickListener(abrirSelectorIdioma);
+
         View.OnClickListener abrirAcercaDe = v -> startActivity(new Intent(this, acercaDeActivity.class));
         findViewById(R.id.btnAcercaDe).setOnClickListener(abrirAcercaDe);
         findViewById(R.id.llAcercaDe).setOnClickListener(abrirAcercaDe);
@@ -107,13 +115,51 @@ public class ajustesGeneralesActivity extends BaseActivity {
         selector.show(getSupportFragmentManager(), "selector_hora_silencio");
     }
 
+    private int indiceIdiomaActual() {
+        LocaleListCompat seleccionados = AppCompatDelegate.getApplicationLocales();
+        if (seleccionados.isEmpty()) return 0;
+
+        String etiqueta = seleccionados.get(0).toLanguageTag();
+        String[] codigos = getResources().getStringArray(R.array.idiomas_codigos);
+
+        for (int i = 0; i < codigos.length; i++) {
+            if (codigos[i].equalsIgnoreCase(etiqueta)) return i + 1;
+        }
+
+        String idioma = seleccionados.get(0).getLanguage();
+        for (int i = 0; i < codigos.length; i++) {
+            if (Locale.forLanguageTag(codigos[i]).getLanguage().equals(idioma)) return i + 1;
+        }
+
+        return 0;
+    }
+
+    private String nombreIdiomaActual() {
+        int indice = indiceIdiomaActual();
+        if (indice == 0) return getString(R.string.idioma_sistema);
+        return getResources().getStringArray(R.array.idiomas_nombres)[indice - 1];
+    }
+
+    private void mostrarSelectorIdioma() {
+        DialogoIdioma.mostrar(this, indiceIdiomaActual(), this::aplicarIdioma);
+    }
+
+    private void aplicarIdioma(int indice) {
+        if (indice == indiceIdiomaActual()) return;
+
+        LocaleListCompat locales = indice == 0
+                ? LocaleListCompat.getEmptyLocaleList()
+                : LocaleListCompat.forLanguageTags(getResources().getStringArray(R.array.idiomas_codigos)[indice - 1]);
+        AppCompatDelegate.setApplicationLocales(locales);
+    }
+
     private void confirmarReinicioEstadisticas() {
         new MaterialAlertDialogBuilder(this)
-                .setTitle("Reiniciar estadísticas")
-                .setMessage("Se borrará tu racha, puntos e historial de pomodoros. Esta acción no se puede deshacer.")
+                .setTitle(R.string.dialogo_reiniciar_titulo)
+                .setMessage(R.string.dialogo_reiniciar_texto)
                 .setPositiveButton("Reiniciar", (dialog, which) -> {
                     new GestorEstadisticas(this).reiniciarEstadisticas();
-                    Toast.makeText(this, "Estadísticas reiniciadas", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, R.string.toast_estadisticas_reiniciadas, Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton("Cancelar", null)
                 .show();
@@ -142,7 +188,7 @@ public class ajustesGeneralesActivity extends BaseActivity {
         boolean notificacionesActivas = NotificationManagerCompat.from(this).areNotificationsEnabled();
         android.widget.TextView tvEstado = findViewById(R.id.tvEstadoNotificaciones);
         tvEstado.setText(notificacionesActivas
-                ? "Las notificaciones están activadas"
-                : "Las notificaciones están desactivadas, actívalas si quieres recibir avisos");
+                ? R.string.notif_estado_activadas
+                : R.string.notif_estado_desactivadas);
     }
 }

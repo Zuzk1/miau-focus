@@ -38,7 +38,7 @@ public class DialogoRedactarTarea {
         btnGuardar.setOnClickListener(v -> {
             String texto = etTarea.getText().toString().trim();
             if (texto.isEmpty()) {
-                Toast.makeText(contexto, "Escribe una tarea", Toast.LENGTH_SHORT).show();
+                Toast.makeText(contexto, R.string.toast_escribe_tarea, Toast.LENGTH_SHORT).show();
                 return;
             }
             dialogo.dismiss();

@@ -28,7 +28,7 @@
                 android:layout_height="26dp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
-                android:contentDescription="Atrás"
+                android:contentDescription="@string/accion_atras"
                 android:src="@drawable/ic_flecha_atras"
                 app:tint="?attr/themeTextoPrimario" />
 
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Configurar Tiempos"
+                android:text="@string/config_titulo"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -71,7 +71,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:justificationMode="inter_word"
                 android:padding="14dp"
-                android:text="Hay una sesión activa. Termina o cancela la sesión para poder modificar los tiempos."
+                android:text="@string/config_sesion_activa"
                 android:textColor="?attr/themeTextoSecundario"
                 android:textSize="13sp"
                 android:visibility="gone" />
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="OPCIONES PREDETERMINADAS"
+                        android:text="@string/config_opciones_predeterminadas"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -107,7 +107,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="25 min de enfoque, 5 min de descanso corto y 15 min de descanso largo. Si lo activas no podrás modificar los tiempos de abajo."
+                        android:text="@string/config_opciones_predeterminadas_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -140,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="TIEMPO DE ENFOQUE"
+                        android:text="@string/config_tiempo_enfoque"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -150,7 +150,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Duración de los bloques de trabajo"
+                        android:text="@string/config_tiempo_enfoque_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -184,7 +184,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="DESCANSO CORTO"
+                        android:text="@string/config_descanso_corto"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -194,7 +194,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Duración del descanso entre ciclos"
+                        android:text="@string/config_descanso_corto_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -234,7 +234,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="ACTIVAR DESCANSO LARGO"
+                            android:text="@string/config_activar_descanso_largo"
                             android:textColor="?attr/themeTextoPrimario"
                             android:textSize="15sp" />
 
@@ -244,7 +244,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/poppins_regular"
                             android:justificationMode="inter_word"
-                            android:text="Al completar los 4 ciclos se toma un descanso más largo. Si vas a seguir estudiando después, se recomienda activarlo; si vas a terminar, puedes desactivarlo y el cronómetro se detendrá al completar el cuarto ciclo."
+                            android:text="@string/config_activar_descanso_largo_texto"
                             android:textColor="?attr/themeTextoSecundario"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -268,7 +268,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="DURACIÓN DEL DESCANSO LARGO"
+                        android:text="@string/config_duracion_descanso_largo"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -289,7 +289,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:paddingVertical="12dp"
-                android:text="GUARDAR CONFIGURACIÓN"
+                android:text="@string/config_guardar"
                 android:textColor="?attr/themeSobreAcento"
                 app:backgroundTint="?attr/themeAcento"
                 app:cornerRadius="24dp"

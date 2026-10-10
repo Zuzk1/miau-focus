@@ -17,10 +17,13 @@
         <item name="themeFondoAlerta">@color/tema_oscuro_fondo_alerta</item>
         <item name="themeAlertaTextoSecundario">@color/tema_oscuro_alerta_texto_secundario</item>
         <item name="themeAlertaTextoTerciario">@color/tema_oscuro_alerta_texto_terciario</item>
+        <item name="themeGatoAlerta">@color/tema_oscuro_gato_alerta</item>
+        <item name="themeGatoLagrima">@color/tema_oscuro_gato_lagrima</item>
         <item name="themeSobreAcento">@color/white</item>
         <item name="themeAcentoTexto">?attr/themeAcentoClaro</item>
 
         <item name="android:colorBackground">?attr/themeFondoPrincipal</item>
+        <item name="android:windowBackground">?attr/themeFondoPrincipal</item>
         <item name="colorSurface">?attr/themeFondoTarjeta</item>
         <item name="colorOnBackground">?attr/themeTextoPrimario</item>
         <item name="colorOnSurface">?attr/themeTextoPrimario</item>
@@ -53,10 +56,13 @@
         <item name="themeFondoAlerta">@color/tema_claro_fondo_alerta</item>
         <item name="themeAlertaTextoSecundario">@color/tema_claro_alerta_texto_secundario</item>
         <item name="themeAlertaTextoTerciario">@color/tema_claro_alerta_texto_terciario</item>
+        <item name="themeGatoAlerta">@color/tema_claro_gato_alerta</item>
+        <item name="themeGatoLagrima">@color/tema_claro_gato_lagrima</item>
         <item name="themeSobreAcento">@color/white</item>
         <item name="themeAcentoTexto">?attr/themeAcento</item>
 
         <item name="android:colorBackground">?attr/themeFondoPrincipal</item>
+        <item name="android:windowBackground">?attr/themeFondoPrincipal</item>
         <item name="colorSurface">?attr/themeFondoTarjeta</item>
         <item name="colorOnBackground">?attr/themeTextoPrimario</item>
         <item name="colorOnSurface">?attr/themeTextoPrimario</item>

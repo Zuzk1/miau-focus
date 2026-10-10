@@ -32,9 +32,13 @@ public class IslaDinamica {
     private static final int SDK_ACTIVIDADES_EN_VIVO = 36;
 
 
+
     public static void aplicar(Context contexto, Notification.Builder constructor, String titulo,
-            String detalle, long tiempoRestante, long duracionTotal, boolean primeraVez) {
-        int acento = colorAcento(contexto);
+            String detalle, long tiempoRestante, long duracionTotal, boolean primeraVez,
+            boolean esDescanso) {
+        int acento = esDescanso
+                ? ContextCompat.getColor(contexto, R.color.color_verde_exito)
+                : colorAcento(contexto);
         long restante = Math.max(0L, tiempoRestante);
         long total = Math.max(restante, duracionTotal);
 
@@ -43,6 +47,34 @@ public class IslaDinamica {
             return;
         }
         aplicarEnfoqueXiaomi(contexto, constructor, titulo, detalle, restante, total, acento, primeraVez);
+    }
+
+    public static void aplicarAlerta(Context contexto, Notification.Builder constructor, String textoCorto) {
+        int rojo = ContextCompat.getColor(contexto, R.color.color_rojo_peligro);
+
+        if (Build.VERSION.SDK_INT < SDK_ACTIVIDADES_EN_VIVO) {
+            constructor.setColor(rojo);
+            return;
+        }
+
+        try {
+            Notification.ProgressStyle estilo = new Notification.ProgressStyle()
+                    .setProgress(100)
+                    .setStyledByProgress(false)
+                    .setProgressSegments(Collections.singletonList(
+                            new Notification.ProgressStyle.Segment(100).setColor(rojo)))
+                    .setProgressTrackerIcon(Icon.createWithResource(contexto, R.drawable.ic_gato_notificacion));
+
+            Bundle promocion = new Bundle();
+            promocion.putBoolean(EXTRA_PROMOVER, true);
+
+            constructor.setStyle(estilo)
+                    .setShortCriticalText(textoCorto)
+                    .setColor(rojo)
+                    .addExtras(promocion);
+        } catch (Throwable error) {
+            constructor.setColor(rojo);
+        }
     }
 
     public static String formatearRestante(long tiempoRestante) {

@@ -48,19 +48,19 @@ public class TemasAdapter extends RecyclerView.Adapter<TemasAdapter.TemaViewHold
 
         holder.viewFondoPreview.setBackgroundColor(context.getColor(tema.colorFondoPreview));
         holder.viewAcentoPreview.setBackgroundColor(context.getColor(tema.colorAcentoPreview));
-        holder.tvNombreTema.setText(tema.nombre);
+        holder.tvNombreTema.setText(tema.getNombre(holder.itemView.getContext()));
 
         boolean esActual = tema == gestorTemas.getTemaActual();
         boolean desbloqueado = gestorTemas.estaDesbloqueado(tema);
 
         if (esActual) {
-            holder.tvEstadoTema.setText("Seleccionado");
+            holder.tvEstadoTema.setText(R.string.tema_seleccionado);
             holder.cardTema.setStrokeColor(TemaUtils.resolverColor(context, R.attr.themeAcento));
         } else if (desbloqueado) {
-            holder.tvEstadoTema.setText("Toca para aplicar");
+            holder.tvEstadoTema.setText(R.string.tema_tocar_aplicar);
             holder.cardTema.setStrokeColor(context.getColor(android.R.color.transparent));
         } else {
-            holder.tvEstadoTema.setText(tema.precio + " puntos");
+            holder.tvEstadoTema.setText(holder.itemView.getResources().getQuantityString(R.plurals.tema_precio, tema.precio, tema.precio));
             holder.cardTema.setStrokeColor(context.getColor(android.R.color.transparent));
         }
 

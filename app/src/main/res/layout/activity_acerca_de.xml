@@ -28,7 +28,7 @@
                 android:layout_height="26dp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
-                android:contentDescription="Atrás"
+                android:contentDescription="@string/accion_atras"
                 android:src="@drawable/ic_flecha_atras"
                 app:tint="?attr/themeTextoPrimario" />
 
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Acerca de"
+                android:text="@string/acerca_titulo"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -65,7 +65,7 @@
                 android:layout_height="96dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="28dp"
-                android:contentDescription="Miau Focus"
+                android:contentDescription="@string/app_name"
                 android:src="@mipmap/ic_launcher_round" />
 
             <TextView
@@ -74,7 +74,7 @@
                 android:layout_marginTop="14dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:gravity="center"
-                android:text="Miau Focus"
+                android:text="@string/app_name"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="22sp" />
 
@@ -102,7 +102,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="LA APP"
+                    android:text="@string/acerca_la_app"
                     android:textColor="?attr/themeTextoPrimario"
                     android:textSize="15sp" />
 
@@ -112,7 +112,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins_regular"
                     android:justificationMode="inter_word"
-                    android:text="Miau Focus es una app de concentración con técnica Pomodoro para estudiar sin distraerte, acompañado de un gatito. Hecha con cariño por un pequeño equipo independiente."
+                    android:text="@string/acerca_la_app_texto"
                     android:textColor="?attr/themeTextoSecundario"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -130,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="CÓMO ESTÁ HECHA"
+                    android:text="@string/acerca_como_hecha"
                     android:textColor="?attr/themeTextoPrimario"
                     android:textSize="15sp" />
 
@@ -140,7 +140,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins_regular"
                     android:justificationMode="inter_word"
-                    android:text="Aplicación nativa de Android, escrita en Java. No solicita permiso de internet, no muestra anuncios y no requiere crear una cuenta. Toda tu información se guarda únicamente en tu dispositivo."
+                    android:text="@string/acerca_como_hecha_texto"
                     android:textColor="?attr/themeTextoSecundario"
                     android:textSize="13sp" />
             </LinearLayout>
@@ -158,7 +158,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="QUIÉNES SOMOS"
+                    android:text="@string/acerca_quienes_somos"
                     android:textColor="?attr/themeTextoPrimario"
                     android:textSize="15sp" />
 
@@ -173,7 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Bruno"
+                        android:text="@string/acerca_bruno"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="14sp" />
 
@@ -181,7 +181,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Desarrollo y diseño"
+                        android:text="@string/acerca_bruno_rol"
                         android:textColor="?attr/themeTextoTerciario"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -197,7 +197,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_medium"
-                        android:text="Dulce"
+                        android:text="@string/acerca_dulce"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="14sp" />
 
@@ -205,7 +205,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Diseño original e ideas iniciales"
+                        android:text="@string/acerca_dulce_rol"
                         android:textColor="?attr/themeTextoTerciario"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -215,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="Publicado por Peggos Developers"
+                    android:text="@string/acerca_publicado_por"
                     android:textColor="?attr/themeTextoTerciario"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -233,7 +233,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="CONTACTO Y PRIVACIDAD"
+                    android:text="@string/acerca_contacto_privacidad"
                     android:textColor="?attr/themeTextoPrimario"
                     android:textSize="15sp" />
 
@@ -253,7 +253,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="14dp"
-                        android:contentDescription="Correo"
+                        android:contentDescription="@string/cd_correo"
                         android:src="@drawable/ic_correo"
                         app:tint="?attr/themeAcento" />
 
@@ -287,7 +287,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="14dp"
-                        android:contentDescription="Privacidad"
+                        android:contentDescription="@string/cd_privacidad"
                         android:src="@drawable/ic_candado"
                         app:tint="?attr/themeAcento" />
 
@@ -296,7 +296,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Política de privacidad"
+                        android:text="@string/acerca_politica_privacidad"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -321,7 +321,7 @@
                         android:layout_width="20dp"
                         android:layout_height="20dp"
                         android:layout_marginEnd="14dp"
-                        android:contentDescription="Licencias"
+                        android:contentDescription="@string/cd_licencias"
                         android:src="@drawable/ic_documento"
                         app:tint="?attr/themeAcento" />
 
@@ -330,7 +330,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Licencias de terceros"
+                        android:text="@string/acerca_licencias"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -350,7 +350,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="AYÚDANOS A SEGUIR MEJORANDO"
+                    android:text="@string/acerca_ayudanos"
                     android:textColor="?attr/themeTextoPrimario"
                     android:textSize="15sp" />
 
@@ -360,7 +360,7 @@
                     android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins_regular"
                     android:justificationMode="inter_word"
-                    android:text="Miau Focus es gratis y sin anuncios molestos. Si te sirve y quieres darnos un empujón para seguir creando y mejorando, cualquier apoyo nos hace el día."
+                    android:text="@string/acerca_ayudanos_texto"
                     android:textColor="?attr/themeTextoSecundario"
                     android:textSize="13sp" />
 
@@ -371,7 +371,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:paddingVertical="12dp"
-                    android:text="Invítanos un café ☕"
+                    android:text="@string/acerca_cafe"
                     android:textColor="?attr/themeSobreAcento"
                     app:backgroundTint="?attr/themeAcento"
                     app:cornerRadius="24dp"

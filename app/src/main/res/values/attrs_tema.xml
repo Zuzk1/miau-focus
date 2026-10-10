@@ -18,6 +18,8 @@
     <attr name="themeFondoAlerta" format="color" />
     <attr name="themeAlertaTextoSecundario" format="color" />
     <attr name="themeAlertaTextoTerciario" format="color" />
+    <attr name="themeGatoAlerta" format="color" />
+    <attr name="themeGatoLagrima" format="color" />
 
     <attr name="themeAcento" format="color" />
     <attr name="themeAcentoClaro" format="color" />

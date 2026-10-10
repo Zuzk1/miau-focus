@@ -10,16 +10,16 @@ import com.airbnb.lottie.LottieAnimationView;
 
 public class OnboardingAdapterActivity extends RecyclerView.Adapter<OnboardingAdapterActivity.OnboardingViewHolder> {
 
-    private final String[] titulos = {
-            "¡Bienvenido a\nMiau Focus!",
-            "Sin distracciones,\nsin excusas",
-            "Tu gato te vigila,\nno falles"
+    private final int[] titulos = {
+            R.string.onboarding_titulo_1,
+            R.string.onboarding_titulo_2,
+            R.string.onboarding_titulo_3
     };
 
-    private final String[] descripciones = {
-            "Tu compañero felino te ayudará a mantenerte enfocado con la técnica Pomodoro. ¡Desliza para descubrir cómo!",
-            "Si sales de la app durante una sesión, el cronómetro se pausa y, si te tardas en volver, pierdes puntos. Mantente enfocado.",
-            "Completa ciclos, gana puntos y desbloquea temas. Cada sesión completada fortalece tu racha."
+    private final int[] descripciones = {
+            R.string.onboarding_texto_1,
+            R.string.onboarding_texto_2,
+            R.string.onboarding_texto_3
     };
 
     private final int[] animaciones = {

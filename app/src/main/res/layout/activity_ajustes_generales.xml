@@ -28,7 +28,7 @@
                 android:layout_height="26dp"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
-                android:contentDescription="Atrás"
+                android:contentDescription="@string/accion_atras"
                 android:src="@drawable/ic_flecha_atras"
                 app:tint="?attr/themeTextoPrimario" />
 
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Ajustes Generales"
+                android:text="@string/ajustes_titulo"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -70,7 +70,7 @@
                 android:fontFamily="@font/poppins_regular"
                 android:justificationMode="inter_word"
                 android:padding="14dp"
-                android:text="Hay una sesión activa. Termina o cancela la sesión para poder cambiar la alerta de distracción."
+                android:text="@string/ajustes_sesion_activa_alerta"
                 android:textColor="?attr/themeTextoSecundario"
                 android:textSize="13sp"
                 android:visibility="gone" />
@@ -96,7 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="NOTIFICACIONES"
+                        android:text="@string/ajustes_notificaciones"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -107,7 +107,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Activa los avisos de Miau Focus en cualquier momento"
+                        android:text="@string/ajustes_notificaciones_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -119,7 +119,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Ajustes"
+                    android:text="@string/ajustes_ajustes"
                     android:textColor="?attr/themeTextoPrimario"
                     app:cornerRadius="20dp"
                     app:strokeColor="?attr/themeTextoPrimario" />
@@ -146,7 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="ALERTA DE DISTRACCIÓN"
+                        android:text="@string/ajustes_alerta_distraccion"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -156,7 +156,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Si sales de la app durante una sesión de enfoque, el cronómetro se pausa y al volver se muestra una alerta que debes cerrar para continuar. Si la desactivas, no se aplicarán sanciones por distraerte, pero ganarás menos puntos por cada ciclo completado"
+                        android:text="@string/ajustes_alerta_distraccion_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -189,7 +189,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="VIBRACIÓN"
+                        android:text="@string/ajustes_vibracion"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -199,7 +199,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Vibra junto con las alarmas de fin de sesión y descanso"
+                        android:text="@string/ajustes_vibracion_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -237,7 +237,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="MODO SILENCIOSO"
+                            android:text="@string/ajustes_modo_silencioso"
                             android:textColor="?attr/themeTextoPrimario"
                             android:textSize="15sp" />
 
@@ -247,7 +247,7 @@
                             android:layout_marginTop="4dp"
                             android:fontFamily="@font/poppins_regular"
                             android:justificationMode="inter_word"
-                            android:text="Durante este horario, las alarmas de Miau Focus no sonarán ni vibrarán"
+                            android:text="@string/ajustes_modo_silencioso_texto"
                             android:textColor="?attr/themeTextoSecundario"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -277,7 +277,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
                             android:fontFamily="@font/poppins_regular"
-                            android:text="Desde"
+                            android:text="@string/ajustes_desde"
                             android:textColor="?attr/themeTextoSecundario"
                             android:textSize="13sp" />
 
@@ -308,7 +308,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
                             android:fontFamily="@font/poppins_regular"
-                            android:text="Hasta"
+                            android:text="@string/ajustes_hasta"
                             android:textColor="?attr/themeTextoSecundario"
                             android:textSize="13sp" />
 
@@ -347,7 +347,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="REINICIAR ESTADÍSTICAS"
+                        android:text="@string/ajustes_reiniciar_estadisticas"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -357,7 +357,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Borra tu racha, puntos e historial de pomodoros. Esta acción no se puede deshacer"
+                        android:text="@string/ajustes_reiniciar_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -369,10 +369,61 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Reiniciar"
+                    android:text="@string/ajustes_reiniciar_boton"
                     android:textColor="@color/acento_rojo"
                     app:cornerRadius="20dp"
                     app:strokeColor="@color/acento_rojo" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llIdioma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/carta_oscura"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/ajustes_idioma"
+                        android:textColor="?attr/themeTextoPrimario"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/poppins_regular"
+                        android:justificationMode="inter_word"
+                        android:text="@string/ajustes_idioma_texto"
+                        android:textColor="?attr/themeTextoSecundario"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnIdioma"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:maxLines="1"
+                    android:text="@string/idioma_sistema"
+                    android:textColor="?attr/themeTextoPrimario"
+                    app:cornerRadius="20dp"
+                    app:strokeColor="?attr/themeTextoPrimario" />
             </LinearLayout>
 
             <LinearLayout
@@ -396,7 +447,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins_semibold"
-                        android:text="ACERCA DE"
+                        android:text="@string/ajustes_acerca_de"
                         android:textColor="?attr/themeTextoPrimario"
                         android:textSize="15sp" />
 
@@ -406,7 +457,7 @@
                         android:layout_marginTop="4dp"
                         android:fontFamily="@font/poppins_regular"
                         android:justificationMode="inter_word"
-                        android:text="Información de Miau Focus y cómo puedes apoyar el proyecto"
+                        android:text="@string/ajustes_acerca_de_texto"
                         android:textColor="?attr/themeTextoSecundario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -418,7 +469,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Ver"
+                    android:text="@string/accion_ver"
                     android:textColor="?attr/themeTextoPrimario"
                     app:cornerRadius="20dp"
                     app:strokeColor="?attr/themeTextoPrimario" />

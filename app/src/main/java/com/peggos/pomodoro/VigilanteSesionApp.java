@@ -18,8 +18,35 @@ import java.util.Map;
 public class VigilanteSesionApp extends Application implements DefaultLifecycleObserver {
 
     private static final String CLAVE_MIGRACION_HECHA = "migracion_prefs_caja_facil_hecha";
+    private static final long TOLERANCIA_APAGADO_CON_APP_AL_FRENTE = 3000L;
 
-    private boolean pantallaEncendida = true;
+    private static boolean enPrimerPlano = false;
+    private static long instanteSalidaPrimerPlano = 0L;
+    private static long instantePantallaApagada = 0L;
+
+    public static boolean estaEnPrimerPlano() {
+        return enPrimerPlano;
+    }
+
+    public static boolean laPantallaSeApagoConLaAppAlFrente(Context contexto) {
+        android.os.PowerManager gestorEnergia =
+                (android.os.PowerManager) contexto.getSystemService(Context.POWER_SERVICE);
+        if (gestorEnergia == null || gestorEnergia.isInteractive()) return false;
+
+        long instanteApagado = instantePantallaApagada > 0
+                ? instantePantallaApagada
+                : System.currentTimeMillis();
+        long instanteAlFrente = enPrimerPlano
+                ? System.currentTimeMillis()
+                : instanteSalidaPrimerPlano;
+
+        return instanteApagado - instanteAlFrente <= TOLERANCIA_APAGADO_CON_APP_AL_FRENTE;
+    }
+
+    @Override
+    public void onStart(@NonNull LifecycleOwner propietario) {
+        enPrimerPlano = true;
+    }
 
     @Override
     public void onCreate() {
@@ -34,7 +61,8 @@ public class VigilanteSesionApp extends Application implements DefaultLifecycleO
         registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                pantallaEncendida = Intent.ACTION_SCREEN_ON.equals(intent.getAction());
+                boolean pantallaEncendida = Intent.ACTION_SCREEN_ON.equals(intent.getAction());
+                instantePantallaApagada = pantallaEncendida ? 0L : System.currentTimeMillis();
                 if (GestorAlertas.isCronometroCorriendo(context)) {
                     if (pantallaEncendida) {
                         GestorAlertas.cancelarNotificacionBloqueo(context);
@@ -69,28 +97,26 @@ public class VigilanteSesionApp extends Application implements DefaultLifecycleO
 
     @Override
     public void onStop(@NonNull LifecycleOwner propietario) {
-        android.os.PowerManager gestorEnergia = (android.os.PowerManager) getSystemService(POWER_SERVICE);
-        boolean pantallaEncendidaAhora = gestorEnergia != null && gestorEnergia.isInteractive();
+        enPrimerPlano = false;
+        instanteSalidaPrimerPlano = System.currentTimeMillis();
 
         boolean cronometroCorriendo = GestorAlertas.isCronometroCorriendo(this);
         boolean esDescanso = GestorAlertas.getEsDescansoActual(this);
 
-        if (cronometroCorriendo && !esDescanso && pantallaEncendidaAhora
-                && !GestorAlertas.estaEnPeriodoGraciaPostDescanso(this)
-                && new GestorConfiguracion(this).isAlertasDistraccionHabilitadas()
-                && !GestorAlertas.hayInfraccionPendiente(this)) {
+        long tiempoRestante = GestorAlertas.getTiempoFinEstimadoActual(this) - System.currentTimeMillis();
+        if (tiempoRestante < 0) tiempoRestante = 0;
+
+        if (cronometroCorriendo
+                && GestorAlertas.debeSancionarPorDistraccion(this, esDescanso, tiempoRestante)) {
             android.util.Log.d("DepuracionCronometro", "VigilanteSesionApp: registrarFallo desde onStop");
             GestorAlertas.marcarInfraccionPendiente(this);
             GestorAlertas.marcarReanudarTrasInfraccion(this);
             new GestorEstadisticas(this).registrarFallo();
 
-            long tiempoRestante = GestorAlertas.getTiempoFinEstimadoActual(this) - System.currentTimeMillis();
-            if (tiempoRestante < 0) tiempoRestante = 0;
-
             GestorAlertas.congelarTiempoRestante(this, tiempoRestante);
 
             GestorAlertas.guardarEstadoCronometro(this, tiempoRestante, esDescanso,
-                    GestorAlertas.getCicloActualActual(this), GestorAlertas.getTituloActual(this));
+                    GestorAlertas.getCicloActualActual(this));
 
             GestorAlertas.setCronometroCorriendo(this, false);
 
@@ -99,8 +125,8 @@ public class VigilanteSesionApp extends Application implements DefaultLifecycleO
             ContextCompat.startForegroundService(this, intentPausar);
 
             GestorAlertas.mostrarAlertaPomodoro(this,
-                    "¡Te estás distrayendo!",
-                    "Tu cronómetro está en pausa. Vuelve a Miau Focus para continuar");
+                    getString(R.string.notif_distraccion_titulo),
+                    getString(R.string.notif_distraccion_texto));
         }
     }
 }

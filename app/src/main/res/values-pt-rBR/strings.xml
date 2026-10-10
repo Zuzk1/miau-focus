@@ -1,0 +1,259 @@
+<resources>
+    <string name="an_lisis_de_enfoque">Análise de Foco</string>
+
+    <string name="accion_cancelar">Cancelar</string>
+    <string name="accion_guardar">Salvar</string>
+    <string name="accion_ver">Ver</string>
+    <string name="accion_atras">Voltar</string>
+    <string name="accion_renunciar">Desistir</string>
+    <string name="accion_comenzar">COMEÇAR</string>
+    <string name="accion_siguiente">PRÓXIMO</string>
+
+    <string name="fase_enfoque">SESSÃO DE FOCO</string>
+    <string name="fase_descanso_corto">PAUSA CURTA</string>
+    <string name="fase_descanso_largo">PAUSA LONGA</string>
+    <string name="fase_corta_enfoque">Foco</string>
+    <string name="fase_corta_descanso">Pausa</string>
+
+    <string name="nav_enfoque">Foco</string>
+    <string name="nav_tareas">Tarefas</string>
+    <string name="nav_estadisticas">Estatísticas</string>
+
+    <string name="bienvenida_pomodoro">POMODORO</string>
+    <string name="onboarding_titulo_1">Bem-vindo ao\nMiau Focus</string>
+    <string name="onboarding_titulo_2">Sem distrações,\nsem desculpas</string>
+    <string name="onboarding_titulo_3">Seu gato está de olho,\nnão vacile</string>
+    <string name="onboarding_texto_1">Seu companheiro felino vai te ajudar a manter o foco com a técnica Pomodoro. Deslize para descobrir como.</string>
+    <string name="onboarding_texto_2">Se você sair do app durante uma sessão, o cronômetro pausa e, se demorar para voltar, você perde pontos. Fique firme.</string>
+    <string name="onboarding_texto_3">Complete ciclos, ganhe pontos e desbloqueie temas. Cada sessão concluída fortalece sua sequência.</string>
+
+    <string name="cronometro_enfocado_en">Focando em: %1$s</string>
+    <string name="cd_renunciar">Desistir</string>
+    <string name="cd_escudo">Escudo</string>
+    <string name="cd_pausar">Pausar</string>
+    <string name="cd_puntos">Pontos</string>
+    <string name="toast_completaste_4_ciclos">Você completou seus 4 ciclos de foco. Comece de novo quando quiser.</string>
+    <string name="toast_descanso_largo_terminado">Pausa longa terminada. Comece um novo ciclo quando quiser.</string>
+
+    <string name="dialogo_advertencia_titulo">Aviso</string>
+    <string name="dialogo_advertencia_texto">Tem certeza de que quer desistir desta sessão de foco? Você vai perder pontos e sua sequência será zerada.</string>
+
+    <string name="dialogo_escudo_titulo">Ative seu escudo</string>
+    <string name="dialogo_escudo_texto">Sua sessão ficará protegida. Se você cancelar, não perderá pontos nem sua sequência. Só pode usar uma vez por dia.</string>
+    <string name="dialogo_escudo_activar">Ativar escudo</string>
+
+    <string name="dialogo_permiso_ahora_no">Agora não</string>
+    <string name="permiso_notif_titulo">Não perca o aviso</string>
+    <string name="permiso_notif_texto">Ative as notificações para o Miau Focus avisar assim que sua sessão de foco ou pausa terminar.</string>
+    <string name="permiso_notif_boton">Ativar notificações</string>
+    <string name="permiso_pantalla_titulo">Não perca o alerta</string>
+    <string name="permiso_pantalla_texto">Para o alerta de distração aparecer em tela cheia mesmo enquanto você usa outro app, ative a permissão de tela cheia para o Miau Focus.</string>
+    <string name="permiso_pantalla_boton">Configurar</string>
+
+    <string name="tareas_titulo">Tarefas</string>
+    <string name="tareas_tarea_activa">Tarefa ativa</string>
+    <string name="tareas_sin_tarea_activa">Sem tarefa ativa</string>
+    <string name="tareas_selecciona">Escolha uma tarefa para começar a focar</string>
+    <string name="tareas_toca_ir_enfoque">Toque em Ir para o Foco para trabalhar nela</string>
+    <string name="tareas_ir_a_enfoque">Ir para o Foco</string>
+    <string name="tareas_pendientes">Pendentes</string>
+    <string name="tareas_completadas_hoy">Concluídas\nhoje</string>
+    <string name="tareas_total">Total</string>
+    <string name="tareas_vacio_titulo">Você ainda não tem tarefas</string>
+    <string name="tareas_vacio_texto">Adicione sua primeira tarefa para começar a focar</string>
+    <string name="tareas_anadir">+ Adicionar tarefa</string>
+    <string name="dialogo_tarea_nueva">Nova Tarefa</string>
+    <string name="dialogo_tarea_editar">Editar Tarefa</string>
+    <string name="dialogo_tarea_hint">Ex. Fazer lição de história</string>
+    <string name="dialogo_opciones_titulo">O que você quer fazer com esta tarefa?</string>
+    <string name="opcion_fijar_activa">Definir como Tarefa Ativa</string>
+    <string name="opcion_editar">Editar Texto</string>
+    <string name="opcion_eliminar">Excluir Tarefa</string>
+    <string name="toast_tarea_agregada">Tarefa adicionada</string>
+    <string name="toast_tarea_fijada">Tarefa fixada no topo</string>
+    <string name="toast_tarea_actualizada">Tarefa atualizada</string>
+    <string name="toast_tarea_eliminada">Tarefa excluída</string>
+    <string name="toast_escribe_tarea">Escreva uma tarefa</string>
+
+    <string name="cd_alerta_distraccion">Alerta de distração</string>
+    <string name="cd_gato_triste">Gato triste</string>
+    <string name="alerta_infraccion">FOCO\nQUEBRADO</string>
+    <string name="alerta_instruccion">Volte ao app e segure o botão para silenciar o alarme.</string>
+    <string name="alerta_manten_5s">SEGURE 5s</string>
+    <string name="alerta_manten_cancelar">Pressione e segure para cancelar a sessão</string>
+    <string name="alerta_cancelando_inicial">CANCELANDO...\n5s</string>
+    <string name="alerta_cancelando_cuenta">CANCELANDO%1$s\n%2$ds</string>
+    <string name="alerta_sin_puntos">Sem pontos a perder</string>
+    <plurals name="alerta_puntos_perdidos">
+        <item quantity="one">−%1$s ponto</item>
+        <item quantity="other">−%1$s pontos</item>
+    </plurals>
+    <string name="alerta_ciclo_de_4">Ciclo %1$d de 4</string>
+    <string name="alerta_ciclo_de_4_tiempo">Ciclo %1$d de 4 · Tempo %2$s</string>
+
+    <string name="analisis_titulo">Estatísticas</string>
+    <string name="analisis_tienda_temas">Loja de Temas</string>
+    <string name="analisis_racha">Sequência atual</string>
+    <string name="analisis_enfoque_total">Foco total</string>
+    <string name="analisis_pomodoros_completados">Pomodoros\nconcluídos</string>
+    <string name="analisis_tasa_fallos">Taxa de falhas</string>
+    <string name="analisis_grafico_titulo">Pomodoros Concluídos (Esta semana)</string>
+    <string name="analisis_actividades_recientes">Atividades Recentes</string>
+    <string name="analisis_sin_actividades">Ainda não há atividades concluídas</string>
+    <string name="analisis_ver_todo">Ver tudo</string>
+    <string name="analisis_puntos">%1$s Pontos</string>
+    <string name="analisis_error_cargar">Erro ao carregar a tela: %1$s</string>
+    <string name="notif_estado_activadas">As notificações estão ativadas</string>
+    <string name="notif_estado_desactivadas">As notificações estão desativadas, ative-as se quiser receber avisos</string>
+    <string name="tarea_ninguna">Nenhuma</string>
+    <string name="tarea_sin_nombre">Sem nome</string>
+    <string name="racha_empieza">Comece sua primeira sequência</string>
+    <string name="racha_ya_hoy">Você já focou hoje, mandou bem</string>
+    <string name="racha_manten">Comece um pomodoro para manter sua sequência</string>
+    <plurals name="analisis_abandonados">
+        <item quantity="one">%1$d abandonado</item>
+        <item quantity="other">%1$d abandonados</item>
+    </plurals>
+    <string-array name="iniciales_semana">
+        <item>D</item>
+        <item>S</item>
+        <item>T</item>
+        <item>Q</item>
+        <item>Q</item>
+        <item>S</item>
+        <item>S</item>
+    </string-array>
+
+    <string name="temas_titulo">Loja de Temas</string>
+    <string name="tema_variante_oscuro">%1$s Escuro</string>
+    <string name="tema_variante_claro">%1$s Claro</string>
+    <string name="tema_color_azul">Azul</string>
+    <string name="tema_color_verde">Verde</string>
+    <string name="tema_color_cacao">Cacau</string>
+    <string name="tema_color_naranja">Laranja</string>
+    <string name="tema_color_rojo">Vermelho</string>
+    <string name="tema_color_eucalipto">Eucalipto</string>
+    <string name="tema_color_morado">Roxo</string>
+    <string name="tema_color_rosa">Rosa</string>
+    <string name="tema_color_marino">Azul Marinho</string>
+    <string name="tema_color_mostaza">Mostarda</string>
+    <string name="tema_color_vainilla">Baunilha</string>
+    <string name="tema_color_turquesa">Turquesa</string>
+    <string name="tema_color_aguamarina">Água-marinha</string>
+    <string name="tema_color_grafito">Grafite</string>
+    <string name="tema_color_salvia">Sálvia</string>
+    <string name="tema_color_coral">Coral</string>
+    <string name="tema_color_denim">Jeans</string>
+    <string name="tema_color_lavanda">Lavanda</string>
+    <string name="tema_color_petroleo">Petróleo</string>
+    <string name="tema_color_berenjena">Berinjela</string>
+    <string name="tema_color_carmesi">Carmesim</string>
+    <string name="tema_color_arena">Areia</string>
+    <string name="tema_color_violeta">Violeta</string>
+    <string name="tema_color_medianoche">Meia-noite</string>
+    <string name="tema_color_neon">Neon</string>
+    <string name="tema_color_ultramar">Ultramar</string>
+    <string name="tema_color_lima">Lima</string>
+    <string name="tema_seleccionado">Selecionado</string>
+    <string name="tema_tocar_aplicar">Toque para aplicar</string>
+    <string name="tema_deduccion">-%1$d pts</string>
+    <plurals name="tema_precio">
+        <item quantity="one">%1$d ponto</item>
+        <item quantity="other">%1$d pontos</item>
+    </plurals>
+
+    <string name="ajustes_titulo">Configurações Gerais</string>
+    <string name="ajustes_sesion_activa_alerta">Há uma sessão ativa. Termine ou cancele a sessão para poder mudar o alerta de distração.</string>
+    <string name="ajustes_notificaciones">NOTIFICAÇÕES</string>
+    <string name="ajustes_notificaciones_texto">Ative os avisos do Miau Focus a qualquer momento</string>
+    <string name="ajustes_ajustes">Configurações</string>
+    <string name="ajustes_alerta_distraccion">ALERTA DE DISTRAÇÃO</string>
+    <string name="ajustes_alerta_distraccion_texto">Se você sair do app durante uma sessão de foco, o cronômetro pausa e ao voltar aparece um alerta que você precisa fechar para continuar. Se desativar, não haverá punições por se distrair, mas você ganhará menos pontos por ciclo concluído</string>
+    <string name="ajustes_vibracion">VIBRAÇÃO</string>
+    <string name="ajustes_vibracion_texto">Vibra junto com os alarmes de fim de sessão e de pausa</string>
+    <string name="ajustes_modo_silencioso">MODO SILENCIOSO</string>
+    <string name="ajustes_modo_silencioso_texto">Durante este horário, os alarmes do Miau Focus não vão tocar nem vibrar</string>
+    <string name="ajustes_desde">Das</string>
+    <string name="ajustes_hasta">Até</string>
+    <string name="ajustes_reiniciar_estadisticas">REINICIAR ESTATÍSTICAS</string>
+    <string name="ajustes_reiniciar_texto">Apaga sua sequência, pontos e histórico de pomodoros. Esta ação não pode ser desfeita</string>
+    <string name="ajustes_reiniciar_boton">Reiniciar</string>
+    <string name="ajustes_acerca_de">SOBRE</string>
+    <string name="ajustes_acerca_de_texto">Informações do Miau Focus e como você pode apoiar o projeto</string>
+    <string name="ajustes_idioma">IDIOMA</string>
+    <string name="ajustes_idioma_texto">Escolha o idioma do app sem depender do sistema</string>
+    <string name="idioma_dialogo_titulo">Idioma do app</string>
+    <string name="idioma_sistema">Padrão do sistema</string>
+    <string name="dialogo_reiniciar_titulo">Reiniciar estatísticas</string>
+    <string name="dialogo_reiniciar_texto">Sua sequência, pontos e histórico de pomodoros serão apagados. Esta ação não pode ser desfeita.</string>
+    <string name="toast_estadisticas_reiniciadas">Estatísticas reiniciadas</string>
+
+    <string name="config_titulo">Configurar Tempos</string>
+    <string name="config_sesion_activa">Há uma sessão ativa. Termine ou cancele a sessão para poder alterar os tempos.</string>
+    <string name="config_opciones_predeterminadas">OPÇÕES PADRÃO</string>
+    <string name="config_opciones_predeterminadas_texto">25 min de foco, 5 min de pausa curta e 15 min de pausa longa. Se ativar, você não poderá alterar os tempos abaixo.</string>
+    <string name="config_tiempo_enfoque">TEMPO DE FOCO</string>
+    <string name="config_tiempo_enfoque_texto">Duração dos blocos de trabalho</string>
+    <string name="config_descanso_corto">PAUSA CURTA</string>
+    <string name="config_descanso_corto_texto">Duração da pausa entre ciclos</string>
+    <string name="config_activar_descanso_largo">ATIVAR PAUSA LONGA</string>
+    <string name="config_activar_descanso_largo_texto">Ao completar os 4 ciclos você faz uma pausa mais longa. Se for continuar estudando depois, é recomendado ativar; se for encerrar, você pode desativar e o cronômetro vai parar ao completar o quarto ciclo.</string>
+    <string name="config_duracion_descanso_largo">DURAÇÃO DA PAUSA LONGA</string>
+    <string name="config_guardar">SALVAR CONFIGURAÇÃO</string>
+    <string name="toast_config_guardada">Configuração salva</string>
+    <string name="toast_no_cambiar_tiempos">Você não pode mudar os tempos enquanto há uma sessão ativa</string>
+
+    <string name="acerca_titulo">Sobre</string>
+    <string name="acerca_version">Versão %1$s</string>
+    <string name="acerca_la_app">O APP</string>
+    <string name="acerca_la_app_texto">O Miau Focus é um app de concentração com a técnica Pomodoro para estudar sem se distrair, acompanhado de um gatinho. Feito com carinho por um pequeno time independente.</string>
+    <string name="acerca_como_hecha">COMO FOI FEITO</string>
+    <string name="acerca_como_hecha_texto">Aplicativo nativo de Android, escrito em Java. Não pede permissão de internet, não mostra anúncios e não exige criar uma conta. Todas as suas informações ficam guardadas somente no seu aparelho.</string>
+    <string name="acerca_quienes_somos">QUEM SOMOS</string>
+    <string name="acerca_bruno_rol">Desenvolvimento e design</string>
+    <string name="acerca_dulce_rol">Design original e ideias iniciais</string>
+    <string name="acerca_publicado_por">Publicado por Peggos Developers</string>
+    <string name="acerca_contacto_privacidad">CONTATO E PRIVACIDADE</string>
+    <string name="acerca_politica_privacidad">Política de privacidade</string>
+    <string name="acerca_licencias">Licenças de terceiros</string>
+    <string name="acerca_ayudanos">AJUDE A GENTE A MELHORAR</string>
+    <string name="acerca_ayudanos_texto">O Miau Focus é gratuito e sem anúncios chatos. Se ele te ajuda e você quer dar uma força para continuarmos criando e melhorando, qualquer apoio faz nosso dia.</string>
+    <string name="acerca_cafe">Pague um café pra gente ☕</string>
+    <string name="cd_correo">E-mail</string>
+    <string name="cd_privacidad">Privacidade</string>
+    <string name="cd_licencias">Licenças</string>
+    <string name="licencias_texto">Animações criadas com Lottie pela Airbnb, distribuído sob a licença Apache 2.0.</string>
+    <string name="toast_no_abrir_enlace">Não foi possível abrir o link</string>
+    <string name="toast_sin_app_correo">Nenhum app de e-mail encontrado</string>
+
+    <string name="canal_progreso_nombre">Sessão em andamento</string>
+    <string name="canal_progreso_desc">Mostra o progresso da sessão de foco ou da pausa</string>
+    <string name="canal_avisos_nombre">Avisos de sessão</string>
+    <string name="canal_avisos_desc">Avisa quando sua pausa ou sua sessão de foco termina</string>
+    <string name="canal_alarma_nombre">Alerta de distração</string>
+    <string name="canal_alarma_desc">Toca como alarme quando você se distrai durante uma sessão de foco</string>
+    <string name="canal_bloqueo_nombre">Cronômetro com a tela bloqueada</string>
+    <string name="canal_bloqueo_desc">Lembra que o cronômetro continua correndo enquanto a tela está bloqueada</string>
+
+    <string name="chip_vuelve">Volte</string>
+    <string name="notif_bloqueo_titulo">Cronômetro em andamento</string>
+    <string name="notif_bloqueo_texto">Volte ao Miau Focus</string>
+    <string name="notif_aviso_fin_descanso_titulo">Sua pausa está quase no fim</string>
+    <string name="notif_aviso_fin_descanso_texto">Volte ao Miau Focus em menos de 1 minuto</string>
+    <string name="notif_aviso_sancion_titulo">Sua pausa está terminando</string>
+    <string name="notif_aviso_sancion_texto">Volte ao Miau Focus em 15 segundos para retomar o foco</string>
+    <string name="notif_distraccion_titulo">Você está se distraindo</string>
+    <string name="notif_distraccion_texto">Seu cronômetro está pausado. Volte ao Miau Focus para continuar</string>
+    <string name="notif_descanso_pausa">Pausa pausada</string>
+    <string name="notif_enfoque_pausa">Sessão de foco pausada</string>
+    <string name="notif_pausa_texto">Resolva o alerta para continuar</string>
+    <string name="notif_descanso_curso">Pausa em andamento</string>
+    <string name="notif_enfoque_curso">Sessão de foco em andamento</string>
+    <string name="notif_progreso_texto">Toque para voltar ao Miau Focus</string>
+    <string name="notif_descanso_largo_terminado">Pausa longa terminada</string>
+    <string name="notif_completaste_sesion">Você completou sua sessão</string>
+    <string name="notif_terminaste_4_ciclos">Você terminou seus 4 ciclos</string>
+    <string name="notif_descanso_termino">A pausa terminou</string>
+    <string name="notif_enfoque_ya_comenzo">Sua sessão de foco já começou, volte ao Miau Focus</string>
+    <string name="notif_toca_continuar">Toque para continuar</string>
+</resources>

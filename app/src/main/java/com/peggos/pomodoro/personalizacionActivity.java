@@ -48,7 +48,7 @@ public class personalizacionActivity extends BaseActivity {
     }
 
     private void mostrarAnimacionCompra(int precio) {
-        tvDeduccion.setText("-" + precio + " pts");
+        tvDeduccion.setText(getString(R.string.tema_deduccion, precio));
         tvDeduccion.setAlpha(1f);
         tvDeduccion.setTranslationY(0f);
         tvDeduccion.setVisibility(View.VISIBLE);
@@ -74,6 +74,6 @@ public class personalizacionActivity extends BaseActivity {
 
     private void actualizarPuntos() {
         float puntos = new GestorEstadisticas(this).getPuntos();
-        tvPuntosDisponibles.setText(GestorEstadisticas.formatearPuntos(puntos) + " Puntos");
+        tvPuntosDisponibles.setText(getString(R.string.analisis_puntos, GestorEstadisticas.formatearPuntos(puntos)));
     }
 }

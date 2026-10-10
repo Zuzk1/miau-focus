@@ -21,23 +21,23 @@ public class GestorAlertas {
     public static final String CANAL_PROGRESO_ID = "canal_progreso_pomodoro";
     public static final String CANAL_ALARMA_ID = "canal_alarma_pomodoro";
     public static final String CANAL_BLOQUEO_ID = "canal_bloqueo_pomodoro";
+    public static final String CANAL_AVISOS_ID = "canal_avisos_pomodoro";
     public static final int ID_NOTIFICACION_ALARMA = 1002;
     public static final int ID_NOTIFICACION_BLOQUEO = 1003;
     public static final String EXTRA_ES_INFRACCION = "extra_es_infraccion";
     public static final String PREFS_NOMBRE_COMPARTIDO = "PreferenciasMiauFocus";
     public static final int ID_NOTIFICACION_AVISO_DESCANSO = 1004;
+    public static final int ID_NOTIFICACION_INFRACCION = 1005;
     public static final int ID_NOTIFICACION_AVISO_SANCION = 1006;
     private static final String PREFS_NOMBRE = "PrefsAlertas";
     private static final String CLAVE_INFRACCION_PENDIENTE = "infraccion_pendiente";
     private static final String CLAVE_TIEMPO_RESTANTE_GUARDADO = "tiempo_restante_guardado";
     private static final String CLAVE_ES_DESCANSO_GUARDADO = "es_descanso_guardado";
     private static final String CLAVE_CICLO_ACTUAL_GUARDADO = "ciclo_actual_guardado";
-    private static final String CLAVE_TITULO_GUARDADO = "titulo_guardado";
     private static final String CLAVE_CRONOMETRO_CORRIENDO = "cronometro_corriendo";
     private static final String CLAVE_TIEMPO_FIN_ESTIMADO_ACTUAL = "tiempo_fin_estimado_actual";
     private static final String CLAVE_ES_DESCANSO_ACTUAL = "es_descanso_actual";
     private static final String CLAVE_CICLO_ACTUAL_ACTUAL = "ciclo_actual_actual";
-    private static final String CLAVE_TITULO_ACTUAL = "titulo_actual";
     private static final String CLAVE_ALERTA_ACTIVA = "alerta_activa";
     private static final String CLAVE_REANUDAR_TRAS_INFRACCION = "reanudar_tras_infraccion";
     private static final String CLAVE_TIEMPO_RESTANTE_CONGELADO = "tiempo_restante_congelado";
@@ -50,13 +50,25 @@ public class GestorAlertas {
         NotificationManager gestorNotificaciones = contexto.getSystemService(NotificationManager.class);
 
         NotificationChannel canalProgreso = new NotificationChannel(
-                CANAL_PROGRESO_ID, "Sesión en curso", NotificationManager.IMPORTANCE_LOW);
-        canalProgreso.setDescription("Muestra el progreso de la sesión de enfoque o descanso");
+                CANAL_PROGRESO_ID, contexto.getString(R.string.canal_progreso_nombre), NotificationManager.IMPORTANCE_LOW);
+        canalProgreso.setDescription(contexto.getString(R.string.canal_progreso_desc));
         gestorNotificaciones.createNotificationChannel(canalProgreso);
 
+        NotificationChannel canalAvisos = new NotificationChannel(
+                CANAL_AVISOS_ID, contexto.getString(R.string.canal_avisos_nombre), NotificationManager.IMPORTANCE_HIGH);
+        canalAvisos.setDescription(contexto.getString(R.string.canal_avisos_desc));
+        canalAvisos.setLockscreenVisibility(android.app.Notification.VISIBILITY_PUBLIC);
+        canalAvisos.enableVibration(true);
+        Uri sonidoNotificacion = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        canalAvisos.setSound(sonidoNotificacion, new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                .build());
+        gestorNotificaciones.createNotificationChannel(canalAvisos);
+
         NotificationChannel canalAlarma = new NotificationChannel(
-                CANAL_ALARMA_ID, "Alarma de Pomodoro", NotificationManager.IMPORTANCE_HIGH);
-        canalAlarma.setDescription("Avisa cuando termina la sesión o cuando te distraes durante el enfoque");
+                CANAL_ALARMA_ID, contexto.getString(R.string.canal_alarma_nombre), NotificationManager.IMPORTANCE_HIGH);
+        canalAlarma.setDescription(contexto.getString(R.string.canal_alarma_desc));
         canalAlarma.setLockscreenVisibility(android.app.Notification.VISIBILITY_PUBLIC);
         canalAlarma.enableVibration(true);
         canalAlarma.setVibrationPattern(new long[]{0, 800, 400, 800});
@@ -68,8 +80,8 @@ public class GestorAlertas {
         gestorNotificaciones.createNotificationChannel(canalAlarma);
 
         NotificationChannel canalBloqueo = new NotificationChannel(
-                CANAL_BLOQUEO_ID, "Cronómetro con pantalla bloqueada", NotificationManager.IMPORTANCE_DEFAULT);
-        canalBloqueo.setDescription("Recuerda que el cronómetro sigue corriendo mientras la pantalla está bloqueada");
+                CANAL_BLOQUEO_ID, contexto.getString(R.string.canal_bloqueo_nombre), NotificationManager.IMPORTANCE_DEFAULT);
+        canalBloqueo.setDescription(contexto.getString(R.string.canal_bloqueo_desc));
         canalBloqueo.setLockscreenVisibility(android.app.Notification.VISIBILITY_PUBLIC);
         gestorNotificaciones.createNotificationChannel(canalBloqueo);
     }
@@ -82,8 +94,8 @@ public class GestorAlertas {
 
         android.app.Notification notificacion = new NotificationCompat.Builder(contexto, CANAL_BLOQUEO_ID)
                 .setSmallIcon(R.drawable.ic_gato_notificacion)
-                .setContentTitle("Cronómetro en curso")
-                .setContentText("Vuelve a Miau Focus")
+                .setContentTitle(contexto.getString(R.string.notif_bloqueo_titulo))
+                .setContentText(contexto.getString(R.string.notif_bloqueo_texto))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setCategory(NotificationCompat.CATEGORY_REMINDER)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -109,6 +121,10 @@ public class GestorAlertas {
     public static void limpiarInfraccionPendiente(Context contexto) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
                 .edit().putBoolean(CLAVE_INFRACCION_PENDIENTE, false).apply();
+
+        NotificationManagerCompat gestor = NotificationManagerCompat.from(contexto);
+        gestor.cancel(ID_NOTIFICACION_ALARMA);
+        gestor.cancel(ID_NOTIFICACION_INFRACCION);
     }
 
     public static boolean hayInfraccionPendiente(Context contexto) {
@@ -116,12 +132,20 @@ public class GestorAlertas {
                 .getBoolean(CLAVE_INFRACCION_PENDIENTE, false);
     }
 
-    public static void guardarEstadoCronometro(Context contexto, long tiempoRestante, boolean esDescanso, int cicloActual, String titulo) {
+    public static int resTituloDeFase(boolean esDescanso, int ciclo) {
+        if (!esDescanso) return R.string.fase_enfoque;
+        return ciclo == 1 ? R.string.fase_descanso_largo : R.string.fase_descanso_corto;
+    }
+
+    public static boolean esDescansoLargo(boolean esDescanso, int ciclo) {
+        return esDescanso && ciclo == 1;
+    }
+
+    public static void guardarEstadoCronometro(Context contexto, long tiempoRestante, boolean esDescanso, int cicloActual) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE).edit()
                 .putLong(CLAVE_TIEMPO_RESTANTE_GUARDADO, tiempoRestante)
                 .putBoolean(CLAVE_ES_DESCANSO_GUARDADO, esDescanso)
                 .putInt(CLAVE_CICLO_ACTUAL_GUARDADO, cicloActual)
-                .putString(CLAVE_TITULO_GUARDADO, titulo)
                 .apply();
     }
 
@@ -141,8 +165,8 @@ public class GestorAlertas {
     }
 
     public static String getTituloGuardado(Context contexto) {
-        return contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
-                .getString(CLAVE_TITULO_GUARDADO, "SESIÓN DE ENFOQUE");
+        return contexto.getString(resTituloDeFase(
+                getEsDescansoGuardado(contexto), getCicloActualGuardado(contexto)));
     }
 
     public static void limpiarEstadoCronometroGuardado(Context contexto) {
@@ -150,7 +174,6 @@ public class GestorAlertas {
                 .remove(CLAVE_TIEMPO_RESTANTE_GUARDADO)
                 .remove(CLAVE_ES_DESCANSO_GUARDADO)
                 .remove(CLAVE_CICLO_ACTUAL_GUARDADO)
-                .remove(CLAVE_TITULO_GUARDADO)
                 .apply();
     }
 
@@ -190,22 +213,20 @@ public class GestorAlertas {
     }
 
     public static void guardarEstadoCronometroActual(Context contexto, long tiempoFinEstimado,
-            boolean esDescanso, int cicloActual, String titulo) {
+            boolean esDescanso, int cicloActual) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE).edit()
                 .putLong(CLAVE_TIEMPO_FIN_ESTIMADO_ACTUAL, tiempoFinEstimado)
                 .putBoolean(CLAVE_ES_DESCANSO_ACTUAL, esDescanso)
                 .putInt(CLAVE_CICLO_ACTUAL_ACTUAL, cicloActual)
-                .putString(CLAVE_TITULO_ACTUAL, titulo)
                 .putBoolean(CLAVE_CRONOMETRO_CORRIENDO, true)
                 .apply();
     }
 
     public static void actualizarMetadatosCronometroActual(Context contexto, boolean esDescanso,
-            int cicloActual, String titulo) {
+            int cicloActual) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE).edit()
                 .putBoolean(CLAVE_ES_DESCANSO_ACTUAL, esDescanso)
                 .putInt(CLAVE_CICLO_ACTUAL_ACTUAL, cicloActual)
-                .putString(CLAVE_TITULO_ACTUAL, titulo)
                 .apply();
     }
 
@@ -225,8 +246,8 @@ public class GestorAlertas {
     }
 
     public static String getTituloActual(Context contexto) {
-        return contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
-                .getString(CLAVE_TITULO_ACTUAL, "SESIÓN DE ENFOQUE");
+        return contexto.getString(resTituloDeFase(
+                getEsDescansoActual(contexto), getCicloActualActual(contexto)));
     }
 
     public static void setAlertaActiva(Context contexto, boolean activa) {
@@ -237,6 +258,22 @@ public class GestorAlertas {
     public static boolean isAlertaActiva(Context contexto) {
         return contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
                 .getBoolean(CLAVE_ALERTA_ACTIVA, false);
+    }
+
+    public static boolean debeSancionarPorDistraccion(Context contexto, boolean esDescanso, long tiempoRestanteFase) {
+        if (esDescanso) return false;
+        if (hayInfraccionPendiente(contexto)) return false;
+        if (estaEnPeriodoGraciaPostDescanso(contexto)) return false;
+        if (VigilanteSesionApp.laPantallaSeApagoConLaAppAlFrente(contexto)) return false;
+
+        GestorConfiguracion configuracion = new GestorConfiguracion(contexto);
+        if (!configuracion.isAlertasDistraccionHabilitadas()) return false;
+
+        if (getCicloActualActual(contexto) > 1) return true;
+
+        long duracionEnfoque = configuracion.getMinutosTrabajo() * 60000L;
+        long transcurrido = duracionEnfoque - tiempoRestanteFase;
+        return transcurrido >= CronometroActivity.UMBRAL_SIN_PENALIZACION;
     }
 
     public static void marcarReanudarTrasInfraccion(Context contexto) {
@@ -256,6 +293,11 @@ public class GestorAlertas {
     public static void congelarTiempoRestante(Context contexto, long tiempoRestanteCongelado) {
         contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
                 .edit().putLong(CLAVE_TIEMPO_RESTANTE_CONGELADO, tiempoRestanteCongelado).apply();
+    }
+
+    public static long getTiempoCongelado(Context contexto) {
+        return contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
+                .getLong(CLAVE_TIEMPO_RESTANTE_CONGELADO, -1L);
     }
 
     public static long obtenerYLimpiarTiempoCongelado(Context contexto) {
@@ -285,20 +327,22 @@ public class GestorAlertas {
         PendingIntent intentoPendienteAlerta = PendingIntent.getActivity(
                 contexto, 1, intentAlerta, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        android.app.Notification notificacionAlarma = new NotificationCompat.Builder(contexto, CANAL_ALARMA_ID)
-                .setSmallIcon(R.drawable.ic_gato_notificacion)
-                .setContentTitle(titulo)
-                .setContentText(mensaje)
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setCategory(NotificationCompat.CATEGORY_ALARM)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setContentIntent(intentoPendienteAlerta)
-                .setAutoCancel(true)
-                .build();
+        android.app.Notification.Builder constructor =
+                new android.app.Notification.Builder(contexto, CANAL_ALARMA_ID)
+                        .setSmallIcon(R.drawable.ic_gato_notificacion)
+                        .setContentTitle(titulo)
+                        .setContentText(mensaje)
+                        .setOngoing(true)
+                        .setOnlyAlertOnce(true)
+                        .setCategory(android.app.Notification.CATEGORY_ALARM)
+                        .setVisibility(android.app.Notification.VISIBILITY_PUBLIC)
+                        .setContentIntent(intentoPendienteAlerta);
+
+        IslaDinamica.aplicarAlerta(contexto, constructor, contexto.getString(R.string.chip_vuelve));
 
         if (ContextCompat.checkSelfPermission(contexto, android.Manifest.permission.POST_NOTIFICATIONS)
                 == PackageManager.PERMISSION_GRANTED) {
-            NotificationManagerCompat.from(contexto).notify(ID_NOTIFICACION_ALARMA, notificacionAlarma);
+            NotificationManagerCompat.from(contexto).notify(ID_NOTIFICACION_ALARMA, constructor.build());
         }
     }
 
@@ -308,10 +352,10 @@ public class GestorAlertas {
         PendingIntent intentoPendienteAbrirApp = PendingIntent.getActivity(
                 contexto, 3, intentAbrirApp, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        android.app.Notification notificacionAviso = new NotificationCompat.Builder(contexto, CANAL_ALARMA_ID)
+        android.app.Notification notificacionAviso = new NotificationCompat.Builder(contexto, CANAL_AVISOS_ID)
                 .setSmallIcon(R.drawable.ic_gato_notificacion)
-                .setContentTitle("¡Tu descanso está por terminar!")
-                .setContentText("Vuelve a Miau Focus en menos de 1 minuto")
+                .setContentTitle(contexto.getString(R.string.notif_aviso_fin_descanso_titulo))
+                .setContentText(contexto.getString(R.string.notif_aviso_fin_descanso_texto))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_REMINDER)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
@@ -331,10 +375,10 @@ public class GestorAlertas {
         PendingIntent intentoPendienteAbrirApp = PendingIntent.getActivity(
                 contexto, 4, intentAbrirApp, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
-        android.app.Notification notificacionAviso = new NotificationCompat.Builder(contexto, CANAL_ALARMA_ID)
+        android.app.Notification notificacionAviso = new NotificationCompat.Builder(contexto, CANAL_AVISOS_ID)
                 .setSmallIcon(R.drawable.ic_gato_notificacion)
-                .setContentTitle("¡Tu descanso casi termina!")
-                .setContentText("Vuelve a Miau Focus en 15 segundos para no ser sancionado")
+                .setContentTitle(contexto.getString(R.string.notif_aviso_sancion_titulo))
+                .setContentText(contexto.getString(R.string.notif_aviso_sancion_texto))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_REMINDER)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)

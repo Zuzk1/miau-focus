@@ -17,6 +17,8 @@
     <color name="tema_oscuro_fondo_alerta">#1A0A0A</color>
     <color name="tema_oscuro_alerta_texto_secundario">#FFCDD2</color>
     <color name="tema_oscuro_alerta_texto_terciario">#FF8A80</color>
+    <color name="tema_oscuro_gato_alerta">#8E3A3A</color>
+    <color name="tema_oscuro_gato_lagrima">#FF5252</color>
 
     <!-- ============ NEUTROS DEL TEMA CLARO ============ -->
     <color name="tema_claro_fondo_principal">#F0F0F5</color>
@@ -34,6 +36,8 @@
     <color name="tema_claro_fondo_alerta">#FFFFFF</color>
     <color name="tema_claro_alerta_texto_secundario">#C62828</color>
     <color name="tema_claro_alerta_texto_terciario">#D84315</color>
+    <color name="tema_claro_gato_alerta">#F0A8A8</color>
+    <color name="tema_claro_gato_lagrima">#CF5F5F</color>
 
     <!-- ============ ACENTO AZUL (tema gratuito por defecto) ============ -->
     <color name="acento_azul">#2196F3</color>

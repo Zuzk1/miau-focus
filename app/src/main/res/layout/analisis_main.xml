@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
                 android:layout_marginStart="16dp"
-                android:text="Estadisticas"
+                android:text="@string/analisis_titulo"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="22sp"
                 android:fontFamily="@font/poppins_semibold"
@@ -88,11 +88,11 @@
                 android:orientation="horizontal"
                 android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🐱"
-                    android:textSize="28sp"
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_gato_cabeza"
+                    android:contentDescription="@string/cd_puntos"
                     android:layout_marginEnd="12dp" />
 
                 <TextView
@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_semibold"
-                    android:text="Tienda de Temas"
+                    android:text="@string/analisis_tienda_temas"
                     android:textColor="?attr/themeSobreAcento"
                     android:textSize="13sp"
                     app:backgroundTint="?attr/themeAcento"
@@ -163,7 +163,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
-                    android:text="Racha actual"
+                    android:text="@string/analisis_racha"
                     android:textColor="?attr/themeTextoTerciario"
                     android:textSize="12sp" />
 
@@ -208,7 +208,7 @@
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
-                            android:text="Enfoque total"
+                            android:text="@string/analisis_enfoque_total"
                             android:textColor="?attr/themeTextoTerciario"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -242,7 +242,7 @@
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
-                            android:text="Pomodoros\ncompletados"
+                            android:text="@string/analisis_pomodoros_completados"
                             android:textColor="?attr/themeTextoTerciario"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -276,7 +276,7 @@
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/poppins_regular"
                             android:gravity="center"
-                            android:text="Tasa de fallos"
+                            android:text="@string/analisis_tasa_fallos"
                             android:textColor="?attr/themeTextoTerciario"
                             android:textSize="11sp" />
 
@@ -302,7 +302,7 @@
                 android:layout_marginHorizontal="24dp"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Pomodoros Completados (Esta semana)"
+                android:text="@string/analisis_grafico_titulo"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="15sp" />
 
@@ -334,7 +334,7 @@
                 android:layout_marginHorizontal="24dp"
                 android:gravity="center"
                 android:fontFamily="@font/poppins_semibold"
-                android:text="Actividades Recientes"
+                android:text="@string/analisis_actividades_recientes"
                 android:textColor="?attr/themeTextoPrimario"
                 android:textSize="15sp" />
 
@@ -376,7 +376,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="14dp"
                         android:fontFamily="@font/poppins_regular"
-                        android:text="Aún no hay actividades completadas"
+                        android:text="@string/analisis_sin_actividades"
                         android:textColor="?attr/themeTextoTerciario"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -388,7 +388,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:gravity="center"
                     android:paddingVertical="12dp"
-                    android:text="Ver todo"
+                    android:text="@string/analisis_ver_todo"
                     android:textColor="?attr/themeAcentoTexto"
                     android:textSize="13sp"
                     android:visibility="gone" />

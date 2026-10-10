@@ -1,0 +1,36 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <path
+      android:pathData="M146,64 L222,128 C244,120 268,120 290,128 L366,64 L382,186 C404,222 410,268 400,306 C386,362 330,404 256,404 C182,404 126,362 112,306 C102,268 108,222 130,186 Z"
+      android:fillColor="?attr/themeGatoAlerta"/>
+  <path
+      android:pathData="M172,242 Q200,272 228,242"
+      android:strokeColor="?attr/themeFondoAlerta"
+      android:strokeWidth="17"
+      android:strokeLineCap="round"
+      android:fillColor="#00000000"/>
+  <path
+      android:pathData="M284,242 Q312,272 340,242"
+      android:strokeColor="?attr/themeFondoAlerta"
+      android:strokeWidth="17"
+      android:strokeLineCap="round"
+      android:fillColor="#00000000"/>
+  <path
+      android:pathData="M240,292 L272,292 C277,292 279,297 276,301 L260,318 C258,320 254,320 252,318 L236,301 C233,297 235,292 240,292 Z"
+      android:fillColor="?attr/themeFondoAlerta"/>
+  <path
+      android:pathData="M256,318 L256,333"
+      android:strokeColor="?attr/themeFondoAlerta"
+      android:strokeWidth="13"
+      android:strokeLineCap="round"
+      android:fillColor="#00000000"/>
+  <path
+      android:pathData="M230,352 Q256,328 282,352"
+      android:strokeColor="?attr/themeFondoAlerta"
+      android:strokeWidth="14"
+      android:strokeLineCap="round"
+      android:fillColor="#00000000"/>
+</vector>

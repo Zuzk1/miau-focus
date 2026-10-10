@@ -1,0 +1,256 @@
+<resources>
+    <string name="an_lisis_de_enfoque">집중 분석</string>
+
+    <string name="accion_cancelar">취소</string>
+    <string name="accion_guardar">저장</string>
+    <string name="accion_ver">보기</string>
+    <string name="accion_atras">뒤로</string>
+    <string name="accion_renunciar">포기</string>
+    <string name="accion_comenzar">시작하기</string>
+    <string name="accion_siguiente">다음</string>
+
+    <string name="fase_enfoque">집중 세션</string>
+    <string name="fase_descanso_corto">짧은 휴식</string>
+    <string name="fase_descanso_largo">긴 휴식</string>
+    <string name="fase_corta_enfoque">집중</string>
+    <string name="fase_corta_descanso">휴식</string>
+
+    <string name="nav_enfoque">집중</string>
+    <string name="nav_tareas">할 일</string>
+    <string name="nav_estadisticas">통계</string>
+
+    <string name="bienvenida_pomodoro">뽀모도로</string>
+    <string name="onboarding_titulo_1">Miau Focus에\n오신 것을 환영합니다</string>
+    <string name="onboarding_titulo_2">방해도 없이,\n핑계도 없이</string>
+    <string name="onboarding_titulo_3">고양이가 지켜봅니다.\n흔들리지 마세요</string>
+    <string name="onboarding_texto_1">고양이 친구가 뽀모도로 기법으로 집중을 이어가도록 도와줍니다. 밀어서 사용법을 확인하세요.</string>
+    <string name="onboarding_texto_2">세션 중에 앱을 벗어나면 타이머가 멈추고, 돌아오는 데 오래 걸리면 점수를 잃습니다. 흔들리지 마세요.</string>
+    <string name="onboarding_texto_3">사이클을 채우고 점수를 모아 테마를 잠금 해제하세요. 세션을 하나 끝낼 때마다 연속 기록이 늘어납니다.</string>
+
+    <string name="cronometro_enfocado_en">집중 중: %1$s</string>
+    <string name="cd_renunciar">포기</string>
+    <string name="cd_escudo">방패</string>
+    <string name="cd_pausar">일시정지</string>
+    <string name="cd_puntos">점수</string>
+    <string name="toast_completaste_4_ciclos">집중 4사이클을 모두 마쳤습니다. 원할 때 다시 시작하세요.</string>
+    <string name="toast_descanso_largo_terminado">긴 휴식이 끝났습니다. 원할 때 새 사이클을 시작하세요.</string>
+
+    <string name="dialogo_advertencia_titulo">경고</string>
+    <string name="dialogo_advertencia_texto">이 집중 세션을 포기하시겠습니까. 점수를 잃고 연속 기록이 초기화됩니다.</string>
+
+    <string name="dialogo_escudo_titulo">방패 사용</string>
+    <string name="dialogo_escudo_texto">세션이 보호됩니다. 취소해도 점수와 연속 기록을 잃지 않습니다. 하루에 한 번만 쓸 수 있습니다.</string>
+    <string name="dialogo_escudo_activar">방패 사용</string>
+
+    <string name="dialogo_permiso_ahora_no">나중에</string>
+    <string name="permiso_notif_titulo">알림을 놓치지 마세요</string>
+    <string name="permiso_notif_texto">집중 세션이나 휴식이 끝나는 순간 Miau Focus가 알려줄 수 있도록 알림을 켜 주세요.</string>
+    <string name="permiso_notif_boton">알림 켜기</string>
+    <string name="permiso_pantalla_titulo">경고를 놓치지 마세요</string>
+    <string name="permiso_pantalla_texto">다른 앱을 쓰는 중에도 주의 경고가 전체 화면으로 뜨도록, Miau Focus에 전체 화면 권한을 허용해 주세요.</string>
+    <string name="permiso_pantalla_boton">설정하기</string>
+
+    <string name="tareas_titulo">할 일</string>
+    <string name="tareas_tarea_activa">진행 중인 할 일</string>
+    <string name="tareas_sin_tarea_activa">진행 중인 할 일 없음</string>
+    <string name="tareas_selecciona">할 일을 골라 집중을 시작하세요</string>
+    <string name="tareas_toca_ir_enfoque">집중으로 이동을 눌러 작업하세요</string>
+    <string name="tareas_ir_a_enfoque">집중으로 이동</string>
+    <string name="tareas_pendientes">남은 일</string>
+    <string name="tareas_completadas_hoy">오늘\n완료</string>
+    <string name="tareas_total">전체</string>
+    <string name="tareas_vacio_titulo">아직 할 일이 없습니다</string>
+    <string name="tareas_vacio_texto">첫 할 일을 추가해 집중을 시작하세요</string>
+    <string name="tareas_anadir">+ 할 일 추가</string>
+    <string name="dialogo_tarea_nueva">새 할 일</string>
+    <string name="dialogo_tarea_editar">할 일 수정</string>
+    <string name="dialogo_tarea_hint">예: 역사 숙제 하기</string>
+    <string name="dialogo_opciones_titulo">이 할 일을 어떻게 할까요</string>
+    <string name="opcion_fijar_activa">진행 중인 할 일로 지정</string>
+    <string name="opcion_editar">내용 수정</string>
+    <string name="opcion_eliminar">할 일 삭제</string>
+    <string name="toast_tarea_agregada">할 일을 추가했습니다</string>
+    <string name="toast_tarea_fijada">할 일을 위로 고정했습니다</string>
+    <string name="toast_tarea_actualizada">할 일을 수정했습니다</string>
+    <string name="toast_tarea_eliminada">할 일을 삭제했습니다</string>
+    <string name="toast_escribe_tarea">할 일을 입력하세요</string>
+
+    <string name="cd_alerta_distraccion">주의 경고</string>
+    <string name="cd_gato_triste">슬픈 고양이</string>
+    <string name="alerta_infraccion">집중이\n끊겼습니다</string>
+    <string name="alerta_instruccion">앱으로 돌아와 버튼을 길게 눌러 알람을 끄세요.</string>
+    <string name="alerta_manten_5s">5초 길게</string>
+    <string name="alerta_manten_cancelar">길게 눌러 세션을 취소하세요</string>
+    <string name="alerta_cancelando_inicial">취소 중...\n5초</string>
+    <string name="alerta_cancelando_cuenta">취소 중%1$s\n%2$d초</string>
+    <string name="alerta_sin_puntos">잃을 점수가 없습니다</string>
+    <plurals name="alerta_puntos_perdidos">
+        <item quantity="other">−%1$s 점</item>
+    </plurals>
+    <string name="alerta_ciclo_de_4">4사이클 중 %1$d번째</string>
+    <string name="alerta_ciclo_de_4_tiempo">4사이클 중 %1$d번째 · 남은 시간 %2$s</string>
+
+    <string name="analisis_titulo">통계</string>
+    <string name="analisis_tienda_temas">테마 상점</string>
+    <string name="analisis_racha">현재 연속 기록</string>
+    <string name="analisis_enfoque_total">총 집중 시간</string>
+    <string name="analisis_pomodoros_completados">완료한\n뽀모도로</string>
+    <string name="analisis_tasa_fallos">실패율</string>
+    <string name="analisis_grafico_titulo">완료한 뽀모도로 (이번 주)</string>
+    <string name="analisis_actividades_recientes">최근 활동</string>
+    <string name="analisis_sin_actividades">아직 완료한 활동이 없습니다</string>
+    <string name="analisis_ver_todo">전체 보기</string>
+    <string name="analisis_puntos">%1$s 점</string>
+    <string name="analisis_error_cargar">화면을 불러오지 못했습니다: %1$s</string>
+    <string name="notif_estado_activadas">알림이 켜져 있습니다</string>
+    <string name="notif_estado_desactivadas">알림이 꺼져 있습니다. 알림을 받으려면 켜 주세요</string>
+    <string name="tarea_ninguna">없음</string>
+    <string name="tarea_sin_nombre">이름 없음</string>
+    <string name="racha_empieza">첫 연속 기록을 시작하세요</string>
+    <string name="racha_ya_hoy">오늘은 이미 집중했습니다</string>
+    <string name="racha_manten">뽀모도로를 시작해 연속 기록을 지키세요</string>
+    <plurals name="analisis_abandonados">
+        <item quantity="other">%1$d회 중단</item>
+    </plurals>
+    <string-array name="iniciales_semana">
+        <item>일</item>
+        <item>월</item>
+        <item>화</item>
+        <item>수</item>
+        <item>목</item>
+        <item>금</item>
+        <item>토</item>
+    </string-array>
+
+    <string name="temas_titulo">테마 상점</string>
+    <string name="tema_variante_oscuro">%1$s 다크</string>
+    <string name="tema_variante_claro">%1$s 라이트</string>
+    <string name="tema_color_azul">블루</string>
+    <string name="tema_color_verde">그린</string>
+    <string name="tema_color_cacao">카카오</string>
+    <string name="tema_color_naranja">오렌지</string>
+    <string name="tema_color_rojo">레드</string>
+    <string name="tema_color_eucalipto">유칼립투스</string>
+    <string name="tema_color_morado">퍼플</string>
+    <string name="tema_color_rosa">핑크</string>
+    <string name="tema_color_marino">네이비</string>
+    <string name="tema_color_mostaza">머스터드</string>
+    <string name="tema_color_vainilla">바닐라</string>
+    <string name="tema_color_turquesa">터콰이즈</string>
+    <string name="tema_color_aguamarina">아쿠아마린</string>
+    <string name="tema_color_grafito">그라파이트</string>
+    <string name="tema_color_salvia">세이지</string>
+    <string name="tema_color_coral">코랄</string>
+    <string name="tema_color_denim">데님</string>
+    <string name="tema_color_lavanda">라벤더</string>
+    <string name="tema_color_petroleo">페트롤</string>
+    <string name="tema_color_berenjena">가지</string>
+    <string name="tema_color_carmesi">크림슨</string>
+    <string name="tema_color_arena">샌드</string>
+    <string name="tema_color_violeta">바이올렛</string>
+    <string name="tema_color_medianoche">미드나이트</string>
+    <string name="tema_color_neon">네온</string>
+    <string name="tema_color_ultramar">울트라마린</string>
+    <string name="tema_color_lima">라임</string>
+    <string name="tema_seleccionado">선택됨</string>
+    <string name="tema_tocar_aplicar">눌러서 적용</string>
+    <string name="tema_deduccion">-%1$d점</string>
+    <plurals name="tema_precio">
+        <item quantity="other">%1$d 점</item>
+    </plurals>
+
+    <string name="ajustes_titulo">일반 설정</string>
+    <string name="ajustes_sesion_activa_alerta">진행 중인 세션이 있습니다. 주의 경고를 바꾸려면 세션을 끝내거나 취소하세요.</string>
+    <string name="ajustes_notificaciones">알림</string>
+    <string name="ajustes_notificaciones_texto">Miau Focus 알림은 언제든 켤 수 있습니다</string>
+    <string name="ajustes_ajustes">설정</string>
+    <string name="ajustes_alerta_distraccion">주의 경고</string>
+    <string name="ajustes_alerta_distraccion_texto">집중 세션 중에 앱을 벗어나면 타이머가 멈추고, 돌아오면 경고가 뜹니다. 계속하려면 이 경고를 닫아야 합니다. 끄면 딴짓에 대한 벌점은 없지만, 사이클을 완료할 때 받는 점수가 줄어듭니다</string>
+    <string name="ajustes_vibracion">진동</string>
+    <string name="ajustes_vibracion_texto">세션 종료와 휴식 종료 알람에 맞춰 진동합니다</string>
+    <string name="ajustes_modo_silencioso">무음 모드</string>
+    <string name="ajustes_modo_silencioso_texto">이 시간대에는 Miau Focus 알람이 울리거나 진동하지 않습니다</string>
+    <string name="ajustes_desde">시작</string>
+    <string name="ajustes_hasta">종료</string>
+    <string name="ajustes_reiniciar_estadisticas">통계 초기화</string>
+    <string name="ajustes_reiniciar_texto">연속 기록, 점수, 뽀모도로 기록을 지웁니다. 되돌릴 수 없습니다</string>
+    <string name="ajustes_reiniciar_boton">초기화</string>
+    <string name="ajustes_acerca_de">정보</string>
+    <string name="ajustes_acerca_de_texto">Miau Focus 정보와 프로젝트를 응원하는 방법</string>
+    <string name="ajustes_idioma">언어</string>
+    <string name="ajustes_idioma_texto">시스템과 상관없이 앱 언어를 선택</string>
+    <string name="idioma_dialogo_titulo">앱 언어</string>
+    <string name="idioma_sistema">시스템 기본값</string>
+    <string name="dialogo_reiniciar_titulo">통계 초기화</string>
+    <string name="dialogo_reiniciar_texto">연속 기록, 점수, 뽀모도로 기록이 지워집니다. 되돌릴 수 없습니다.</string>
+    <string name="toast_estadisticas_reiniciadas">통계를 초기화했습니다</string>
+
+    <string name="config_titulo">시간 설정</string>
+    <string name="config_sesion_activa">진행 중인 세션이 있습니다. 시간을 바꾸려면 세션을 끝내거나 취소하세요.</string>
+    <string name="config_opciones_predeterminadas">기본 설정</string>
+    <string name="config_opciones_predeterminadas_texto">집중 25분, 짧은 휴식 5분, 긴 휴식 15분. 켜면 아래 시간은 바꿀 수 없습니다.</string>
+    <string name="config_tiempo_enfoque">집중 시간</string>
+    <string name="config_tiempo_enfoque_texto">작업 블록의 길이</string>
+    <string name="config_descanso_corto">짧은 휴식</string>
+    <string name="config_descanso_corto_texto">사이클 사이 휴식의 길이</string>
+    <string name="config_activar_descanso_largo">긴 휴식 사용</string>
+    <string name="config_activar_descanso_largo_texto">4사이클을 마치면 더 긴 휴식을 갖습니다. 뒤에도 계속 공부할 거라면 켜 두기를 권합니다. 여기서 끝낼 거라면 꺼도 되며, 네 번째 사이클에서 타이머가 멈춥니다.</string>
+    <string name="config_duracion_descanso_largo">긴 휴식의 길이</string>
+    <string name="config_guardar">설정 저장</string>
+    <string name="toast_config_guardada">설정을 저장했습니다</string>
+    <string name="toast_no_cambiar_tiempos">세션이 진행 중일 때는 시간을 바꿀 수 없습니다</string>
+
+    <string name="acerca_titulo">정보</string>
+    <string name="acerca_version">버전 %1$s</string>
+    <string name="acerca_la_app">앱 소개</string>
+    <string name="acerca_la_app_texto">Miau Focus는 고양이와 함께 딴짓 없이 공부하도록 돕는, 뽀모도로 기법의 집중 앱입니다. 작은 독립 팀이 정성껏 만들었습니다.</string>
+    <string name="acerca_como_hecha">어떻게 만들었나</string>
+    <string name="acerca_como_hecha_texto">Java로 작성한 안드로이드 네이티브 앱입니다. 인터넷 권한을 요구하지 않고, 광고를 보여주지 않으며, 계정도 필요 없습니다. 모든 정보는 기기 안에만 저장됩니다.</string>
+    <string name="acerca_quienes_somos">우리는 누구인가</string>
+    <string name="acerca_bruno_rol">개발과 디자인</string>
+    <string name="acerca_dulce_rol">원안 디자인과 초기 아이디어</string>
+    <string name="acerca_publicado_por">제공: Peggos Developers</string>
+    <string name="acerca_contacto_privacidad">문의와 개인정보</string>
+    <string name="acerca_politica_privacidad">개인정보 처리방침</string>
+    <string name="acerca_licencias">서드파티 라이선스</string>
+    <string name="acerca_ayudanos">계속 나아지도록 도와주세요</string>
+    <string name="acerca_ayudanos_texto">Miau Focus는 무료이고 성가신 광고도 없습니다. 도움이 되었고 저희가 계속 만들고 다듬을 힘을 보태고 싶다면, 어떤 응원이든 큰 힘이 됩니다.</string>
+    <string name="acerca_cafe">커피 한 잔 사주기 ☕</string>
+    <string name="cd_correo">메일</string>
+    <string name="cd_privacidad">개인정보</string>
+    <string name="cd_licencias">라이선스</string>
+    <string name="licencias_texto">애니메이션은 Airbnb의 Lottie로 제작되었으며 Apache 2.0 라이선스로 배포됩니다.</string>
+    <string name="toast_no_abrir_enlace">링크를 열 수 없습니다</string>
+    <string name="toast_sin_app_correo">메일 앱을 찾을 수 없습니다</string>
+
+    <string name="canal_progreso_nombre">진행 중인 세션</string>
+    <string name="canal_progreso_desc">집중 세션이나 휴식의 진행 상황을 보여줍니다</string>
+    <string name="canal_avisos_nombre">세션 알림</string>
+    <string name="canal_avisos_desc">휴식이나 집중 세션이 끝나면 알려줍니다</string>
+    <string name="canal_alarma_nombre">주의 경고</string>
+    <string name="canal_alarma_desc">집중 세션 중에 딴짓을 하면 알람처럼 울립니다</string>
+    <string name="canal_bloqueo_nombre">화면 잠금 중 타이머</string>
+    <string name="canal_bloqueo_desc">화면이 잠겨 있어도 타이머가 계속 간다는 것을 알려줍니다</string>
+
+    <string name="chip_vuelve">돌아오기</string>
+    <string name="notif_bloqueo_titulo">타이머 진행 중</string>
+    <string name="notif_bloqueo_texto">Miau Focus로 돌아오세요</string>
+    <string name="notif_aviso_fin_descanso_titulo">휴식이 곧 끝납니다</string>
+    <string name="notif_aviso_fin_descanso_texto">1분 안에 Miau Focus로 돌아오세요</string>
+    <string name="notif_aviso_sancion_titulo">휴식이 거의 끝났습니다</string>
+    <string name="notif_aviso_sancion_texto">15초 안에 Miau Focus로 돌아와 집중을 이어가세요</string>
+    <string name="notif_distraccion_titulo">딴짓을 하고 있습니다</string>
+    <string name="notif_distraccion_texto">타이머가 멈춰 있습니다. 계속하려면 Miau Focus로 돌아오세요</string>
+    <string name="notif_descanso_pausa">휴식 일시정지</string>
+    <string name="notif_enfoque_pausa">집중 세션 일시정지</string>
+    <string name="notif_pausa_texto">계속하려면 경고를 처리하세요</string>
+    <string name="notif_descanso_curso">휴식 중</string>
+    <string name="notif_enfoque_curso">집중 세션 중</string>
+    <string name="notif_progreso_texto">눌러서 Miau Focus로 돌아가기</string>
+    <string name="notif_descanso_largo_terminado">긴 휴식이 끝났습니다</string>
+    <string name="notif_completaste_sesion">세션을 완료했습니다</string>
+    <string name="notif_terminaste_4_ciclos">4사이클을 마쳤습니다</string>
+    <string name="notif_descanso_termino">휴식이 끝났습니다</string>
+    <string name="notif_enfoque_ya_comenzo">집중 세션이 이미 시작됐습니다. Miau Focus로 돌아오세요</string>
+    <string name="notif_toca_continuar">눌러서 계속하기</string>
+</resources>

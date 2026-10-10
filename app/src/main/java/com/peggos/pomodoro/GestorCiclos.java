@@ -9,16 +9,18 @@ public class GestorCiclos {
         public final long tiempoSiguiente;
         public final boolean esDescansoSiguiente;
         public final int cicloSiguiente;
-        public final String tituloSiguiente;
         public final boolean completoLosCuatroCiclos;
 
         Resultado(long tiempoSiguiente, boolean esDescansoSiguiente, int cicloSiguiente,
-                  String tituloSiguiente, boolean completoLosCuatroCiclos) {
+                  boolean completoLosCuatroCiclos) {
             this.tiempoSiguiente = tiempoSiguiente;
             this.esDescansoSiguiente = esDescansoSiguiente;
             this.cicloSiguiente = cicloSiguiente;
-            this.tituloSiguiente = tituloSiguiente;
             this.completoLosCuatroCiclos = completoLosCuatroCiclos;
+        }
+
+        public int resTitulo() {
+            return GestorAlertas.resTituloDeFase(esDescansoSiguiente, cicloSiguiente);
         }
     }
 
@@ -29,7 +31,7 @@ public class GestorCiclos {
         long tiempoDescansoLargo = configuracion.getMinutosDescansoLargo() * 60000L;
 
         if (esDescanso) {
-            return new Resultado(tiempoEnfoque, false, cicloActual, "SESIÓN DE ENFOQUE", false);
+            return new Resultado(tiempoEnfoque, false, cicloActual, false);
         }
 
         GestorEstadisticas gestor = new GestorEstadisticas(contexto);
@@ -49,12 +51,12 @@ public class GestorCiclos {
             marcarTareaActivaComoCompletada(preferencias, tareaActiva);
 
             if (configuracion.isDescansoLargoHabilitado()) {
-                return new Resultado(tiempoDescansoLargo, true, 1, "DESCANSO LARGO", true);
+                return new Resultado(tiempoDescansoLargo, true, 1, true);
             }
-            return new Resultado(tiempoEnfoque, false, 1, "SESIÓN DE ENFOQUE", true);
+            return new Resultado(tiempoEnfoque, false, 1, true);
         }
 
-        return new Resultado(tiempoDescansoCorto, true, siguienteCiclo, "DESCANSO CORTO", false);
+        return new Resultado(tiempoDescansoCorto, true, siguienteCiclo, false);
     }
 
     private static void marcarTareaActivaComoCompletada(SharedPreferences preferencias, String tareaActiva) {

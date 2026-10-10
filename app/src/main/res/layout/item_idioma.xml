@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llFilaIdioma"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/carta_idioma"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="10dp">
+
+    <TextView
+        android:id="@+id/tvSiglaIdioma"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:background="@drawable/circulo_idioma"
+        android:fontFamily="@font/poppins_semibold"
+        android:gravity="center"
+        android:textColor="?attr/themeAcentoTexto"
+        android:textSize="12sp"
+        tools:text="ES" />
+
+    <TextView
+        android:id="@+id/tvNombreIdioma"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:fontFamily="@font/poppins_semibold"
+        android:textColor="?attr/themeTextoPrimario"
+        android:textSize="15sp"
+        tools:text="Español" />
+
+    <ImageView
+        android:id="@+id/ivPalomitaIdioma"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="10dp"
+        android:contentDescription="@string/idioma_dialogo_titulo"
+        android:src="@drawable/ic_palomita"
+        android:visibility="invisible"
+        app:tint="?attr/themeAcentoTexto" />
+
+</LinearLayout>
