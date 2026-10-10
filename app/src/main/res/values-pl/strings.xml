@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">Analiza skupienia</string>
 
     <string name="accion_cancelar">Anuluj</string>
+    <string name="accion_cerrar">Zamknij</string>
     <string name="accion_guardar">Zapisz</string>
     <string name="accion_ver">Zobacz</string>
     <string name="accion_atras">Wstecz</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">Uwaga</string>
     <string name="dialogo_advertencia_texto">Na pewno chcesz przerwać tę sesję skupienia? Stracisz punkty, a twoja seria zacznie się od nowa.</string>
+    <string name="dialogo_advertencia_texto_descanso">Chcesz zakończyć sesję? Podczas przerwy nie tracisz punktów, ale postęp twoich cykli zostanie zresetowany.</string>
 
     <string name="dialogo_escudo_titulo">Włącz tarczę</string>
     <string name="dialogo_escudo_texto">Sesja będzie chroniona. Jeśli ją anulujesz, nie stracisz ani punktów, ani serii. Możesz jej użyć tylko raz dziennie.</string>
@@ -212,6 +214,7 @@
     <string name="config_horario_fin">Koniec</string>
     <string name="config_horario_resumen_titulo">PODSUMOWANIE SESJI</string>
     <string name="config_horario_bloques">4 bloki skupienia po %1$d min</string>
+    <string name="actividad_duracion_min">%1$s min</string>
     <string name="config_horario_descansos">3 krótkie przerwy po %1$d min</string>
     <string name="config_horario_termino">Godzina zakończenia: %1$s</string>
     <string name="config_horario_sin_largo">Bez długiej przerwy: minutnik zatrzyma się po czwartym bloku.</string>

@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">Focus Analytics</string>
 
     <string name="accion_cancelar">Cancel</string>
+    <string name="accion_cerrar">Close</string>
     <string name="accion_guardar">Save</string>
     <string name="accion_ver">View</string>
     <string name="accion_atras">Back</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">Warning</string>
     <string name="dialogo_advertencia_texto">Are you sure you want to give up this focus session? You will lose points and your streak will reset.</string>
+    <string name="dialogo_advertencia_texto_descanso">Do you want to end the session? You do not lose points during a break, but your cycle progress will be reset.</string>
 
     <string name="dialogo_escudo_titulo">Activate your shield</string>
     <string name="dialogo_escudo_texto">Your session will be protected. If you cancel it, you won\'t lose points or your streak. You can only use it once a day.</string>
@@ -206,6 +208,7 @@
     <string name="config_horario_fin">End</string>
     <string name="config_horario_resumen_titulo">SESSION SUMMARY</string>
     <string name="config_horario_bloques">4 focus blocks of %1$d min</string>
+    <string name="actividad_duracion_min">%1$s min</string>
     <string name="config_horario_descansos">3 short breaks of %1$d min</string>
     <string name="config_horario_termino">Finish time: %1$s</string>
     <string name="config_horario_sin_largo">No long break: the timer stops after the fourth block.</string>

@@ -798,7 +798,9 @@ public class CronometroActivity extends BaseActivity {
     }
 
     private void mostrarDialogoAdvertencia() {
-        DialogoAdvertencia.mostrar(this, this::reiniciarCronometro);
+        DialogoAdvertencia.mostrar(this,
+                esDescanso ? R.string.dialogo_advertencia_texto_descanso : R.string.dialogo_advertencia_texto,
+                this::reiniciarCronometro);
     }
 
     private void reiniciarCronometro() {

@@ -5,6 +5,7 @@
     <string name="correo_contacto">peggosteam@gmail.com</string>
 
     <string name="accion_cancelar">Cancelar</string>
+    <string name="accion_cerrar">Cerrar</string>
     <string name="accion_guardar">Guardar</string>
     <string name="accion_ver">Ver</string>
     <string name="accion_atras">Atrás</string>
@@ -40,6 +41,7 @@
 
     <string name="dialogo_advertencia_titulo">Advertencia</string>
     <string name="dialogo_advertencia_texto">¿Estás seguro de renunciar a esta sesión de enfoque? Perderás puntos y tu racha se reiniciará.</string>
+    <string name="dialogo_advertencia_texto_descanso">¿Quieres terminar la sesión? Durante el descanso no pierdes puntos, pero el avance de tus ciclos se reiniciará.</string>
 
     <string name="dialogo_escudo_titulo">Activa tu escudo</string>
     <string name="dialogo_escudo_texto">Tu sesión quedará protegida. Si la cancelas, no perderás puntos ni tu racha. Solo puedes usarlo una vez al día.</string>
@@ -209,6 +211,7 @@
     <string name="config_horario_fin">Fin</string>
     <string name="config_horario_resumen_titulo">RESUMEN DE LA SESIÓN</string>
     <string name="config_horario_bloques">4 bloques de enfoque de %1$d min</string>
+    <string name="actividad_duracion_min">%1$s min</string>
     <string name="config_horario_descansos">3 descansos cortos de %1$d min</string>
     <string name="config_horario_termino">Hora de término: %1$s</string>
     <string name="config_horario_sin_largo">Sin descanso largo: el cronómetro se detiene al finalizar el cuarto bloque.</string>

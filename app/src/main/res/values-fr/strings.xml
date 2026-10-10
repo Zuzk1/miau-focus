@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">Analyse de concentration</string>
 
     <string name="accion_cancelar">Annuler</string>
+    <string name="accion_cerrar">Fermer</string>
     <string name="accion_guardar">Enregistrer</string>
     <string name="accion_ver">Voir</string>
     <string name="accion_atras">Retour</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">Attention</string>
     <string name="dialogo_advertencia_texto">Tu es sûr de vouloir abandonner cette session de concentration ? Tu perdras des points et ta série repartira de zéro.</string>
+    <string name="dialogo_advertencia_texto_descanso">Veux-tu terminer la session ? Pendant la pause, tu ne perds pas de points, mais la progression de tes cycles sera réinitialisée.</string>
 
     <string name="dialogo_escudo_titulo">Active ton bouclier</string>
     <string name="dialogo_escudo_texto">Ta session sera protégée. Si tu l\'annules, tu ne perdras ni points ni série. Tu ne peux l\'utiliser qu\'une fois par jour.</string>
@@ -206,6 +208,7 @@
     <string name="config_horario_fin">Fin</string>
     <string name="config_horario_resumen_titulo">RÉSUMÉ DE LA SESSION</string>
     <string name="config_horario_bloques">4 blocs de concentration de %1$d min</string>
+    <string name="actividad_duracion_min">%1$s min</string>
     <string name="config_horario_descansos">3 pauses courtes de %1$d min</string>
     <string name="config_horario_termino">Heure de fin : %1$s</string>
     <string name="config_horario_sin_largo">Sans pause longue : le minuteur s\'arrête après le quatrième bloc.</string>

@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">集中の分析</string>
 
     <string name="accion_cancelar">キャンセル</string>
+    <string name="accion_cerrar">閉じる</string>
     <string name="accion_guardar">保存</string>
     <string name="accion_ver">見る</string>
     <string name="accion_atras">戻る</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">確認</string>
     <string name="dialogo_advertencia_texto">この集中セッションを中断しますか。ポイントを失い、連続記録がリセットされます。</string>
+    <string name="dialogo_advertencia_texto_descanso">セッションを終了しますか。休憩中はポイントを失いませんが、サイクルの進行はリセットされます。</string>
 
     <string name="dialogo_escudo_titulo">シールドを使う</string>
     <string name="dialogo_escudo_texto">セッションが保護されます。中断してもポイントと連続記録は減りません。1日1回だけ使えます。</string>
@@ -203,6 +205,7 @@
     <string name="config_horario_fin">終了</string>
     <string name="config_horario_resumen_titulo">セッションの概要</string>
     <string name="config_horario_bloques">%1$d分の集中ブロック × 4</string>
+    <string name="actividad_duracion_min">%1$s分</string>
     <string name="config_horario_descansos">%1$d分の短い休憩 × 3</string>
     <string name="config_horario_termino">終了時刻: %1$s</string>
     <string name="config_horario_sin_largo">長い休憩なし: 4つ目のブロックが終わるとタイマーが止まります。</string>

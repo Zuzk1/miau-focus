@@ -44,7 +44,6 @@ public class GestorCiclos {
         int siguienteCiclo = cicloActual + 1;
         boolean esCicloCompleto = siguienteCiclo > 4;
 
-        // UNIFICADO: Guardar todo de una vez para evitar pérdida de datos
         gestor.registrarFinDeFase((int) (tiempoEnfoque / 60000), puntosPorCiclo, tareaActiva, esCicloCompleto);
 
         if (esCicloCompleto) {

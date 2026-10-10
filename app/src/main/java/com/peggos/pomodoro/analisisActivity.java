@@ -209,7 +209,7 @@ public class analisisActivity extends BaseActivity {
         for (int i = 0; i < actividades.size(); i++) {
             String[] partes = actividades.get(i).split("\\|");
             String nombre = partes[0];
-            String duracion = partes.length > 1 ? partes[1] + " min" : "";
+            String duracion = partes.length > 1 ? getString(R.string.actividad_duracion_min, partes[1]) : "";
 
             if (i > 0) {
                 View separador = new View(this);

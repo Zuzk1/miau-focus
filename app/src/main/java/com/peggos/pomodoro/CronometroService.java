@@ -458,7 +458,7 @@ public class CronometroService extends Service {
             manejador.removeCallbacks(accionAvisoSancionDescanso);
             accionAvisoSancionDescanso = null;
         }
-        stopForeground(true);
+        stopForeground(STOP_FOREGROUND_REMOVE);
         stopSelf();
     }
 

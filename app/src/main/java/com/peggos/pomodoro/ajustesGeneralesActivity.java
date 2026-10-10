@@ -157,11 +157,11 @@ public class ajustesGeneralesActivity extends BaseActivity {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.dialogo_reiniciar_titulo)
                 .setMessage(R.string.dialogo_reiniciar_texto)
-                .setPositiveButton("Reiniciar", (dialog, which) -> {
+                .setPositiveButton(R.string.ajustes_reiniciar_boton, (dialog, which) -> {
                     new GestorEstadisticas(this).reiniciarEstadisticas();
                     Toast.makeText(this, R.string.toast_estadisticas_reiniciadas, Toast.LENGTH_SHORT).show();
                 })
-                .setNegativeButton("Cancelar", null)
+                .setNegativeButton(R.string.accion_cancelar, null)
                 .show();
     }
 

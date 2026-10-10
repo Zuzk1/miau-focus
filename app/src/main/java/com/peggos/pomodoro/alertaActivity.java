@@ -228,7 +228,7 @@ public class alertaActivity extends AppCompatActivity {
             VibratorManager gestorVibrador = (VibratorManager) getSystemService(VIBRATOR_MANAGER_SERVICE);
             vibrador = gestorVibrador.getDefaultVibrator();
         } else {
-            vibrador = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+            vibrador = getSystemService(Vibrator.class);
         }
         if (!modoSilencioso && gestorConfiguracion.isVibracionHabilitada()
                 && vibrador != null && vibrador.hasVibrator()) {

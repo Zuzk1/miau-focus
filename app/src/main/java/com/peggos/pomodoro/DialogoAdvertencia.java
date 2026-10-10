@@ -14,7 +14,7 @@ import com.google.android.material.button.MaterialButton;
 
 public class DialogoAdvertencia {
 
-    public static void mostrar(Context contexto, Runnable accionRenunciar) {
+    public static void mostrar(Context contexto, int mensaje, Runnable accionRenunciar) {
         Dialog dialogo = new Dialog(contexto);
         dialogo.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialogo.setContentView(R.layout.dialog_advertencia);
@@ -27,6 +27,8 @@ public class DialogoAdvertencia {
         LottieAnimationView gatoAdvertencia = dialogo.findViewById(R.id.lottieGatoAdvertencia);
         MaterialButton btnRenunciar = dialogo.findViewById(R.id.btnRenunciarAdvertencia);
         TextView tvCancelar = dialogo.findViewById(R.id.tvCancelarAdvertencia);
+        TextView tvMensaje = dialogo.findViewById(R.id.tvMensajeAdvertencia);
+        tvMensaje.setText(mensaje);
 
         btnRenunciar.setOnClickListener(v -> {
             dialogo.dismiss();

@@ -1,6 +1,7 @@
 package com.peggos.pomodoro;
 
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -34,8 +35,7 @@ public class personalizacionActivity extends BaseActivity {
         rvTemas.setAdapter(new TemasAdapter(this, new TemasAdapter.OnTemaSeleccionadoListener() {
             @Override
             public void onTemaCambiado() {
-                recreate();
-                overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
+                recrearConTransicion();
             }
 
             @Override
@@ -60,8 +60,7 @@ public class personalizacionActivity extends BaseActivity {
                 .setStartDelay(150)
                 .withEndAction(() -> {
                     tvDeduccion.setVisibility(View.GONE);
-                    recreate();
-                    overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
+                    recrearConTransicion();
                 }).start();
 
         tvPuntosDisponibles.setTextColor(Color.parseColor("#FF4444"));
@@ -70,6 +69,18 @@ public class personalizacionActivity extends BaseActivity {
                 .withEndAction(() ->
                         tvPuntosDisponibles.animate().scaleX(1f).scaleY(1f).setDuration(200).start()
                 ).start();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void recrearConTransicion() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
+            overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, R.anim.activity_enter, R.anim.activity_exit);
+            overrideActivityTransition(OVERRIDE_TRANSITION_CLOSE, R.anim.activity_enter, R.anim.activity_exit);
+            recreate();
+            return;
+        }
+        recreate();
+        overridePendingTransition(R.anim.activity_enter, R.anim.activity_exit);
     }
 
     private void actualizarPuntos() {

@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">Análise de Foco</string>
 
     <string name="accion_cancelar">Cancelar</string>
+    <string name="accion_cerrar">Fechar</string>
     <string name="accion_guardar">Salvar</string>
     <string name="accion_ver">Ver</string>
     <string name="accion_atras">Voltar</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">Aviso</string>
     <string name="dialogo_advertencia_texto">Tem certeza de que quer desistir desta sessão de foco? Você vai perder pontos e sua sequência será zerada.</string>
+    <string name="dialogo_advertencia_texto_descanso">Quer encerrar a sessão? Durante a pausa você não perde pontos, mas o progresso dos seus ciclos será reiniciado.</string>
 
     <string name="dialogo_escudo_titulo">Ative seu escudo</string>
     <string name="dialogo_escudo_texto">Sua sessão ficará protegida. Se você cancelar, não perderá pontos nem sua sequência. Só pode usar uma vez por dia.</string>
@@ -206,6 +208,7 @@
     <string name="config_horario_fin">Fim</string>
     <string name="config_horario_resumen_titulo">RESUMO DA SESSÃO</string>
     <string name="config_horario_bloques">4 blocos de foco de %1$d min</string>
+    <string name="actividad_duracion_min">%1$s min</string>
     <string name="config_horario_descansos">3 pausas curtas de %1$d min</string>
     <string name="config_horario_termino">Horário de término: %1$s</string>
     <string name="config_horario_sin_largo">Sem pausa longa: o cronômetro para ao terminar o quarto bloco.</string>

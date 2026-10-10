@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">Analisi della concentrazione</string>
 
     <string name="accion_cancelar">Annulla</string>
+    <string name="accion_cerrar">Chiudi</string>
     <string name="accion_guardar">Salva</string>
     <string name="accion_ver">Vedi</string>
     <string name="accion_atras">Indietro</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">Attenzione</string>
     <string name="dialogo_advertencia_texto">Sei sicuro di voler rinunciare a questa sessione di focus? Perderai punti e la tua serie ripartirà da zero.</string>
+    <string name="dialogo_advertencia_texto_descanso">Vuoi terminare la sessione? Durante la pausa non perdi punti, ma i progressi dei tuoi cicli verranno azzerati.</string>
 
     <string name="dialogo_escudo_titulo">Attiva il tuo scudo</string>
     <string name="dialogo_escudo_texto">La tua sessione sarà protetta. Se la annulli, non perderai né punti né la serie. Puoi usarlo solo una volta al giorno.</string>
@@ -206,6 +208,7 @@
     <string name="config_horario_fin">Fine</string>
     <string name="config_horario_resumen_titulo">RIEPILOGO DELLA SESSIONE</string>
     <string name="config_horario_bloques">4 blocchi di concentrazione da %1$d min</string>
+    <string name="actividad_duracion_min">%1$s min</string>
     <string name="config_horario_descansos">3 pause brevi da %1$d min</string>
     <string name="config_horario_termino">Ora di fine: %1$s</string>
     <string name="config_horario_sin_largo">Senza pausa lunga: il timer si ferma alla fine del quarto blocco.</string>

@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">집중 분석</string>
 
     <string name="accion_cancelar">취소</string>
+    <string name="accion_cerrar">닫기</string>
     <string name="accion_guardar">저장</string>
     <string name="accion_ver">보기</string>
     <string name="accion_atras">뒤로</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">경고</string>
     <string name="dialogo_advertencia_texto">이 집중 세션을 포기하시겠습니까. 점수를 잃고 연속 기록이 초기화됩니다.</string>
+    <string name="dialogo_advertencia_texto_descanso">세션을 끝내시겠습니까. 휴식 중에는 점수를 잃지 않지만 사이클 진행 상황은 초기화됩니다.</string>
 
     <string name="dialogo_escudo_titulo">방패 사용</string>
     <string name="dialogo_escudo_texto">세션이 보호됩니다. 취소해도 점수와 연속 기록을 잃지 않습니다. 하루에 한 번만 쓸 수 있습니다.</string>
@@ -203,6 +205,7 @@
     <string name="config_horario_fin">종료</string>
     <string name="config_horario_resumen_titulo">세션 요약</string>
     <string name="config_horario_bloques">%1$d분 집중 블록 4개</string>
+    <string name="actividad_duracion_min">%1$s분</string>
     <string name="config_horario_descansos">%1$d분 짧은 휴식 3번</string>
     <string name="config_horario_termino">종료 시간: %1$s</string>
     <string name="config_horario_sin_largo">긴 휴식 없음: 네 번째 블록이 끝나면 타이머가 멈춥니다.</string>

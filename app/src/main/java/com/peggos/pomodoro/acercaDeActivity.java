@@ -72,7 +72,7 @@ public class acercaDeActivity extends BaseActivity {
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.acerca_licencias)
                 .setMessage(R.string.licencias_texto)
-                .setPositiveButton("Cerrar", null)
+                .setPositiveButton(R.string.accion_cerrar, null)
                 .show();
     }
 }

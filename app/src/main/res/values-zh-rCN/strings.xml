@@ -2,6 +2,7 @@
     <string name="an_lisis_de_enfoque">专注分析</string>
 
     <string name="accion_cancelar">取消</string>
+    <string name="accion_cerrar">关闭</string>
     <string name="accion_guardar">保存</string>
     <string name="accion_ver">查看</string>
     <string name="accion_atras">返回</string>
@@ -37,6 +38,7 @@
 
     <string name="dialogo_advertencia_titulo">警告</string>
     <string name="dialogo_advertencia_texto">确定要放弃这次专注时段吗。你会失去积分，连续记录也会清零。</string>
+    <string name="dialogo_advertencia_texto_descanso">要结束这次学习吗。休息期间不会失去积分，但你的循环进度会被重置。</string>
 
     <string name="dialogo_escudo_titulo">启用护盾</string>
     <string name="dialogo_escudo_texto">这次时段会受到保护。即使取消，也不会失去积分和连续记录。每天只能用一次。</string>
@@ -203,6 +205,7 @@
     <string name="config_horario_fin">结束</string>
     <string name="config_horario_resumen_titulo">学习概要</string>
     <string name="config_horario_bloques">4 个 %1$d 分钟的专注时段</string>
+    <string name="actividad_duracion_min">%1$s 分钟</string>
     <string name="config_horario_descansos">3 次 %1$d 分钟的短休息</string>
     <string name="config_horario_termino">结束时间：%1$s</string>
     <string name="config_horario_sin_largo">没有长休息：第四个专注时段结束后计时器会停止。</string>
