@@ -37,6 +37,8 @@
 
         <item name="android:windowAnimationStyle">@style/Animation.MiauFocus.Activity</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.MiauFocus.MaterialAlertDialog</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
     </style>
 
     <!-- ============ BASE CLARA (compartida por todos los temas claros) ============ -->
@@ -76,6 +78,8 @@
 
         <item name="android:windowAnimationStyle">@style/Animation.MiauFocus.Activity</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.MiauFocus.MaterialAlertDialog</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <!-- ============ TEMAS OSCUROS (uno por color de acento) ============ -->
