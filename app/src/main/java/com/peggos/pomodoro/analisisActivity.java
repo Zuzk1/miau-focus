@@ -344,7 +344,7 @@ public class analisisActivity extends BaseActivity {
                 llContenedorBarras.addView(columna);
             }
 
-            hsvGraficaBarras.fullScroll(View.FOCUS_RIGHT);
+            hsvGraficaBarras.post(() -> hsvGraficaBarras.fullScroll(View.FOCUS_RIGHT));
         });
     }
 }
