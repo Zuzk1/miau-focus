@@ -159,6 +159,7 @@ public class CronometroActivity extends BaseActivity {
         }
         Log.d(ETIQUETA_DEPURACION, "onResume: deteniendo servicio si estaba activo");
         detenerServicioCronometro();
+        GestorAlertas.cancelarAvisosDescanso(this);
         actualizarTareaActiva();
         recargarConfiguracionTiempos();
     }

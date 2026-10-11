@@ -147,6 +147,10 @@ public class CronometroService extends Service {
         GestorAlertas.consumirReanudarTrasInfraccion(this);
         GestorAlertas.obtenerYLimpiarTiempoCongelado(this);
 
+        if (esDescanso) {
+            GestorAlertas.cancelarAvisosDescanso(this);
+        }
+
         if (esDescanso && !resultado.esDescansoSiguiente) {
             GestorAlertas.marcarPeriodoGraciaPostDescanso(this);
         }

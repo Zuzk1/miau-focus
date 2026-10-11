@@ -127,6 +127,12 @@ public class GestorAlertas {
         gestor.cancel(ID_NOTIFICACION_INFRACCION);
     }
 
+    public static void cancelarAvisosDescanso(Context contexto) {
+        NotificationManagerCompat gestor = NotificationManagerCompat.from(contexto);
+        gestor.cancel(ID_NOTIFICACION_AVISO_DESCANSO);
+        gestor.cancel(ID_NOTIFICACION_AVISO_SANCION);
+    }
+
     public static boolean hayInfraccionPendiente(Context contexto) {
         return contexto.getSharedPreferences(PREFS_NOMBRE, Context.MODE_PRIVATE)
                 .getBoolean(CLAVE_INFRACCION_PENDIENTE, false);
