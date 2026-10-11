@@ -48,35 +48,14 @@ Detalles completos en la [política de privacidad](https://zuzk1.github.io/miau-
 
 - Android 10 (API 29) o superior
 
-## Compilar desde el código
-
-1. Clona el repositorio:
-   ```bash
-   git clone https://github.com/Zuzk1/miau-focus.git
-   ```
-2. Ábrelo en Android Studio y deja que Gradle sincronice.
-3. Ejecuta el módulo `app` en un emulador o en tu teléfono.
-
-| | |
-|---|---|
-| Paquete | `com.peggos.pomodoro` |
-| Lenguaje | Java 11 |
-| SDK | min 29 · target 36 |
-| Librerías | AndroidX, Material Components, [Lottie](https://airbnb.io/lottie/) |
-
-## Estructura
-
-```
-app/src/main/
-├── java/com/peggos/pomodoro/   # Activities, servicio del cronómetro y gestores
-├── res/                        # Layouts, temas, animaciones y traducciones (values-*)
-└── AndroidManifest.xml
-docs/                           # Sitio web (GitHub Pages): testers y política de privacidad
-```
-
 ## Créditos
 
 Desarrollado por **Peggos Developers**.
 Animaciones de [LottieFiles](https://lottiefiles.com/).
 
 ¿Dudas o ideas? Escribe a [peggosteam@gmail.com](mailto:peggosteam@gmail.com).
+
+## Derechos
+
+© 2026 Peggos Developers. Todos los derechos reservados.
+El código es visible con fines de consulta. No está permitido copiarlo, modificarlo, redistribuirlo ni publicarlo como otra aplicación sin autorización por escrito.
