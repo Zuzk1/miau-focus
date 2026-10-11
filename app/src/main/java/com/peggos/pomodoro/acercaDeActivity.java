@@ -17,7 +17,7 @@ public class acercaDeActivity extends BaseActivity {
 
     private static final String URL_KOFI = "https://ko-fi.com/zuzk1";
     private static final String URL_PRIVACIDAD =
-            "https://sites.google.com/view/miau-focus-privacidad/p%C3%A1gina-principal";
+            "https://zuzk1.github.io/miau-focus/privacidad.html";
     private static final String CORREO_CONTACTO = "peggosteam@gmail.com";
 
     @Override
