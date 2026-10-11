@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Política de Privacidad — Miau Focus</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ---- tema claro (por defecto) ---- */
+:root{
+  --fondo:#F6F8FC; --tarjeta:#FFFFFF; --tarjeta-alt:#EEF3FA;
+  --linea:#DCE4F0; --acento:#1565C0; --acento-tenue:rgba(21,101,192,.07);
+  --texto:#1B2433; --texto-2:#0B1220; --muted:#5C6B82;
+  --sombra:rgba(16,32,64,.14);
+}
+/* ---- tema oscuro, según el navegador ---- */
+@media (prefers-color-scheme: dark){
+  :root{
+    --fondo:#141414; --tarjeta:#1F1F1F; --tarjeta-alt:#242424;
+    --linea:#2E2E2E; --acento:#60AEF5; --acento-tenue:rgba(96,174,245,.12);
+    --texto:#E8EAED; --texto-2:#FFFFFF; --muted:#9B9B9B;
+    --sombra:rgba(0,0,0,.8);
+  }
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--fondo); color:var(--texto);
+  font-family:Poppins,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:720px; margin:0 auto; padding:40px 20px 72px}
+h1,h2,.brand{letter-spacing:-.02em}
+
+/* ---- encabezado ---- */
+.brand{display:flex; align-items:center; gap:10px; font-weight:600; font-size:15px; color:var(--acento)}
+.dot{width:22px;height:22px;border-radius:50%;background:var(--acento);position:relative;flex:none}
+.dot::after{content:"";position:absolute;inset:5px 5px auto 5px;height:6px;border-radius:2px;background:var(--tarjeta)}
+h1{font-size:clamp(30px,7vw,46px); line-height:1.08; font-weight:700; margin:22px 0 10px; color:var(--texto-2)}
+.sub{color:var(--muted); font-size:15px; margin:0}
+
+/* ---- tarjeta tipo notificación (elemento firma) ---- */
+.notif{
+  background:var(--tarjeta); border:1px solid var(--linea); border-radius:18px;
+  padding:16px 18px; margin:28px 0 40px; display:flex; gap:14px;
+  box-shadow:0 10px 28px -18px var(--sombra);
+  animation:rise .5s ease-out both;
+}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.notif .dot{margin-top:3px}
+.notif-app{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--acento);margin:0 0 3px}
+.notif-msg{margin:0;font-weight:600;font-size:17px;line-height:1.4;color:var(--texto-2)}
+.notif-sm{margin:5px 0 0;font-size:14px;color:var(--muted)}
+
+/* ---- secciones ---- */
+section{border-top:1px solid var(--linea); padding-top:28px; margin-top:34px}
+h2{font-size:20px; font-weight:600; margin:0 0 12px; display:flex; gap:11px; align-items:baseline; color:var(--texto-2)}
+h2 span{font-size:13px; font-weight:500; color:var(--acento); font-variant-numeric:tabular-nums; flex:none}
+p{margin:0 0 14px}
+ul{margin:0 0 14px; padding-left:20px}
+li{margin-bottom:7px}
+li::marker{color:var(--acento)}
+strong{font-weight:600; color:var(--acento)}
+a{color:var(--acento)}
+
+/* ---- permisos ---- */
+.perm{background:var(--tarjeta); border:1px solid var(--linea); border-radius:14px; padding:14px 16px; margin-bottom:10px}
+.perm b{display:block; font-size:15px; color:var(--texto-2); font-weight:600}
+.perm span{font-size:14.5px; color:var(--muted)}
+
+.note{background:var(--acento-tenue); border:1px solid var(--linea); border-radius:14px; padding:16px 18px; font-size:15px}
+.note p:last-child{margin-bottom:0}
+
+footer{margin-top:44px; padding-top:22px; border-top:1px solid var(--linea); font-size:14px; color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.notif{animation:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand"><span class="dot"></span> Miau Focus</div>
+  <h1>Política de Privacidad</h1>
+  <p class="sub">Última actualización: 10 de octubre de 2026 · Desarrollador: Peggos Developers</p>
+
+  <div class="notif">
+    <span class="dot"></span>
+    <div>
+      <p class="notif-app">Miau Focus</p>
+      <p class="notif-msg">Nada sale de tu dispositivo.</p>
+      <p class="notif-sm">Esta app no recopila, almacena ni comparte ningún dato personal. Funciona por completo sin conexión.</p>
+    </div>
+  </div>
+
+  <section>
+    <h2><span>01</span> Información que no recopilamos</h2>
+    <p>Miau Focus no recopila nada de lo siguiente:</p>
+    <ul>
+      <li>Nombre, correo electrónico ni datos de contacto</li>
+      <li>Ubicación</li>
+      <li>Contactos, fotos, archivos ni contenido del dispositivo</li>
+      <li>Identificadores publicitarios</li>
+      <li>Datos de uso, analítica ni informes de fallos</li>
+    </ul>
+    <p>La aplicación <strong>no solicita el permiso de acceso a Internet</strong>, no tiene cuentas de usuario, no usa servicios de analítica, no muestra anuncios y no integra bibliotecas de terceros que recopilen información.</p>
+  </section>
+
+  <section>
+    <h2><span>02</span> Lo que se guarda en tu dispositivo</h2>
+    <p>Para funcionar, la app guarda esta información en el almacenamiento local de Android:</p>
+    <ul>
+      <li>Tus tareas</li>
+      <li>Estadísticas de uso: rachas, puntos y sesiones completadas</li>
+      <li>Preferencias: duración de sesiones, temas y sonidos</li>
+    </ul>
+    <p>Estos datos <strong>nunca salen de tu dispositivo</strong>. No los podemos ver, consultar ni recuperar.</p>
+  </section>
+
+  <section>
+    <h2><span>03</span> Permisos que usa la app</h2>
+    <div class="perm"><b>Notificaciones</b><span>Mostrar el cronómetro activo y avisarte cuando termina una sesión.</span></div>
+    <div class="perm"><b>Servicio en primer plano</b><span>Mantener el cronómetro corriendo mientras la app está en segundo plano.</span></div>
+    <div class="perm"><b>Vibración</b><span>Avisarte del fin de una sesión.</span></div>
+    <p style="margin-top:14px">Ninguno de estos permisos se utiliza para recopilar información.</p>
+  </section>
+
+  <section>
+    <h2><span>04</span> Cómo eliminar tus datos</h2>
+    <p>Como todo se guarda únicamente en tu dispositivo, puedes borrarlo cuando quieras:</p>
+    <ul>
+      <li>Desde la app, con la opción de reiniciar estadísticas</li>
+      <li>Borrando los datos de la app en los Ajustes de Android</li>
+      <li>Desinstalando Miau Focus, que elimina todo automáticamente</li>
+    </ul>
+    <p>No necesitas contactarnos para pedir la eliminación: no conservamos ningún dato tuyo.</p>
+  </section>
+
+  <section>
+    <h2><span>05</span> Enlaces a terceros</h2>
+    <p>Miau Focus incluye un enlace opcional para apoyar el proyecto con donaciones voluntarias a través de Ko-fi. Al pulsarlo se abre el navegador de tu dispositivo y sales de la aplicación.</p>
+    <div class="note">
+      <p>Las donaciones son totalmente voluntarias y <strong>no otorgan acceso a ninguna función, contenido ni ventaja</strong> dentro de la app. Todas las funciones de Miau Focus están disponibles gratis.</p>
+      <p>Cualquier información que proporciones en Ko-fi se rige por la política de privacidad de Ko-fi, no por esta. No recibimos tus datos de pago.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2><span>06</span> Menores de edad</h2>
+    <p>Miau Focus no está dirigida específicamente a menores de 13 años y no recopila información de ningún usuario, sin importar su edad.</p>
+  </section>
+
+  <section>
+    <h2><span>07</span> Cambios en esta política</h2>
+    <p>Si esta política cambia, la versión actualizada se publicará en esta misma dirección con una nueva fecha de actualización.</p>
+  </section>
+
+  <section>
+    <h2><span>08</span> Contacto</h2>
+    <p>Si tienes dudas sobre esta política, escribe a <a href="mailto:peggosteam@gmail.com">peggosteam@gmail.com</a>.</p>
+  </section>
+
+  <footer>Miau Focus — Peggos Developers</footer>
+</div>
+</body>
+</html>
