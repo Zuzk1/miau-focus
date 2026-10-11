@@ -8,7 +8,7 @@
 
 Gratis · Sin anuncios · Funciona sin internet
 
-![Versión](https://img.shields.io/badge/versión-1.3-60AEF5?style=flat-square)
+![Versión](https://img.shields.io/badge/versión-1.4-60AEF5?style=flat-square)
 ![Android](https://img.shields.io/badge/Android-10%2B-3DDC84?style=flat-square&logo=android&logoColor=white)
 ![Java](https://img.shields.io/badge/Java-11-E76F00?style=flat-square&logo=openjdk&logoColor=white)
 ![Idiomas](https://img.shields.io/badge/idiomas-11-8E7CC3?style=flat-square)
