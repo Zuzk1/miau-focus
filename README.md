@@ -28,15 +28,13 @@ Miau Focus es una app para Android que te ayuda a estudiar con la técnica Pomod
 
 ## Características
 
-| | |
-|---|---|
-| ⏱️ **Ciclos Pomodoro** | Enfoque y descanso con tiempos configurables. |
-| 🕐 **Modo por horario** | Le dices a qué hora empiezas y a qué hora terminas, y arma los bloques solo. |
-| ✅ **Tareas** | Escribe lo que vas a hacer y márcalo como completado. |
-| 📊 **Estadísticas** | Rachas, puntos y sesiones completadas. |
-| 🎨 **Temas** | Personaliza colores y sonidos, con modo claro y oscuro. |
-| 🏝️ **Isla dinámica** | El cronómetro aparece en la isla en Android 16+ / HyperOS 3. |
-| 🌍 **11 idiomas** | Español, inglés, portugués (PT y BR), francés, italiano, polaco, noruego, japonés, coreano y chino. |
+- **Ciclos Pomodoro**: Enfoque y descanso con tiempos configurables.
+- **Modo por horario**: Le dices a qué hora empiezas y a qué hora terminas, y arma los bloques solo.
+- **Tareas**: Escribe lo que vas a hacer y márcalo como completado.
+- **Estadísticas**: Rachas, puntos y sesiones completadas.
+- **Temas**: Personaliza colores y sonidos, con modo claro y oscuro.
+- **Isla dinámica**: El cronómetro aparece en la isla en Android 16+ / HyperOS 3.
+- **11 idiomas**: Español, inglés, portugués (PT y BR), francés, italiano, polaco, noruego, japonés, coreano y chino.
 
 ## Privacidad
 
@@ -75,11 +73,6 @@ app/src/main/
 └── AndroidManifest.xml
 docs/                           # Sitio web (GitHub Pages): testers y política de privacidad
 ```
-
-## Para colaboradores
-
-- Nunca subas `local.properties`.
-- Al hacer commit, no selecciones los *Unversioned Files*.
 
 ## Créditos
 
